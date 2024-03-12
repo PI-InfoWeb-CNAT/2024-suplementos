@@ -37,15 +37,15 @@ O site precisará da utilização de internet, fato que pode limitar o acesso ao
 
 
 ## 5. Principais necessidades dos usuários
-Considerando o pronto de vista do lojista, administrador do site, sua principal necessidade é aumentar o volume de vendas de sua loja incorporando em seu negócio a possibilidade de realização de vendas via internet. 
+Considerando o pronto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de conseguir alcançar mais pessoas e faturar mais.
 
 Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos.
 
 ## 6. Alternativas concorrentes
-Uma alternativa ao comércio eletrônico desenvolvido é a lojas Americanas, que apresenta pesquisa por meio de nome ou categoria do produto, tem o sistema de carrinho de compras, que permite adicionar os produtos selecionados, deixando o pagamento somente para o final quando o cliente tiver selecionado todos os produtos desejados. Também tem o sistema de login, o qual o usuário se cadastra, o que facilita as próximas compras. Além disso em cada produto tem sua descrição, produto similares ao selecionado e uma seção destinada à avaliação dos consumidores. 
+Entre as alternativas concorrentes existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, Darkness, etc.
 
 ## 7.	Visão geral do produto
-Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente, disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa. Após a aquisição, o usuário poderá acompanhar o produto comprado, avaliar produtos da loja, comentar e marcar produtos como favoritos. 
+Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente para ser utilizado nos navegadores (browsers), disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável e responsivo. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa. Após a aquisição, o usuário poderá acompanhar o produto comprado, avaliar produtos da loja e marcar produtos como favoritos. 
 
 ## 8.	Requisitos funcionais
 | Código | Nome | Descrição |
