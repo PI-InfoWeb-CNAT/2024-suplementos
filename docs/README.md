@@ -27,11 +27,13 @@ Este projeto tem objetivo de desenvolver um site que implemente as funcionalidad
 | Moderador | Administrador do site | Adicionar e remover produtos; gerenciar os pedidos.
 
 ## 4. Descrição do ambiente dos usuários 
-O comércio eletrônico tem dois tipos de usuários. O tipo administrador representa o gestor da loja e seus colaboradores e o tipo Cliente que representa o cliente, seja ele anônimo ou já cadastrado. 
+O comércio eletrônico tem dois tipos de usuários. O tipo administrador representa o gestor da loja e seus colaboradores e o usuário, seja ele anônimo ou já cadastrado. 
 
-O administrador acessará o site a partir do ambiente físico da loja e fará a configuração dos produtos a serem vendidos e realizará a logística de atendimento dos pedidos coletados pelo site, registrando a informação de situação de envio dos pedidos. Nesse processo, os produtos que forem identificados fisicamente sem estoque deverão ter sua disponibilidade para venda bloqueada.
+O administrador acessará o site a partir do ambiente físico da loja e fará a configuração dos produtos a serem vendidos e realizará a logística de atendimento dos pedidos coletados pelo site, registrando a informação de situação de envio dos pedidos. 
 
-O usuário cliente irá acessar o site utilizando  um computador ou celular e realizará a visualização dos produtos vendidos na loja e realizará a compra, caso deseje. Neste caso não há muitas restrições quanto ao ambiente pois ele poderá fazer os pedidos de qualquer local que tenha conexão com internet.
+O usuário irá acessar o site utilizando  um computador ou celular e realizará a visualização dos produtos vendidos na loja e realizará a compra, caso deseje. As tarefas executadas pelos clientes, como uma compra, devem ser possíveis 24 horas por dia, durante os 7 dias da semana.
+
+O site precisará da utilização de internet, fato que pode limitar o acesso ao sistema dependendo da qualidade do sinal disponível.
 
 
 ## 5. Principais necessidades dos usuários
