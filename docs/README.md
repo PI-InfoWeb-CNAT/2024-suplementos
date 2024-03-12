@@ -5,18 +5,18 @@
 ### Histórico da Revisão 
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 01/06/2021 | **1.00** | Versão Inicial  | George Azevedo |
+| 03/03/2024 | **1.00** | Versão Inicial  | David Paiva, Diego Luiz, Lucas Brito e Pedro Edi |
 
 ## 1. Objetivo do Projeto 
-`A ser desenvolvido pelo aluno.` Este projeto tem objetivo de desenvolver um site que implemente as funcionalidades de uma loja on-line.
+Este projeto tem objetivo de desenvolver um site que implemente as funcionalidades de uma loja de suplementos on-line.
  
 ## 2. Descrição do problema 
 | | |
 |:-|:-|
-| **_O problema_**    | O lojista que atua no comércio convencional deseja resolver o problema de volume reduzido de vendas de seus produtos agravado pela situação de Pandemia  |
-| **_afetando_**      | a capacidade de venda da loja                      |
-| **_cujo impacto é_**| expansão ou até capacidade de existência da loja                                    |
-| **_uma boa solução seria_** | Realizar vendas via internet e gerenciar o processo de entrega dos produtos |
+| **_O problema_**    | O lojista que atua no comércio convencional, na área de suplementação, deseja resolver o problema da falta de controle de validade do estoque em sua loja física  |
+| **_afetando_**      | o lojista e os clientes                  |
+| **_cujo impacto é_**| o descarte de produtos por falta de controle de validade e consequente queda nos lucros                                    |
+| **_uma boa solução seria_** | a criação de um site de suplementos da loja física para obter o controle da validade do estoque |
 | | |
 
 ## 3. Descrição dos usuários
