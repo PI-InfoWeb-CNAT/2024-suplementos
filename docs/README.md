@@ -49,22 +49,20 @@ Esse projeto consiste em um site voltado para vendas de produtos que pretende fu
 ## 8.	Requisitos funcionais
 | Código | Nome | Descrição |
 |:---  |:--- |:--- |
-| F01	| Adicionar, remover ou alterar produtos | O administrador tem à sua disponibilidade a função de adicionar, remover ou alterar produtos comercializados no site estabelecendo ainda seus preços de venda. 
-| F02	| Adicionar, remover ou alterar grupos de produtos.	| O administrador tem à sua disponibilidade a função de adicionar, remover ou alterar grupos de produtos comercializados no site.
-| F03	| Adicionar, remover ou alterar fabricante de produtos.	| O administrador tem à sua disponibilidade a função de adicionar, remover ou alterar fabricantes de produtos comercializados no site.
-| F04	| Disponibilizar ou bloquear a apresentação do produto no site de venda	| O administrador tem à sua disponibilidade a função de liberar ou bloquear a apresentação de produtos a venda 
-| F05	| Consultar pedidos realizados e não enviados.	| O administrador pode acessar os dados de vendas de produtos do site que foram realizados pelos clientes e que ainda não foram remetidos
-| F06	| Registrar recebimento do pagamento do cliente	| O administrador registra no site a identificação do recebimento do pagamento realizado pelo cliente liberando o pedido para envio.
-| F07	| Registrar o envio do pedido.	| O administrador informa no site a forma de envio do pedido ao cliente.
-| F08	| Visualizar produtos	| O usuário visualiza os produtos disponíveis filtrando ou por grupos, fabricante ou através de um trecho do nome do produto
-| F09	| Adicionar ou remover produtos à cesta de compras	| O usuário  pode escolher mais de um produto para realizar a compra e inserir em uma cesta de compras.
-| F10	| Realizar o cadastro e login no site	| O usuário pode se cadastrar no site para poder comprar produtos e acessar outras diversas funcionalidades como avaliar e comentar os produtos.
-| F11	| Realizar a compra de um produto	| Os clientes podem confirmar a compra dos produtos adicionados em sua cesta de compra gerando assim um pedido.
-| F12	| Realizar o cancelamento de pedido solicitado	| Os clientes podem solicitar o cancelamento de um pedido realizado desde que ainda não tenha sido enviado.
-| F13	| Verificar as compras realizadas	| Os clientes podem verificar seu histórico de compra na loja.
-| F14	| Verificar o andamento do pedido	| Os clientes podem acompanhar o andamento da entrega dos pedidos realizados.
-| F15	| Avaliar o Produto	| Os clientes podem avaliar os produtos realizando um comentário e atribuindo uma nota
-| F16 	| Revisar dados cadastrais	| Os clientes podem alterar seus dados cadastrais permitindo assim que façam, por exemplo, alteração do endereço de entrega
+| F01	| Criar conta | Permite que um visitante se cadastre e crie sua conta para poder comprar produtos.
+| F02	| Efetuar login	| Permite que um cliente entre na sua conta.
+| F03	| Gerenciar conta	| Habilita o cliente a consultar e editar seus dados de perfil.
+| F04	| Adicionar e remover produtos	| O administrador tem à sua disponibilidade a função de adicionar e remover produtos
+| F05	| Consultar pedidos realizados e não enviados.	| O administrador pode acessar os dados de vendas de produtos do site que foram realizados pelos clientes e que ainda não foram remetidos.
+| F06	| Pesquisar produto	| Permite que o cliente coloque o nome de algum produto específico e, ao enviar, apareça os produtos correspondentes à sua pesquisa.
+| F07	| Visualizar produtos	| O usuário visualiza os produtos disponíveis filtrando de acordo com suas necessidades e também de acordo com o produto.
+| F08	| Adicionar ou remover produtos ao carrinho	| O usuário pode escolher mais de um produto para realizar a compra e inserir no carrinho.
+| F09	| Realizar a compra | Os clientes podem confirmar a compra dos produtos adicionados em seu carrinho, gerando assim um pedido.
+| F10	| Realizar o cancelamento de pedido solicitado	| Os clientes podem solicitar o cancelamento de um pedido realizado desde que ainda não tenha sido enviado.
+| F11	| Verificar as compras realizadas	| Os clientes podem verificar seu histórico de compra na loja.
+| F12	| Verificar o andamento do pedido	| Os clientes podem acompanhar o andamento da entrega dos pedidos realizados.
+| F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos realizando um comentário e atribuindo uma nota.
+| F14	| Devolver o produto	| Permite que o cliente solicite a devolução do produto, causada por erro no envio ou algo semelhante. 
 
 ## 9.	Requisitos não-funcionais
 | Código | Nome | Descrição | Categoria | Classificação |
