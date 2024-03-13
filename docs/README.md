@@ -67,7 +67,8 @@ Esse projeto consiste em um site voltado para vendas de produtos que pretende fu
 ## 9.	Requisitos não-funcionais
 | Código | Nome | Descrição | Categoria | Classificação |
 |:---  |:--- |:--- |:--- |:--- |
-| NF01	| Design responsivo	| O site apresentará responsividade, deixando-o mais confortável para o usuário | Usabilidade	| Obrigatório
-| NF02	| Acesso somente com internet	| É necessário um acesso contínuo à Internet para poder acessar os dados do site e suas funcionalidades, como comprar produtos.	| Disponibilidade	| Obrigatório
-| NF03	| Criptografia de Dados	| Senhas do usuário devem ser gravadas de forma criptografada no banco de dados	| Segurança	| Obrigatório
-| NF04	| Facilidade de Uso	| O sistema deve apresentar uma interface amigável, para que o cliente consiga utilizá-lo facilmente e consiga efetuar suas funcionalidades sem precisar de nenhum tipo de manual.	| Usabilidade	| Obrigatório
+| NF01	| Tecnologias utilizadas no desenvolvimento 	| O site deverá ser feito utilizando HTML, CSS e JS no front-end. No back-end deverá ser utilizado Python com Django e o banco de dados será o PostgreSQL. | Usabilidade	| Obrigatório
+| NF02	| Design responsivo	| O site apresentará responsividade, deixando-o mais confortável para o usuário | Usabilidade	| Obrigatório
+| NF03	| Acesso somente com internet	| É necessário um acesso contínuo à Internet para poder acessar os dados do site e suas funcionalidades, como comprar produtos.	| Disponibilidade	| Obrigatório
+| NF04	| Criptografia de Dados	| Senhas do usuário devem ser gravadas de forma criptografada no banco de dados	| Segurança	| Obrigatório
+| NF05	| Facilidade de Uso	| O sistema deve apresentar uma interface amigável, para que o cliente consiga utilizá-lo facilmente e consiga efetuar suas funcionalidades sem precisar de nenhum tipo de manual.	| Usabilidade	| Obrigatório
