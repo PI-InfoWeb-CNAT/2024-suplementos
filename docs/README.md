@@ -28,13 +28,11 @@ Este projeto tem objetivo de desenvolver um site que implemente as funcionalidad
 ## 4. Descrição do ambiente dos usuários 
 O comércio eletrônico tem dois tipos de usuários. O tipo administrador representa o gestor da loja e seus colaboradores e o usuário, seja ele anônimo ou já cadastrado. 
 
-O administrador acessará o sistema a partir da sua loja física e/ou em casa, ambos os locais por meio de um computador com mouse e teclado disponíveis. Sua função é configurar os produtos e gerenciar os pedidos, registrando a informação de situação de envio dos pedidos.
+O administrador acessará o sistema a partir da sua loja física e/ou em casa, ambos os locais por meio de um computador com mouse e teclado disponíveis, além de ter internet via Wi-Fi disponível. Sua função é configurar os produtos e gerenciar os pedidos, registrando a informação de situação de envio dos pedidos. Poderá acessar o sistema 24 horas por dia, durante os 7 dias da semana. ALém disso, o tempo levado para a realização dessas tarefas deve ser menor do que 2 segundos.
 
-O administrador acessará o site a partir do ambiente físico da loja ou em casa e fará a configuração dos produtos a serem vendidos e realizará a logística de atendimento dos pedidos coletados pelo site, registrando a informação de situação de envio dos pedidos. 
+O usuário irá acessar o site utilizando um computador ou celular, em qualquer ambiente com disponibilidade de internet via Wi-Fi ou padrão de rede celular. Realizará a visualização dos produtos vendidos na loja e realizará a compra, caso deseje. As tarefas executadas pelos clientes, como uma compra, devem ser possíveis 24 horas por dia, durante os 7 dias da semana.
 
-O usuário irá acessar o site utilizando  um computador ou celular e realizará a visualização dos produtos vendidos na loja e realizará a compra, caso deseje. As tarefas executadas pelos clientes, como uma compra, devem ser possíveis 24 horas por dia, durante os 7 dias da semana.
-
-O site precisará da utilização de internet, fato que pode limitar o acesso ao sistema dependendo da qualidade do sinal disponível.
+Não será necessário que o site interaja com nenhum outro aplicativo para funcionar. O ideal seria o usuário utilizar o site sem movimentação, pra que a qualidade do sinal não oscile. Porém, se o usuário estiver em movimento, será possível ele acessar o sistema com Wi-Fi se disponível, ou com um padrão de rede celular, como 4G.
 
 
 ## 5. Principais necessidades dos usuários
