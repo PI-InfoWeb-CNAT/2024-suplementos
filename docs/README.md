@@ -22,7 +22,7 @@ Este projeto tem objetivo de desenvolver um site que implemente as funcionalidad
 |:- |:- |:- |
 | Cliente  | Usuário cadastrado no site | Visualizar os produtos; pesquisar produtos; comprar produtos; adicionar produtos ao carrinho; avaliar produtos adquiridos; cancelar pedido; solicitar devolução do produto. |
 | Visitante   | Usuário não cadastrado no site | Visualizar produtos; pesquisar produtos.  |
-| Moderador | Administrador do site | Adicionar e remover produtos; gerenciar os pedidos.
+| Moderador | Administrador do site | Adicionar e remover produtos; pesquisar produtos; adicionar produtos ao carrinho; gerenciar os pedidos.
 
 ## 4. Descrição do ambiente dos usuários 
 O comércio eletrônico tem dois tipos de usuários. O tipo administrador representa o gestor da loja e seus colaboradores e o usuário, seja ele anônimo ou já cadastrado. 
@@ -35,12 +35,12 @@ O site precisará da utilização de internet, fato que pode limitar o acesso ao
 
 
 ## 5. Principais necessidades dos usuários
-Considerando o pronto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de conseguir alcançar mais pessoas e faturar mais.
+Considerando o ponto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de que, com o site, consegue alcançar mais pessoas e, consequentemente, faturar mais.
 
 Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos.
 
 ## 6. Alternativas concorrentes
-Entre as alternativas concorrentes existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, Darkness, etc.
+Entre as alternativas concorrentes, existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, Darkness, etc.
 
 ## 7.	Visão geral do produto
 Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente para ser utilizado nos navegadores (browsers), disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável e responsivo. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa. Após a aquisição, o usuário poderá acompanhar o produto comprado, avaliar produtos da loja e marcar produtos como favoritos. 
