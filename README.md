@@ -7,24 +7,20 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 ## Artefatos do Projeto
 
+## .
 
+## .
 
+## .
 
-
-
-
-
-
-
-
-
-
-
-
-
+## .
 
 ## Autores
 
+# . ([Diego L.](https://github.com/dilepego)
 
+# . ([Meu Perfil](https://github.com/davidmtg)
 
+# . ([Meu Perfil](https://github.com/lucasbrito0611)
 
+# . ([Meu Perfil](https://github.com/dilepego)
