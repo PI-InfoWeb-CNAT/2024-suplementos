@@ -17,10 +17,10 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 ## Autores
 
-# . ([Diego L.](https://github.com/dilepego)
+# . ([Diego Luiz](https://github.com/dilepego)
 
-# . ([Meu Perfil](https://github.com/davidmtg)
+# . ([David Paiva](https://github.com/davidmtg)
 
-# . ([Meu Perfil](https://github.com/lucasbrito0611)
+# . ([Lucas Brito](https://github.com/lucasbrito0611)
 
-# . ([Meu Perfil](https://github.com/dilepego)
+# . ([Pedro Edi](https://github.com/Pedro-Edi)
