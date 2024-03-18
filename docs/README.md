@@ -36,12 +36,12 @@ Não será necessário que o site interaja com nenhum outro aplicativo para func
 
 
 ## 5. Principais necessidades dos usuários
-Considerando o ponto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de que, com o site, consegue alcançar mais pessoas e, consequentemente, faturar mais.
+Considerando o ponto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de que, com o site, consegue alcançar mais pessoas e, consequentemente, faturar mais. O site terá uma parte "promoções" destinada a esse controle de validade, para que esse problema seja solucionado.
 
-Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos.
+Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos. O site irá entregar isso com um design simples, efetivo e responsivo, para atender às necessidades dos clientes.
 
 ## 6. Alternativas concorrentes
-Entre as alternativas concorrentes, existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, Darkness, etc.
+Entre as alternativas concorrentes, existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, etc.
 
 ## 7.	Visão geral do produto
 Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente para ser utilizado nos navegadores (browsers), disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável e responsivo. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa. Após a aquisição, o usuário poderá acompanhar o produto comprado, avaliar produtos da loja e marcar produtos como favoritos. 
