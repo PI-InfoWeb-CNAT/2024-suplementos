@@ -7,3 +7,4 @@
 ## 18/03/2024
 - *Pauta*: 
   - Concluir o documento de visão
+  - Modificar o arquivo README
