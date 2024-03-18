@@ -11,8 +11,8 @@
 Este projeto tem objetivo de desenvolver um site que implemente as funcionalidades de uma loja de suplementos on-line.
  
 ## 2. Descrição do problema 
-|  Data  | Versão | Descrição | Autor |
-|:-------|:-------|:----------|:------|
+|  Data  | Versão | 
+|:-------|:-------|
 | 03/03/2024 | **1.00** |
 
 
