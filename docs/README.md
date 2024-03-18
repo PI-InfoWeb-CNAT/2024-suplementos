@@ -11,7 +11,7 @@
 Este projeto tem objetivo de desenvolver um site que implemente as funcionalidades de uma loja de suplementos on-line.
  
 ## 2. Descrição do problema 
-|:-------|:-------|:----------|:------|
+|:-------|:-------|
 | **_O problema_**    | O lojista que atua no comércio convencional, na área de suplementação, deseja resolver o problema da falta de controle de validade do estoque em sua loja física  |
 | **_afetando_**      | o lojista e os clientes                  |
 | **_cujo impacto é_**| o descarte de produtos por falta de controle de validade e consequente queda nos lucros                                    |
