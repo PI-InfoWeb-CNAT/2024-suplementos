@@ -41,10 +41,15 @@ Considerando o ponto de vista do lojista, administrador do site, sua principal n
 Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos. O site irá entregar isso com um design simples, efetivo e responsivo, para atender às necessidades dos clientes.
 
 ## 6. Alternativas concorrentes
-Entre as alternativas concorrentes, existem as outras lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, etc.
+Entre as alternativas concorrentes, existem as principais lojas de suplementos presentes no mercado atual: Growth, Max Titanium, Integralmédica, etc. Esses sites têm basicamente o mesmo modelo, mudando o design e algumas poucas coisas.
+
+Um ponto positivo desses sites é que eles deixam os produtos mais vendidos, consequentemente os mais importantes, em destaque para que o cliente ache-o com mais facilidade.
+Além disso, outro ponto positivo que vi presente no site da Growth e na Integralmédica é que nos cards dos produtos eles colocam pequenas informações sobre o produto, fazendo com que o cliente tenha uma visão geral e boa do produto, estimulando-o a comprar.
 
 ## 7.	Visão geral do produto
-Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente para ser utilizado nos navegadores (browsers), disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável e responsivo. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa. Após a aquisição, o usuário poderá acompanhar o produto comprado, avaliar produtos da loja e marcar produtos como favoritos. 
+Esse projeto consiste em um site voltado para vendas de produtos que pretende funcionar de forma rápida e eficiente para ser utilizado nos navegadores (browsers), disponibilizando um ambiente acessível a diversos tipos de usuários e possuindo um design confortável e responsivo. Para tal, o site irá disponibilizar diferentes mecanismos de busca permitindo que o usuário encontre de forma eficiente o que ele precisa, sem precisar de nenhum tipo de manual.
+
+O sistema deve ter métodos de validação e verificações de erros. Além disso, o sistema deve ser capaz de sustentar pelo menos 100 acessos simultâneos.
 
 ## 8.	Requisitos funcionais
 | Código | Nome | Descrição |
@@ -52,22 +57,22 @@ Esse projeto consiste em um site voltado para vendas de produtos que pretende fu
 | F01	| Criar conta | Permite que um visitante se cadastre e crie sua conta para poder comprar produtos.
 | F02	| Efetuar login	| Permite que um cliente entre na sua conta.
 | F03	| Gerenciar conta	| Habilita o cliente a consultar e editar seus dados de perfil.
-| F04	| Adicionar e remover produtos	| O administrador tem à sua disponibilidade a função de adicionar e remover produtos
+| F04	| Adicionar e remover produtos	| O administrador tem à sua disponibilidade a função de adicionar e remover produtos.
 | F05	| Consultar pedidos realizados e não enviados.	| O administrador pode acessar os dados de vendas de produtos do site que foram realizados pelos clientes e que ainda não foram remetidos.
 | F06	| Pesquisar produto	| Permite que o cliente coloque o nome de algum produto específico e, ao enviar, apareça os produtos correspondentes à sua pesquisa.
 | F07	| Visualizar produtos	| O usuário visualiza os produtos disponíveis filtrando de acordo com suas necessidades e também de acordo com o produto.
 | F08	| Adicionar ou remover produtos ao carrinho	| O usuário pode escolher mais de um produto para realizar a compra e inserir no carrinho.
 | F09	| Realizar a compra | Os clientes podem confirmar a compra dos produtos adicionados em seu carrinho, gerando assim um pedido.
 | F10	| Realizar o cancelamento de pedido solicitado	| Os clientes podem solicitar o cancelamento de um pedido realizado desde que ainda não tenha sido enviado.
-| F11	| Verificar as compras realizadas	| Os clientes podem verificar seu histórico de compra na loja.
-| F12	| Verificar o andamento do pedido	| Os clientes podem acompanhar o andamento da entrega dos pedidos realizados.
-| F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos realizando um comentário e atribuindo uma nota.
+| F11	| Verificar o histórico das compras realizadas	| Os clientes podem verificar seu histórico de compra na loja, por meio de uma aba "Meus pedidos".
+| F12	| Verificar o andamento do pedido	| Os clientes podem acompanhar o andamento da entrega dos pedidos realizados após realizados.
+| F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos adquiridos realizando um comentário e atribuindo uma nota.
 | F14	| Devolver o produto	| Permite que o cliente solicite a devolução do produto, causada por erro no envio ou algo semelhante. 
 
 ## 9.	Requisitos não-funcionais
 | Código | Nome | Descrição | Categoria | Classificação |
 |:---  |:--- |:--- |:--- |:--- |
-| NF01	| Tecnologias utilizadas no desenvolvimento 	| O site deverá ser feito utilizando HTML, CSS e JS no front-end. No back-end deverá ser utilizado Python com Django e o banco de dados será o PostgreSQL. | Usabilidade	| Obrigatório
+| NF01	| Tecnologias utilizadas no desenvolvimento 	| O site deverá ser feito utilizando HTML, CSS e JS no front-end. No back-end deverá ser utilizado Python com Django e o banco de dados será o PostgreSQL. | Desempenho	| Obrigatório
 | NF02	| Design responsivo	| O site apresentará responsividade, deixando-o mais confortável para o usuário | Usabilidade	| Obrigatório
 | NF03	| Acesso somente com internet	| É necessário um acesso contínuo à Internet para poder acessar os dados do site e suas funcionalidades, como comprar produtos.	| Disponibilidade	| Obrigatório
 | NF04	| Criptografia de Dados	| Senhas do usuário devem ser gravadas de forma criptografada no banco de dados	| Segurança	| Obrigatório
