@@ -7,7 +7,7 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 ## Artefatos do Projeto
 
-## .
+## . [Documento de visão](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/docs/README.md)
 
 ## .
 
