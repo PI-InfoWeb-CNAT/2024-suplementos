@@ -7,13 +7,11 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 ## Artefatos do Projeto
 
-### . [Reuniões da equipe](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/reunioes.md)
+- [Reuniões da equipe](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/reunioes.md)
 
-### . [Documento de visão](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/README.md)
+- [Documento de visão](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/README.md)
 
-### .
 
-### .
 
 ## Autores
 
