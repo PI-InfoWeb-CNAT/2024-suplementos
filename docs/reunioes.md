@@ -8,3 +8,7 @@
 - *Pauta*: 
   - Concluir o documento de visão
   - Modificar o arquivo README
+
+## 25/03/2024
+- *Pauta*: 
+  - Atualizar o diagrama de casos de uso 
