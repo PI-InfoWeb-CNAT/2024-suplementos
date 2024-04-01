@@ -18,10 +18,5 @@ Projeto de e-commerce de suplementos de academia que faz do projeto integrador d
 
 ## Autores
 
-### . [Diego Luiz](https://github.com/dilepego)
-
-### . [David Paiva](https://github.com/davidmtg)
-
-### . [Lucas Brito](https://github.com/lucasbrito0611)
-
-### . [Pedro Edi](https://github.com/Pedro-Edi)
+| [<img align="center" src="https://avatars.githubusercontent.com/u/122239789?v=4" width=150><br><sub>Lucas Brito</sub>](https://github.com/lucasbrito0611) |  [<img src="https://avatars.githubusercontent.com/u/124364476?v=4" width=150><br><sub>David Paiva</sub>](https://github.com/davidmtg) |  [<img src="https://avatars.githubusercontent.com/u/124363859?v=4" width=150><br><sub>Diego Luiz</sub>](https://github.com/dilepego) | [<img src="https://avatars.githubusercontent.com/u/107737145?v=4" width=150><br><sub>Pedro Edi</sub>](https://github.com/Pedro-Edi) 
+| :---: | :---: | :---: | :---: | 
