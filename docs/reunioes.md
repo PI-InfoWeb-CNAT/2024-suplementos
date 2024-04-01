@@ -13,3 +13,8 @@
 - *Pauta*: 
   - Atualizar o diagrama de casos de uso 
   - Concluir o arquivo README.md
+
+## 01/04/2024
+- *Pauta*: 
+  - Colocar fotos na seção de autores no arquivo README.md
+  - Adicionar o contexto no arquivo README.md
