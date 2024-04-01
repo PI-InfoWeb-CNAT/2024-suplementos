@@ -6,7 +6,7 @@ Este projeto tem como objetivo ser uma aplicação modelo (blueprint) para a dis
 Atualmente o projeto começou uma implementação como modelo de projeto Microsoft Visual Studio, que está em desenvolvimento.
 
 ## Contexto do Projeto
-Projeto de e-commerce de suplementos de academia que faz do projeto integrador do 3º ano de infoweb da turma de 2024 d IFRN-Campus Natal Central.
+Projeto de e-commerce de suplementos de academia que faz do projeto integrador do 3º ano de infoweb da turma de 2024 do IFRN-Campus Natal Central.
 
 ## Artefatos do Projeto
 
