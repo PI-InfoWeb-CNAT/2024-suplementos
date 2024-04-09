@@ -18,3 +18,7 @@
 - *Pauta*: 
   - Colocar fotos na seção de autores no arquivo README.md
   - Adicionar o contexto no arquivo README.md
+
+## 08/04/2024
+- *Pauta*: 
+  - Começar o desenvolvimento do mapa do site
