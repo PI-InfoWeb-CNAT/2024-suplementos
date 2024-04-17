@@ -22,3 +22,8 @@
 ## 08/04/2024
 - *Pauta*: 
   - Começar o desenvolvimento do mapa do site
+
+## 17/04/2024
+- *Pauta*: 
+  - Discutir sobre o mapa do site e melhorá-lo
+  - Definir como e quando faremos o início das páginas no figma
