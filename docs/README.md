@@ -81,3 +81,7 @@ O sistema deve ter métodos de validação e verificações de erros. Além diss
 ## 10. Diagrama de Casos de Uso
 
 ![imagem](Diagramas/Casos_de_Uso.png)
+## 11. Mapa do site
+![mapa](https://www.figma.com/file/dbie88azNtZuZcQlgFhjij/MAPA-DO-SITE?type=whiteboard&t=YdseoxpnlPiUJndK-6)
+
+
