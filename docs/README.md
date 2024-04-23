@@ -82,6 +82,5 @@ O sistema deve ter métodos de validação e verificações de erros. Além diss
 
 ![imagem](Diagramas/Casos_de_Uso/Casos_de_Uso.png)
 ## 11. Mapa do site
-[mapa](https://www.figma.com/file/dbie88azNtZuZcQlgFhjij/MAPA-DO-SITE?type=whiteboard&t=YdseoxpnlPiUJndK-6)
 
-
+![image](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/assets/122239789/1069bc03-1781-47b9-b835-46a50698c70e)
