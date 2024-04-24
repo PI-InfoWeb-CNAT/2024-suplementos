@@ -27,3 +27,10 @@
 - *Pauta*: 
   - Discutir sobre o mapa do site e melhorá-lo
   - Definir como e quando faremos o início das páginas no figma
+
+## 23/04/2024
+- *Pauta*: 
+  - Discutir sobre o esboço da página de cadastro
+  - Discutir sobre o esboço da página principal
+  - Definir como será o detalhamento dos casos de uso
+  - Definir a divisão das tarefas de design e documentação
