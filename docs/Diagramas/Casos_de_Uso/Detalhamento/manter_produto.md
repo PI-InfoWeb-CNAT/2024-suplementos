@@ -5,13 +5,13 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 18/04/2024 | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| 25/04/2024 | **1.00** | Adição do resumo e ator(es) | Lucas Brito |
 
 
 ### 1. Resumo 
-    Detalhamento do método de adicionar ou remover um certo produto a sua lista do carrinho para possivel compra depois.
+    Detalha o processo de como manter um produto (CRUD).
 ### 2. Atores
-- Definir quais os atores desse caso de uso (usuarios do sistema, administradores, vendedores, etc)
+- Moderador/administrador
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
