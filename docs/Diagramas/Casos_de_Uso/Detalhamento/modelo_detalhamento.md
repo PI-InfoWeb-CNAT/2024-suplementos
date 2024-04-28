@@ -11,7 +11,8 @@
 ### 1. Resumo 
     Detalhamento do método de adicionar ou remover um certo produto a sua lista do carrinho para possivel compra depois.
 ### 2. Atores
-- Definir quais os atores desse caso de uso (usuarios do sistema, administradores, vendedores, etc)
+- Visitante
+- Cliente
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
