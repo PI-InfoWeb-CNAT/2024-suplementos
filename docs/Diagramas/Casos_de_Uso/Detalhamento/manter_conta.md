@@ -9,7 +9,7 @@
 
 
 ### 1. Resumo 
-    Detalha o processo da criação de uma conta.
+    Detalha o processo de como manter uma conta(CRUD).
 ### 2. Atores
 - Moderador/Administrador 
 
