@@ -9,10 +9,10 @@
 
 
 ### 1. Resumo 
-    Detalha o processo de como adicionar um produto ao carrinho pata efetuar a compra depois.
+    Detalha o processo de como adicionar um produto ao carrinho para a efetuação da compra.
 ### 2. Atores
-- Moderador/Administrador
-- Visitante
+- Visitante 
+- Cliente
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
