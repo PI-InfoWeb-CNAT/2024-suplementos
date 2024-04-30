@@ -1,4 +1,4 @@
-# Projeto Comercio Eletrônico - PowerUp
+# Projeto Comércio Eletrônico - PowerUp
 
 ## Especificação do caso de uso - Modelo
 
@@ -9,7 +9,7 @@
 
 
 ### 1. Resumo 
-    Detalha o processo de como manter um produto (CRUD).
+Detalha o processo de como manter um produto (CRUD).
 ### 2. Atores
 - Moderador/administrador
 
