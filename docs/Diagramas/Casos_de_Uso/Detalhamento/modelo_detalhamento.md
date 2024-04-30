@@ -1,4 +1,4 @@
-# Projeto Comercio Eletrônico - PowerUp
+# Projeto Comércio Eletrônico - PowerUp
 
 ## Especificação do caso de uso - Modelo
 
