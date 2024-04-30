@@ -1,15 +1,15 @@
 # Projeto Comercio Eletrônico - PowerUp
 
-## Especificação do caso de uso - Modelo
+## Especificação do caso de uso - Manter conta
 
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 18/04/2024 | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
 
 
 ### 1. Resumo 
-    Detalha o processo de como manter uma conta(CRUD).
+Detalha o processo de como manter uma conta (CRUD).
 ### 2. Atores
 - Moderador/Administrador 
 
