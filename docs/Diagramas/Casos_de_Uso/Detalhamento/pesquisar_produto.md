@@ -1,6 +1,6 @@
 # Projeto Comercio Eletrônico - PowerUp
 
-## Especificação do caso de uso - Modelo
+## Especificação do caso de uso - Pesquisar produto
 
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
@@ -9,7 +9,8 @@
 
 
 ### 1. Resumo 
-Detalha o processo da pesquisa de um produto na barra de pesquisa.
+Como um usuário, identificado ou não, desejo listar e filtrar produtos.
+
 ### 2. Atores
 - Moderador/Administrador
 - Cliente
