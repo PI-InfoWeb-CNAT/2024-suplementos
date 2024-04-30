@@ -1,15 +1,16 @@
 # Projeto Comercio Eletrônico - PowerUp
 
-## Especificação do caso de uso - Modelo
+## Especificação do caso de uso - Adicionar ao carrinho
 
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 18/04/2024 | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
 
 
 ### 1. Resumo 
-    Detalha o processo de como adicionar um produto ao carrinho para a efetuação da compra.
+Detalha o processo de como adicionar um produto ao carrinho para a efetuação da compra.
+
 ### 2. Atores
 - Visitante 
 - Cliente
