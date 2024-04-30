@@ -5,11 +5,11 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 18/04/2024 | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| dd/mm/aaaa | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
 
 
 ### 1. Resumo 
-    Detalhamento do método de adicionar ou remover um certo produto a sua lista do carrinho para possivel compra depois.
+Detalhamento do método de adicionar ou remover um certo produto a sua lista do carrinho para possivel compra depois.
 ### 2. Atores
 - Visitante
 - Cliente
