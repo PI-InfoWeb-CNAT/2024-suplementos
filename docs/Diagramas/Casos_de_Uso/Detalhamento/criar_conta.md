@@ -1,15 +1,16 @@
 # Projeto Comercio Eletrônico - PowerUp
 
-## Especificação do caso de uso - Modelo
+## Especificação do caso de uso - Criar conta
 
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 18/04/2024 | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| 30/04/2024 | **1.00** | Adiiconar seção de resumo e atores | Lucas Brito |
 
 
 ### 1. Resumo 
-    Detalha o processo da criação de uma conta.
+Detalha o processo da criação de uma conta.
+
 ### 2. Atores
 - Visitante (usuário não cadastrado)
 
