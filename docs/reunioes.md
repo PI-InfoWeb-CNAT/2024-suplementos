@@ -34,3 +34,9 @@
   - Discutir sobre o esboço da página principal
   - Definir como será o detalhamento dos casos de uso
   - Definir a divisão das tarefas de design e documentação
+
+## 30/04/2024
+- *Pauta*: 
+  - Discutir sobre o esboço da página de login
+  - Discutir sobre o esboço da página de perfil
+  - Ajustar alguns pontos do resumo e atores do detalhamento dos casos se uso
