@@ -5,11 +5,11 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adiiconar seção de resumo e atores | Lucas Brito |
+| 30/04/2024 | **1.00** | Adição da seção de resumo e atores | Lucas Brito |
 
 
 ### 1. Resumo 
-Detalha o processo da criação de uma conta.
+Como usuário não identificado, desejo ter a opção de criar uma conta.
 
 ### 2. Atores
 - Visitante (usuário não cadastrado)
