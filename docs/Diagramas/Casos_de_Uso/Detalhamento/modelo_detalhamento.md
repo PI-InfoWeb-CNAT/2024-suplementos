@@ -9,10 +9,10 @@
 
 
 ### 1. Resumo 
-Detalhamento do método de adicionar ou remover um certo produto a sua lista do carrinho para possivel compra depois.
+Resumir o que esse caso de uso irá fazer.
+
 ### 2. Atores
-- Visitante
-- Cliente
+- Definir quem irá utilizar esse caso de uso (administrador, cliente, visitante, etc.)
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
