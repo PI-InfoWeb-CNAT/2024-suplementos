@@ -40,3 +40,8 @@
   - Discutir sobre o esboço da página de login
   - Discutir sobre o esboço da página de perfil
   - Ajustar alguns pontos do resumo e atores do detalhamento dos casos se uso
+
+## 08/07/2024
+- *Pauta*: 
+  - Definir metas pós greve
+  - Discutir páginas do figma
