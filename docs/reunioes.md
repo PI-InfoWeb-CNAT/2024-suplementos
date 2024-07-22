@@ -45,3 +45,14 @@
 - *Pauta*: 
   - Definir metas pós greve
   - Discutir páginas do figma
+ 
+## 15/07/2024
+- *Pauta*: 
+  - Discutir páginas do figma
+ 
+## 22/07/2024
+- *Pauta*: 
+  - Definir o que falta para o fechamento do bimestre
+  - Discutir páginas do figma
+  - Analisar mapa do site
+  - Analisar diagrama de casos de uso
