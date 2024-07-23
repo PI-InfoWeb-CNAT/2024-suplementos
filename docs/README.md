@@ -66,7 +66,7 @@ O sistema deve ter métodos de validação e verificações de erros. Além diss
 | F10	| Realizar o cancelamento de pedido solicitado	| Os clientes podem solicitar o cancelamento de um pedido realizado desde que ainda não tenha sido enviado.
 | F11	| Verificar o histórico das compras realizadas	| Os clientes podem verificar seu histórico de compra na loja, por meio de uma aba "Meus pedidos".
 | F12	| Verificar o andamento do pedido	| Os clientes podem acompanhar o andamento da entrega dos pedidos realizados após realizados.
-| F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos adquiridos realizando um comentário e atribuindo uma nota.
+| F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos adquiridos atribuindo uma nota.
 | F14	| Devolver o produto	| Permite que o cliente solicite a devolução do produto, causada por erro no envio ou algo semelhante. 
 
 ## 9.	Requisitos não-funcionais
