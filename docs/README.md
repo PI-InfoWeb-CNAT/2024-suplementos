@@ -78,11 +78,3 @@ O sistema deve ter métodos de validação e verificações de erros. Além diss
 | NF03	| Acesso somente com internet	| É necessário um acesso contínuo à Internet para poder acessar os dados do site e suas funcionalidades, como comprar produtos.	| Disponibilidade	| Obrigatório
 | NF04	| Criptografia de Dados	| Senhas do usuário devem ser gravadas de forma criptografada no banco de dados.	| Segurança	| Obrigatório
 | NF05	| Facilidade de Uso	| O sistema deve apresentar uma interface amigável, para que o cliente consiga utilizá-lo facilmente e consiga efetuar suas funcionalidades sem precisar de nenhum tipo de manual.	| Usabilidade	| Obrigatório
-
-## 10. Diagrama de Casos de Uso
-
-![imagem](Diagramas/Casos_de_Uso/Casos_de_Uso.png)
-## 11. Mapa do site
-
-![image](https://github.com/user-attachments/assets/156df95a-f716-42cb-9397-cf3621554ea3)
-
