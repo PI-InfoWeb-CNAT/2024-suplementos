@@ -17,6 +17,8 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 - [Diagrama Entidade-Relacionamento](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/Diagramas/Diagrama_ER.png)
 
+- [Mapa do Site](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/Mapa_do_Site.png)
+
 
 
 ## Autores
