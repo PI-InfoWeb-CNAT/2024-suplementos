@@ -10,9 +10,6 @@ class Cliente(models.Model):
     Telefone_celular = models.CharField(null=False, max_length=11)
     Telefone_fixo = models.CharField(null=True, max_length=11, blank=True)
     Dt_nasc = models.DateField(null=False, default=datetime.date(2000, 1, 1))
-    Endereco = models.CharField(null=False, max_length=100)
-    Estado = models.CharField(null=False, max_length=100)
-    CEP = models.CharField(null=False, max_length=8)
     Senha = models.CharField(null=False, max_length=100)
 
     def save(self, *args, **kwargs):
