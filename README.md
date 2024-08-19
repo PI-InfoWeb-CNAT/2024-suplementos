@@ -15,7 +15,7 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 - [Diagrama de Casos de Uso](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/tree/main/docs/Diagramas/Casos_de_Uso)
 
-- [Diagrama Entidade-Relacionamento](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/Diagramas/Diagrama_ER.png)
+- [Diagramas de Banco de Dados](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/tree/main/docs/Diagramas/Modelagem%20de%20Banco%20de%20Dados)
 
 - [Mapa do Site](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/Mapa_do_Site.png)
 
