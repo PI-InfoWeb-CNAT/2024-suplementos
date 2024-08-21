@@ -6,7 +6,7 @@
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
 | 03/05/2024 | **1.00** | Adição da seção de resumo e atores | Lucas Brito |
-.
+
 
 ### 1. Resumo 
 Como um usuário identificado, desejo avaliar um produto que já comprei.
