@@ -19,7 +19,7 @@ Atualmente o projeto começou uma implementação como modelo de projeto Microso
 
 - [Mapa do Site](https://github.com/PI-InfoWeb-CNAT/2024-suplementos/blob/main/docs/Mapa_do_Site.png)
 
-- [prototipo de paginas no figma](https://figma.com/file/rctWNaBlVwH4C917UVQCgw/Projeto-Integrador?type=design&node-id=344-3&mode=design&t=trp0qFgIPClJZeEv-0)
+- [prototipo de paginas no figma](https://www.figma.com/design/rctWNaBlVwH4C917UVQCgw/Projeto-Integrador?node-id=0-1&node-type=CANVAS&t=Gd0LG11Y9shjkhhF-0)
 
 
 
