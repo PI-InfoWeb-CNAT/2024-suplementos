@@ -56,8 +56,14 @@
   - Discutir páginas do figma
   - Analisar mapa do site
   - Analisar diagrama de casos de uso
+    
 ## 26/08/2024
 - *Pauta*: 
   - Colocar o dicionário de dados no github
   - Alterar a página de informações do produto
   - Fazer o pop up de avaliar produto
+
+## 02/09/2024
+- *Pauta*: 
+  - Começar o HTML do projeto
+  - Definir metas até o final do segundo bimestre
