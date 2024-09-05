@@ -1,0 +1,44 @@
+.form-pesquisa {
+    width: 30em;
+}
+
+.container-pesquisa {
+    position: relative;
+    width: 100%;
+    & button {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        left: 0;
+        top: 15%;
+        cursor: pointer;
+        margin-left: 1em;
+        & i {
+            color: var(--light-green);
+            font-size: 1.2em;
+        }
+    }
+}
+
+.input-pesquisa {
+    background-color: var(--dark-grey);
+    color: white;
+    width: 100%;
+    padding: .75rem 3rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.input-pesquisa::placeholder {
+    color: white;
+}
+
+.produtos {
+    display: flex;
+}
+
+.imagem-produto {
+    width: 200px;
+    height: 200px;
+}

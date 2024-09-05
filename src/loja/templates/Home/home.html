@@ -5,9 +5,23 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block content %}
-<div id="content">
-
-</div>
+<section class="pesquisar-produtos">
+    <form action="{% url 'home' %}" method="GET" class="form-pesquisa">
+        <div class="container-pesquisa">
+            <input type="text" name="produto" placeholder="Encontre o seu produto" class="input-pesquisa">
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
+    <section class="produtos">
+        {% for prod in produtos %}
+        <div class="card-produto">
+            <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+            <h5 class="titulo-produto">{{prod.Nome}}</h5>
+            <p class="preco-produto">{{prod.Preco}}</p>
+        </div>
+        {% endfor %}
+    </section>
+</section> 
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'js/home.js' %}"></script>
