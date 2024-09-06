@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/promocoes.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Loja - Promoções</title>
+</head>
+<body>
+    <div id="container-main-footer">
+        <header> 
+            <nav class="navbar-menu">
+                <img src="{% static 'images/logo_preta.png' %}" alt="">
+                <ul class="menu">
+                    <li><a href="/"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+                    <li><a href="/promocoes" class="active"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+                    <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+                    <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+                    <li><a href="/perfil"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+                </ul> 
+            </nav>
+        </header>
+        <main>
+            <div class="container-cima">
+                <h3>Promoções</h3>
+                <section>
+                    <a href="/notificacoes"><i class="bi bi-bell-fill icon-cima"></i></a>
+                    <a href="/perfil"><i class="bi bi-cart-fill icon-cima"></i></a>
+                    <a href="/perfil"><i class="bi bi-person-fill icon-cima"></i></a>
+                    <button class="button-sign"><a href="/login">Entrar</a></button>
+                    <button class="button-sign"><a href="/cadastro">Cadastrar</a></button>
+                </section>
+            </div>
+            <section class="produtos">
+                {% for prod in produtos %}
+                    {% if prod.Promocao != 0 %}
+                    <div class="card-produto">
+                        <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                        <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                        <div>
+                            <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                            <div>
+                                <p class="preco-produto">{{prod.Preco}} R$</p>
+                                <div class="promocao">
+                                    {{prod.Promocao}}% OFF
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div>
+            <div class="img-footer">
+                <img src="{% static 'images/logo_branca.png' %}" alt="">
+            </div>
+            <div>
+                <ul class="menu-footer">
+                    <div class="menu-pt1">
+                        <li><a href="">Página Inicial</a></li>
+                        <li><a href="">Promoções</a></li>
+                        <li><a href="">Meus Pedidos</a></li>
+                    </div>
+                    <div class="menu-pt2">
+                        <li><a href="">Meus Favoritos</a></li>
+                        <li><a href="">Meu Perfil</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-redes">
+                <a href="/notificacoes"><i class="bi bi-twitter"></i></a>
+                <a href="/perfil"><img src="{% static 'images/instagram-icon.svg' %}" alt=""></a>
+                <a href="/perfil"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

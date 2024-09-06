@@ -1,17 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <title>Loja - Início</title>
 </head>
 <body>
     <div id="container-main-footer">
-        <header>
+        <header> 
             <nav class="navbar-menu">
                 <img src="{% static 'images/logo_preta.png' %}" alt="">
                 <ul class="menu">
@@ -43,14 +45,30 @@
             </div>
             <section class="produtos">
                 {% for prod in produtos %}
-                <div class="card-produto">
-                    <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                    <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                    <div>
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                        <p class="preco-produto">{{prod.Preco}}</p>
+                    {% if prod.Promocao == 0 %}
+                    <div class="card-produto">
+                        <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                        <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                        <div>
+                            <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                            <p class="preco-produto">{{prod.Preco}} R$</p>
+                        </div>
                     </div>
-                </div>
+                    {% else %}
+                    <div class="card-produto">
+                        <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                        <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                        <div>
+                            <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                            <div>
+                                <p class="preco-produto">{{prod.Preco}} R$</p>
+                                <div class="promocao">
+                                    {{prod.Promocao}}% OFF
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 {% endfor %}
             </section>
         </main>

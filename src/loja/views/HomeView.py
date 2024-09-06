@@ -9,7 +9,7 @@ def home_view(request):
         produtos = produtos.filter(Nome__contains=produto)
 
     context = {
-        'produtos': produtos
-    }
+        'produtos': produtos 
+    } 
 
-    return render(request, template_name='home/home.html', context=context, status=200)
+    return render(request, template_name='home.html', context=context, status=200)  
