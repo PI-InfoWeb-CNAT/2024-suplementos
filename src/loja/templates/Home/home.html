@@ -45,13 +45,15 @@
                 {% for prod in produtos %}
                 <div class="card-produto">
                     <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                    <p class="preco-produto">{{prod.Preco}}</p>
+                    <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                    <div>
+                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                        <p class="preco-produto">{{prod.Preco}}</p>
+                    </div>
                 </div>
                 {% endfor %}
             </section>
         </main>
-        
     </div>
     <footer>
         <div>
@@ -78,7 +80,7 @@
             </div>
         </div>
     </footer>
-
+        
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

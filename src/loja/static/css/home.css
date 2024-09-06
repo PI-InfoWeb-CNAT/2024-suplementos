@@ -128,9 +128,50 @@ main {
     margin-top: 2em;
 }
 
-.imagem-produto {
+.card-produto {
+    background-color: white;
+    margin: 1em;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 28px;
     width: 200px;
+    position: relative;
+}
+
+.card-produto > div {
+    padding: 0 1em;
+}
+
+.card-produto button {
+    background-color: var(--dark-grey);
+    padding: .7em;
+    clip-path: circle(40%);
+    position: absolute;
+    right: 2%;
+    top: 0;
+}
+
+.button-favoritar .bi-heart {
+    color: var(--light-green);
+}
+
+.button-favoritar .bi-heart-fill {
+    color: var(--light-green);
+}
+
+.titulo-produto {
+    word-break: break-word;
+    font-size: 1.2em;
+    width: 170px;
+}
+
+.preco-produto {
+    font-weight: bold;
+}
+
+.imagem-produto {
+    width: 100%;
     height: 200px;
+    margin-bottom: 2em;
 }
 
 footer {
