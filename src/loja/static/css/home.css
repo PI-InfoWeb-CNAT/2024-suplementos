@@ -1,11 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 * {
     margin: 0 ;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    margin: 4em 4em;
+    font-family: 'Bai Jamjuree';
 }
 
 :root {
@@ -15,17 +14,19 @@ body {
     --dark-grey: #404040;
 }
 
-#container-geral {
+#container-main-footer {
     display: flex;
+    margin: 4em 4em;
 }
 
 .navbar-menu {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    margin-right: 2em;
+    align-items: end;
+    gap: 2em;
+    margin-right: 4em;
     & img {
-        width: 150px;
+        width: 180px;
     }
 }
 
@@ -33,16 +34,16 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* margin: 3rem 4rem; */
-    width: 160px;
+    width: 200px;
     & li {
         list-style-type: none;
         & a {
             display: flex;
             align-items: center;
             color: var(--dark-grey);
-            font-size: 1.1em;
+            font-size: 1.2em;
             padding-left: .7em;
+            font-weight: 500;
         }
     }
 }
@@ -53,12 +54,16 @@ body {
 }
 
 .active {
-    color: var(--light-green) !important;
-    border-left: 2px solid var(--light-green);
+    color: var(--dark-green) !important;
+    border-left: 2px solid var(--dark-green);
+}
+
+main {
+    width: 100%;
 }
 
 .form-pesquisa {
-    width: 30em;
+    width: 50em;
 }
 
 .container-pesquisa {
@@ -84,7 +89,6 @@ body {
     color: white;
     width: 100%;
     padding: .75rem 3rem;
-    margin-bottom: 1rem;
     border-radius: 10px;
     border: none;
 }
@@ -93,11 +97,93 @@ body {
     color: white;
 }
 
+.container-cima {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.icon-cima {
+    background-color: var(--dark-grey);
+    padding: .7em;
+    clip-path: circle(40%);
+    color: var(--light-green);
+    font-size: 1.2em;
+}
+
+.button-sign {
+    border: none;
+    padding: 0.5em 1em;
+    background-color: var(--dark-grey);
+    border-radius: 10px 0px 10px 0px;
+    & a {
+        color: white;
+        text-decoration: underline;
+    }
+}
+
 .produtos {
     display: flex;
+    margin-top: 2em;
 }
 
 .imagem-produto {
     width: 200px;
     height: 200px;
+}
+
+footer {
+    background-color: var(--dark-grey);
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+    display: flex;
+    justify-content: center;
+    padding: 5em 0;
+    & > div {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.img-footer img {
+    width: 250px;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    & div {
+        display: flex;
+        gap: 3em;
+        & li {
+            list-style-type: none;
+            & a {
+                color: white;
+                font-size: 1.2em;
+            }
+        } 
+    }
+}
+
+.menu-pt2 {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-redes {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    width: 250px;
+    & img {
+        width: 45px;
+    }
+    & i {
+        color: white;
+        font-size: 2.5em;
+    }
 }
