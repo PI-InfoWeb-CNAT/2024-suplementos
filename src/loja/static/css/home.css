@@ -55,12 +55,12 @@
     border-radius: 10px 0px 10px 0px;
     & a {
         color: white;
-        text-decoration: underline;
     }
 }
 
 .produtos {
     display: flex;
+    flex-wrap: nowrap;
     gap: 2em;
     margin-top: 2em;
 }

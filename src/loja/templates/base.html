@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block styles %}{% endblock %}
+    <title>Loja - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="container-header-main">
+        <header> 
+            <nav class="navbar-menu">
+                <img src="{% static 'images/logo_preta.png' %}" alt="">
+                {% block sidebar %}{% endblock %}
+                <a href="#" class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
+                <div class="ajuda-popup">
+                    <div>
+                        <i class="bi bi-x" onclick="fechar()"></i>
+                        <div>
+                            <p class="texto-centro">
+                                Para entrar em contato conosco, envie uma mensagem para o e-mail abaixo:
+                            </p>
+                            <p class="texto-centro email">powerup.suporte@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <div> 
+            <div class="img-footer">
+                <img src="{% static 'images/logo_branca.png' %}" alt="">
+            </div>
+            <div>
+                <ul class="menu-footer">
+                    <div class="menu-pt1">
+                        <li><a href="">Página Inicial</a></li>
+                        <li><a href="">Promoções</a></li>
+                        <li><a href="">Meus Pedidos</a></li>
+                    </div>
+                    <div class="menu-pt2">
+                        <li><a href="">Meus Favoritos</a></li>
+                        <li><a href="">Meu Perfil</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-redes">
+                <a href="/notificacoes"><i class="bi bi-twitter"></i></a>
+                <a href="/perfil"><img src="{% static 'images/instagram-icon.svg' %}" alt=""></a>
+                <a href="/perfil"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

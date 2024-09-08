@@ -6,7 +6,7 @@
         font-weight: bold;
         font-size: 1.5em;
     }
-}
+} 
 
 .icon-cima {
     background-color: var(--dark-grey);
@@ -23,7 +23,6 @@
     border-radius: 10px 0px 10px 0px;
     & a {
         color: white;
-        text-decoration: underline;
     }
 }
 
