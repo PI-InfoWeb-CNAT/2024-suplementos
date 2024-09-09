@@ -70,11 +70,11 @@
     padding-left: .7em;
     font-weight: 500;
     transition: .3s;
+    cursor: pointer;
 }
 
 .ajuda:hover {
     width: 50%;
-    text-decoration: none;
     color: var(--dark-green);
 }
 
@@ -117,8 +117,9 @@
         align-items: center;
         gap: 2em;
         & p {
-            width: 70%;
+            width: 80%;
             font-weight: bold;
+            font-size: 1.2em;
         }
     }
 }
@@ -128,7 +129,7 @@
 }
 .email {
     border-bottom: 1px solid #117C00;
-    width: 50% !important;
+    width: 60% !important;
 }
 
 main {
