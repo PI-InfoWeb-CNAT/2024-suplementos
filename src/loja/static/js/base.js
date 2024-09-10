@@ -1,8 +1,4 @@
-const ajuda = document.querySelector('.ajuda')
 const ajudaPopUp = document.querySelector('.ajuda-popup')
-
-const AlturaPagina = document.documentElement.scrollHeight || document.body.scrollHeight
-ajuda.style.marginTop = `${AlturaPagina - 717}px`
 
 function MudarCoracao(button) {
     const icon = button.querySelector('i');

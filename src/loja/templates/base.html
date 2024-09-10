@@ -18,7 +18,6 @@
             <nav class="navbar-menu">
                 <img src="{% static 'images/logo_preta.png' %}" alt="">
                 {% block sidebar %}{% endblock %}
-                <a class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
                 <div class="ajuda-popup">
                     <div>
                         <i class="bi bi-x" onclick="fechar()"></i>
@@ -34,6 +33,7 @@
         </header>
         {% block content %}{% endblock %}
     </div>
+    <a class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
     <footer>
         <div> 
             <div class="img-footer">
