@@ -63,11 +63,11 @@
 }
 
 .ajuda {
+    width: 5%;
     display: flex;
     align-items: center;
     color: var(--dark-grey);
     font-size: 1.2em;
-    /* padding-left: .7em; */
     font-weight: 500;
     transition: .3s;
     cursor: pointer;
