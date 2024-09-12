@@ -38,13 +38,13 @@
         </div> 
         <section class="produtos">
             {% for prod in produtos %}
-                {% if prod.promocao == 0 %}
+                {% if prod.Promocao == 0 %}
                 <div class="card-produto">
                     <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
                     <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
                     <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.nome}}</h5>
-                        <p class="preco-produto">{{prod.preco}} R$</p>
+                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                        <p class="preco-produto">{{prod.Preco}} R$</p>
                     </div>
                     <div class="container-button-carrinho">
                         <button class="button-add-carrinho">Adicionar ao carrinho</button>
@@ -55,11 +55,11 @@
                     <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
                     <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
                     <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.nome}}</h5>
+                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
                         <div>
-                            <p class="preco-produto">{{prod.preco}} R$</p>
+                            <p class="preco-produto">{{prod.Preco}} R$</p>
                             <div class="promocao">
-                                {{prod.promocao}}% OFF
+                                {{prod.Promocao}}% OFF
                             </div> 
                         </div>
                     </div>
