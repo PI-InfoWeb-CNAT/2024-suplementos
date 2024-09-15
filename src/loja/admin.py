@@ -6,7 +6,7 @@ class ClienteAdmin(admin.ModelAdmin):
     empty_value_display = 'Vazio'
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('Nome', 'Preco', 'Descricao', 'Dt_fabricacao', 'Dt_validade')
+    list_display = ('Nome', 'Preco', 'Descricao', 'Dt_fabricacao', 'Dt_validade', 'Promocao')
     empty_value_display = 'Vazio'
 
 admin.site.register(Cliente, ClienteAdmin)

@@ -42,11 +42,12 @@
             <div>
                 <ul class="menu-footer">
                     <div class="menu-pt1">
-                        <li><a href="">Página Inicial</a></li>
-                        <li><a href="">Promoções</a></li>
-                        <li><a href="">Meus Pedidos</a></li>
+                        <li><a href="/">Página Inicial</a></li>
+                        <li><a href="/promocoes">Promoções</a></li>
+                        <li><a href="">Mais Vendidos</a></li>
                     </div>
                     <div class="menu-pt2">
+                        <li><a href="">Meus Pedidos</a></li>
                         <li><a href="">Meus Favoritos</a></li>
                         <li><a href="">Meu Perfil</a></li>
                     </div>
@@ -65,5 +66,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <script src="{% static 'js/base.js' %}"></script>
+    {% block script %}{% endblock %}
 </body>
 </html>

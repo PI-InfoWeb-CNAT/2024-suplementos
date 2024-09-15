@@ -11,6 +11,7 @@
     <ul class="menu">
         <li><a href="/"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
         <li><a href="/promocoes" class="active"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
         <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
         <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
         <li><a href="/perfil"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
@@ -19,7 +20,7 @@
 
 {% block content %}
     <main>
-        <div class="container-cima">
+        <div class="container-cima-promocoes">
             <h3>Promoções</h3>
             <section>
                 <a href="/notificacoes"><i class="bi bi-bell-fill icon-cima"></i></a>
@@ -31,24 +32,22 @@
         </div>
         <section class="produtos">
             {% for prod in produtos %}
-                {% if prod.Promocao != 0 %}
-                <div class="card-produto">
-                    <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                    <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                    <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                        <div>
-                            <p class="preco-produto">{{prod.Preco}} R$</p>
-                            <div class="promocao">
-                                {{prod.Promocao}}% OFF
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="container-button-carrinho">
-                        <button class="button-add-carrinho">Adicionar ao carrinho</button>
+            <div class="card-produto">
+                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                <div class="produto-info">
+                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                    <div>
+                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                        <div class="promocao">
+                            {{prod.Promocao}}% OFF
+                        </div> 
                     </div>
                 </div>
-                {% endif %}
+                <div class="container-button-carrinho">
+                    <button class="button-add-carrinho">Adicionar ao carrinho</button>
+                </div>
+            </div>
             {% endfor %}
         </section>
     </main>
