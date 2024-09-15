@@ -22,7 +22,7 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 - **Existência de informações mínimas para a pesquisa**: O usuário deve fornecer pelo menos uma palavra-chave ou critério de busca para encontrar o produto (por exemplo, nome do produto, categoria, marca, etc.).
 
 ### 4.Pós-condições
-  - **Exibição dos resultados da pesquisa**: O sistema deve listar todos os produtos que correspondem aos critérios de busca fornecidos     pelo usuário (ex.: nome do produto, categoria, marca, etc.), caso não se tenha um produto correspondente haverá a mensagem de busca não encontrada.
+  - **Exibição dos resultados da pesquisa**: O sistema deve listar todos os produtos que correspondem aos critérios de busca fornecidos pelo usuário (ex.: nome do produto, categoria, marca, etc.), caso não se tenha um produto correspondente haverá a mensagem de busca não encontrada.
   - **Exibição de detalhes do produto**: Para cada produto exibido, devem ser apresentados detalhes básicos como nome, preço, imagem, descrição resumida e disponibilidade em estoque.
   - **Opção de visualizar mais informações**: O usuário deve ter a possibilidade de clicar em um produto para visualizar uma página com informações detalhadas (descrição completa, avaliações, quantidade em estoque, ingredientes, etc.).
 
@@ -47,10 +47,7 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 |:-------|:------- |
 | 1.Insere um termo de busca (ex.: nome do produto, categoria ou marca) na barra de pesquisa adiciona um filtro e clica em "Pesquisar" ou pressiona a tecla Enter. | --- |
 | --- | 2. Recebe o termo de busca e inicia o processo de pesquisa no banco de dados de produtos . |
-| --- | 3. Exibe uma mensagem informando "Nenhum produto encontrado" e sugere opções, como:
-        -Alterar o termo de busca.
-        -Remover ou ajustar filtros aplicados.
-        -Explorar categorias relacionadas.  |
+|--- | 3. Exibe uma mensagem informando "Nenhum produto encontrado" e sugere opções, como:<br> - **Alterar o termo de busca**.<br> - **Remover ou ajustar filtros aplicados**.<br> - **Explorar categorias relacionadas**. |
 | 4. Usuário Continua Navegando | --- |
 
 
