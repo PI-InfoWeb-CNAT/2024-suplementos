@@ -32,7 +32,7 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1.Insere um termo de busca (ex.: nome do produto, categoria ou marca) na barra de pesquisa adiciona um filtro e clica em "Pesquisar" ou pressiona a tecla Enter. | --- |
+| 1.Insere um termo de busca (ex.: nome do produto, categoria ou marca) na barra de pesquisa ,adiciona um filtro(se necessário) e clica em "Pesquisar" ou pressiona a tecla Enter. | --- |
 | --- | 2. Recebe o termo de busca e inicia o processo de pesquisa no banco de dados de produtos . |
 | --- | 3. Exibe uma lista de produtos que correspondem ao termo pesquisado, com informações básicas (nome, preço, imagem, disponibilidade).|
 | 4.  Clica em um produto específico para obter mais informações detalhadas.| --- |
