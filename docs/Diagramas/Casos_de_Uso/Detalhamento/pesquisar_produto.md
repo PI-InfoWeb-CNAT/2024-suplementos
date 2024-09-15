@@ -29,7 +29,6 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 ### 5. Fluxos de evento
 
 #### 5.1. Fluxo Principal
-##### dentro da página de produto
 
 |  Ator  | Sistema |
 |:-------|:------- |
