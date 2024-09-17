@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Lucas Brito |
+| 15/09/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
 
 
 ### 1. Resumo 
@@ -17,51 +17,38 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 - Visitante
 
 ### 3. Pré-condições
-São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+ - **Acesso ao site**: O usuário deve ter acesso ao site, garantindo que o site esteja online e disponível.
+- **Navegador compatível**: O site deve ser acessado através de um navegador compatível para garantir que todas as funcionalidades (como a barra de pesquisa) funcionem corretamente.
+- **Existência de informações mínimas para a pesquisa**: O usuário deve fornecer pelo menos uma palavra-chave ou critério de busca para encontrar o produto (por exemplo, nome do produto, categoria, marca, etc.).
 
 ### 4.Pós-condições
-Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+  - **Exibição dos resultados da pesquisa**: O sistema deve listar todos os produtos que correspondem aos critérios de busca fornecidos pelo usuário (ex.: nome do produto, categoria, marca, etc.), caso não se tenha um produto correspondente haverá a mensagem de busca não encontrada.
+  - **Exibição de detalhes do produto**: Para cada produto exibido, devem ser apresentados detalhes básicos como nome, preço, imagem, descrição resumida e disponibilidade em estoque.
+  - **Opção de visualizar mais informações**: O usuário deve ter a possibilidade de clicar em um produto para visualizar uma página com informações detalhadas (descrição completa, avaliações, quantidade em estoque, ingredientes, etc.).
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
-##### dentro da página de produto
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema adiciona produto no carrinho do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi adicionado |
+| 1.Insere um termo de busca (ex.: nome do produto, categoria ou marca) na barra de pesquisa ,adiciona um filtro(se necessário) e clica em "Pesquisar" ou pressiona a tecla Enter. | --- |
+| --- | 2. Recebe o termo de busca e inicia o processo de pesquisa no banco de dados de produtos . |
+| --- | 3. Exibe uma lista de produtos que correspondem ao termo pesquisado, com informações básicas (nome, preço, imagem, disponibilidade).|
+| 4.  Clica em um produto específico para obter mais informações detalhadas.| --- |
+| --- | 5. Redireciona o usuário para a página de detalhes do produto, exibindo uma descrição completa, imagens adicionais, preço e avaliações de clientes.|
 | 6. Usuário Continua Navegando | --- |
 
 #### 5.2. Fluxo alternativo
-##### fora da página de produto
+##### Nenhum produto encontrado
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema adicionar/remove produto no carrinho do usuário |
-| --- | 3. Sistema informa mensagem de que o produto foi adicionado/removido |
+| 1.Insere um termo de busca (ex.: nome do produto, categoria ou marca) na barra de pesquisa adiciona um filtro e clica em "Pesquisar" ou pressiona a tecla Enter. | --- |
+| --- | 2. Recebe o termo de busca e inicia o processo de pesquisa no banco de dados de produtos . |
+|--- | 3. Exibe uma mensagem informando "Nenhum produto encontrado" e sugere opções, como:<br> - **Alterar o termo de busca**.<br> - **Remover ou ajustar filtros aplicados**.<br> - **Explorar categorias relacionadas**. |
 | 4. Usuário Continua Navegando | --- |
 
-#### 5.3. Fluxo alternativo
-##### página do carrinho
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão para lista de carrinhos | --- |
-| --- | 2. Sistema redireciona usuário para página do carrinho |
-| 3. usuário clica no botão do carrinho do produto | --- |
-| --- | 2. Sistema remove produto do carrinho |
-| --- | 2. Sistema informa remoção da lista do carrinho |
-| 4. Usuário Continua Navegando | --- |
 
 ### 6. Dicionário de dados
 
