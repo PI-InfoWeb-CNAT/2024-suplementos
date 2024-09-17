@@ -52,5 +52,6 @@ funcionem corretamente.
 ### 6. Dicionário de dados
 
 ### 7. Protótipos de UI
+![image](https://github.com/user-attachments/assets/27263ca3-128d-4249-8475-519525a24e2b)
 
 
