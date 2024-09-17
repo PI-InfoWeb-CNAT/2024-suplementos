@@ -53,4 +53,5 @@ Como um usuário, identificado ou não, desejo listar e filtrar produtos.
 ### 6. Dicionário de dados
 
 ### 7. Protótipos de UI
+![image](https://github.com/user-attachments/assets/4f291f27-dfc4-4fe5-a8ce-3e418bee41bd)
 
