@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <title>PowerUP - Cadastro</title>
+</head>
+<body>
+    <section class="container-foto-cadastro">
+        <img src="{% static 'images/teste.png' %}" alt="">
+        <a href="/login">Entrar</a>
+    </section>
+
+    <section class="container-form-cadastro">
+        <h4>Criar conta</h4>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" class="form-cadastro">
+            {% csrf_token %}
+            <div class="container-input-cadastro">
+                <label for="nome">NOME COMPLETO</label>
+                <input type="text" name="nome_usuario" id="nome" placeholder="Digite seu nome">
+            </div>
+            <div class="container-input-cadastro">
+                <label for="email">E-MAIL</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu email">
+            </div>
+            <div class="container-input-alinhado">
+                <div class="container-input-cadastro">
+                    <label for="senha">SENHA</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                </div>
+                <div class="container-input-cadastro">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf" placeholder="Digite seu cpf">
+                </div>
+            </div>
+            <div class="container-input-alinhado">
+                <div class="container-input-cadastro">
+                    <label for="tel_celular">TELEFONE CELULAR</label>
+                    <input type="text" name="tel_celular" id="tel_celular" placeholder="Digite seu telefone celular">
+                </div>
+                <div class="container-input-cadastro">
+                    <label for="tel_fixo">TELEFONE FIXO</label>
+                    <input type="text" name="tel_fixo" id="tel_fixo" placeholder="Digite seu telefone fixo">
+                </div>
+            </div>
+            
+            <button type="submit">Criar</button>
+        </form>
+    </section>
+
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        if (successMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'home' %}"
+            }, 2000)
+        } else if (errorMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'cadastro' %}"
+            }, 2000)
+        }
+    </script>
+</body>
+</html>

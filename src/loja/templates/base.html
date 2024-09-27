@@ -10,10 +10,10 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block styles %}{% endblock %}
-    <title>Loja - {% block title %}{% endblock %}</title>
+    <title>PowerUP - {% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div id="container-header-main">
+    <div id="container-header-main"> 
         <header> 
             <nav class="navbar-menu">
                 <img src="{% static 'images/logo_preta.png' %}" alt="">
@@ -43,7 +43,7 @@
                 <ul class="menu-footer">
                     <div class="menu-pt1">
                         <li><a href="/">Página Inicial</a></li>
-                        <li><a href="/promocoes">Promoções</a></li>
+                        <li><a href="{% url 'promocoes' %}">Promoções</a></li>
                         <li><a href="">Mais Vendidos</a></li>
                     </div>
                     <div class="menu-pt2">

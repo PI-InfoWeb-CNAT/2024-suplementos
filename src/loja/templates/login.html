@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>PowerUP - Login</title>
+</head>
+<body>
+    <section class="container-form-login">
+        <h4>Entrar</h4>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h2>BEM VINDO DE VOLTA!</h2>
+        <form action="" method="post" class="form-login">
+            {% csrf_token %}
+            <div class="container-input-login">
+                <label for="email">E-MAIL</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu email">
+            </div>
+            <div class="container-input-login">
+                <label for="senha">SENHA</label>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+            </div>
+            
+            <div class="container-esqueceusenha">
+                <button type="submit">Entrar</button>
+                <a href="">Esqueceu a senha?</a>
+            </div>
+        </form>
+        <a href="{% url 'cadastro' %}">Não tem uma conta? Cadastre-se</a>
+    </section>
+
+    <section class="container-foto-login">
+        <img src="{% static 'images/teste.png' %}" alt="">
+        <a href="{% url 'cadastro' %}">Criar conta</a>
+    </section>
+
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        if (successMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'home' %}"
+            }, 2000)
+        } else if (errorMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'cadastro' %}"
+            }, 2000)
+        }
+    </script>
+</body>
+</html>
