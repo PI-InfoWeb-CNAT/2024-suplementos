@@ -46,13 +46,31 @@
     width: 100%;
 }
 
+.ola-usuario{
+    font-size: 1.2em;
+    margin-left: 1em;
+    color: black;
+    transition: .3s;
+    & span {
+        font-weight: bold;
+    }
+    & i {
+        margin-left: .3em;
+    }
+}
+
+.ola-usuario:hover {
+    text-decoration: none;
+    color: #117C00;
+}
+
 .imagens-hero {
     display: flex;
     gap: 4em;
 }
 
 .container-imagenslaterais {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     gap: 2em;
 }

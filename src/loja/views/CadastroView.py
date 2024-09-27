@@ -12,23 +12,26 @@ def cadastro_view(request):
         cpf = request.POST.get('cpf')
         tel_celular = request.POST.get('tel_celular')
         tel_fixo = request.POST.get('tel_fixo')
-        
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'E-mail já cadastrado')
-        elif Cliente.objects.filter(CPF=cpf).exists():
-            messages.error(request, 'CPF já cadastrado')
-        elif Cliente.objects.filter(Telefone_celular=tel_celular).exists():
-            messages.error(request, 'Telefone celular já cadastrado')
+
+        if nome and email and senha and cpf and tel_celular:
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'E-mail já cadastrado')
+            elif Cliente.objects.filter(CPF=cpf).exists():
+                messages.error(request, 'CPF já cadastrado')
+            elif Cliente.objects.filter(Telefone_celular=tel_celular).exists():
+                messages.error(request, 'Telefone celular já cadastrado')
+            else:
+                user = User.objects.create_user(username=nome, email=email, password=senha)
+                user.save()
+                Cliente.objects.create(
+                    user=user,
+                    Nome=nome,
+                    CPF=cpf,
+                    Telefone_celular=tel_celular,
+                    Telefone_fixo=tel_fixo
+                )
+                messages.success(request, 'Cadastro realizado com sucesso')
         else:
-            user = User.objects.create_user(username=nome, email=email, password=senha)
-            user.save()
-            Cliente.objects.create(
-                user=user,
-                Nome=nome,
-                CPF=cpf,
-                Telefone_celular=tel_celular,
-                Telefone_fixo=tel_fixo
-            )
-            messages.success(request, 'Cadastro realizado com sucesso')
+            messages.error(request, 'Preencha os seguintes campos: Nome, Email, Senha, CPF e Telefone Celular')
 
     return render(request, template_name='cadastro.html', status=200)

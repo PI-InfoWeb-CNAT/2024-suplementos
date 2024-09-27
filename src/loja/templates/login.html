@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>PowerUP - Login</title>
@@ -13,7 +14,7 @@
     <section class="container-form-login">
         <h4>Entrar</h4>
         {% if messages %}
-            {% for message in messages %}
+            {% for message in messages %} 
                 <div class="message {{ message.tags }}">
                     <span>{{ message }}</span>
                 </div>
@@ -41,7 +42,8 @@
 
     <section class="container-foto-login">
         <img src="{% static 'images/teste.png' %}" alt="">
-        <a href="{% url 'cadastro' %}">Criar conta</a>
+        <a href="{% url 'cadastro' %}" class="criar-conta">Criar conta</a>
+        <a href="{% url 'home' %}" class="button-fechar"><i class="bi bi-x"></i></a>
     </section>
 
     <script>
@@ -53,7 +55,7 @@
             }, 2000)
         } else if (errorMessage) {
             setTimeout(function() {
-                window.location.href = "{% url 'cadastro' %}"
+                window.location.href = "{% url 'login' %}"
             }, 2000)
         }
     </script>

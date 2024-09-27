@@ -35,6 +35,15 @@ body {
         top: 3%;
     }
 }
+ 
+.button-fechar {
+    z-index: 1000;
+    color: #117C00;
+    position: absolute;
+    right: 5%;
+    top: 1.5%;
+    font-size: 3em;
+}
 
 .form-cadastro {
     display: flex;
@@ -93,9 +102,11 @@ input:-webkit-autofill {
 }
 
 .error {
-    background-color: red;
+    background-color: #FFD5D6;
+    color: #8A4246;
 }
 
 .success {
-    background-color: green;
+    background-color: #a0d6a6;
+    color: #055902;
 }
