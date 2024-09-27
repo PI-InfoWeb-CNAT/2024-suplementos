@@ -38,12 +38,28 @@
 .input-pesquisa::placeholder {
     color: white;
 }
-
+ 
 .container-cima-home {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+.button-sign {
+    border: none;
+    padding: 0.5em 1em;
+    background-color: var(--dark-grey);
+    border-radius: 10px 0px 10px 0px;
+    & a {
+        color: white;
+        transition: .3s;
+    }
+}
+
+.button-sign:hover a{
+    color: var(--light-green);
+    text-decoration: none;
 }
 
 .ola-usuario{

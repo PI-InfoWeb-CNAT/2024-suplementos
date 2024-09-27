@@ -184,11 +184,6 @@ footer {
     }
 }
 
-/* .menu-pt2 {
-    display: flex;
-    justify-content: center;
-} */
-
 .footer-redes {
     display: flex;
     align-items: center;
@@ -209,16 +204,6 @@ footer {
     clip-path: circle(40%);
     color: var(--light-green);
     font-size: 1.2em;
-}
-
-.button-sign {
-    border: none;
-    padding: 0.5em 1em;
-    background-color: var(--dark-grey);
-    border-radius: 10px 0px 10px 0px;
-    & a {
-        color: white;
-    }
 }
 
 /* CARD DE PRODUTO */
