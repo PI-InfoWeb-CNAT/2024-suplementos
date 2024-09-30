@@ -44,10 +44,27 @@
         </div>
         <div class="container-mid" id="containerMid">
             <section class="imagens-hero">
-                <img src="{% static 'images/imagem_carrossel.png' %}" alt="">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{% static 'images/imagem_carrossel.png' %}" class="d-block w-100 imagens-carrosel" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'images/imagem2_carrossel.png' %}" class="d-block w-100 imagens-carrosel" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="..." class="d-block w-100 imagens-carrosel" alt="...">
+                      </div>
+                    </div>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 3"></button>
+                    </div>
+                </div>
                 <div class="container-imagenslaterais">
                     <div class="img-promocao">
-                        <h4>{{promocao_maxima}}% OFF</h4>
+                        <h4>{{promocao_maxima}}% OFF</h4>   
                         <p>Aproveite já! Descontos de até {{promocao_maxima}}% em suplementos no nosso site! Clique aqui conquiste seus objetivos de saúde hoje mesmo!</p>
                         <button onclick="window.location.href='promocoes'">Confira já</button>
                     </div>

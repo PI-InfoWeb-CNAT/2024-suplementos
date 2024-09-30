@@ -85,6 +85,34 @@
     gap: 4em;
 }
 
+/* BOOTSTRAP CARROSSEL */
+.carousel-item {
+    width: 822px;
+}
+.carousel-indicators {
+    position: absolute;
+    bottom: -55px;
+}
+
+.carousel-indicators button {
+    width: 18px !important; 
+    height: 18px !important; 
+    border-radius: 50% !important; 
+    background-color: black !important; 
+}
+
+.carousel-indicators .active {
+    width: 50px !important;
+    height: 18px !important; 
+    background-color: var(--dark-green) !important;
+    border-radius: 10px / 50% !important;
+}
+
+
+.imagens-carrosel {
+    height: 530px;
+}
+
 .container-imagenslaterais {
     display: flex; 
     flex-direction: column;

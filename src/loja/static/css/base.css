@@ -7,6 +7,10 @@
     font-family: 'Bai Jamjuree';
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
     --light-green: #20E500;
     --dark-green: #1bc800; 
@@ -34,6 +38,7 @@
     flex-direction: column;
     gap: 1rem;
     width: 200px;
+    padding-left: 0;
     & li {
         list-style-type: none;
         & a {
@@ -57,7 +62,7 @@
     font-size: 1.2em;
 } 
 
-.active {
+.menu .active {
     color: var(--dark-green) !important;
     border-left: 2px solid var(--dark-green);
 }
