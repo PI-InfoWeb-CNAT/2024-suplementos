@@ -94,7 +94,7 @@
     bottom: -55px;
 }
 
-.carousel-indicators button {
+.carousel-indicators  button {
     width: 18px !important; 
     height: 18px !important; 
     border-radius: 50% !important; 
@@ -108,9 +108,10 @@
     border-radius: 10px / 50% !important;
 }
 
-
 .imagens-carrosel {
     height: 530px;
+    object-fit: cover;
+    border-radius: 50px;
 }
 
 .container-imagenslaterais {
