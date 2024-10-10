@@ -211,6 +211,22 @@ footer {
     font-size: 1.2em;
 }
 
+.button-sign {
+    border: none;
+    padding: 0.5em 1em;
+    background-color: var(--dark-grey);
+    border-radius: 10px 0px 10px 0px;
+    & a {
+        color: white;
+        transition: .3s;
+    }
+}
+
+.button-sign:hover a{
+    color: var(--light-green);
+    text-decoration: none;
+}
+
 /* CARD DE PRODUTO */
 .card-produto {
     background-color: white;

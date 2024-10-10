@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Meu Perfil{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="menu">
+        <li><a href="/"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+        <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+        <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+        <li><a href="/perfil" class="active"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+    </ul> 
+{% endblock %}
+
+{% block content %}
+    <section class="container-botoes-cima">
+        <a href="/notificacoes"><i class="bi bi-bell-fill icon-cima"></i></a>
+        <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+        <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+    </section>
+{% endblock %}

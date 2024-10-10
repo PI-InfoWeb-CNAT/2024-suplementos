@@ -77,6 +77,9 @@ body {
     gap: 1em;
     & label {
         font-weight: bold;
+        & span {
+            color: grey;
+        }
     }
     & input {
         border: 2px solid var(--dark-green);
