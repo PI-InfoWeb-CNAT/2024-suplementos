@@ -67,6 +67,24 @@ a {
     border-left: 2px solid var(--dark-green);
 }
 
+.ola-usuario{
+    font-size: 1.2em;
+    margin-left: 1em;
+    color: black;
+    transition: .3s;
+    & span {
+        font-weight: bold;
+    }
+    & i {
+        margin-left: .3em;
+    }
+}
+
+.ola-usuario:hover {
+    text-decoration: none;
+    color: #117C00;
+}
+
 .ajuda {
     width: 5%;
     display: flex;

@@ -30,7 +30,3 @@ def login_view(request):
             messages.error(request, 'Preencha todos os campos!')
 
     return render(request, template_name='login.html', status=200) 
-
-def logout_view(request):
-    logout(request)
-    return redirect(reverse('home'))

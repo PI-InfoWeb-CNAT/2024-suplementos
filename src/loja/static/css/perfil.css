@@ -1,0 +1,11 @@
+.container-logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    & a {
+        color: #D80000;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+}
