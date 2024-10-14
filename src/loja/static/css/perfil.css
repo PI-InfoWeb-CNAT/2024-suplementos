@@ -9,3 +9,34 @@
         font-weight: 500;
     }
 }
+
+.menu-secundario {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    column-gap: 3em;
+    row-gap: 1.2em;
+}
+
+.item-menu-secundario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4em;
+    width: 125px;
+    & a {
+        background-color: var(--light-grey);
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        width: 100%;
+    }
+    & i {
+        color: var(--dark-grey);
+        font-size: 5em;
+    }
+    & p {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+}

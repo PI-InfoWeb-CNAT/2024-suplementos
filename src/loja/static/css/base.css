@@ -11,6 +11,10 @@ a {
     text-decoration: none;
 }
 
+p {
+    margin-bottom: 0em;
+}
+
 :root {
     --light-green: #20E500;
     --dark-green: #1bc800; 
@@ -157,10 +161,6 @@ a {
 .email {
     border-bottom: 1px solid #117C00;
     width: 60% !important;
-}
-
-main {
-    width: 100%;
 }
 
 footer {
