@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 03/05/2024 | **1.00** | Adição da seção de resumo e atores | Lucas Brito |
+| 03/05/2024 | **1.00** | Ação de cancelar um pedido e solicitar reembolso | Maria Vitória |
 
 
 ### 1. Resumo 
@@ -16,16 +16,13 @@ Como usuário identificado, desejo ter a opção de cancelar o pedido e, após i
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+- 	Estar logado, Produto ter sido comprado.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+-  Receber reembolso.
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
 ##### dentro da página de produto
