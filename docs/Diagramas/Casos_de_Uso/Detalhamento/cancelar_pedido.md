@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 03/05/2024 | **1.00** | Ação de cancelar um pedido e solicitar reembolso | Maria Vitória |
+| 14/10/2024 | **1.00** | Finalização do detalhamento | Maria Vitória |
 
 
 ### 1. Resumo 
