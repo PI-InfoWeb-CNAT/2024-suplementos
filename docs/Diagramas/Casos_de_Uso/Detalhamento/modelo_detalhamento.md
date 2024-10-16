@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| dd/mm/aaaa | **0.00** | Descrever sobre o caso de uso "" | Autor(es) |
+| dd/mm/aaaa | **0.00** | Descrever o que foi feito na versão | Autor(es) |
 
 
 ### 1. Resumo 
