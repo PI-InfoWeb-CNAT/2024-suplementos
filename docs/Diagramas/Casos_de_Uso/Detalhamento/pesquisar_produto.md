@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 15/09/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
+| 15/09/2024 | **1.00** | Finalização do detalhamento | Pedro Edi |
 
 
 ### 1. Resumo 
