@@ -5,8 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 03/05/2024 | **1.00** |Avaliar um produto comprado| Maria Vitória |
-.
+| 14/10/2024 | **1.00** | Finalização do detalhamento | Maria Vitória |
 
 ### 1. Resumo 
 Como um usuário identificado, desejo avaliar um produto que já comprei.
