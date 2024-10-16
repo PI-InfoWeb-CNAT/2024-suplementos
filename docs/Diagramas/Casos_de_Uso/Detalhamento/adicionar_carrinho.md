@@ -6,7 +6,7 @@
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
 | 30/04/2024 | **1.00** | Adição do resumo e atores | Pedro Edi |
-| 16/10/2024 | **2.00** | Finalização do detalhamento | Vitória Pinheiro |
+| 16/10/2024 | **2.00** | Finalização do detalhamento | Maria Vitória |
 
 
 ### 1. Resumo 
