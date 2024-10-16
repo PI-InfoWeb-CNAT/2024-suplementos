@@ -67,3 +67,8 @@
 - *Pauta*: 
   - Começar o HTML do projeto
   - Definir metas até o final do segundo bimestre
+
+## 14/10/2024
+- *Pauta*: 
+  - Definir o que falta para finalização dos detalhamentos dos casos de uso
+  - Continuar a implementação com Django
