@@ -42,7 +42,7 @@ Detalha o processo de como manter um produto (CRUD).
 |:-------|:------- |
 | 1. Administrador faz login no sistema | --- |
 | 2. Administrador acessa o módulo de gerenciamento de produtos |  --- |
-| 3.  O administrador escolhe entre: <br> - **Criar: Cadastrar um novo produto. <br> - **Ler: Visualizar informações de um produto existente. <br> - **Atualizar**: Editar as informações de um produto. <br> -  **Deletar**: Excluir um produto. | --- |
+| 3.  O administrador escolhe entre: <br> - **Criar**: Cadastrar um novo produto. <br> - **Ler**: Visualizar informações de um produto existente. <br> - **Atualizar**: Editar as informações de um produto. <br> -  **Deletar**: Excluir um produto. | --- |
 | --- | 4. O administrador seleciona "Criar Novo Produto". |
 | --- | 5. Insere informações obrigatórias como nome, preço, categoria, estoque, descrição, e imagem do produto. |
 | 6. O sistema valida as entradas (como formato de preço, imagem, e validade)| --- |
