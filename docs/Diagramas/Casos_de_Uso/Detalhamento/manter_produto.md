@@ -41,28 +41,28 @@ Detalha o processo de como manter um produto (CRUD).
 |  Ator  | Sistema |
 |:-------|:------- |
 | 1. Administrador faz login no sistema | --- |
-| 2. Administrador acessa o módulo de gerenciamento de produtos |  --- |
+| 2. Administrador acessa o módulo de gerenciamento de produtos | --- |
 | 3.  O administrador escolhe entre: <br> - **Criar**: Cadastrar um novo produto. <br> - **Ler**: Visualizar informações de um produto existente. <br> - **Atualizar**: Editar as informações de um produto. <br> -  **Deletar**: Excluir um produto. | --- |
-| --- | 4. O administrador seleciona "Criar Novo Produto". |
-| --- | 5. Insere informações obrigatórias como nome, preço, categoria, estoque, descrição, e imagem do produto. |
-| 6. O sistema valida as entradas (como formato de preço, imagem, e validade)| --- |
-| --- | 7. O administrador confirma a criação. |
-| 8. O sistema salva o novo produto no banco de dados e exibe a mensagem "Produto criado com sucesso". | --- |
-| 9. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".| --- |
+| 4. O administrador seleciona "Criar Novo Produto". | --- |
+| 5. Insere informações obrigatórias como nome, preço, categoria, estoque, descrição, e imagem do produto. | --- |
+| --- | 6. O sistema valida as entradas (como formato de preço, imagem, e validade)|
+| 7. O administrador confirma a criação. | --- |
+| --- | 8. O sistema salva o novo produto no banco de dados e exibe a mensagem "Produto criado com sucesso". |
+| --- | 9. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".| 
 | --- | 10. Atualização de Produto (fluxo padrão) |
-| --- | 11. O administrador seleciona um produto da lista para edição. |
-| --- | 12.  Altera as informações necessárias, como preço ou quantidade em estoque. |
-| 13. O sistema valida os dados alterados.| --- | 
-| --- | 14. O administrador confirma as mudanças.|
-| 15. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".|  --- |
-| --- | 16. Exclusão de Produto (fluxo padrão) |
-| --- | 17. O administrador seleciona um produto da lista e escolhe a opção "Excluir". |
-| 18. O sistema confirma se o produto pode ser excluído (verifica se não está vinculado a pedidos pendentes). | --- | 
-| --- | 19.  O administrador confirma a exclusão. |
-| 20. O sistema valida os dados alterados.| --- |
-| --- | 21. O administrador confirma as mudanças.|
-| 22. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto excluído com sucesso".| --- |
-| 22. Sistema retorna ao painel de gerenciamento. | --- |
+| 11. O administrador seleciona um produto da lista para edição. | --- |
+| 12.  Altera as informações necessárias, como preço ou quantidade em estoque. | --- |
+| --- | 13. O sistema valida os dados alterados.|
+| 14. O administrador confirma as mudanças.| --- |
+| --- | 15. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".|
+|16. Exclusão de Produto (fluxo padrão) | --- |
+| 17. O administrador seleciona um produto da lista e escolhe a opção "Excluir". | --- |
+| --- | 18. O sistema confirma se o produto pode ser excluído (verifica se não está vinculado a pedidos pendentes). | --- | 
+| 19.  O administrador confirma a exclusão. | --- |
+| --- | 20. O sistema valida os dados alterados.|
+| 21. O administrador confirma as mudanças.|
+| --- | 22. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto excluído com sucesso".|
+| --- | 22. Sistema retorna ao painel de gerenciamento. |
 
 
 #### 5.2. Fluxo alternativo
