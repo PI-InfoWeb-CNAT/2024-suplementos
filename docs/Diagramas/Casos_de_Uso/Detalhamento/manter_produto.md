@@ -14,20 +14,20 @@ Detalha o processo de como manter um produto (CRUD).
 - Moderador/administrador
 
 ### 3. Pré-condições
-Autenticação como Administrador Válido: O administrador deve estar autenticado com um login e senha válidos.
-Nome do produto: Único na tabela do banco de dados , com limite de até 100 caracteres.
-Preço: Valor numérico positivo, com duas casas decimais, armazenado no formato decimal(10, 2).
-Quantidade em estoque: Número inteiro (ex: 100 unidades).
-Data de validade: Data futura, no formato YYYY-MM-DD.
-Imagem válida: A imagem do produto deve estar no formato correto (JPG, PNG,JPEG). O sistema deve verificar se a imagem é válida antes do upload para o servidor.
-Produto Válido para Operações de Atualização ou Exclusão:Para editar ou excluir um produto, o sistema deve verificar que o ID do produto existe no banco de dados e que não está associado a pedidos pendentes (em caso de exclusão).
+**Autenticação como Administrador Válido**: O administrador deve estar autenticado com um login e senha válidos.
+**Nome do produto**: Único na tabela do banco de dados , com limite de até 100 caracteres.
+**Preço**: Valor numérico positivo, com duas casas decimais, armazenado no formato decimal(10, 2).
+**Quantidade em estoque**: Número inteiro (ex: 100 unidades).
+**Data de validade**: Data futura, no formato YYYY-MM-DD.
+**Imagem válida**: A imagem do produto deve estar no formato correto (JPG, PNG,JPEG). O sistema deve verificar se a imagem é válida antes do upload para o servidor.
+**Produto Válido para Operações de Atualização ou Exclusão**:Para editar ou excluir um produto, o sistema deve verificar que o ID do produto existe no banco de dados e que não está associado a pedidos pendentes (em caso de exclusão).
 
 
 ### 4.Pós-condições
-Criação de Produto:Um novo produto é adicionado ao banco de dados, com todas as informações necessárias (nome, preço, estoque, etc.).
-Atualização de Produto: O produto é atualizado no banco de dados com as alterações feitas (como preço ou estoque).
-Exclusão de Produto: O produto é removido do banco de dados, e o sistema confirma a exclusão com uma mensagem (ex: "Produto excluído com sucesso").
-Exibição de Produto: As informações detalhadas do produto (nome, preço, estoque, etc.) são exibidas corretamente na interface de administração.Se buscado por filtros, o produto é exibido de acordo com os critérios de pesquisa.
+**Criação de Produto**:Um novo produto é adicionado ao banco de dados, com todas as informações necessárias (nome, preço, estoque, etc.).
+**Atualização de Produto**: O produto é atualizado no banco de dados com as alterações feitas (como preço ou estoque).
+**Exclusão de Produto**: O produto é removido do banco de dados, e o sistema confirma a exclusão com uma mensagem (ex: "Produto excluído com sucesso").
+**Exibição de Produto**: As informações detalhadas do produto (nome, preço, estoque, etc.) são exibidas corretamente na interface de administração.Se buscado por filtros, o produto é exibido de acordo com os critérios de pesquisa.
 
 
 ### 5. Fluxos de evento
