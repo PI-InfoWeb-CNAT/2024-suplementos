@@ -26,33 +26,49 @@
             <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
             <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
         </section>
-        <h3>Mais Opções</h3>
-        <section class="menu-secundario">
-            <div class="item-menu-secundario active">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-            <div class="item-menu-secundario">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-            <div class="item-menu-secundario">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-            <div class="item-menu-secundario">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-            <div class="item-menu-secundario">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-            <div class="item-menu-secundario">
-                <a href=""><i class="bi bi-person-fill"></i></a>
-                <p>Meus Dados</p>
-            </div>
-        </section>
+        <div class="container-flex">
+            <section class="dados-usuario">
+                <p>E-mail: <span>{{email}}</span></p>
+                <p>Telefone Celular: <span>{{tel_celular}}</span></p>
+                <p>
+                    Telefone Fixo: 
+                    {% if tel_fixo == '' %}
+                        <span>Vazio</span>
+                    {% else %}
+                    <span>{{tel_fixo}}</span>
+                    {% endif %}
+                </p>
+            </section>
+            <section class="container-menu-secundario">
+                <h3>Mais Opções</h3>
+                <div class="menu-secundario">
+                    <div class="item-menu-secundario">
+                        <a href="" class="active"><i class="bi bi-person-fill"></i></a>
+                        <p>Meus Dados</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-basket3-fill"></i></a>
+                        <p>Meus Pedidos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-heart-fill menu-icon"></i></a>
+                        <p>Meus Favoritos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-wallet2"></i></a>
+                        <p>Minha Carteira</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-bell-fill"></i></a>
+                        <p>Notificações</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-bag-check-fill"></i></a>
+                        <p>Comprar novamente</p>
+                    </div>
+                </div>
+            </section>
+        </div>
         <section class="container-logout">
             <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
             <a href="/"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>

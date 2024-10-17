@@ -1,13 +1,22 @@
-.container-logout {
+.main-perfil {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    & a {
-        color: #D80000;
-        font-size: 1.2em;
-        font-weight: 500;
-    }
+    row-gap: 4.3em;
+}
+
+.main-perfil h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.container-flex {
+    display: flex;
+}
+
+.dados-usuario {
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-secundario {
@@ -28,14 +37,36 @@
         background-color: var(--light-grey);
         display: flex;
         justify-content: center;
+        align-items: center;
         border-radius: 10px;
-        width: 100%;
+        width: 90%;
+        height: 110px;
     }
     & i {
         color: var(--dark-grey);
-        font-size: 5em;
+        font-size: 3.3em;
+        margin: 0 !important;
     }
     & p {
+        font-size: 1.1em;
+        font-weight: 500;
+    }
+}
+
+.item-menu-secundario .active {
+    background-color: var(--dark-grey);
+    & i {
+        color: var(--light-green);
+    }
+}
+
+.container-logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    & a {
+        color: #D80000;
         font-size: 1.2em;
         font-weight: 500;
     }
