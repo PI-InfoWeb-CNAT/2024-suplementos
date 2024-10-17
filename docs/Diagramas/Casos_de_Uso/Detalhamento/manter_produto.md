@@ -49,13 +49,13 @@ Detalha o processo de como manter um produto (CRUD).
 | 7. O administrador confirma a criação. | --- |
 | --- | 8. O sistema salva o novo produto no banco de dados e exibe a mensagem "Produto criado com sucesso". |
 | --- | 9. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".| 
-| --- | 10. Atualização de Produto (fluxo padrão) |
+| 10. Atualização de Produto (fluxo padrão) | --- |
 | 11. O administrador seleciona um produto da lista para edição. | --- |
 | 12.  Altera as informações necessárias, como preço ou quantidade em estoque. | --- |
 | --- | 13. O sistema valida os dados alterados.|
 | 14. O administrador confirma as mudanças.| --- |
 | --- | 15. O sistema salva as alterações no banco de dados e exibe a mensagem "Produto atualizado com sucesso".|
-|16. Exclusão de Produto (fluxo padrão) | --- |
+| 16. Exclusão de Produto (fluxo padrão) | --- |
 | 17. O administrador seleciona um produto da lista e escolhe a opção "Excluir". | --- |
 | --- | 18. O sistema confirma se o produto pode ser excluído (verifica se não está vinculado a pedidos pendentes). | --- | 
 | 19.  O administrador confirma a exclusão. | --- |
