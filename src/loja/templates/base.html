@@ -18,22 +18,22 @@
             <nav class="navbar-menu">
                 <img src="{% static 'images/logo_preta.png' %}" alt="">
                 {% block sidebar %}{% endblock %}
-                <div class="ajuda-popup">
-                    <div>
-                        <i class="bi bi-x" onclick="fechar()"></i>
-                        <div>
-                            <p class="texto-centro">
-                                Para entrar em contato conosco, envie uma mensagem para o e-mail abaixo:
-                            </p>
-                            <p class="texto-centro email">powerup.suporte@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
             </nav>
         </header>
         {% block content %}{% endblock %}
     </div>
     <a class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
+    <div class="ajuda-popup">
+        <div>
+            <i class="bi bi-x" onclick="fechar()"></i>
+            <div>
+                <p class="texto-centro">
+                    Para entrar em contato conosco, envie uma mensagem para o e-mail abaixo:
+                </p>
+                <p class="texto-centro email">powerup.suporte@gmail.com</p>
+            </div>
+        </div>
+    </div>
     <footer>
         <div> 
             <div class="img-footer">

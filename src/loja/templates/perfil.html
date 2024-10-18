@@ -27,17 +27,26 @@
             <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
         </section>
         <div class="container-flex">
-            <section class="dados-usuario">
-                <p>E-mail: <span>{{email}}</span></p>
-                <p>Telefone Celular: <span>{{tel_celular}}</span></p>
-                <p>
-                    Telefone Fixo: 
-                    {% if tel_fixo == '' %}
-                        <span>Vazio</span>
-                    {% else %}
-                    <span>{{tel_fixo}}</span>
-                    {% endif %}
-                </p>
+            <section class="container-dados-usuario">
+                <h3>Seus dados</h3>
+                <div class="container-flex dados">
+                    <div class="dados-usuario">
+                        <p>Nome: <span>{{nome}}</span></p>
+                        <p>E-mail: <span>{{email}}</span></p>
+                        <p>CPF: <span>{{cpf}}</span></p>
+                        <p>Telefone Celular: <span>{{tel_celular}}</span></p>
+                        <p>
+                            Telefone Fixo: 
+                            {% if tel_fixo == '' %}
+                            <span>Vazio</span>
+                            {% else %}
+                            <span>{{tel_fixo}}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <img src="{% static 'images/imagem-editar.svg' %}" alt="" class="img-editar">
+                </div>
+                <button>Editar</button>
             </section>
             <section class="container-menu-secundario">
                 <h3>Mais Opções</h3>
@@ -71,7 +80,40 @@
         </div>
         <section class="container-logout">
             <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
-            <a href="/"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
+            <a onclick="abrirExcluir()"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
+            <div class="excluirconta-popup">
+                <div>
+                    <i class="bi bi-x" onclick="fecharExcluir()"></i>
+                    <div>
+                        <p>Deseja realmente excluir a conta?</p>
+                        <p><b>Essa é uma ação permanente.</b></p>
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <div>
+                            <button onclick="fecharExcluir()" class="button-cancelar">Cancelar</button>
+                            <form action="{% url 'excluir' %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="button-excluir">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        excluirPopUp = document.querySelector('.excluirconta-popup')
+
+        function abrirExcluir() {
+            excluirPopUp.style.visibility = 'visible'
+            excluirPopUp.style.opacity = '1'
+        }
+
+        function fecharExcluir() {
+            excluirPopUp.style.visibility = 'hidden'
+            excluirPopUp.style.opacity = '0'
+        }
+    </script>
 {% endblock %}

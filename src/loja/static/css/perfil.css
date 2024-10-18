@@ -12,19 +12,68 @@
 
 .container-flex {
     display: flex;
+    justify-content: space-between;
+}
+
+.container-dados-usuario {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
+    border-radius: 15px;
+    padding: 1em 1.5em;
+    & button {
+        width: 10%;
+        margin-top: 2em;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--dark-grey);
+        color: var(--light-green);
+        text-align: center;
+        padding: .4em .6em;
+    }
 }
 
 .dados-usuario {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    font-size: 1.1em;
+    & > div {
+        display: flex;
+        justify-content: space-between;
+    }
+    & p {
+        font-weight: bold;
+    }
+    & span {
+        font-weight: lighter;
+    }
+}
+
+.container-flex .dados {
+    align-items: center;
+}
+
+.img-editar {
+    width: 225px;
+}
+
+.container-menu-secundario {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    & h3 {
+        margin-left: 2.3em;
+    }
 }
 
 .menu-secundario {
     display: flex;
     flex-wrap: wrap;
-    width: 60%;
     column-gap: 3em;
     row-gap: 1.2em;
+    justify-content: end;
 }
 
 .item-menu-secundario {
@@ -33,6 +82,7 @@
     align-items: center;
     gap: .4em;
     width: 125px;
+    cursor: pointer;
     & a {
         background-color: var(--light-grey);
         display: flex;
@@ -41,15 +91,26 @@
         border-radius: 10px;
         width: 90%;
         height: 110px;
+        transition: .3s;
     }
     & i {
         color: var(--dark-grey);
         font-size: 3.3em;
         margin: 0 !important;
+        transition: .3s;
     }
     & p {
         font-size: 1.1em;
         font-weight: 500;
+    }
+}
+
+.item-menu-secundario:hover {
+    & a {
+        background-color: var(--dark-grey);
+    }
+    & i {
+        color: var(--light-green);
     }
 }
 
@@ -65,9 +126,82 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    gap: 1.2em;
     & a {
-        color: #D80000;
+        color: #D80000 !important;
         font-size: 1.2em;
         font-weight: 500;
+        display: flex;
+        gap: .3em;
+        cursor: pointer;
     }
+}
+
+.excluirconta-popup {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 1;
+    transition: visibility 0s, opacity .3s;
+    & > div {
+        width: 30em;
+        height: 20em;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 0 50px black;
+        padding: 0.3em;
+        position: relative;
+        & .bi-x {
+            position: absolute;
+            top: 0;
+            right: 3%;
+            font-size: 2.5em;
+            cursor: pointer;
+        }
+        & > div {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            & p {
+                width: 80%;
+                font-weight: 600;
+                font-size: 1.2em;
+                text-align: center;
+            }
+            & .bi-exclamation-triangle-fill {
+                font-size: 3em;
+                margin: .2em 0 .5em 0;
+            }
+            &  div{
+                display: flex;
+                gap: 3.5em;
+                & button {
+                    border: none;
+                    border-radius: 5px;
+                    padding: .3em .9em;
+                }
+            }
+        }
+    }
+}
+
+
+
+.button-cancelar {
+    background-color: var(--dark-grey);
+    color: var(--light-green);
+}
+.button-excluir {
+    background-color: #ff360a;
+    color: white;
 }

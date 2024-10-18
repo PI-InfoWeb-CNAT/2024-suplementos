@@ -42,6 +42,13 @@
                 {% endif %}
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %} 
+                <div class="message {{ message.tags }}">
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="container-mid" id="containerMid">
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-inner">
@@ -145,4 +152,17 @@
 
 {% block script %}
     <script src="{% static 'js/home.js' %}"></script>
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        if (successMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'home' %}"
+            }, 2000)
+        } else if (errorMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 2000)
+        } 
+    </script>
 {% endblock %}
