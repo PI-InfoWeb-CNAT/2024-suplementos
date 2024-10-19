@@ -15,6 +15,10 @@
     justify-content: space-between;
 }
 
+.container-flex .dados {
+    align-items: start;
+}
+
 .container-dados-usuario {
     width: 55%;
     display: flex;
@@ -22,8 +26,38 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
     border-radius: 15px;
     padding: 1em 1.5em;
+}
+
+.form-editardados {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+    font-size: 1.1em;
+    width: 100%;
+    & label, p {
+        font-weight: bold;
+    }
+    & input {
+        border: 2px solid var(--dark-green);
+        border-radius: 6px;
+        padding-left: .3em;
+        outline: none;
+    }
+    & input[name='nome'] {
+        width: 76.3%;
+    }
+    & input[name='email'] {
+        width: 75%;
+    }
+    & input[name='tel_celular'] {
+        width: 40%;
+    }
+    & span {
+        font-weight: lighter;
+    }
     & button {
-        width: 10%;
+        width: 25%;
         margin-top: 1.5em;
         border: none;
         border-radius: 5px;
@@ -32,27 +66,6 @@
         text-align: center;
         padding: .4em .6em;
     }
-}
-
-.dados-usuario {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    font-size: 1.1em;
-    & > div {
-        display: flex;
-        justify-content: space-between;
-    }
-    & p {
-        font-weight: bold;
-    }
-    & span {
-        font-weight: lighter;
-    }
-}
-
-.container-flex .dados {
-    align-items: center;
 }
 
 .img-editar {

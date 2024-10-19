@@ -26,19 +26,27 @@
             <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
             <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
         </section>
+        {% if messages %}
+            {% for message in messages %} 
+                <div class="message {{ message.tags }}">
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="container-flex">
             <section class="container-dados-usuario">
                 <h3>Meus dados</h3>
                 <div class="container-flex dados">
-                    <div class="dados-usuario">
-                        <p>Nome: <span>{{nome}}</span></p>
-                        <p>E-mail: <span>{{email}}</span></p>
+                    <form action="{% url 'edit' %}" method="POST" class="form-editardados">
+                        {% csrf_token %}
+                        <label for="nome">Nome: <input type="text" name="nome" id="nome" value="{{nome}}"></label>
+                        <label for="email">E-mail: <input type="text" name="email" id="email" value="{{email}}"></label>
                         <p>CPF: <span>{{cpf}}</span></p>
-                        <p>Telefone Celular: <span>{{tel_celular}}</span></p>
-                    </div>
+                        <label for="tel_celular">Telefone Celular: <input type="text" name="tel_celular" id="tel_celular" value="{{tel_celular}}"></label>
+                        <button type="submit">Atualizar</button>
+                    </form>
                     <img src="{% static 'images/imagem-editar.svg' %}" alt="" class="img-editar">
                 </div>
-                <button>Editar</button>
             </section>
             <section class="container-menu-secundario">
                 <h3>Mais Opções</h3>
@@ -96,7 +104,9 @@
 
 {% block script %}
     <script>
-        excluirPopUp = document.querySelector('.excluirconta-popup')
+        const excluirPopUp = document.querySelector('.excluirconta-popup')
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
 
         function abrirExcluir() {
             excluirPopUp.style.visibility = 'visible'
@@ -107,5 +117,15 @@
             excluirPopUp.style.visibility = 'hidden'
             excluirPopUp.style.opacity = '0'
         }
+
+        if (successMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 2000)
+        } else if (errorMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 2000)
+        } 
     </script>
 {% endblock %}
