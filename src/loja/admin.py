@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ('Nome', 'CPF', 'Telefone_celular', 'Telefone_fixo')
+    list_display = ('Nome', 'CPF', 'Telefone_celular')
     empty_value_display = 'Vazio'
 
 class ProdutoAdmin(admin.ModelAdmin):

@@ -20,10 +20,12 @@
                 {% block sidebar %}{% endblock %}
             </nav>
         </header>
-        {% block content %}{% endblock %}
+        {% block content %}
+            
+        {% endblock %}
     </div>
     <a class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
-    <div class="ajuda-popup">
+    <div class="ajuda-popup popup">
         <div>
             <i class="bi bi-x" onclick="fechar()"></i>
             <div>

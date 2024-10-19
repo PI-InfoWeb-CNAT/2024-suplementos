@@ -28,21 +28,13 @@
         </section>
         <div class="container-flex">
             <section class="container-dados-usuario">
-                <h3>Seus dados</h3>
+                <h3>Meus dados</h3>
                 <div class="container-flex dados">
                     <div class="dados-usuario">
                         <p>Nome: <span>{{nome}}</span></p>
                         <p>E-mail: <span>{{email}}</span></p>
                         <p>CPF: <span>{{cpf}}</span></p>
                         <p>Telefone Celular: <span>{{tel_celular}}</span></p>
-                        <p>
-                            Telefone Fixo: 
-                            {% if tel_fixo == '' %}
-                            <span>Vazio</span>
-                            {% else %}
-                            <span>{{tel_fixo}}</span>
-                            {% endif %}
-                        </p>
                     </div>
                     <img src="{% static 'images/imagem-editar.svg' %}" alt="" class="img-editar">
                 </div>
@@ -81,7 +73,7 @@
         <section class="container-logout">
             <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
             <a onclick="abrirExcluir()"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
-            <div class="excluirconta-popup">
+            <div class="excluirconta-popup popup">
                 <div>
                     <i class="bi bi-x" onclick="fecharExcluir()"></i>
                     <div>

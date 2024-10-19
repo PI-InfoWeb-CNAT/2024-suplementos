@@ -12,20 +12,17 @@ def perfil_view(request):
         nome = user.username
         email = user.email
         tel_celular = ''
-        tel_fixo = ''
         cpf = ''
 
         for cliente in clientes:
             if cliente.id == user.id:
                 cpf = cliente.CPF
                 tel_celular = cliente.Telefone_celular
-                tel_fixo = cliente.Telefone_fixo
 
         context = {
             'nome': nome,
             'email': email,
             'tel_celular': tel_celular,
-            'tel_fixo': tel_fixo,
             'cpf': cpf
         }
         return render(request, template_name='perfil.html', context=context, status=200)

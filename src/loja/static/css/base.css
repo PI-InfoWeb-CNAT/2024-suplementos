@@ -77,6 +77,8 @@ main {
 .container-botoes-cima {
     display: flex;
     justify-content: end;
+    align-items: center;
+    gap: .3em;
 }
 
 .icon-cima {
@@ -138,10 +140,9 @@ main {
 
 .ajuda:hover {
     width: 50%;
-    color: var(--dark-green);
 }
 
-.ajuda-popup {
+.popup {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -155,16 +156,18 @@ main {
     visibility: hidden;
     opacity: 1;
     transition: visibility 0s, opacity .3s;
+    & > div {
+        width: 30em;
+        height: 20em;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 0 50px black;
+        padding: 0.3em;
+        position: relative;
+    }
 }
 
 .ajuda-popup > div {
-    width: 30em;
-    height: 20em;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 0 50px black;
-    padding: 0.3em;
-    position: relative;
     & i {
         position: absolute;
         top: 0;

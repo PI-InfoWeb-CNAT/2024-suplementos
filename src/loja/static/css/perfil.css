@@ -24,7 +24,7 @@
     padding: 1em 1.5em;
     & button {
         width: 10%;
-        margin-top: 2em;
+        margin-top: 1.5em;
         border: none;
         border-radius: 5px;
         background-color: var(--dark-grey);
@@ -138,27 +138,7 @@
 }
 
 .excluirconta-popup {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 1;
-    transition: visibility 0s, opacity .3s;
     & > div {
-        width: 30em;
-        height: 20em;
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 0 0 50px black;
-        padding: 0.3em;
-        position: relative;
         & .bi-x {
             position: absolute;
             top: 0;
@@ -194,8 +174,6 @@
         }
     }
 }
-
-
 
 .button-cancelar {
     background-color: var(--dark-grey);

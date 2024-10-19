@@ -7,7 +7,6 @@ class Cliente(models.Model):
     Nome = models.CharField(null=False, max_length=100)
     CPF = models.CharField(null=False, max_length=11, unique=True)
     Telefone_celular = models.CharField(null=False, max_length=11)
-    Telefone_fixo = models.CharField(null=True, max_length=11, blank=True)
 
     def __str__(self):
         return f'{self.Nome}'
