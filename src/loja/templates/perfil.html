@@ -21,11 +21,14 @@
 
 {% block content %}
     <main class="main-perfil">
-        <section class="container-botoes-cima">
-            <a href="/notificacoes"><i class="bi bi-bell-fill icon-cima"></i></a>
-            <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
-            <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
-        </section>
+        <div class="container-cima">
+            <h3>Meus Dados</h3>
+            <section class="container-botoes-cima">
+                <a href="/notificacoes"><i class="bi bi-bell-fill icon-cima"></i></a>
+                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
         {% if messages %}
             {% for message in messages %} 
                 <div class="message {{ message.tags }}">
@@ -35,7 +38,7 @@
         {% endif %}
         <div class="container-flex">
             <section class="container-dados-usuario">
-                <h3>Meus dados</h3>
+                <h3>Dados Pessoais</h3>
                 <div class="container-flex dados">
                     <form action="{% url 'edit' %}" method="POST" class="form-editardados">
                         {% csrf_token %}

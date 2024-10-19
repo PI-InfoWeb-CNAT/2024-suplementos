@@ -24,11 +24,25 @@ p {
 
 main {
     width: 1319px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.9em;
 }
 #container-header-main {
     display: flex;
     margin: 4em 10em;
 }
+
+.container-cima {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & h3 {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+} 
 
 .navbar-menu {
     display: flex;
@@ -257,6 +271,12 @@ footer {
 }
 
 /* CARD DE PRODUTO */
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.4em;
+}
+
 .card-produto {
     background-color: white;
     padding-bottom: 1em;

@@ -1,18 +1,17 @@
-.main-perfil {
+/* .main-perfil {
     display: flex;
     flex-direction: column;
     row-gap: 4.3em;
-}
-
-.main-perfil h3 {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-bottom: 1em;
-}
+} */
 
 .container-flex {
     display: flex;
     justify-content: space-between;
+    & h3 {
+        font-size: 1.4em;
+        font-weight: 600;
+        margin-bottom: 1em;
+    }
 }
 
 .container-flex .dados {

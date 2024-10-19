@@ -1,9 +1,3 @@
-.main-home {
-    display: flex;
-    flex-direction: column;
-    gap: 3em;
-}
-
 .form-pesquisa {
     width: 51.5em;
 }
@@ -154,10 +148,4 @@
     & a:hover {
         text-decoration: none;
     }
-}
-
-.produtos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3.4em;
 }
