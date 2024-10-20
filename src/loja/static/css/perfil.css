@@ -51,14 +51,14 @@ h4 {
         font-weight: lighter;
     }
     & button {
-        width: 25%;
+        width: 22%;
         margin-top: 1.5em;
         border: none;
         border-radius: 5px;
         background-color: var(--dark-grey);
         color: var(--light-green);
         text-align: center;
-        padding: .4em .6em;
+        padding: .3em;
     }
 }
 
@@ -128,10 +128,50 @@ h4 {
     }
 }
 
+.enderecos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4em;
+}
+
+.card-endereco {
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    min-height: 13em;
+    padding: 1em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    white-space: nowrap;  
+    overflow-x: auto;
+    & h6  {
+        font-size: 1.3em;
+    }
+    & .endereco-dados {
+        display: flex;
+        flex-direction: column;
+        gap: .3em;
+    }
+    & p {
+        font-weight: 600;
+    }
+    & span {
+        font-weight: 400;
+    }
+    & .container-buttons {
+        margin-top: 1em;
+    }
+    & button {
+        border: none;
+    }
+}
+
 .card-novo-endereco {
     color: var(--dark-grey);
-    width: 25%;
-    height: 10em;
+    width: 30%;
+    height: 15em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,6 +186,7 @@ h4 {
 }
 
 .novoendereco-popup {
+    visibility: visible;
     > div {
         width: 60em;
         height: 30em;
@@ -178,19 +219,19 @@ h4 {
             outline: none;
         }
         & input[name='nome'] {
-            width: 93.4%;
+            width: 92.7%;
         }
         & label[for='rua'] {
             width: 50%;
         }
         & input[name='rua'] {
-            width: 90%;
+            width: 88%;
         }
         & label[for='numero'] {
             width: 50%;
         }
         & input[name='numero'] {
-            width: 82.4%;
+            width: 81.1%;
         }
         & label[for='complemento'] {
             width: 48.1%;
@@ -202,7 +243,7 @@ h4 {
             width: 48%;
         }
         & input[name='telefone'] {
-            width: 80.9%;
+            width: 81.4%;
         }
     }
 }
@@ -225,7 +266,7 @@ h4 {
     border: 1px solid transparent;
     border-radius: 5px;
     text-align: center;
-    padding: .3em .6em;
+    padding: .3em .9em;
 }
 
 .button-cancelar {
@@ -234,7 +275,7 @@ h4 {
     border: 2px solid var(--dark-green);
     border-radius: 5px;
     text-align: center;
-    padding: .3em .6em;
+    padding: .3em .9em;
 }
 
 .container-logout {
@@ -284,6 +325,9 @@ h4 {
     color: var(--light-green);
 }
 .button-excluir {
+    border: none;
+    border-radius: 5px;
+    padding: .3em .9em;
     background-color: #ff360a;
     color: white;
 }

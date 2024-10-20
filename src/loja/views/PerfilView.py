@@ -10,6 +10,9 @@ def perfil_view(request):
     user = request.user
     clientes = Cliente.objects.all()
 
+    todos_enderecos = Endereco.objects.all()
+    enderecos_cliente = todos_enderecos.filter(cliente_id=user.id)
+
     nome = user.username
     email = user.email
     tel_celular = ''
@@ -24,7 +27,8 @@ def perfil_view(request):
         'nome': nome,
         'email': email,
         'tel_celular': tel_celular,
-        'cpf': cpf
+        'cpf': cpf,
+        'enderecos': enderecos_cliente
     }
     return render(request, template_name='perfil.html', context=context, status=200)
 
@@ -66,22 +70,18 @@ def adicionar_endereco_view(request):
         telefone = request.POST.get('telefone')
 
         if nome and cep and estado and cidade and rua and numero:
-            if len(cep) != 8:
-                messages.error(request, 'O CEP deve conter exatos 8 números.')
-                return redirect(reverse('perfil'))
-            else:
-                if not Endereco.objects.filter(rua=rua, numero=numero).exists():
-                    endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
-                    endereco.save()
+            if not Endereco.objects.filter(rua=rua, numero=numero).exists():
+                endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
+                endereco.save()
 
-                    messages.success(request, 'Endereço adicionado com sucesso!')
-                    return render(request, template_name='perfil.html', status=200)
-                else:
-                    messages.error(request, 'Este endereço já existe.')
-                    return redirect(reverse('perfil'))
+                messages.success(request, 'Endereço adicionado com sucesso!')
+                return render(request, template_name='perfil.html', status=200)
+            else:
+                messages.error(request, 'Este endereço já existe.')
+                return redirect(reverse('perfil'))
             
         else:
-            messages.error(request, 'Preencha os campos obrigatórios.')
+            messages.error(request, 'Preencha os campos obrigatórios. (*)')
             return redirect(reverse('perfil'))
     
     return render(request, template_name='perfil.html', status=200)

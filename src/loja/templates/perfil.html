@@ -42,7 +42,7 @@
                 <div class="container-flex dados">
                     <form action="{% url 'edit' %}" method="POST" class="form-editardados">
                         {% csrf_token %}
-                        <label for="nome">Nome: <input type="text" name="nome" id="nome" value="{{nome}}"></label>
+                        <label for="nome-dados">Nome: <input type="text" name="nome" id="nome-dados" value="{{nome}}"></label>
                         <label for="email">E-mail: <input type="text" name="email" id="email" value="{{email}}"></label>
                         <p>CPF: <span>{{cpf}}</span></p>
                         <label for="tel_celular">Telefone Celular: <input type="text" name="tel_celular" id="tel_celular" value="{{tel_celular}}"></label>
@@ -84,10 +84,35 @@
         <section class="container-enderecos">
             <h4>Endereços</h4>
             <div class="enderecos">
+                {% for endereco in enderecos %}
+                    <div class="card-endereco">
+                        <h6>{{endereco.nome}}</h6>
+                        <div class="endereco-dados">
+                            <p>Cidade: <span>{{endereco.cidade}}, {{endereco.estado}}</span></p>
+                            <p>Rua: <span>{{endereco.rua}}, {{endereco.numero}}</span></p>
+                            <p>CEP: <span>{{endereco.cep}}</span></p>
+                            {% if endereco.complemento != '' %}
+                                <p>Complemento: <span>{{endereco.complemento}}</span></p>
+                            {% else %}
+                                <p>Complemento: <span>Vazio</span></p>
+                            {% endif %}
+                            {% if endereco.telefone != '' %}
+                                <p>Telefone: <span>{{endereco.telefone}}</span></p>
+                            {% else %}
+                                <p>Telefone: <span>Vazio</span></p>
+                            {% endif %}
+                        </div>
+                        <div class="container-buttons">
+                            <button type="submit" class="button-submit">Editar</button>
+                            <button class="button-excluir">Excluir</button>
+                        </div>
+                    </div>
+                {% endfor %}
                 <a class="card-novo-endereco" onclick="abrirAddEndereco()">
                     <i class="bi bi-plus-circle"></i>
                     <p>Adicione um novo endereço</p>
                 </a>
+                <!-- POP UP -->
                 <div class="novoendereco-popup popup">
                     <div>
                         <i class="bi bi-x" onclick="fecharAddEndereco()"></i>
@@ -102,15 +127,15 @@
                             <h5>Adicione novo local de endereço</h5>
                             <form action="{% url 'adicionar-endereco' %}" method="POST">
                                 {% csrf_token %}
-                                <label for="nome">Nome: <input type="text" name="nome" id="nome" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
+                                <label for="nome-endereco">Nome:* <input type="text" name="nome" id="nome-endereco" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
                                 <div class="container-flex">
-                                    <label for="cep">CEP: <input type="text" name="cep" id="cep" placeholder="Digite o CEP"></label>
-                                    <label for="estado">Estado: <input type="text" name="estado" id="estado" placeholder="Digite o estado"></label>
-                                    <label for="cidade">Cidade: <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade"></label>
+                                    <label for="cep">CEP:* <input type="text" name="cep" id="cep" placeholder="Digite o CEP" onblur="preencher()"></label>
+                                    <label for="estado">Estado:* <input type="text" name="estado" id="estado" placeholder="Digite o estado"></label>
+                                    <label for="cidade">Cidade:* <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade"></label>
                                 </div>
                                 <div class="container-flex">
-                                    <label for="rua">Rua: <input type="text" name="rua" id="rua" placeholder="Digite a rua"></label>
-                                    <label for="numero">Número: <input type="text" name="numero" id="numero" placeholder="Digite o número do endereço"></label>
+                                    <label for="rua">Rua:* <input type="text" name="rua" id="rua" placeholder="Digite a rua"></label>
+                                    <label for="numero">Número:* <input type="text" name="numero" id="numero" placeholder="Digite o número do endereço"></label>
                                 </div>
                                 <div class="container-flex">
                                     <label for="complemento">Complemento: <input type="text" name="complemento" id="complemento" placeholder="Digite o complemento"></label>
@@ -152,4 +177,33 @@
 
 {% block script %}
     <script src="{% static 'js/perfil.js' %}"></script>
+    <script>
+        let cepInput = document.getElementById('cep')
+        
+        function preencher() {
+            cep = cepInput.value
+            
+            if (cep.length === 8) {
+                let url = 'https://viacep.com.br/ws/' + cep + '/json/';
+        
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById('rua').value = data.logradouro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    } else {
+                        alert('CEP não encontrado!');
+                    }
+                })
+                .catch(error => {
+                    alert('Erro ao buscar o CEP. Verifique o CEP digitado ou tente novamente.');
+                    console.error(error);
+                });
+            } else {
+                alert('Por favor, insira um CEP válido com 8 dígitos.');
+            }
+        }
+    </script>
 {% endblock %}
