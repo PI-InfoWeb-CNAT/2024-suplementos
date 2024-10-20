@@ -32,13 +32,13 @@
         {% if messages %}
             {% for message in messages %} 
                 <div class="message {{ message.tags }}">
-                    <span>{{ message }}</span>
+                    <span id="messages-dados">{{ message }}</span>
                 </div>
             {% endfor %}
         {% endif %}
         <div class="container-flex">
             <section class="container-dados-usuario">
-                <h3>Dados Pessoais</h3>
+                <h4>Dados Pessoais</h4>
                 <div class="container-flex dados">
                     <form action="{% url 'edit' %}" method="POST" class="form-editardados">
                         {% csrf_token %}
@@ -52,7 +52,7 @@
                 </div>
             </section>
             <section class="container-menu-secundario">
-                <h3>Mais Opções</h3>
+                <h4>Mais Opções</h4>
                 <div class="menu-secundario">
                     <div class="item-menu-secundario">
                         <a href="" class="active"><i class="bi bi-person-fill"></i></a>
@@ -81,13 +81,58 @@
                 </div>
             </section>
         </div>
+        <section class="container-enderecos">
+            <h4>Endereços</h4>
+            <div class="enderecos">
+                <a class="card-novo-endereco" onclick="abrirAddEndereco()">
+                    <i class="bi bi-plus-circle"></i>
+                    <p>Adicione um novo endereço</p>
+                </a>
+                <div class="novoendereco-popup popup">
+                    <div>
+                        <i class="bi bi-x" onclick="fecharAddEndereco()"></i>
+                        <div class="conteudo-popUpNovoEndereco">
+                            {% if messages %}
+                                {% for message in messages %} 
+                                    <div class="message {{ message.tags }}">
+                                        <span id="messages-endereco">{{ message }}</span>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <h5>Adicione novo local de endereço</h5>
+                            <form action="{% url 'adicionar-endereco' %}" method="POST">
+                                {% csrf_token %}
+                                <label for="nome">Nome: <input type="text" name="nome" id="nome" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
+                                <div class="container-flex">
+                                    <label for="cep">CEP: <input type="text" name="cep" id="cep" placeholder="Digite o CEP"></label>
+                                    <label for="estado">Estado: <input type="text" name="estado" id="estado" placeholder="Digite o estado"></label>
+                                    <label for="cidade">Cidade: <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade"></label>
+                                </div>
+                                <div class="container-flex">
+                                    <label for="rua">Rua: <input type="text" name="rua" id="rua" placeholder="Digite a rua"></label>
+                                    <label for="numero">Número: <input type="text" name="numero" id="numero" placeholder="Digite o número do endereço"></label>
+                                </div>
+                                <div class="container-flex">
+                                    <label for="complemento">Complemento: <input type="text" name="complemento" id="complemento" placeholder="Digite o complemento"></label>
+                                    <label for="telefone">Telefone: <input type="text" name="telefone" id="telefone" placeholder="Digite o telefone de contato"></label>
+                                </div>
+                                <div class="container-buttons">
+                                    <button type="submit" class="button-submit">Adicionar</button>
+                                    <button onclick="fecharAddEndereco()" class="button-cancelar">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="container-logout">
             <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
             <a onclick="abrirExcluir()"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
             <div class="excluirconta-popup popup">
                 <div>
                     <i class="bi bi-x" onclick="fecharExcluir()"></i>
-                    <div>
+                    <div class="conteudo-popupExcluir">
                         <p>Deseja realmente excluir a conta?</p>
                         <p><b>Essa é uma ação permanente.</b></p>
                         <i class="bi bi-exclamation-triangle-fill"></i>
@@ -106,29 +151,5 @@
 {% endblock %}
 
 {% block script %}
-    <script>
-        const excluirPopUp = document.querySelector('.excluirconta-popup')
-        const successMessage = document.querySelector('.success')
-        const errorMessage = document.querySelector('.error')
-
-        function abrirExcluir() {
-            excluirPopUp.style.visibility = 'visible'
-            excluirPopUp.style.opacity = '1'
-        }
-
-        function fecharExcluir() {
-            excluirPopUp.style.visibility = 'hidden'
-            excluirPopUp.style.opacity = '0'
-        }
-
-        if (successMessage) {
-            setTimeout(function() {
-                window.location.href = "{% url 'perfil' %}"
-            }, 2000)
-        } else if (errorMessage) {
-            setTimeout(function() {
-                window.location.href = "{% url 'perfil' %}"
-            }, 2000)
-        } 
-    </script>
+    <script src="{% static 'js/perfil.js' %}"></script>
 {% endblock %}

@@ -10,4 +10,5 @@ class ProdutoAdmin(admin.ModelAdmin):
     empty_value_display = 'Vazio'
 
 admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(Endereco)
 admin.site.register(Produto, ProdutoAdmin)

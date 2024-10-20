@@ -178,6 +178,16 @@ main {
         box-shadow: 0 0 50px black;
         padding: 0.3em;
         position: relative;
+        & .bi-x {
+            position: absolute;
+            top: 0;
+            right: 3%;
+            font-size: 2.5em;
+            cursor: pointer;
+        }
+        & > div {
+            height: 100%;
+        }
     }
 }
 

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from loja.models import Cliente
+from loja.models import Cliente, Endereco
 
 @login_required
 def perfil_view(request):
@@ -49,10 +49,49 @@ def edit_dados_view(request):
         messages.success(request, 'Dados atualizados com sucesso!')
         return render(request, template_name='perfil.html', status=200)
     
+@login_required
+def adicionar_endereco_view(request):
+    user = request.user
+
+    cliente = Cliente.objects.get(user=user)
+
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        cep = request.POST.get('cep')
+        estado = request.POST.get('estado')
+        cidade = request.POST.get('cidade')
+        rua = request.POST.get('rua')
+        numero = request.POST.get('numero')
+        complemento = request.POST.get('complemento')
+        telefone = request.POST.get('telefone')
+
+        if nome and cep and estado and cidade and rua and numero:
+            if len(cep) != 8:
+                messages.error(request, 'O CEP deve conter exatos 8 números.')
+                return redirect(reverse('perfil'))
+            else:
+                if not Endereco.objects.filter(rua=rua, numero=numero).exists():
+                    endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
+                    endereco.save()
+
+                    messages.success(request, 'Endereço adicionado com sucesso!')
+                    return render(request, template_name='perfil.html', status=200)
+                else:
+                    messages.error(request, 'Este endereço já existe.')
+                    return redirect(reverse('perfil'))
+            
+        else:
+            messages.error(request, 'Preencha os campos obrigatórios.')
+            return redirect(reverse('perfil'))
+    
+    return render(request, template_name='perfil.html', status=200)
+    
+@login_required
 def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
 
+@login_required
 def excluir_conta_view(request):
     if request.method == 'POST':    
         user = request.user

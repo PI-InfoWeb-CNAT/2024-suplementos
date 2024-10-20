@@ -5,3 +5,4 @@ from django.dispatch import receiver
 
 from .Cliente import Cliente
 from .Produto import Produto
+from .Endereco import Endereco
