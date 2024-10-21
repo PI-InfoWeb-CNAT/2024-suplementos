@@ -16,12 +16,15 @@ Detalha o processo de como finalizar a compra dos itens do carrinho.
 - Cliente
 
 ### 3. Pré-condições
-São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+**Autenticação**:O usuário deve estar logado em sua conta.
+**Produto**:O produto que o usuário deseja comprar deve estar disponível no estoque.O produto deve estar corretamente registrado no sistema, com informações como descrição, preço e promoções.
+**Informações de Pagamento:**:O usuário deve ter um método de pagamento válido associado à sua conta (cartão de crédito, PayPal, etc.).
+**Endereço de Entrega:**:O usuário deve ter um endereço de entrega válido cadastrado em sua conta.
 
 ### 4.Pós-condições
-Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+
+**Registro do Pedido**: Os detalhes do pedido são registrados no banco de dados, incluindo:Informações do usuário (nome, e-mail, endereço de entrega),Itens comprados (nome, quantidade, preço),Método de pagamento utilizado,Status do pedido (ex: processando, enviado, concluído)
+**Disponibilidade para Acompanhamento**:O usuário pode acessar sua conta para visualizar o histórico de pedidos e o status do pedido atual.
 
 ### 5. Fluxos de evento
 - No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
