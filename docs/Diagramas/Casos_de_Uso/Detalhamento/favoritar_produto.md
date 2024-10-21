@@ -57,3 +57,7 @@ Após a execução deste casos de uso, espera que o sistema:
 
 
 ### 7. Protótipos de UI
+![image](https://github.com/user-attachments/assets/86a8f093-b452-4dba-b9b5-9179bdbaa4ab)
+![Captura de tela 2024-10-21 113851](https://github.com/user-attachments/assets/98ab60d3-e3a3-46c7-8f7d-53117121ef82)
+
+
