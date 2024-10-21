@@ -53,5 +53,7 @@ Após a execução deste casos de uso, espera que o sistema:
 
 
 ### 6. Dicionário de dados
+![image](https://github.com/user-attachments/assets/7c6b6cef-7d1b-4761-b932-3ddf51ac7cf5)
+
 
 ### 7. Protótipos de UI
