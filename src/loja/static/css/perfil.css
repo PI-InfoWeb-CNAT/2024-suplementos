@@ -131,7 +131,7 @@ h4 {
 .enderecos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    column-gap: 4em;
     row-gap: 2em;
 }
 

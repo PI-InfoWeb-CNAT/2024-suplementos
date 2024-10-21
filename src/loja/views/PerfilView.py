@@ -11,7 +11,7 @@ def perfil_view(request):
     clientes = Cliente.objects.all()
 
     todos_enderecos = Endereco.objects.all()
-    enderecos_cliente = todos_enderecos.filter(cliente_id=user.id)
+    enderecos_cliente = ''
 
     nome = user.username
     email = user.email
@@ -19,9 +19,10 @@ def perfil_view(request):
     cpf = ''
 
     for cliente in clientes:
-        if cliente.id == user.id:
+        if cliente.user_id == user.id:
             cpf = cliente.CPF
             tel_celular = cliente.Telefone_celular
+            enderecos_cliente = todos_enderecos.filter(cliente_id=cliente.id)
 
     context = {
         'nome': nome,
