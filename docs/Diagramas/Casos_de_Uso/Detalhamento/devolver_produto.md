@@ -41,7 +41,7 @@ Após a execução deste casos de uso, espera que o sistema:
 | --- | 6. Sistema solicita confirmação da devolução|
 |7. Usuário confirma a devolução|---
 | --- | 8. Sistema registra a solicitação e informa o prazo para reembolso|
-|9. Usuário é informado sobre o status da devolução|
+|9. Usuário é informado sobre o status da devolução|---
 
 #### 5.2. Fluxo alternativo
 ##### Devolução fora do prazo
