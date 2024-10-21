@@ -36,10 +36,10 @@ Após a execução deste casos de uso, espera que o sistema:
 | 1. Usuário acessa a página de "Meus Pedidos"| --- |
 | --- |2. O sistema registra a solicitação de devolução|
 | 3. Usuário seleciona o pedido com o produto a ser devolvido | --- |
-| --- |	4. Sistema exibe detalhes do pedido |
+| --- |	4. Sistema exibe detalhes do pedido |---
 | 5. Usuário clica no botão "Solicitar Devolução" | --- 
 | --- | 6. Sistema solicita confirmação da devolução|
-|7. Usuário confirma a devolução|
+|7. Usuário confirma a devolução|---
 | --- | 8. Sistema registra a solicitação e informa o prazo para reembolso|
 |9. Usuário é informado sobre o status da devolução|
 
