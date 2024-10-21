@@ -5,22 +5,23 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 03/05/2024 | **1.00** | Adição da seção de resumo e atores | Lucas Brito |
+| 21/10/2024 | **1.00** | Cliente solicita a devolução de um item | Maria Vitoria |
 
 
 ### 1. Resumo 
-Como usuário identificado, desejo ter a opção de devolver um produto dentro de um tempo determinado após comprá-lo. Após isso, desejo ser reembolsado.
+O usuário solicita a devolução de um produto dentro de um tempo determinado após comprá-lo.
 
 ### 2. Atores
 - Cliente
+- Sistema
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+- 	Estar logado, O produto a ser devolvido deve estar registrado na conta do cliente e estar dentro do prazo de devolução.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+-  O cliente é informado sobre o status da devolução.
 
 ### 5. Fluxos de evento
 - No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
@@ -32,34 +33,26 @@ Após a execução deste casos de uso, espera que o sistema:
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema adiciona produto no carrinho do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi adicionado |
-| 6. Usuário Continua Navegando | --- |
+| 1. Usuário acessa a página de "Meus Pedidos"| --- |
+| --- |2. O sistema registra a solicitação de devolução|
+| 3. Usuário seleciona o pedido com o produto a ser devolvido | --- |
+| --- |	4. Sistema exibe detalhes do pedido |
+| 5. Usuário clica no botão "Solicitar Devolução" | --- 
+| --- | 6. Sistema solicita confirmação da devolução|
+|7. Usuário confirma a devolução|
+| --- | 8. Sistema registra a solicitação e informa o prazo para reembolso|
+|9. Usuário é informado sobre o status da devolução|
 
 #### 5.2. Fluxo alternativo
-##### fora da página de produto
+##### Devolução fora do prazo
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema adicionar/remove produto no carrinho do usuário |
-| --- | 3. Sistema informa mensagem de que o produto foi adicionado/removido |
-| 4. Usuário Continua Navegando | --- |
+| 1. Usuário tenta solicitar devolução após o prazo | --- |
+| --- | 2. Sistema valida data|
+| --- | 3. Sistema exibe mensagem informando que o prazo para devolução expirou|
+|4. Usuário é informado que a devolução expirou | --- |
 
-#### 5.3. Fluxo alternativo
-##### página do carrinho
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão para lista de carrinhos | --- |
-| --- | 2. Sistema redireciona usuário para página do carrinho |
-| 3. usuário clica no botão do carrinho do produto | --- |
-| --- | 2. Sistema remove produto do carrinho |
-| --- | 2. Sistema informa remoção da lista do carrinho |
-| 4. Usuário Continua Navegando | --- |
 
 ### 6. Dicionário de dados
 
