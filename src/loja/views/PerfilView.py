@@ -50,8 +50,9 @@ def edit_dados_view(request):
         cliente.Telefone_celular = tel_celular
         cliente.save()
 
-        messages.success(request, 'Dados atualizados com sucesso!')
-        return render(request, template_name='perfil.html', status=200)
+        messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+
+    return redirect(reverse('perfil'))
     
 @login_required
 def adicionar_endereco_view(request):
@@ -74,17 +75,26 @@ def adicionar_endereco_view(request):
                 endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
                 endereco.save()
 
-                messages.success(request, 'Endereço adicionado com sucesso!')
-                return render(request, template_name='perfil.html', status=200)
+                messages.success(request, 'Endereço adicionado com sucesso!', extra_tags='novo-endereco')
+                return redirect(reverse('perfil'))
             else:
-                messages.error(request, 'Este endereço já existe.')
+                messages.error(request, 'Este endereço já existe.', extra_tags='novo-endereco')
                 return redirect(reverse('perfil'))
             
         else:
-            messages.error(request, 'Preencha os campos obrigatórios. (*)')
-            return redirect(reverse('perfil'))
+            messages.error(request, 'Preencha os campos obrigatórios. (*)', extra_tags='novo-endereco')
     
-    return render(request, template_name='perfil.html', status=200)
+    return redirect(reverse('perfil'))
+
+@login_required
+def excluir_endereco_view(request):
+    if request.method == 'POST':
+        endereco_id = request.POST.get('endereco_id')
+
+        endereco = Endereco.objects.get(id=endereco_id, cliente=request.user.cliente)
+        endereco.delete()
+        messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page')
+    return redirect(reverse('perfil'))
     
 @login_required
 def logout_view(request):

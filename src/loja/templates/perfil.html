@@ -31,9 +31,11 @@
         </div>
         {% if messages %}
             {% for message in messages %} 
-                <div class="message {{ message.tags }}">
-                    <span id="messages-dados">{{ message }}</span>
-                </div>
+                {% if 'page' in message.tags %}
+                    <div class="message {{ message.tags }} message-dados">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
         <div class="container-flex">
@@ -104,7 +106,11 @@
                         </div>
                         <div class="container-buttons">
                             <button type="submit" class="button-submit">Editar</button>
-                            <button class="button-excluir">Excluir</button>
+                            <form action="{% url 'excluir-endereco' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="endereco_id" value="{{ endereco.id }}">
+                                <button class="button-excluir">Excluir</button>
+                            </form>
                         </div>
                     </div>
                 {% endfor %}
@@ -119,9 +125,11 @@
                         <div class="conteudo-popUpNovoEndereco">
                             {% if messages %}
                                 {% for message in messages %} 
-                                    <div class="message {{ message.tags }}">
-                                        <span id="messages-endereco">{{ message }}</span>
-                                    </div>
+                                    {% if 'novo-endereco' in message.tags %}
+                                        <div class="message {{ message.tags }} message-endereco">
+                                            <span>{{ message }}</span>
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                             <h5>Adicione novo local de endereço</h5>
@@ -163,7 +171,7 @@
                         <i class="bi bi-exclamation-triangle-fill"></i>
                         <div>
                             <button onclick="fecharExcluir()" class="button-cancelar">Cancelar</button>
-                            <form action="{% url 'excluir' %}" method="POST">
+                            <form action="{% url 'excluir-conta' %}" method="POST">
                                 {% csrf_token %}
                                 <button type="submit" class="button-excluir">Excluir</button>
                             </form>
@@ -178,7 +186,13 @@
 {% block script %}
     <script src="{% static 'js/perfil.js' %}"></script>
     <script>
-        let cepInput = document.getElementById('cep')
+        const cepInput = document.getElementById('cep')
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const dadosMessage = document.querySelector('.message-dados')
+        const enderecoMessage = document.querySelector('.message-endereco')
+        const AddEnderecoPopUpteste = document.querySelector('.novoendereco-popup')
+
         
         function preencher() {
             cep = cepInput.value
@@ -204,6 +218,18 @@
             } else {
                 alert('Por favor, insira um CEP válido com 8 dígitos.');
             }
+        }
+
+        if (successMessage && dadosMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        } else if (enderecoMessage) {
+            AddEnderecoPopUpteste.style.visibility = 'visible'
+            AddEnderecoPopUpteste.style.opacity = '1'
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 2000)
         }
     </script>
 {% endblock %}
