@@ -43,14 +43,17 @@ def edit_dados_view(request):
         email = request.POST.get('email')
         tel_celular = request.POST.get('tel_celular')
 
-        user.username = nome
-        user.email = email
-        user.save()
+        if user.username == nome and user.email == email and cliente.Telefone_celular == tel_celular:
+            messages.error(request, 'Altere os dados para atualizar!', extra_tags='page')
+        else:
+            user.username = nome
+            user.email = email
+            user.save()
 
-        cliente.Telefone_celular = tel_celular
-        cliente.save()
+            cliente.Telefone_celular = tel_celular
+            cliente.save()
 
-        messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+            messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
 
     return redirect(reverse('perfil'))
     
