@@ -36,34 +36,60 @@ Detalha o processo de como finalizar a compra dos itens do carrinho.
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema adiciona produto no carrinho do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi adicionado |
-| 6. Usuário Continua Navegando | --- |
+| 1. Adição ao Carrinho | --- |
+| --- | 2. O sistema confirma que o produto foi adicionado |
+| 3.  O usuário fornece ou confirma o endereço de entrega | --- 
+| --- | 4. Sistema valida os dados |
+| 5. O usuário seleciona o método de pagamento desejado (cartão de crédito, PayPal, etc.) e insere as informações necessárias | --- |
+| --- | 6. Sistema valida os dados |
+| 7. O usuário clica em "Confirmar Pedido".| --- |
+| --- | 8. O sistema exibe uma página de confirmação do pedido, incluindo o número de referência e um resumo do que foi comprado |
+| 9. Usuário continua navegando no site | --- |
+
 
 #### 5.2. Fluxo alternativo
-##### fora da página de produto
+##### Cenário 1: Usuário Não Está Logado
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema adicionar/remove produto no carrinho do usuário |
-| --- | 3. Sistema informa mensagem de que o produto foi adicionado/removido |
-| 4. Usuário Continua Navegando | --- |
+| 1. Adição ao Carrinho | --- |
+| --- | 2. O sistema confirma que o produto foi adicionado |
+| 3.  O usuário fornece ou confirma o endereço de entrega | --- |
+| --- | 4. Sistema valida os dados |
+| 5. O usuário seleciona o método de pagamento desejado (cartão de crédito, PayPal, etc.) e insere as informações necessárias | --- |
+| --- | 6. Sistema valida os dados |
+| 7. O usuário clica em "Confirmar Pedido".| --- |
+| --- | 8. O usuário é redirecionado para a página de login |
+| 9. Usuário Continua Navegando | --- |
 
 #### 5.3. Fluxo alternativo
-##### página do carrinho
+##### Cenário 2: Produto Indisponível
+
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. usuário clica no botão para lista de carrinhos | --- |
-| --- | 2. Sistema redireciona usuário para página do carrinho |
-| 3. usuário clica no botão do carrinho do produto | --- |
-| --- | 2. Sistema remove produto do carrinho |
-| --- | 2. Sistema informa remoção da lista do carrinho |
-| 4. Usuário Continua Navegando | --- |
+| 1. Adição ao Carrinho | --- |
+| --- | 2. Se o produto estiver fora de estoque, o sistema exibe uma mensagem informando que o item não está disponível |
+| --- | 3. Sistema valida os dados |
+| --- | 4. O sistema pode sugerir produtos similares ou oferecer a opção de ser notificado quando o item voltar ao estoque |
+| 5. Usuário Continua Navegando | --- |
+
+#### 5.3. Fluxo alternativo
+##### Cenário 3: Falha no Pagamento
+
+|  Ator  | Sistema |
+|:-------|:------- |
+| 1. Adição ao Carrinho | --- |
+| --- | 2. O sistema confirma que o produto foi adicionado |
+| 3.  O usuário fornece ou confirma o endereço de entrega | --- |
+| --- | 4. Sistema valida os dados |
+| 5. O usuário seleciona o método de pagamento desejado (cartão de crédito, PayPal, etc.) e insere as informações necessárias | --- |
+| --- | 5. O sistema exibe uma mensagem de erro |
+| 6. O usuário pode tentar um método de pagamento diferente ou corrigir as informações inseridas | --- |
+| 7. Usuário Continua Navegando | --- |
+
+
+
 
 ### 6. Dicionário de dados
 
