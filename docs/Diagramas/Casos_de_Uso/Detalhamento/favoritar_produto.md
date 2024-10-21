@@ -9,7 +9,7 @@
 
 
 ### 1. Resumo 
-Detalha o processo de como favoritar um determinado produto que gerou interesse.
+Permite que os usuários salvem produtos de interesse para futuras compras.
 
 ## 2. Atores
 - Cliente
