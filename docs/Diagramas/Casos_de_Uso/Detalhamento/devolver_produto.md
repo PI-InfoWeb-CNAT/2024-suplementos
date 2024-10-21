@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 21/10/2024 | **1.00** | Cliente solicita a devolução de um item | Maria Vitoria |
+| 21/10/2024 | **1.00** | Cliente solicita a devolução de um item | Maria Vitória |
 
 
 ### 1. Resumo 
