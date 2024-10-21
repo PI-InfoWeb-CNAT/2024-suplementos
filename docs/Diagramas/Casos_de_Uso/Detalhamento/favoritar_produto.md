@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 21/10/2024 | **1.00** | O cliente adicionar produt a lista de favoritos | Maria Vitória |
+| 21/10/2024 | **1.00** | O cliente adicionar produto a lista de favoritos | Maria Vitória |
 
 
 ### 1. Resumo 
@@ -13,6 +13,7 @@ Detalha o processo de como favoritar um determinado produto que gerou interesse.
 
 ## 2. Atores
 - Cliente
+- Sistema
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
