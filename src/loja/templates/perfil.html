@@ -191,8 +191,8 @@
         const errorMessage = document.querySelector('.error')
         const dadosMessage = document.querySelector('.message-dados')
         const enderecoMessage = document.querySelector('.message-endereco')
-        const AddEnderecoPopUpteste = document.querySelector('.novoendereco-popup')
-
+        const AddEnderecoPopUp = document.querySelector('.novoendereco-popup')
+        const excluirPopUp = document.querySelector('.excluirconta-popup')
         
         function preencher() {
             cep = cepInput.value
@@ -218,6 +218,26 @@
             } else {
                 alert('Por favor, insira um CEP válido com 8 dígitos.');
             }
+        }
+
+        function abrirExcluir() {
+            excluirPopUp.style.visibility = 'visible'
+            excluirPopUp.style.opacity = '1'
+        }
+
+        function fecharExcluir() {
+            excluirPopUp.style.visibility = 'hidden'
+            excluirPopUp.style.opacity = '0'
+        }
+
+        function abrirAddEndereco() {
+            AddEnderecoPopUp.style.visibility = 'visible'
+            AddEnderecoPopUp.style.opacity = '1'
+        }
+
+        function fecharAddEndereco() {
+            AddEnderecoPopUp.style.visibility = 'hidden'
+            AddEnderecoPopUp.style.opacity = '0'
         }
 
         if (dadosMessage) {
