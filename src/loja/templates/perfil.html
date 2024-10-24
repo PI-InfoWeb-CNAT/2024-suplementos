@@ -105,12 +105,52 @@
                             {% endif %}
                         </div>
                         <div class="container-buttons">
-                            <button type="submit" class="button-submit">Editar</button>
+                            <button type="button" class="button-submit" onclick="abrirEditEndereco('{{ endereco.id }}')">Editar</button>
                             <form action="{% url 'excluir-endereco' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="endereco_id" value="{{ endereco.id }}">
-                                <button class="button-excluir">Excluir</button>
+                                <button type="submit" class="button-excluir">Excluir</button>
                             </form>
+                            <!-- POP UP -->
+                             <div id="editendereco-popup-{{endereco.id}}" class="editendereco-popup popup">
+                                <div>
+                                    <i class="bi bi-x" onclick="fecharEditEndereco('{{ endereco.id }}')"></i>
+                                    <div class="conteudo-popUpEditEndereco">
+                                        {% if messages %}
+                                            {% for message in messages %} 
+                                                {% if 'edit-endereco' in message.tags %}
+                                                    <div class="message {{ message.tags }} message-editendereco">
+                                                        <span>{{ message }}</span>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <h5>Edição do endereço <span>{{endereco.nome}}</span></h5>
+                                        <form action="{% url 'edit-endereco' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="endereco_id" value="{{ endereco.id }}">
+                                            <label for="nome-editendereco">Nome:* <input type="text" name="nome" id="nome-editendereco"  value="{{endereco.nome}}" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
+                                            <div class="container-flex">
+                                                <label for="cep-editendereco">CEP:* <input type="text" name="cep" id="cep-editendereco" value="{{endereco.cep}}" placeholder="Digite o CEP"></label>
+                                                <label for="estado-editendereco">Estado:* <input type="text" name="estado" id="estado-editendereco" value="{{endereco.estado}}" placeholder="Digite o estado"></label>
+                                                <label for="cidade-editendereco">Cidade:* <input type="text" name="cidade" id="cidade-editendereco" value="{{endereco.cidade}}" placeholder="Digite a cidade"></label>
+                                            </div>
+                                            <div class="container-flex">
+                                                <label for="rua-editendereco">Rua:* <input type="text" name="rua" id="rua-editendereco" value="{{endereco.rua}}" placeholder="Digite a rua"></label>
+                                                <label for="numero-editendereco">Número:* <input type="text" name="numero" id="numero-editendereco" value="{{endereco.numero}}" placeholder="Digite o número do endereço"></label>
+                                            </div>
+                                            <div class="container-flex">
+                                                <label for="complemento-editendereco">Complemento: <input type="text" name="complemento" id="complemento-editendereco" value="{{endereco.complemento}}" placeholder="Digite o complemento"></label>
+                                                <label for="telefone-editendereco">Telefone: <input type="text" name="telefone" id="telefone-editendereco" value="{{endereco.telefone}}" placeholder="Digite o telefone de contato"></label>
+                                            </div>
+                                            <div class="container-buttons">
+                                                <button type="submit" class="button-submit">Atualizar</button>
+                                                <button type="button" onclick="fecharEditEndereco('{{ endereco.id }}')" class="button-cancelar">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -126,7 +166,7 @@
                             {% if messages %}
                                 {% for message in messages %} 
                                     {% if 'novo-endereco' in message.tags %}
-                                        <div class="message {{ message.tags }} message-endereco">
+                                        <div class="message {{ message.tags }} message-novoendereco">
                                             <span>{{ message }}</span>
                                         </div>
                                     {% endif %}
@@ -135,23 +175,23 @@
                             <h5>Adicione novo local de endereço</h5>
                             <form action="{% url 'adicionar-endereco' %}" method="POST">
                                 {% csrf_token %}
-                                <label for="nome-endereco">Nome:* <input type="text" name="nome" id="nome-endereco" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
+                                <label for="nome-novoendereco">Nome:* <input type="text" name="nome" id="nome-novoendereco" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
                                 <div class="container-flex">
-                                    <label for="cep">CEP:* <input type="text" name="cep" id="cep" placeholder="Digite o CEP" onblur="preencher()"></label>
-                                    <label for="estado">Estado:* <input type="text" name="estado" id="estado" placeholder="Digite o estado"></label>
-                                    <label for="cidade">Cidade:* <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade"></label>
+                                    <label for="cep-novoendereco">CEP:* <input type="text" name="cep" id="cep-novoendereco" placeholder="Digite o CEP" onblur="preencher()"></label>
+                                    <label for="estado-novoendereco">Estado:* <input type="text" name="estado" id="estado-novoendereco" placeholder="Digite o estado"></label>
+                                    <label for="cidade-novoendereco">Cidade:* <input type="text" name="cidade" id="cidade-novoendereco" placeholder="Digite a cidade"></label>
                                 </div>
                                 <div class="container-flex">
-                                    <label for="rua">Rua:* <input type="text" name="rua" id="rua" placeholder="Digite a rua"></label>
-                                    <label for="numero">Número:* <input type="text" name="numero" id="numero" placeholder="Digite o número do endereço"></label>
+                                    <label for="rua-novoendereco">Rua:* <input type="text" name="rua" id="rua-novoendereco" placeholder="Digite a rua"></label>
+                                    <label for="numero-novoendereco">Número:* <input type="text" name="numero" id="numero-novoendereco" placeholder="Digite o número do endereço"></label>
                                 </div>
                                 <div class="container-flex">
-                                    <label for="complemento">Complemento: <input type="text" name="complemento" id="complemento" placeholder="Digite o complemento"></label>
-                                    <label for="telefone">Telefone: <input type="text" name="telefone" id="telefone" placeholder="Digite o telefone de contato"></label>
+                                    <label for="complemento-novoendereco">Complemento: <input type="text" name="complemento" id="complemento-novoendereco" placeholder="Digite o complemento"></label>
+                                    <label for="telefone-novoendereco">Telefone: <input type="text" name="telefone" id="telefone-novoendereco" placeholder="Digite o telefone de contato"></label>
                                 </div>
                                 <div class="container-buttons">
                                     <button type="submit" class="button-submit">Adicionar</button>
-                                    <button onclick="fecharAddEndereco()" class="button-cancelar">Cancelar</button>
+                                    <button type="button" onclick="fecharAddEndereco()" class="button-cancelar">Cancelar</button>
                                 </div>
                             </form>
                         </div>
@@ -184,15 +224,17 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'js/perfil.js' %}"></script>
     <script>
-        const cepInput = document.getElementById('cep')
+        const cepInput = document.getElementById('cep-novoendereco')
         const successMessage = document.querySelector('.success')
         const errorMessage = document.querySelector('.error')
         const dadosMessage = document.querySelector('.message-dados')
-        const enderecoMessage = document.querySelector('.message-endereco')
+        const novoEnderecoMessage = document.querySelector('.message-novoendereco')
+        const editEnderecoMessage = document.querySelector('.message-editendereco')
+        const editEnderecoPopUp = document.querySelector('.editendereco-popup')
         const AddEnderecoPopUp = document.querySelector('.novoendereco-popup')
         const excluirPopUp = document.querySelector('.excluirconta-popup')
+
         
         function preencher() {
             cep = cepInput.value
@@ -204,9 +246,9 @@
                 .then(response => response.json())
                 .then(data => {
                     if (!data.erro) {
-                        document.getElementById('rua').value = data.logradouro;
-                        document.getElementById('cidade').value = data.localidade;
-                        document.getElementById('estado').value = data.uf;
+                        document.getElementById('rua-novoendereco').value = data.logradouro;
+                        document.getElementById('cidade-novoendereco').value = data.localidade;
+                        document.getElementById('estado-novoendereco').value = data.uf;
                     } else {
                         alert('CEP não encontrado!');
                     }
@@ -220,15 +262,15 @@
             }
         }
 
-        function abrirExcluir() {
-            excluirPopUp.style.visibility = 'visible'
-            excluirPopUp.style.opacity = '1'
-        }
+        function abrirEditEndereco(id) {
+            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`editendereco-popup-${id}`).style.opacity = '1';
+}
 
-        function fecharExcluir() {
-            excluirPopUp.style.visibility = 'hidden'
-            excluirPopUp.style.opacity = '0'
-        }
+function fecharEditEndereco(id) {
+            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`editendereco-popup-${id}`).style.opacity = '0';
+}
 
         function abrirAddEndereco() {
             AddEnderecoPopUp.style.visibility = 'visible'
@@ -240,16 +282,32 @@
             AddEnderecoPopUp.style.opacity = '0'
         }
 
+        function abrirExcluir() {
+            excluirPopUp.style.visibility = 'visible'
+            excluirPopUp.style.opacity = '1'
+        }
+
+        function fecharExcluir() {
+            excluirPopUp.style.visibility = 'hidden'
+            excluirPopUp.style.opacity = '0'
+        }
+
         if (dadosMessage) {
             setTimeout(function() {
                 window.location.href = "{% url 'perfil' %}"
             }, 1000)
-        } else if (enderecoMessage) {
-            AddEnderecoPopUpteste.style.visibility = 'visible'
-            AddEnderecoPopUpteste.style.opacity = '1'
+        } else if (novoEnderecoMessage) {
+            AddEnderecoPopUp.style.visibility = 'visible'
+            AddEnderecoPopUp.style.opacity = '1'
             setTimeout(function() {
                 window.location.href = "{% url 'perfil' %}"
-            }, 2000)
+            }, 1000)
+        } else if (editEnderecoMessage) {
+            editEnderecoPopUp.style.visibility = 'visible'
+            editEnderecoPopUp.style.opacity = '1'
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
         }
     </script>
 {% endblock %}

@@ -164,9 +164,6 @@ h4 {
     & .container-buttons {
         margin-top: 1em;
     }
-    & button {
-        border: none;
-    }
 }
 
 .card-novo-endereco {
@@ -186,8 +183,79 @@ h4 {
     }
 }
 
-.message-endereco {
+.message-novoendereco, .message-editendereco {
     width: 90%;
+}
+
+.editendereco-popup {
+    > div {
+        width: 60em;
+        height: 30em;
+        padding: 0 3em;
+    }
+}
+
+.conteudo-popUpEditEndereco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        & label {
+            font-weight: bold;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+        & input[name='nome'] {
+            width: 92.7%;
+        }
+        & label[for='rua-editendereco'] {
+            width: 50%;
+        }
+        & input[name='rua'] {
+            width: 88%;
+        }
+        & label[for='numero-editendereco'] {
+            width: 50%;
+        }
+        & input[name='numero'] {
+            width: 81.1%;
+        }
+        & label[for='complemento-editendereco'] {
+            width: 48.1%;
+        }
+        & input[name='complemento'] {
+            width: 70.3%;
+        }
+        & label[for='telefone-editendereco'] {
+            width: 48%;
+        }
+        & input[name='telefone'] {
+            width: 81.4%;
+        }
+    }
+}
+
+.conteudo-popUpEditEndereco .container-flex {
+    width: 100%;
+    justify-content: left;
+    gap: 2em;
 }
 
 .novoendereco-popup {
@@ -225,25 +293,25 @@ h4 {
         & input[name='nome'] {
             width: 92.7%;
         }
-        & label[for='rua'] {
+        & label[for='rua-novoendereco'] {
             width: 50%;
         }
         & input[name='rua'] {
             width: 88%;
         }
-        & label[for='numero'] {
+        & label[for='numero-novoendereco'] {
             width: 50%;
         }
         & input[name='numero'] {
             width: 81.1%;
         }
-        & label[for='complemento'] {
+        & label[for='complemento-novoendereco'] {
             width: 48.1%;
         }
         & input[name='complemento'] {
             width: 70.3%;
         }
-        & label[for='telefone'] {
+        & label[for='telefone-novoendereco'] {
             width: 48%;
         }
         & input[name='telefone'] {
