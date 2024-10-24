@@ -114,7 +114,7 @@ def edit_endereco_view(request):
         else:
             enderecos_cliente = Endereco.objects.filter(cliente=request.user.cliente)
 
-            endereco_existe = enderecos_cliente.filter(rua=rua, numero=numero).exists()
+            endereco_existe = enderecos_cliente.exclude(id=endereco.id).filter(rua=rua, numero=numero).exists()
 
             if endereco_existe:
                 messages.error(request, 'Você já tem um endereço com esses dados!', extra_tags='edit-endereco')
