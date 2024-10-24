@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from loja.models import Cliente, Endereco
 
 @login_required
@@ -36,7 +37,7 @@ def perfil_view(request):
 @login_required 
 def edit_dados_view(request):
     user = request.user
-
+    clientes = User.objects.all()
     cliente = Cliente.objects.get(user=user)
 
     if request.method == 'POST':
@@ -47,14 +48,18 @@ def edit_dados_view(request):
         if user.username == nome and user.email == email and cliente.Telefone_celular == tel_celular:
             messages.error(request, 'Altere os dados para atualizar!', extra_tags='page')
         else:
-            user.username = nome
-            user.email = email
-            user.save()
+            email_existe = clientes.filter(email=email).exists()
+            if not email_existe:
+                user.username = nome
+                user.email = email
+                user.save()
 
-            cliente.Telefone_celular = tel_celular
-            cliente.save()
+                cliente.Telefone_celular = tel_celular
+                cliente.save()
 
-            messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+                messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+            else:
+                messages.error(request, 'Esse e-mail já existe.', extra_tags='page')
 
     return redirect(reverse('perfil'))
     
