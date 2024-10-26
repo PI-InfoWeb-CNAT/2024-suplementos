@@ -72,3 +72,8 @@
 - *Pauta*: 
   - Definir o que falta para finalização dos detalhamentos dos casos de uso
   - Continuar a implementação com Django
+  - 
+## 14/10/2024
+- *Pauta*: 
+  - Corrigir erros no site
+  - Continuar a implementação com Django
