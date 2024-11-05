@@ -6,7 +6,8 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 15/05/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
+| 15/05/2024 | **1.00** | Adição da seção de resumo e atores | Pedro Edi |
+| 14/10/2024 | **2.00** | Finalização do detalhamento | Pedro Edi |
 
 
 ### 1. Resumo 
@@ -16,15 +17,14 @@ Detalha o processo de como finalizar a compra dos itens do carrinho.
 - Cliente
 
 ### 3. Pré-condições
-**Autenticação**:O usuário deve estar logado em sua conta.
-**Produto**:O produto que o usuário deseja comprar deve estar disponível no estoque.O produto deve estar corretamente registrado no sistema, com informações como descrição, preço e promoções.
-**Informações de Pagamento:**:O usuário deve ter um método de pagamento válido associado à sua conta (cartão de crédito, PayPal, etc.).
-**Endereço de Entrega:**:O usuário deve ter um endereço de entrega válido cadastrado em sua conta.
+- **Autenticação**:O usuário deve estar logado em sua conta.
+- **Produto**:O produto que o usuário deseja comprar deve estar disponível no estoque.O produto deve estar corretamente registrado no sistema, com informações como descrição, preço e promoções.
+- **Informações de Pagamento:**:O usuário deve ter um método de pagamento válido associado à sua conta (cartão de crédito, PayPal, etc.).
+- **Endereço de Entrega:**:O usuário deve ter um endereço de entrega válido cadastrado em sua conta.
 
-### 4.Pós-condições
-
-**Registro do Pedido**: Os detalhes do pedido são registrados no banco de dados, incluindo:Informações do usuário (nome, e-mail, endereço de entrega),Itens comprados (nome, quantidade, preço),Método de pagamento utilizado,Status do pedido (ex: processando, enviado, concluído)
-**Disponibilidade para Acompanhamento**:O usuário pode acessar sua conta para visualizar o histórico de pedidos e o status do pedido atual.
+### 4. Pós-condições
+- **Registro do Pedido**: Os detalhes do pedido são registrados no banco de dados, incluindo:Informações do usuário (nome, e-mail, endereço de entrega),Itens comprados (nome, quantidade, preço),Método de pagamento utilizado,Status do pedido (ex: processando, enviado, concluído)
+- **Disponibilidade para Acompanhamento**:O usuário pode acessar sua conta para visualizar o histórico de pedidos e o status do pedido atual.
 
 ### 5. Fluxos de evento
 - No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
