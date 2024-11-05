@@ -6,6 +6,7 @@
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
 | 25/04/2024 | **1.00** | Adição do resumo e ator(es) | Pedro Edi |
+| 14/10/2024 | **1.00** | Finalização do detalhamento | Pedro Edi |
 
 
 ### 1. Resumo 
