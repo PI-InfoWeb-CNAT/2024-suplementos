@@ -16,16 +16,13 @@ Como usuário não identificado, desejo ter a opção de criar uma conta.
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+- 	Possuir um email existente para criação da conta
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+-  Permitir navegação e usar os serviços de compra do site
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
 ##### dentro da página de produto
