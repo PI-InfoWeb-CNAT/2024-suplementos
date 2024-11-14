@@ -5,7 +5,8 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | David Paiva |
+| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
+| 13/11/2024 | **2.00** | Finalização do detalhamento | David Paiva |
 
 
 ### 1. Resumo 
@@ -49,10 +50,4 @@ Status da Conta	| Estado da conta (Ativo/Inativo)	| Boolean
 Tipo de Conta	| Tipo de permissão (Admin/Usuário)	| String
 
 ### 7. Protótipos de UI
-Tela de Gerenciamento de Contas
-Campos: Nome, Email, Status, Tipo de Conta.
-Botões: "Salvar", "Excluir Conta", "Criar Nova Conta".
-Feedbacks: Mensagens de erro para campos inválidos ou operações de sucesso.
-
-
-
+![image](https://github.com/user-attachments/assets/1a2c607e-3e12-4d96-a300-e2b65e644a53)
