@@ -5,7 +5,7 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
+| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | David Paiva |
 
 
 ### 1. Resumo 
