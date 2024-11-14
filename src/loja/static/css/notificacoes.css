@@ -1,0 +1,49 @@
+h4 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-notificacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.notificacao {
+    background-color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    border-radius: 20px;
+    padding: 2em 1em;
+    min-width: 30em;
+    max-width: 50em;
+    position: relative;
+    & i {
+        background-color: var(--dark-grey);
+        padding: .8em;
+        font-size: 1.5em;
+        color: var(--light-green);
+        clip-path: circle(40%);
+    }
+}
+
+#texto {
+    word-break: break-word;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+#data {
+    font-size: .75em;
+    position: absolute;
+    color: grey;
+    right: 4%;
+    bottom: 6%;
+}

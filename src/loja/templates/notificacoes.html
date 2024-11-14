@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Notificações{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/notificacoes.css' %}">
+{% endblock %}
+
+{% block sidebar%}
+<ul class="menu">
+    <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+    <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+    <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+    <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+    <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+    <li><a href="/perfil"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+</ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Notificações</h3>
+            <section class="container-botoes-cima">
+                <a href="{% url 'notificacoes' %}"><i class="bi bi-bell-fill icon-cima"></i></a>
+                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                {% if user.is_authenticated %}
+                    <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+                {% else %}
+                    <a><i class="bi bi-person-fill icon-cima"></i></a>
+                    <button class="button-sign"><a href="{% url 'login' %}">Entrar</a></button>
+                    <button class="button-sign"><a href="{% url 'cadastro' %}">Cadastrar</a></button>
+                {% endif %}
+            </section>
+        </div>
+        <div class="container-flex">
+            <section class="container-notificacoes">
+                {% for notificacao in notificacoes %}
+                    <div class="notificacao">
+                        {% if notificacao.categoria == 'mensagem_personalizada' %}
+                            <i class="bi bi-envelope-fill"></i>
+                        {% elif notificacao.categoria == 'status_pedido' %}
+                            <i class="bi bi-truck"></i>
+                        {% elif notificacao.categoria == 'status_devolucao' %}
+                            <i class="bi bi-arrow-repeat"></i>
+                        {% endif %}
+                        <p id="texto">{{ notificacao.texto }}</p>
+                        <p id="data">{{ notificacao.data_envio|date:"d/m/Y - H:i:s" }}</p>
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="container-menu-secundario">
+                <h4>Mais Opções</h4>
+                <div class="menu-secundario">
+                    <div class="item-menu-secundario">
+                        <a href="{% url 'perfil' %}"><i class="bi bi-person-fill"></i></a>
+                        <p>Meus Dados</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-basket3-fill"></i></a>
+                        <p>Meus Pedidos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-heart-fill menu-icon"></i></a>
+                        <p>Meus Favoritos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-wallet2"></i></a>
+                        <p>Minha Carteira</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href="{% url 'notificacoes' %}" class="active"><i class="bi bi-bell-fill"></i></a>
+                        <p>Notificações</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-bag-check-fill"></i></a>
+                        <p>Comprar novamente</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}
