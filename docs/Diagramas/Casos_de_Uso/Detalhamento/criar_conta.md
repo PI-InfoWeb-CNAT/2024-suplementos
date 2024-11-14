@@ -5,7 +5,8 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adição da seção de resumo e atores | David Paiva |
+| 30/04/2024 | **1.00** | Adição da seção de resumo e atores | Lucas Brito |
+| 13/11/2024 | **2.00** | Finalização do detalhamento | David Paiva |
 
 
 ### 1. Resumo 
@@ -57,13 +58,6 @@ Nome	| Nome completo do usuário	|  String (1-100 caracteres)
 Telefone (opcional)	| Número de contato do usuário | String (formato: +XX)
 
 ### 7. Protótipos de UI
-Tela de Cadastro
-Campos: Nome, Email, Senha, Confirmação de Senha.
-Botões: "Criar Conta", "Voltar para Login".
-Feedbacks: Mensagens de erro para email inválido, senha fraca ou senha e confirmação de senha diferentes.
-Tela de Login
-Campos: Email, Senha.
-Botões: "Entrar", "Esqueceu a Senha?", "Criar Conta".
-Feedbacks: Mensagem para login incorreto.
+![image](https://github.com/user-attachments/assets/38910fe3-6b9c-4dc5-abab-790d0562e2a7)
 
 
