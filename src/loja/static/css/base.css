@@ -165,6 +165,20 @@ main {
     font-size: 1.2em;
 }
 
+.notificacao-container {
+    position: relative;
+}
+
+.notificacoes-nao-lidas {
+    position: absolute;
+    top: -25px;
+    right: -3px;
+    padding: .6em;
+    clip-path: circle(30%);
+    background-color: red;
+    color: white;
+}
+
 .button-sign {
     border: none;
     padding: 0.5em 1em;

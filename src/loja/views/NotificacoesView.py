@@ -5,14 +5,8 @@ from loja.models import Cliente, Notificacao
 @login_required
 def notificacoes_view(request):
     user = request.user
-    clientes = Cliente.objects.all()
-    notificacoes = Notificacao.objects.all()
 
-    notificacoes_cliente = ''
-
-    for cliente in clientes:
-        if cliente.user_id == user.id:
-            notificacoes_cliente = notificacoes.filter(cliente_id=cliente.id)
+    notificacoes_cliente = Notificacao.objects.filter(cliente_id=user.id)
 
     context = {'notificacoes': notificacoes_cliente}
 
