@@ -77,3 +77,8 @@
 - *Pauta*: 
   - Corrigir erros no site
   - Continuar a implementação com Django
+  - 
+## 11/11/2024
+- *Pauta*: 
+  - Definir metas 
+  - Continuar a implementação com Django
