@@ -19,8 +19,6 @@ def cadastro_view(request):
                     messages.error(request, 'E-mail já cadastrado')
                 elif Cliente.objects.filter(CPF=cpf).exists():
                     messages.error(request, 'CPF já cadastrado')
-                elif Cliente.objects.filter(Telefone_celular=tel_celular).exists():
-                    messages.error(request, 'Telefone celular já cadastrado')
                 else:
                     user = User.objects.create_user(username=nome, email=email, password=senha)
                     user.save()
