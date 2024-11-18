@@ -23,7 +23,6 @@ def login_view(request):
 
             if user is not None:
                 auth_login(request, user)
-                messages.success(request, 'Login realizado com sucesso!')
                 _next = request.GET.get('next')
                 if _next is not None:
                     messages.success(request, 'Login realizado com sucesso!')

@@ -6,6 +6,7 @@
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
 | 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
+| 13/11/2024 | **2.00** | Finalização do detalhamento | David Paiva |
 
 
 ### 1. Resumo 
@@ -15,11 +16,12 @@ Detalha o processo de como manter uma conta (CRUD).
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Definir pré-condições para o caso de uso (estar logado, produto registrado, possuir e-mail, etc)
+-  Estar logado como Moderador ou Administrador.
+-  Ter uma conta previamente registrada no sistema.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Definir o que irá acontecer quando o caso de uso for executado (adicione produto, exiba produto, etc)
+-  Exibir, atualizar, criar ou excluir informações de contas dos usuários.
 
 ### 5. Fluxos de evento
 - No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
@@ -27,41 +29,25 @@ Após a execução deste casos de uso, espera que o sistema:
 - Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
-##### dentro da página de produto
+##### dentro do sistema
 
-|  Ator  | Sistema |
+|  Moderador  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema adiciona produto no carrinho do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi adicionado |
-| 6. Usuário Continua Navegando | --- |
+| 1. Acessa a seção de gerenciamento de contas no painel de administração. | --- |
+| --- | 2. Sistema exibe a lista de contas existentes. |
+| 3.  Seleciona uma conta para exibir ou editar informações. | --- |
+| --- | 4. Exibe os detalhes da conta selecionada para visualização/edição. |
+| 5.  Faz modificações ou opta por excluir/criar uma conta nova. |
+| --- | 6. Salva as modificações ou cria/exclui a conta no banco de dados. |
+| --- | 6. Usuário Continua Navegando. |
 
-#### 5.2. Fluxo alternativo
-##### fora da página de produto
 
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema adicionar/remove produto no carrinho do usuário |
-| --- | 3. Sistema informa mensagem de que o produto foi adicionado/removido |
-| 4. Usuário Continua Navegando | --- |
-
-#### 5.3. Fluxo alternativo
-##### página do carrinho
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão para lista de carrinhos | --- |
-| --- | 2. Sistema redireciona usuário para página do carrinho |
-| 3. usuário clica no botão do carrinho do produto | --- |
-| --- | 2. Sistema remove produto do carrinho |
-| --- | 2. Sistema informa remoção da lista do carrinho |
-| 4. Usuário Continua Navegando | --- |
 
 ### 6. Dicionário de dados
+Nome | Nome completo do usuário	| String (1-100 caracteres)
+Email	| Email para contato e login | String (formato válido)
+Status da Conta	| Estado da conta (Ativo/Inativo)	| Boolean
+Tipo de Conta	| Tipo de permissão (Admin/Usuário)	| String
 
 ### 7. Protótipos de UI
-
-
+![image](https://github.com/user-attachments/assets/1a2c607e-3e12-4d96-a300-e2b65e644a53)
