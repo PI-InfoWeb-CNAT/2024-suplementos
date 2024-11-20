@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from loja.models import Cliente
+from loja.models import Cliente, Notificacao
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -22,11 +22,18 @@ def cadastro_view(request):
                 else:
                     user = User.objects.create_user(username=nome, email=email, password=senha)
                     user.save()
-                    Cliente.objects.create(
+                    cliente = Cliente.objects.create(
                         user=user,
                         Nome=nome,
                         CPF=cpf,
                         Telefone_celular=tel_celular,
+                    )
+
+                    Notificacao.objects.create(
+                        cliente=cliente,
+                        categoria='mensagem_personalizada',
+                        titulo='Mensagem de boas-vindas',
+                        texto= f'Olá, {nome}! Seja bem-vindo ao nosso time!'
                     )
                     messages.success(request, 'Cadastro realizado com sucesso')
             else:
