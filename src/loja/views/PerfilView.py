@@ -32,7 +32,7 @@ def perfil_view(request):
         'cpf': cpf,
         'enderecos': enderecos_cliente
     }
-    return render(request, template_name='perfil.html', context=context, status=200)
+    return render(request, template_name='Perfil/perfil.html', context=context, status=200)
 
 @login_required 
 def edit_dados_view(request):

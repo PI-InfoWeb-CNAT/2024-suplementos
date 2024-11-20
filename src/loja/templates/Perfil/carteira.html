@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Minha Carteira{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/carteira.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="menu">
+        <li><a href="/"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+        <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+        <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+        <li><a href="/perfil" class="active"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+    </ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Minha Carteira</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
+        <div class="container-flex">
+            <section class="container-cartoes">
+                <a class="card-novo-cartao" onclick="abrirAddCartao()">
+                    <i class="bi bi-plus-circle"></i>
+                    <p>Adicione um novo cartão</p>
+                </a>
+                <!-- POP UP -->
+                <div class="novocartao-popup popup">
+                    <div>
+                        <i class="bi bi-x" onclick="fecharAddCartao()"></i>
+                        <div class="conteudo-popUpAddEndereco">
+                            {% if messages %}
+                                {% for message in messages %} 
+                                    {% if 'novo-cartao' in message.tags %}
+                                        <div class="message {{ message.tags }} message-novocartao">
+                                            <span>{{ message }}</span>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            <h5>Adicione um novo cartão</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="container-menu-secundario">
+                <h4>Mais Opções</h4>
+                <div class="menu-secundario">
+                    <div class="item-menu-secundario">
+                        <a href="{% url 'perfil' %}"><i class="bi bi-person-fill"></i></a>
+                        <p>Meus Dados</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-basket3-fill"></i></a>
+                        <p>Meus Pedidos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-heart-fill menu-icon"></i></a>
+                        <p>Meus Favoritos</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href="{% url 'carteira' %}"><i class="bi bi-wallet2"></i></a>
+                        <p>Minha Carteira</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href="{% url 'notificacoes' %}" class="active"><i class="bi bi-bell-fill"></i></a>
+                        <p>Notificações</p>
+                    </div>
+                    <div class="item-menu-secundario">
+                        <a href=""><i class="bi bi-bag-check-fill"></i></a>
+                        <p>Comprar novamente</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const AddCartaoPopUp = document.querySelector('.novocartao-popup')
+
+        function abrirAddCartao() {
+            AddCartaoPopUp.style.visibility = 'visible'
+            AddCartaoPopUp.style.opacity = '1'
+        }
+
+        function fecharAddCartao() {
+            AddCartaoPopUp.style.visibility = 'hidden'
+            AddCartaoPopUp.style.opacity = '0'
+        }
+    </script>
+{% endblock %}

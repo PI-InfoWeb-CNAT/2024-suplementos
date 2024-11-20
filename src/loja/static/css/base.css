@@ -14,6 +14,13 @@
     font-family: 'Bai Jamjuree';
 }
 
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 a {
     text-decoration: none;
 }
@@ -31,6 +38,7 @@ main {
 #container-header-main {
     display: flex;
     margin: 4em 10em;
+    flex: 1;
 }
 
 .container-cima {

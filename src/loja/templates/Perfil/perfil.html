@@ -76,7 +76,7 @@
                         <p>Meus Favoritos</p>
                     </div>
                     <div class="item-menu-secundario">
-                        <a href=""><i class="bi bi-wallet2"></i></a>
+                        <a href="{% url 'carteira' %}"><i class="bi bi-wallet2"></i></a>
                         <p>Minha Carteira</p>
                     </div>
                     <div class="item-menu-secundario">
@@ -272,12 +272,12 @@
         function abrirEditEndereco(id) {
             document.getElementById(`editendereco-popup-${id}`).style.visibility = 'visible';
             document.getElementById(`editendereco-popup-${id}`).style.opacity = '1';
-}
+        }
 
-function fecharEditEndereco(id) {
+        function fecharEditEndereco(id) {
             document.getElementById(`editendereco-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`editendereco-popup-${id}`).style.opacity = '0';
-}
+        }
 
         function abrirAddEndereco() {
             AddEnderecoPopUp.style.visibility = 'visible'

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from loja.views.PerfilView import perfil_view, edit_dados_view, adicionar_endereco_view, edit_endereco_view, excluir_endereco_view, logout_view, excluir_conta_view
+from loja.views.CarteiraView import list_carteira_view
 
 urlpatterns = [
     path('', perfil_view, name='perfil'),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('excluir-endereco/', excluir_endereco_view, name='excluir-endereco'),
     path('logout/', logout_view, name='logout'),
     path('excluir-conta/', excluir_conta_view, name='excluir-conta'),
+    path('minha-carteira/', list_carteira_view, name='carteira'),
 ]
