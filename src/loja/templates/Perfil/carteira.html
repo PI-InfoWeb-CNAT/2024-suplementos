@@ -46,7 +46,7 @@
                 <div class="novocartao-popup popup">
                     <div>
                         <i class="bi bi-x" onclick="fecharAddCartao()"></i>
-                        <div class="conteudo-popUpAddEndereco">
+                        <div class="conteudo-popUpAddCartao">
                             {% if messages %}
                                 {% for message in messages %} 
                                     {% if 'novo-cartao' in message.tags %}
@@ -57,6 +57,22 @@
                                 {% endfor %}
                             {% endif %}
                             <h5>Adicione um novo cartão</h5>
+                            <form action="{% url 'adicionar-cartao' %}" method="POST">
+                                {% csrf_token %}
+                                <label for="nome-novocartao">Nome do cartão:* <input type="text" name="nome" id="nome-novocartao" placeholder="Digite o nome do cartão. Ex.: Meu cartão, cartão principal..."></label>
+                                <label for="nometitular-novocartao">Nome do titular do cartão:* <input type="text" name="nometitular" id="nometitular-novocartao" placeholder="Digite o nome do titular do cartão. Ex.: Fulano da Silva"></label>
+                                <label for="numero-novocartao">Número:* <input type="text" name="numero" id="numero-novocartao" placeholder="Digite o número do cartão"></label>
+                                <label for="tipo-novocartao"> Tipo do cartão:*
+                                    <select name="tipo" id="tipo-novocartao">
+                                        <option value="debito">Débito</option>
+                                        <option value="credito">Crédito</option>
+                                    </select>
+                                </label>
+                                <div class="container-buttons">
+                                    <button type="submit" class="button-submit">Adicionar</button>
+                                    <button type="button" onclick="fecharAddCartao()" class="button-cancelar">Cancelar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -77,11 +93,11 @@
                         <p>Meus Favoritos</p>
                     </div>
                     <div class="item-menu-secundario">
-                        <a href="{% url 'carteira' %}"><i class="bi bi-wallet2"></i></a>
+                        <a href="{% url 'minha-carteira' %}" class="active"><i class="bi bi-wallet2"></i></a>
                         <p>Minha Carteira</p>
                     </div>
                     <div class="item-menu-secundario">
-                        <a href="{% url 'notificacoes' %}" class="active"><i class="bi bi-bell-fill"></i></a>
+                        <a href="{% url 'notificacoes' %}"><i class="bi bi-bell-fill"></i></a>
                         <p>Notificações</p>
                     </div>
                     <div class="item-menu-secundario">
@@ -97,6 +113,9 @@
 {% block script %}
     <script>
         const AddCartaoPopUp = document.querySelector('.novocartao-popup')
+        const novoCartaoMessage = document.querySelector('.message-novocartao')
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
 
         function abrirAddCartao() {
             AddCartaoPopUp.style.visibility = 'visible'
@@ -106,6 +125,21 @@
         function fecharAddCartao() {
             AddCartaoPopUp.style.visibility = 'hidden'
             AddCartaoPopUp.style.opacity = '0'
+        }
+
+        if (novoCartaoMessage) {
+            AddCartaoPopUp.style.visibility = 'visible'
+            AddCartaoPopUp.style.opacity = '1'
+            if (errorMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'minha-carteira' %}"
+                }, 2000)
+            }
+            if (successMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'minha-carteira' %}"
+                }, 1000)
+            }
         }
     </script>
 {% endblock %}

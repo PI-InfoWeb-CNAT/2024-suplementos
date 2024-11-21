@@ -43,9 +43,10 @@ def edit_dados_view(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
+        cpf = request.POST.get('cpf')
         tel_celular = request.POST.get('tel_celular')
 
-        if user.username == nome and user.email == email and cliente.Telefone_celular == tel_celular:
+        if user.username == nome and user.email == email and cliente.CPF == cpf and cliente.Telefone_celular == tel_celular:
             messages.error(request, 'Altere os dados para atualizar!', extra_tags='page')
         else:
             email_alterado = user.email != email
@@ -59,6 +60,7 @@ def edit_dados_view(request):
                     user.email = email
                 user.save()
 
+                cliente.CPF = cpf
                 cliente.Telefone_celular = tel_celular
                 cliente.save()
 
@@ -82,14 +84,13 @@ def adicionar_endereco_view(request):
         complemento = request.POST.get('complemento')
         telefone = request.POST.get('telefone')
 
-        enderecos_cliente = Endereco.objects.filter(cliente=request.user.cliente)
+        enderecos_cliente = Endereco.objects.filter(cliente=user.cliente)
 
         endereco_existe = enderecos_cliente.filter(rua=rua, numero=numero).exists()
 
         if nome and cep and estado and cidade and rua and numero:
             if not endereco_existe:
-                endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
-                endereco.save()
+                Endereco.objects.create(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
 
                 messages.success(request, 'Endereço adicionado com sucesso!', extra_tags='novo-endereco')
                 return redirect(reverse('perfil'))

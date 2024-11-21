@@ -29,3 +29,89 @@ h4 {
         font-size: 2em;
     }
 }
+
+.novocartao-popup > div {
+    width: 50em;
+    height: 30em;
+    padding: 0 5em;
+}
+
+.conteudo-popUpAddCartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        width: 100%;
+        & label {
+            display: flex;
+            gap: 1em;
+            font-weight: bold;
+        }
+        & label[for='nome-novocartao'] {
+            width: 100%;
+        }
+        & input[name='nome'] {
+            width: 76.7%;
+        }
+        & label[for='nometitular-novocartao'] {
+            width: 100%;
+        }
+        & input[name='nometitular'] {
+            width: 64.8%;
+        }
+        & label[for='numero-novocartao'] {
+            width: 55%;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+            width: 90%;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
+.container-buttons {
+    display: flex;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.button-submit {
+    background-color: var(--dark-grey);
+    color: var(--light-green);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.button-cancelar {
+    background-color: transparent;
+    color: black;
+    border: 2px solid var(--dark-green);
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.message-novocartao {
+    width: 90%;
+}

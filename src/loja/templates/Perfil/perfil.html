@@ -53,7 +53,7 @@
                         {% csrf_token %}
                         <label for="nome-dados">Nome: <input type="text" name="nome" id="nome-dados" value="{{nome}}"></label>
                         <label for="email">E-mail: <input type="text" name="email" id="email" value="{{email}}"></label>
-                        <p>CPF: <span>{{cpf}}</span></p>
+                        <label for="cpf">CPF: <input type="text" name="cpf" id="cpf" value="{{cpf}}"></label>
                         <label for="tel_celular">Telefone Celular: <input type="text" name="tel_celular" id="tel_celular" value="{{tel_celular}}"></label>
                         <button type="submit">Atualizar</button>
                     </form>
@@ -76,7 +76,7 @@
                         <p>Meus Favoritos</p>
                     </div>
                     <div class="item-menu-secundario">
-                        <a href="{% url 'carteira' %}"><i class="bi bi-wallet2"></i></a>
+                        <a href="{% url 'minha-carteira' %}"><i class="bi bi-wallet2"></i></a>
                         <p>Minha Carteira</p>
                     </div>
                     <div class="item-menu-secundario">

@@ -18,7 +18,12 @@ class NotificacaoAdmin(admin.ModelAdmin):
             return ['cliente']
         return super().get_readonly_fields(request, obj)
 
+class CartaoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'nometitular', 'bandeira', 'tipo')
+    empty_value_display = 'Vazio'
+
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Produto, ProdutoAdmin)
 admin.site.register(Endereco)
 admin.site.register(Notificacao, NotificacaoAdmin)
+admin.site.register(Cartao, CartaoAdmin)
