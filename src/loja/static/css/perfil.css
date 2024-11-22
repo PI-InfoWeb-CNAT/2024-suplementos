@@ -125,12 +125,10 @@ h4 {
     width: 90%;
 }
 
-.editendereco-popup {
-    > div {
-        width: 60em;
-        height: 30em;
-        padding: 0 3em;
-    }
+.editendereco-popup > div {
+    width: 60em;
+    height: 30em;
+    padding: 0 3em;
 }
 
 .conteudo-popUpEditEndereco {
@@ -161,19 +159,19 @@ h4 {
             outline: none;
         }
         & input[name='nome'] {
-            width: 92.7%;
+            width: 93.5%;
         }
         & label[for='rua-editendereco'] {
             width: 50%;
         }
         & input[name='rua'] {
-            width: 88%;
+            width: 90%;
         }
         & label[for='numero-editendereco'] {
             width: 50%;
         }
         & input[name='numero'] {
-            width: 81.1%;
+            width: 82.5%;
         }
         & label[for='complemento-editendereco'] {
             width: 48.1%;

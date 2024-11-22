@@ -136,15 +136,15 @@
                                         <form action="{% url 'edit-endereco' %}" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="endereco_id" value="{{ endereco.id }}">
-                                            <label for="nome-editendereco">Nome:* <input type="text" name="nome" id="nome-editendereco"  value="{{endereco.nome}}" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
+                                            <label for="nome-editendereco">Nome: <input type="text" name="nome" id="nome-editendereco"  value="{{endereco.nome}}" placeholder="Digite o nome do endereço. Ex.: Casa, endereço principal..."></label>
                                             <div class="container-flex">
-                                                <label for="cep-editendereco">CEP:* <input type="text" name="cep" id="cep-editendereco" value="{{endereco.cep}}" placeholder="Digite o CEP"></label>
-                                                <label for="estado-editendereco">Estado:* <input type="text" name="estado" id="estado-editendereco" value="{{endereco.estado}}" placeholder="Digite o estado"></label>
-                                                <label for="cidade-editendereco">Cidade:* <input type="text" name="cidade" id="cidade-editendereco" value="{{endereco.cidade}}" placeholder="Digite a cidade"></label>
+                                                <label for="cep-editendereco">CEP: <input type="text" name="cep" id="cep-editendereco" value="{{endereco.cep}}" placeholder="Digite o CEP"></label>
+                                                <label for="estado-editendereco">Estado: <input type="text" name="estado" id="estado-editendereco" value="{{endereco.estado}}" placeholder="Digite o estado"></label>
+                                                <label for="cidade-editendereco">Cidade: <input type="text" name="cidade" id="cidade-editendereco" value="{{endereco.cidade}}" placeholder="Digite a cidade"></label>
                                             </div>
                                             <div class="container-flex">
-                                                <label for="rua-editendereco">Rua:* <input type="text" name="rua" id="rua-editendereco" value="{{endereco.rua}}" placeholder="Digite a rua"></label>
-                                                <label for="numero-editendereco">Número:* <input type="text" name="numero" id="numero-editendereco" value="{{endereco.numero}}" placeholder="Digite o número do endereço"></label>
+                                                <label for="rua-editendereco">Rua: <input type="text" name="rua" id="rua-editendereco" value="{{endereco.rua}}" placeholder="Digite a rua"></label>
+                                                <label for="numero-editendereco">Número: <input type="text" name="numero" id="numero-editendereco" value="{{endereco.numero}}" placeholder="Digite o número do endereço"></label>
                                             </div>
                                             <div class="container-flex">
                                                 <label for="complemento-editendereco">Complemento: <input type="text" name="complemento" id="complemento-editendereco" value="{{endereco.complemento}}" placeholder="Digite o complemento"></label>

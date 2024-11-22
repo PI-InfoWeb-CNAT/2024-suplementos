@@ -52,6 +52,48 @@ h4 {
     gap: .3em;
 }
 
+.editcartao-popup > div {
+    width: 40em;
+    height: 25em;
+    padding: 0 3em;
+}
+
+.conteudo-popupEditCartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        width: 100%;
+        & label {
+            font-weight: bold;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
 .card-novo-cartao {
     color: var(--dark-grey);
     width: 19em;
@@ -109,7 +151,7 @@ h4 {
             width: 64.8%;
         }
         & label[for='numero-novocartao'] {
-            width: 55%;
+            width: 60%;
         }
         & input {
             border: 2px solid var(--dark-green);
@@ -161,4 +203,9 @@ h4 {
 
 .message-novocartao {
     width: 90%;
+}
+
+.message-editcartao {
+    width: 90%;
+    margin-bottom: 1em;
 }

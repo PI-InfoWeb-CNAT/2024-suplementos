@@ -139,7 +139,6 @@ def edit_endereco_view(request):
 
                 endereco.save()
 
-                print(enderecos_cliente)
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='edit-endereco')
     return redirect(reverse('perfil'))
 

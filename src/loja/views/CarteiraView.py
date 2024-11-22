@@ -42,18 +42,17 @@ def adicionar_cartao_view(request):
 
                     if cartao_existe:
                         messages.error(request, 'Você já possui esse cartão.', extra_tags='novo-cartao')
-                        return redirect(reverse('minha-carteira'))
                     else:
                         if tipo == 'debito':
                             Cartao.objects.create(cliente=cliente, nome=nome, nometitular=nometitular, numero=numero, bandeira=bandeira, tipo='debito')
 
                             messages.success(request, 'Cartão adicionado com sucesso!', extra_tags='novo-cartao')
-                            return redirect(reverse('minha-carteira'))
+
                         elif tipo == 'credito':
                             Cartao.objects.create(cliente=cliente, nome=nome, nometitular=nometitular, numero=numero, bandeira=bandeira, tipo='credito')
 
                             messages.success(request, 'Cartão adicionado com sucesso!', extra_tags='novo-cartao')
-                            return redirect(reverse('minha-carteira'))
+
                 else:
                     messages.error(request, 'Cartão não encontrado.', extra_tags='novo-cartao')
 
@@ -62,17 +61,37 @@ def adicionar_cartao_view(request):
         else:
             messages.error(request, 'Preencha os campos obrigatórios. (*)', extra_tags='novo-cartao')
 
-    return render(request, template_name='Perfil/carteira.html', status=200) 
+    return redirect(reverse('minha-carteira')) 
+
+@login_required
+def edit_cartao_view(request):
+    if request.method == 'POST':
+        cartao_id = request.POST.get('cartao_id')
+        nome = request.POST.get('nome')
+        nometitular = request.POST.get('nometitular')
+        tipo = request.POST.get('tipo')
+
+        cartao = Cartao.objects.get(id=cartao_id, cliente=request.user.cliente)
+
+        if cartao.nome == nome and cartao.nometitular == nometitular and cartao.tipo == tipo:
+            messages.error(request, 'Altere os dados para atualizar!', extra_tags='edit-cartao')
+        else:
+            cartao.nome = nome
+            cartao.nometitular = nometitular
+            cartao.tipo = tipo
+
+            cartao.save()
+            messages.success(request, 'Dados atualizados com sucesso!', extra_tags='edit-cartao')
+
+    return redirect(reverse('minha-carteira'))
 
 @login_required
 def excluir_cartao_view(request):
-    user = request.user
-    print(user)
     if request.method == 'POST':
         cartao_id = request.POST.get('cartao_id')
         print(cartao_id)
 
-        cartao = Cartao.objects.get(id=cartao_id, cliente=user.cliente)
+        cartao = Cartao.objects.get(id=cartao_id, cliente=request.user.cliente)
         cartao.delete()
         messages.success(request, 'Cartão excluído com sucesso!', extra_tags='page-carteira')
 

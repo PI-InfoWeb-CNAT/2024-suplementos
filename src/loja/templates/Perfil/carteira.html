@@ -63,12 +63,51 @@
                                 <p>Tipo: <span>{{cartao.tipo|first_name}}</span></p>
                             </div>
                             <div class="container-buttons">
-                                <button type="button" class="button-submit">Editar</button>
+                                <button type="button" class="button-submit" onclick="abrirEditCartao('{{ cartao.id }}')">Editar</button>
                                 <form action="{% url 'excluir-cartao' %}" method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" name="cartao_id" value="{{ cartao.id }}">
                                     <button type="submit" class="button-excluir">Excluir</button>
                                 </form>
+                                <!-- POP UP -->
+                                 <div id="editcartao-popup-{{cartao.id}}" class="editcartao-popup popup">
+                                    <div>
+                                        <i class="bi bi-x" onclick="fecharEditCartao('{{ cartao.id }}')"></i>
+                                        <div class="conteudo-popupEditCartao">
+                                            {% if messages %}
+                                                {% for message in messages %} 
+                                                    {% if 'edit-cartao' in message.tags %}
+                                                        <div class="message {{ message.tags }} message-editcartao">
+                                                            <span>{{ message }}</span>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                            <h5>Edição do cartão <span>{{cartao.nome}}</span></h5>
+                                            <form action="{% url 'edit-cartao' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="cartao_id" value="{{ cartao.id }}">
+                                                <label for="nome-editcartao">Nome do cartão: <input type="text" name="nome" id="nome-editcartao"  value="{{cartao.nome}}"></label>
+                                                <label for="nometitular-editcartao">Nome do titular do cartão: <input type="text" name="nometitular" id="nometitular-editcartao"  value="{{cartao.nometitular}}"></label>
+                                                <label for="tipo-editcartao"> Tipo do cartão:
+                                                    <select name="tipo" id="tipo-editcartao">
+                                                        {% if cartao.tipo == 'debito' %}
+                                                            <option value="debito" selected>Débito</option>
+                                                            <option value="credito">Crédito</option>
+                                                        {% else %}
+                                                            <option value="debito">Débito</option>
+                                                            <option value="credito" selected>Crédito</option>
+                                                        {% endif %}
+                                                    </select>
+                                                </label>
+                                                <div class="container-buttons">
+                                                    <button type="submit" class="button-submit">Atualizar</button>
+                                                    <button type="button" onclick="fecharEditCartao('{{ cartao.id }}')" class="button-cancelar">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -97,7 +136,7 @@
                                 {% csrf_token %}
                                 <label for="nome-novocartao">Nome do cartão:* <input type="text" name="nome" id="nome-novocartao" placeholder="Digite o nome do cartão. Ex.: Meu cartão, cartão principal..."></label>
                                 <label for="nometitular-novocartao">Nome do titular do cartão:* <input type="text" name="nometitular" id="nometitular-novocartao" placeholder="Digite o nome do titular do cartão. Ex.: Fulano da Silva"></label>
-                                <label for="numero-novocartao">Número:* <input type="text" name="numero" id="numero-novocartao" placeholder="Digite o número do cartão"></label>
+                                <label for="numero-novocartao">Número:* <input type="text" name="numero" id="numero-novocartao" placeholder="Digite o número do cartão sem espaço"></label>
                                 <label for="tipo-novocartao"> Tipo do cartão:*
                                     <select name="tipo" id="tipo-novocartao">
                                         <option value="debito">Débito</option>
@@ -149,7 +188,9 @@
 {% block script %}
     <script>
         const AddCartaoPopUp = document.querySelector('.novocartao-popup')
+        const editCartaoPopUp = document.querySelector('.editcartao-popup')
         const novoCartaoMessage = document.querySelector('.message-novocartao')
+        const editCartaoMessage = document.querySelector('.message-editcartao')
         const pageMessage = document.querySelector('.message-pageCarteira')
         const successMessage = document.querySelector('.success')
         const errorMessage = document.querySelector('.error')
@@ -164,6 +205,16 @@
             AddCartaoPopUp.style.opacity = '0'
         }
 
+        function abrirEditCartao(id) {
+            document.getElementById(`editcartao-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`editcartao-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharEditCartao(id) {
+            document.getElementById(`editcartao-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`editcartao-popup-${id}`).style.opacity = '0';
+        }
+
         if (pageMessage) {
             setTimeout(function() {
                 window.location.href = "{% url 'minha-carteira' %}"
@@ -173,6 +224,21 @@
         if (novoCartaoMessage) {
             AddCartaoPopUp.style.visibility = 'visible'
             AddCartaoPopUp.style.opacity = '1'
+            if (errorMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'minha-carteira' %}"
+                }, 2000)
+            }
+            if (successMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'minha-carteira' %}"
+                }, 1000)
+            }
+        }
+
+        if (editCartaoMessage) {
+            editCartaoPopUp.style.visibility = 'visible'
+            editCartaoPopUp.style.opacity = '1'
             if (errorMessage) {
                 setTimeout(function() {
                     window.location.href = "{% url 'minha-carteira' %}"
