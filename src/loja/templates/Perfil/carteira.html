@@ -38,6 +38,29 @@
         </div>
         <div class="container-flex">
             <section class="container-cartoes">
+                {% for cartao in cartoes %}
+                    <div class="card-cartao">
+                        {% if cartao.bandeira == 'Visa' %}
+                            <img src="{% static 'images/cartao_visa.png' %}" alt="Cartão Visa">
+                        {% elif cartao.bandeira == 'Mastercard' %}
+                            <img src="{% static 'images/cartao_mastercard.png' %}" alt="Cartão Mastercard">
+                        {% endif %}
+                        <div class="cartao-dados">
+                            <p>Nome do cartão: <span>{{cartao.nome}}</span></p>
+                            <p>Nome do titular: <span>{{cartao.nometitular}}</span></p>
+                            <p>Número: <span>{{cartao.numero|numero_cartao}}</span></p>
+                            <div class="container-flex">
+                                <p>Bandeira: <span>{{cartao.bandeira}}</span></p>
+                                <p>Tipo: <span>{{cartao.tipo|first_name}}</span></p>
+                            </div>
+                            <div class="container-buttons">
+                                <button type="button" class="button-submit">Editar</button>
+                                <button type="button" class="button-excluir">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
                 <a class="card-novo-cartao" onclick="abrirAddCartao()">
                     <i class="bi bi-plus-circle"></i>
                     <p>Adicione um novo cartão</p>

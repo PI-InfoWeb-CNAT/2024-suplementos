@@ -10,12 +10,47 @@ h4 {
 }
 
 .container-cartoes {
-    width: 40%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 3em;
+}
+
+.card-cartao {
+    background-color: var(--light-grey);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 23em;
+    border-radius: 15px;
+    & img {
+        border-radius: 15px;
+        width: 23em;
+    }
+    & p {
+        font-weight: 600;
+    }
+    & span {
+        font-weight: 400;
+    }
+    & .container-flex {
+        justify-content: left;
+        gap: 1em;
+    }
+    & .container-buttons {
+        margin-top: .4em;
+    }
+}
+
+.cartao-dados {
+    padding: .5em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
 }
 
 .card-novo-cartao {
     color: var(--dark-grey);
-    width: 22em;
+    width: 19em;
     height: 15em;
     display: flex;
     flex-direction: column;
@@ -97,7 +132,7 @@ h4 {
 .button-submit {
     background-color: var(--dark-grey);
     color: var(--light-green);
-    border: 1px solid transparent;
+    border: none;
     border-radius: 5px;
     text-align: center;
     padding: .3em .9em;
@@ -110,6 +145,14 @@ h4 {
     border-radius: 5px;
     text-align: center;
     padding: .3em .9em;
+}
+
+.button-excluir {
+    border: none;
+    border-radius: 5px;
+    padding: .3em .9em;
+    background-color: #ff360a;
+    color: white;
 }
 
 .message-novocartao {
