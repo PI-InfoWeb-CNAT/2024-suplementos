@@ -199,15 +199,13 @@ input:-webkit-autofill {
     & input {
         border: 3px solid var(--dark-green);
         border-radius: 6px;
-        padding: .6em 1.7em;
+        padding: .6em 1em;
         font-size: 1.05em;
         outline: none;
         width: 400px;
     }
 
 }
-
-
 
 .solicitacao-senha {
     display: flex;
@@ -219,11 +217,6 @@ input:-webkit-autofill {
 .solicitacao-senha-popup > div {
     width: 35em;
     height: 22em;
-}
-
-
-
-.solicitacao-senha-popup > div {
     & i {
         position: absolute;
         top: 0;
@@ -246,7 +239,6 @@ input:-webkit-autofill {
         }
     }
 }
-
 
 .mensagem-sucesso {
     margin-top: 1em;
@@ -271,7 +263,6 @@ input:-webkit-autofill {
     margin-top: 20px;
     font-size: 1em;
 }
-
 
 input:-webkit-autofill {
     background-color: transparent !important; 

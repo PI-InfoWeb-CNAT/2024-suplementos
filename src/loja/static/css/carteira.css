@@ -2,6 +2,7 @@ h4 {
     font-size: 1.4em;
     font-weight: 600;
     margin-bottom: 1em;
+    margin-left: 1.7em !important;
 }
 
 .container-flex {
@@ -10,11 +11,14 @@ h4 {
 }
 
 .container-cartoes {
-    width: 60%;
+    width: 65%;
+    max-height: 55em;
     display: flex;
+    padding-right: 1em;
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 3em;
+    overflow-y: auto;
 }
 
 .card-cartao {
@@ -51,7 +55,7 @@ h4 {
 .card-novo-cartao {
     color: var(--dark-grey);
     width: 19em;
-    height: 15em;
+    height: 17em;
     display: flex;
     flex-direction: column;
     justify-content: center;

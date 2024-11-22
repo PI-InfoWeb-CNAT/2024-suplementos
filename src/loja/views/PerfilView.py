@@ -47,13 +47,13 @@ def edit_dados_view(request):
         tel_celular = request.POST.get('tel_celular')
 
         if user.username == nome and user.email == email and cliente.CPF == cpf and cliente.Telefone_celular == tel_celular:
-            messages.error(request, 'Altere os dados para atualizar!', extra_tags='page')
+            messages.error(request, 'Altere os dados para atualizar!', extra_tags='page-perfil')
         else:
             email_alterado = user.email != email
             email_existe = email_alterado and clientes.filter(email=email).exists()
 
             if email_existe:
-                messages.error(request, 'Esse e-mail já existe.', extra_tags='page')
+                messages.error(request, 'Esse e-mail já existe.', extra_tags='page-perfil')
             else:
                 user.username = nome
                 if email_alterado:
@@ -64,7 +64,7 @@ def edit_dados_view(request):
                 cliente.Telefone_celular = tel_celular
                 cliente.save()
 
-                messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+                messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page-perfil')
 
     return redirect(reverse('perfil'))
     
@@ -150,7 +150,7 @@ def excluir_endereco_view(request):
 
         endereco = Endereco.objects.get(id=endereco_id, cliente=request.user.cliente)
         endereco.delete()
-        messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page')
+        messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page-perfil')
     return redirect(reverse('perfil'))
     
 @login_required

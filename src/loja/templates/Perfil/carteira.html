@@ -36,6 +36,15 @@
                 <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'page-carteira' in message.tags %}
+                    <div class="message {{ message.tags }} message-pageCarteira">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         <div class="container-flex">
             <section class="container-cartoes">
                 {% for cartao in cartoes %}
@@ -55,7 +64,11 @@
                             </div>
                             <div class="container-buttons">
                                 <button type="button" class="button-submit">Editar</button>
-                                <button type="button" class="button-excluir">Excluir</button>
+                                <form action="{% url 'excluir-cartao' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="cartao_id" value="{{ cartao.id }}">
+                                    <button type="submit" class="button-excluir">Excluir</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -137,6 +150,7 @@
     <script>
         const AddCartaoPopUp = document.querySelector('.novocartao-popup')
         const novoCartaoMessage = document.querySelector('.message-novocartao')
+        const pageMessage = document.querySelector('.message-pageCarteira')
         const successMessage = document.querySelector('.success')
         const errorMessage = document.querySelector('.error')
 
@@ -148,6 +162,12 @@
         function fecharAddCartao() {
             AddCartaoPopUp.style.visibility = 'hidden'
             AddCartaoPopUp.style.opacity = '0'
+        }
+
+        if (pageMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'minha-carteira' %}"
+            }, 1000)
         }
 
         if (novoCartaoMessage) {

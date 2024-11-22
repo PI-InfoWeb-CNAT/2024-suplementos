@@ -1,5 +1,4 @@
 import requests
-from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -10,7 +9,6 @@ from loja.models import Cartao, Cliente
 @login_required
 def list_carteira_view(request):
     user = request.user
-    cliente = Cliente.objects.get(user=user)
 
     cartoes_cliente = Cartao.objects.filter(cliente=user.cliente)
 
@@ -65,3 +63,17 @@ def adicionar_cartao_view(request):
             messages.error(request, 'Preencha os campos obrigatórios. (*)', extra_tags='novo-cartao')
 
     return render(request, template_name='Perfil/carteira.html', status=200) 
+
+@login_required
+def excluir_cartao_view(request):
+    user = request.user
+    print(user)
+    if request.method == 'POST':
+        cartao_id = request.POST.get('cartao_id')
+        print(cartao_id)
+
+        cartao = Cartao.objects.get(id=cartao_id, cliente=user.cliente)
+        cartao.delete()
+        messages.success(request, 'Cartão excluído com sucesso!', extra_tags='page-carteira')
+
+    return redirect(reverse('minha-carteira'))
