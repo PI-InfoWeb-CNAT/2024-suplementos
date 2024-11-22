@@ -26,7 +26,7 @@
             {% csrf_token %}
             <div class="container-input-login">
                 <label for="email">E-MAIL</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu email">
+                <input type="email" name="email" id="email" placeholder="Digite seu email" >
             </div>
             <div class="container-input-login">
                 <label for="senha">SENHA</label>
@@ -35,9 +35,43 @@
             
             <div class="container-esqueceusenha">
                 <button type="submit">Entrar</button>
-                <a href="">Esqueceu a senha?</a>
+                <a class="redefinir-senha" onclick="abrir_redefinirsenha()">Esqueceu a senha?</a>
             </div>
         </form>
+
+
+        <div class="redefinir-senha-popup popup">
+            <div>
+                <i class="bi bi-x" onclick="fechar_redefinirsenha()"></i>
+                <div id="conteudo">
+                    <h1>Redefinir senha</h1>
+                    <div id="container-enviar">
+                        <h2>Informe o Email para enviar o link de alteração de senha</h2>
+                        <div class="container-input-email-redefinicao-senha">
+                            <input type="email" id="email-redefinir" placeholder="Digite seu email" name="email-redefinir">
+                            <button class="solicitacao-senha" onclick="solicitacao_confirmada()" type="button" id="enviar-email">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solicitacao-senha-popup popup">
+            <div>
+                <i class="bi bi-x" onclick="fechar_solicitacao()"></i>
+                <div>
+                    <div class="mensagem-sucesso">
+                        <img src="{% static 'images/logo_preta.png' %}" alt="">
+                        <div>
+                            <h1>Redefinição de Senha Solicitada</h1>
+                            <p>Seu link de redefinição de senha foi enviado com sucesso.</p>
+                        </div>   
+                    </div>                                              
+                </div>
+            </div>
+        </div>
+
         <a href="{% url 'cadastro' %}">Não tem uma conta? Cadastre-se</a>
     </section>
 
@@ -48,17 +82,60 @@
     </section>
 
     <script>
-        const successMessage = document.querySelector('.success')
-        const errorMessage = document.querySelector('.error')
+
+        const successMessage = document.querySelector('.success');
+        const errorMessage = document.querySelector('.error');
+        const RedefinirSenha = document.querySelector('.redefinir-senha-popup');
+        const btnEnviar = document.querySelector('.solicitacao-senha-popup');
+        const emailInput = document.getElementById('email-redefinir'); 
+
+
+        function abrir_redefinirsenha() {
+            RedefinirSenha.style.visibility = 'visible';
+            RedefinirSenha.style.opacity = '1';
+        }
+
+        function fechar_redefinirsenha() {
+
+            RedefinirSenha.style.visibility = 'hidden';
+            RedefinirSenha.style.opacity = '0';
+            
+        }
+
+        function solicitacao_confirmada() {
+            if (!emailInput.checkValidity()) {
+                emailInput.reportValidity();
+                return; 
+            }
+
+            RedefinirSenha.style.visibility = 'hidden';
+            RedefinirSenha.style.opacity = '0';
+            btnEnviar.style.visibility= 'visible';
+            btnEnviar.style.opacity=1;
+           
+        }
+
+
+
+        function fechar_solicitacao(){
+            btnEnviar.style.visibility = 'hidden';
+            btnEnviar.style.opacity = '0';
+        }
+        
+
+            
         if (successMessage) {
             setTimeout(function() {
-                window.location.href = "{% url 'home' %}"
-            }, 2000)
+                window.location.href = "{% url 'home' %}";
+            }, 2000);
         } else if (errorMessage) {
             setTimeout(function() {
-                window.location.href = "{% url 'login' %}"
-            }, 1000)
+                window.location.href = "{% url 'login' %}";
+            }, 1000);
         }
+        
+
+
     </script>
 </body>
 </html>
