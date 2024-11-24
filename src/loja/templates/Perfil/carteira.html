@@ -50,9 +50,17 @@
                 {% for cartao in cartoes %}
                     <div class="card-cartao">
                         {% if cartao.bandeira == 'Visa' %}
-                            <img src="{% static 'images/cartao_visa.png' %}" alt="Cartão Visa">
+                            <img src="{% static 'images/cartoes/cartao_visa.png' %}" alt="Cartão Visa">
                         {% elif cartao.bandeira == 'Mastercard' %}
-                            <img src="{% static 'images/cartao_mastercard.png' %}" alt="Cartão Mastercard">
+                            <img src="{% static 'images/cartoes/cartao_mastercard.png' %}" alt="Cartão Mastercard">
+                        {% elif cartao.bandeira == 'Elo' %}
+                            <img src="{% static 'images/cartoes/cartao_elo.png' %}" alt="Cartão Elo">
+                        {% elif cartao.bandeira == 'Hipercard' %}
+                            <img src="{% static 'images/cartoes/cartao_hipercard.png' %}" alt="Cartão Hipercard">
+                        {% elif cartao.bandeira == 'Amex' %}
+                            <img src="{% static 'images/cartoes/cartao_amex.png' %}" alt="Cartão American Express">
+                        {% else %}
+                            <img src="{% static 'images/cartoes/cartao_padrao.png' %}" alt="Cartão Padrão">
                         {% endif %}
                         <div class="cartao-dados">
                             <p>Nome do cartão: <span>{{cartao.nome}}</span></p>
