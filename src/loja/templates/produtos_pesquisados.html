@@ -1,4 +1,7 @@
 <div class="produtos">
+    {% if not produtos_pesquisa %}
+        <p style="font-size: 1.5em;">Nenhum produto encontrado</p>
+    {% else %}
         {% for prod in produtos_pesquisa %}
             {% if prod.Promocao == 0 %}
             <div class="card-produto">
@@ -31,4 +34,5 @@
             </div>
             {% endif %}
         {% endfor %}
+    {% endif %}
 </div>

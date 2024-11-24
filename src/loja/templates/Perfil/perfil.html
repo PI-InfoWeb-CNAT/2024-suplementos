@@ -49,15 +49,46 @@
             <section class="container-dados-usuario">
                 <h4>Dados Pessoais</h4>
                 <div class="container-flex dados">
-                    <form action="{% url 'edit' %}" method="POST" class="form-editardados">
+                    <form action="{% url 'edit-dados' %}" method="POST" class="form-editardados">
                         {% csrf_token %}
                         <label for="nome-dados">Nome: <input type="text" name="nome" id="nome-dados" value="{{nome}}"></label>
                         <label for="email">E-mail: <input type="text" name="email" id="email" value="{{email}}"></label>
                         <label for="cpf">CPF: <input type="text" name="cpf" id="cpf" value="{{cpf}}"></label>
                         <label for="tel_celular">Telefone Celular: <input type="text" name="tel_celular" id="tel_celular" value="{{tel_celular}}"></label>
-                        <button type="submit">Atualizar</button>
+                        <div class="container-buttons">
+                            <button type="submit">Atualizar</button>
+                            <button type="button" onclick="abrirRedefinirSenha()">Redefinir senha</button>
+                        </div>
                     </form>
                     <img src="{% static 'images/imagem-editar.svg' %}" alt="Vetor de editar" class="img-editar">
+                    <!-- POP UP -->
+                     <div class="redefinirsenha-popup popup">
+                        <div>
+                            <i class="bi bi-x" onclick="fecharRedefinirSenha()"></i>
+                            <div class="conteudo-popupRedefinirSenha">
+                                {% if messages %}
+                                    {% for message in messages %} 
+                                        {% if 'redefinir-senha' in message.tags %}
+                                            <div class="message {{ message.tags }} message-redefinirsenha">
+                                                <span>{{ message }}</span>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <h5>Redefinição da senha</h5>
+                                <form action="{% url 'redefinir-senha' %}" method="POST">
+                                    {% csrf_token %}
+                                    <label for="senhaAtual">Senha atual:* <input type="password" name="senhaAtual" id="senhaAtual" placeholder="Digite a senha atual"></label>
+                                    <label for="novaSenha">Nova senha:* <input type="password" name="novaSenha" id="novaSenha" placeholder="Digite a nova senha"></label>
+                                    <label for="confirmacao-novaSenha">Confirme a nova senha:* <input type="password" name="confirmacao-novaSenha" id="confirmacao-novaSenha" placeholder="Digite a nova senha novamente"></label>
+                                    <div class="container-buttons">
+                                        <button type="submit" class="button-submit">Redefinir</button>
+                                        <button type="button" onclick="fecharRedefinirSenha()" class="button-cancelar">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             </section>
             <section class="container-menu-secundario">
@@ -236,13 +267,14 @@
         const successMessage = document.querySelector('.success')
         const errorMessage = document.querySelector('.error')
         const dadosMessage = document.querySelector('.message-dados')
+        const redefinirSenhaMessage = document.querySelector('.message-redefinirsenha')
         const novoEnderecoMessage = document.querySelector('.message-novoendereco')
         const editEnderecoMessage = document.querySelector('.message-editendereco')
+        const redefinirSenhaPopUp = document.querySelector('.redefinirsenha-popup')
         const editEnderecoPopUp = document.querySelector('.editendereco-popup')
         const AddEnderecoPopUp = document.querySelector('.novoendereco-popup')
         const excluirPopUp = document.querySelector('.excluirconta-popup')
 
-        
         function preencher() {
             cep = cepInput.value
             
@@ -267,6 +299,16 @@
             } else {
                 alert('Por favor, insira um CEP válido com 8 dígitos e sem "-"');
             }
+        }
+
+        function abrirRedefinirSenha() {
+            redefinirSenhaPopUp.style.visibility = 'visible'
+            redefinirSenhaPopUp.style.opacity = '1'
+        }
+
+        function fecharRedefinirSenha() {
+            redefinirSenhaPopUp.style.visibility = 'hidden'
+            redefinirSenhaPopUp.style.opacity = '0'
         }
 
         function abrirEditEndereco(id) {
@@ -300,6 +342,12 @@
         }
 
         if (dadosMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        } else if (redefinirSenhaMessage) {
+            redefinirSenhaPopUp.style.visibility = 'visible'
+            redefinirSenhaPopUp.style.opacity = '1'
             setTimeout(function() {
                 window.location.href = "{% url 'perfil' %}"
             }, 1000)

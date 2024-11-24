@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, update_session_auth_hash
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -65,6 +65,38 @@ def edit_dados_view(request):
                 cliente.save()
 
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page-perfil')
+
+    return redirect(reverse('perfil'))
+
+@login_required
+def redefinir_senha_view(request):
+    user = User.objects.get(username=request.user)
+
+    if request.method == 'POST':
+        senhaAtual = request.POST.get('senhaAtual')
+        novaSenha = request.POST.get('novaSenha')
+        confirm_novaSenha = request.POST.get('confirmacao-novaSenha')
+
+        if senhaAtual and novaSenha and confirm_novaSenha:
+            if user.check_password(senhaAtual):
+                if novaSenha == confirm_novaSenha:
+                    if len(novaSenha) >= 8:
+                        if novaSenha != senhaAtual:
+                            user.set_password(novaSenha)
+                            user.save()
+                            update_session_auth_hash(request, user) 
+
+                            messages.success(request, 'Senha redefinida com sucesso!', extra_tags='redefinir-senha')
+                        else:
+                            messages.error(request, 'Altere a senha para redefinir', extra_tags='redefinir-senha')
+                    else:
+                        messages.error(request, 'A senha deve ter no mínimo 8 caracteres', extra_tags='redefinir-senha')
+                else:
+                    messages.error(request, 'A confirmação da senha nova está incorreta', extra_tags='redefinir-senha')
+            else:
+                messages.error(request, 'A senha atual está incorreta.', extra_tags='redefinir-senha')
+        else:
+            messages.error(request, 'Preencha todos os campos', extra_tags='redefinir-senha')
 
     return redirect(reverse('perfil'))
     

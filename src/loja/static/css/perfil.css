@@ -50,15 +50,63 @@ h4 {
     & span {
         font-weight: lighter;
     }
+    & .container-buttons {
+        align-items: end;
+        margin-top: 0;
+    }
     & button {
-        width: 22%;
-        margin-top: 1.5em;
-        border: none;
+        padding: .3em .9em;
+        text-align: center;
         border-radius: 5px;
+    }
+    & button[type='submit'] {
+        margin-top: 1.5em;
+        border: 2px solid transparent;
         background-color: var(--dark-grey);
         color: var(--light-green);
-        text-align: center;
-        padding: .3em;
+    }
+    & button[type='button'] {
+        background-color: transparent;
+        color: black;
+        border: 2px solid var(--dark-green);
+        width: 10em;
+    }
+}
+
+.redefinirsenha-popup > div {
+    width: 40em;
+    height: 25em;
+}
+
+.conteudo-popupRedefinirSenha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 80%;
+        & label {
+            font-weight: bold;
+            width: 100%;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+        & input[name='confirmacao-novaSenha'] {
+            width: 50%;
+        }
     }
 }
 
@@ -123,6 +171,10 @@ h4 {
 
 .message-novoendereco, .message-editendereco {
     width: 90%;
+}
+
+.message-redefinirsenha {
+    width: 80%;
 }
 
 .editendereco-popup > div {
@@ -194,12 +246,10 @@ h4 {
     gap: 2em;
 }
 
-.novoendereco-popup {
-    > div {
-        width: 60em;
-        height: 30em;
-        padding: 0 3em;
-    }
+.novoendereco-popup > div {
+    width: 60em;
+    height: 30em;
+    padding: 0 3em;
 }
 
 .conteudo-popUpNovoEndereco {
