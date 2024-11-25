@@ -1,14 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from loja.models import Cliente, Notificacao
 
 @login_required
 def list_notificacoes_view(request):
-    user = request.user
+    clientes = Cliente.objects.all()
 
-    notificacoes_cliente = Notificacao.objects.filter(cliente_id=user.id)
-    notificacoes_cliente.update(lida=True)
-    print(notificacoes_cliente)
+    notificacoes_cliente = ''
+    for cliente in clientes:
+        if cliente.user_id == request.user.id:
+            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id)
+            notificacoes_cliente.update(lida=True)
 
     context = {'notificacoes': notificacoes_cliente}
 
@@ -16,9 +19,13 @@ def list_notificacoes_view(request):
 
 @login_required
 def excluir_notificacoes_view(request):
-    user = request.user
+    clientes = Cliente.objects.all()
 
-    notificacoes_cliente = Notificacao.objects.filter(cliente_id=user.id)
+    notificacoes_cliente = ''
+    for cliente in clientes:
+        if cliente.user_id == request.user.id:
+            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id)
+            
     notificacoes_cliente.delete()
 
-    return render(request, template_name='notificacoes.html', status=200)
+    return redirect(reverse('notificacoes'))

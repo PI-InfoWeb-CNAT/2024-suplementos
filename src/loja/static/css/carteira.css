@@ -1,0 +1,211 @@
+h4 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    margin-left: 1.7em !important;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-cartoes {
+    width: 65%;
+    max-height: 55em;
+    display: flex;
+    padding-right: 1em;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 3em;
+    overflow-y: auto;
+}
+
+.card-cartao {
+    background-color: var(--light-grey);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 23em;
+    border-radius: 15px;
+    & img {
+        border-radius: 15px;
+        width: 23em;
+    }
+    & p {
+        font-weight: 600;
+    }
+    & span {
+        font-weight: 400;
+    }
+    & .container-flex {
+        justify-content: left;
+        gap: 1em;
+    }
+    & .container-buttons {
+        margin-top: .4em;
+    }
+}
+
+.cartao-dados {
+    padding: .5em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+
+.editcartao-popup > div {
+    width: 40em;
+    height: 25em;
+    padding: 0 3em;
+}
+
+.conteudo-popupEditCartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        width: 100%;
+        & label {
+            font-weight: bold;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
+.card-novo-cartao {
+    color: var(--dark-grey);
+    width: 19em;
+    height: 17em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--dark-grey);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    & i {
+        font-size: 2em;
+    }
+}
+
+.novocartao-popup > div {
+    width: 50em;
+    height: 30em;
+    padding: 0 5em;
+}
+
+.conteudo-popUpAddCartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        width: 100%;
+        & label {
+            display: flex;
+            gap: 1em;
+            font-weight: bold;
+        }
+        & label[for='nome-novocartao'] {
+            width: 100%;
+        }
+        & input[name='nome'] {
+            width: 76.7%;
+        }
+        & label[for='nometitular-novocartao'] {
+            width: 100%;
+        }
+        & input[name='nometitular'] {
+            width: 64.8%;
+        }
+        & label[for='numero-novocartao'] {
+            width: 60%;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+            width: 90%;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
+.container-buttons {
+    display: flex;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.button-submit {
+    background-color: var(--dark-grey);
+    color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.button-cancelar {
+    background-color: transparent;
+    color: black;
+    border: 2px solid var(--dark-green);
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.button-excluir {
+    border: none;
+    border-radius: 5px;
+    padding: .3em .9em;
+    background-color: #ff360a;
+    color: white;
+}
+
+.message-novocartao {
+    width: 90%;
+}
+
+.message-editcartao {
+    width: 90%;
+    margin-bottom: 1em;
+}

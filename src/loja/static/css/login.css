@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: row;
 }
 
 .container-foto-login {
@@ -129,4 +130,142 @@ input:-webkit-autofill {
     & a {
         font-size: 1em;
     }
+}
+
+
+.redefinir-senha {
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    cursor: pointer;
+}
+.redefinir-senha-popup>div {
+    width: 35em;
+    height: 22em;
+}
+
+
+.redefinir-senha-popup > div {
+    & i {
+        position: absolute;
+        top: 0;
+        right: 3%;
+        font-size: 2.5em;
+        cursor: pointer;
+    }
+    > div {
+        height: 100%;
+        display: flex;
+        margin-top: 2em;
+        flex-direction: column;
+        align-items: center;
+        & h1 {
+            font-weight: 600;
+        }
+        & h2{
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+    }
+}
+
+#container-enviar{
+    margin-top: 2.5em;
+    padding-bottom: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.2em;
+    
+    & button{
+        margin-top: 1.8em;
+        text-align: center;
+        width: 18%;
+        background-color: var(--dark-grey);
+        border: none;
+        border-radius: 6px;
+        color: var(--light-green);
+        padding: .8em 1em;
+        cursor: pointer;
+        font-size: 1.1em;
+    }
+}
+
+.container-input-email-redefinicao-senha {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    & input {
+        border: 3px solid var(--dark-green);
+        border-radius: 6px;
+        padding: .6em 1em;
+        font-size: 1.05em;
+        outline: none;
+        width: 400px;
+    }
+
+}
+
+.solicitacao-senha {
+    display: flex;
+    align-items: center;
+    transition: .01s;
+    cursor: pointer;
+}
+
+.solicitacao-senha-popup > div {
+    width: 35em;
+    height: 22em;
+    & i {
+        position: absolute;
+        top: 0;
+        right: 3%;
+        font-size: 2.5em;
+        cursor: pointer;
+    }
+    > div {
+        height: 100%;
+        display: flex;
+        margin-top: 2em;
+        flex-direction: column;
+        align-items: center;
+        & h1 {
+            font-weight: 600;
+        }
+        & h2{
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+    }
+}
+
+.mensagem-sucesso {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    & div{
+        margin-top: 2.5em;
+    }   
+}
+
+.mensagem-sucesso h1 {
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.mensagem-sucesso p {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+input:-webkit-autofill {
+    background-color: transparent !important; 
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important; 
+    -webkit-text-fill-color: black !important; 
 }

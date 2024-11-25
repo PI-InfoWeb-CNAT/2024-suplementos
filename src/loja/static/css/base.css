@@ -14,6 +14,13 @@
     font-family: 'Bai Jamjuree';
 }
 
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 a {
     text-decoration: none;
 }
@@ -31,6 +38,7 @@ main {
 #container-header-main {
     display: flex;
     margin: 4em 10em;
+    flex: 1;
 }
 
 .container-cima {
@@ -304,7 +312,7 @@ footer {
     border-radius: 15px 15px 0px 0px;
     display: flex;
     justify-content: center;
-    padding: 3em 0;
+    padding: 2.5em 0;
     margin-top: 3em;
     & > div {
         width: 70%;
@@ -315,44 +323,38 @@ footer {
 }
 
 .img-footer img {
-    width: 250px;
+    width: 200px;
 }
 
 .menu-footer {
     display: flex;
-    flex-direction: column;
     gap: 2em;
-    & div {
-        display: flex;
-        gap: 3em;
-        justify-content: space-between;
-        width: 30em;
-        & li {
-            list-style-type: none;
-            & a {
-                color: white;
-                font-size: 1.1em;
-                transition: .3s;
-            }
-            & a:hover {
-                color: var(--dark-green);
-                text-decoration: none;
-            }
-        } 
-    }
+    margin-bottom: 0;
+    padding-left: 0;
+    & li {
+        list-style-type: none;
+        & a {
+            color: white;
+            font-size: 1.1em;
+            transition: .3s;
+        }
+        & a:hover {
+            color: var(--dark-green);
+            text-decoration: none;
+        }
+    } 
 }
 
 .footer-redes {
     display: flex;
     align-items: center;
     gap: 2em;
-    width: 250px;
     & img {
-        width: 40px;
+        width: 30px;
     }
     & i {
         color: white;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 }
 

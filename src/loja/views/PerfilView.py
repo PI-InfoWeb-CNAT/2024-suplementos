@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, update_session_auth_hash
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -32,7 +32,7 @@ def perfil_view(request):
         'cpf': cpf,
         'enderecos': enderecos_cliente
     }
-    return render(request, template_name='perfil.html', context=context, status=200)
+    return render(request, template_name='Perfil/perfil.html', context=context, status=200)
 
 @login_required 
 def edit_dados_view(request):
@@ -43,23 +43,60 @@ def edit_dados_view(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
+        cpf = request.POST.get('cpf')
         tel_celular = request.POST.get('tel_celular')
 
-        if user.username == nome and user.email == email and cliente.Telefone_celular == tel_celular:
-            messages.error(request, 'Altere os dados para atualizar!', extra_tags='page')
+        if user.username == nome and user.email == email and cliente.CPF == cpf and cliente.Telefone_celular == tel_celular:
+            messages.error(request, 'Altere os dados para atualizar!', extra_tags='page-perfil')
         else:
-            email_existe = clientes.filter(email=email).exists()
-            if not email_existe:
+            email_alterado = user.email != email
+            email_existe = email_alterado and clientes.filter(email=email).exists()
+
+            if email_existe:
+                messages.error(request, 'Esse e-mail já existe.', extra_tags='page-perfil')
+            else:
                 user.username = nome
-                user.email = email
+                if email_alterado:
+                    user.email = email
                 user.save()
 
+                cliente.CPF = cpf
                 cliente.Telefone_celular = tel_celular
                 cliente.save()
 
-                messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page')
+                messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page-perfil')
+
+    return redirect(reverse('perfil'))
+
+@login_required
+def redefinir_senha_view(request):
+    user = User.objects.get(username=request.user)
+
+    if request.method == 'POST':
+        senhaAtual = request.POST.get('senhaAtual')
+        novaSenha = request.POST.get('novaSenha')
+        confirm_novaSenha = request.POST.get('confirmacao-novaSenha')
+
+        if senhaAtual and novaSenha and confirm_novaSenha:
+            if user.check_password(senhaAtual):
+                if novaSenha == confirm_novaSenha:
+                    if len(novaSenha) >= 8:
+                        if novaSenha != senhaAtual:
+                            user.set_password(novaSenha)
+                            user.save()
+                            update_session_auth_hash(request, user) 
+
+                            messages.success(request, 'Senha redefinida com sucesso!', extra_tags='redefinir-senha')
+                        else:
+                            messages.error(request, 'Altere a senha para redefinir', extra_tags='redefinir-senha')
+                    else:
+                        messages.error(request, 'A senha deve ter no mínimo 8 caracteres', extra_tags='redefinir-senha')
+                else:
+                    messages.error(request, 'A confirmação da senha nova está incorreta', extra_tags='redefinir-senha')
             else:
-                messages.error(request, 'Esse e-mail já existe.', extra_tags='page')
+                messages.error(request, 'A senha atual está incorreta.', extra_tags='redefinir-senha')
+        else:
+            messages.error(request, 'Preencha todos os campos', extra_tags='redefinir-senha')
 
     return redirect(reverse('perfil'))
     
@@ -79,14 +116,13 @@ def adicionar_endereco_view(request):
         complemento = request.POST.get('complemento')
         telefone = request.POST.get('telefone')
 
-        enderecos_cliente = Endereco.objects.filter(cliente=request.user.cliente)
+        enderecos_cliente = Endereco.objects.filter(cliente=user.cliente)
 
         endereco_existe = enderecos_cliente.filter(rua=rua, numero=numero).exists()
 
         if nome and cep and estado and cidade and rua and numero:
             if not endereco_existe:
-                endereco = Endereco(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
-                endereco.save()
+                Endereco.objects.create(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
 
                 messages.success(request, 'Endereço adicionado com sucesso!', extra_tags='novo-endereco')
                 return redirect(reverse('perfil'))
@@ -135,7 +171,6 @@ def edit_endereco_view(request):
 
                 endereco.save()
 
-                print(enderecos_cliente)
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='edit-endereco')
     return redirect(reverse('perfil'))
 
@@ -146,7 +181,7 @@ def excluir_endereco_view(request):
 
         endereco = Endereco.objects.get(id=endereco_id, cliente=request.user.cliente)
         endereco.delete()
-        messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page')
+        messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page-perfil')
     return redirect(reverse('perfil'))
     
 @login_required

@@ -1,4 +1,7 @@
 <div class="produtos">
+    {% if not produtos_pesquisa %}
+        <p style="font-size: 1.5em;">Nenhum produto encontrado</p>
+    {% else %}
         {% for prod in produtos_pesquisa %}
             {% if prod.Promocao == 0 %}
             <div class="card-produto">
@@ -14,7 +17,7 @@
             </div>
             {% else %}
             <div class="card-produto">
-                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="Imagem do produto">
                 <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
                 <div class="produto-info">
                     <h5 class="titulo-produto">{{prod.Nome}}</h5>
@@ -31,4 +34,5 @@
             </div>
             {% endif %}
         {% endfor %}
+    {% endif %}
 </div>
