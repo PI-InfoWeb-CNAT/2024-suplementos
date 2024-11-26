@@ -12,6 +12,8 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 LOGIN_URL = '/login/'
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
 # Application definition
 
 INSTALLED_APPS = [

@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(to bottom, #B2F6A8, #ffffff);
+    background-size: 100% 35%; 
+    background-repeat: no-repeat; 
+}
+
+h1{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+ h3{
+    position: relative;
+    top: -8vh;
+
+}
+
