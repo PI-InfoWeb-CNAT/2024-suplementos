@@ -78,7 +78,7 @@
             <section class="container-ofertas">
                 <div class="section-title">
                     <h3>Ofertas Especiais</h3>
-                    <a href="/promocoes">
+                    <a href="{% url 'promocoes' %}">
                         <p>Ver mais</p> 
                         <i class="bi bi-chevron-down"></i>
                     </a>
@@ -88,7 +88,11 @@
                         {% if prod.Promocao != 0 %}
                         <div class="card-produto">
                             <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                            <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                            <form action="{% url 'favorito' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                <button type="submit" onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                            </form>
                             <div class="produto-info">
                                 <h5 class="titulo-produto">{{prod.Nome}}</h5>
                                 <div>

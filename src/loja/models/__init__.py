@@ -8,3 +8,4 @@ from .Produto import Produto
 from .Endereco import Endereco
 from .Notificacao import Notificacao
 from .Cartao import Cartao
+from .Favorito import Favorito
