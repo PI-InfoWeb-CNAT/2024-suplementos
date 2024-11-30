@@ -46,7 +46,16 @@
             {% for prod in produtos %}
             <div class="card-produto">
                 <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt=" Imagem do produto">
-                <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                <form action="{% url 'favorito' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    {% if prod.id in favoritos_cliente %}
+                        <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                    {% else %}
+                        <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                    {% endif %}
+                </form>
                 <div class="produto-info">
                     <h5 class="titulo-produto">{{prod.Nome}}</h5>
                     <div>

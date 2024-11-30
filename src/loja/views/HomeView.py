@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from loja.models import Produto
+from loja.models import Produto, Favorito
 
 def home_view(request):
     produto = request.GET.get("produto")
     produtos = Produto.objects.all()
     produtos_pesquisa = produtos
+
 
     produtos_promocoes = []
     descontos = []
@@ -28,7 +29,7 @@ def home_view(request):
         'produtos_pesquisa': produtos_pesquisa,
         'produtos': produtos,
         'produtos_promocoes': produtos_promocoes,
-        'promocao_maxima': max_promocoes
+        'promocao_maxima': max_promocoes,
     }
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
