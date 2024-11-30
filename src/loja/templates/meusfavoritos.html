@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Meu Perfil{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+<ul class="menu">
+    <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+    <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+    <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+    <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+    <li><a href="{% url 'meus-favoritos' %}" class="active"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+    <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+</ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Meus Favoritos</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <a class="ola-usuario" href="{% url 'perfil %'}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
+        <section class="produtos">
+            {% if not favoritos_cliente %}
+                <p style="font-size: 1.5em;">Nenhum produto favoritado</p>
+            {% else %}
+                {% for prod in produtos %}
+                    {% if prod.id in favoritos_cliente %}
+                        <div class="card-produto">
+                            <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt=" Imagem do produto">
+                            <form action="{% url 'favorito' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                <input type="hidden" name="next" value="{{ request.path }}">
+                                <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                            </form>
+                            <div class="produto-info">
+                                <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                <div>
+                                    <p class="preco-produto">{{prod.Preco}} R$</p>
+                                    <div class="promocao">
+                                        {{prod.Promocao}}% OFF
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="container-button-carrinho">
+                                <button class="button-add-carrinho">Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </section>
+    </main>
+
+{% endblock %}
