@@ -6,14 +6,16 @@ from loja.views.CadastroView import cadastro_view
 from loja.views.LoginView import login_view
 from loja.views.CarrinhoView import carrinho_view, adicionar_ao_carrinho
 from loja.views.NotificacoesView import list_notificacoes_view, excluir_notificacoes_view
+from loja.views.FavoritoView import favorito_view
+from loja.views.MeusFavoritosView import meusfavoritos_view
 
 urlpatterns = [
     path("", home_view, name='home'),
     path("promocoes/", promocoes_view, name='promocoes'),
     path("cadastro/", cadastro_view, name='cadastro'),
     path("login/", login_view, name='login'),
-    path("carrinho/", carrinho_view, name='carrinho'),
-    path("carrinho/adicionar/", adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path("favorito/", favorito_view, name='favorito'),
+    path("meus-favoritos/", meusfavoritos_view, name='meus-favoritos'),
     path("notificacoes/", list_notificacoes_view, name='notificacoes'),
     path("notificacoes/excluir", excluir_notificacoes_view, name='excluir-notificacoes'),
 ] 
