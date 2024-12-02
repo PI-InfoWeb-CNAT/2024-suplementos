@@ -7,10 +7,13 @@ document.getElementById('formPesquisa').addEventListener('submit', function(even
         document.getElementById('containerMid').style.display = 'none'
 
         history.pushState(null, '', `?produto=${inputPesquisa}`)
+        
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
         fetch(window.location.href, {
             headers: {
-                'x-requested-with': 'XMLHttpRequest'
+                'x-requested-with': 'XMLHttpRequest',
+                'X-CSRFToken': csrfToken,
             }
         })
         .then(response => response.text())

@@ -119,7 +119,6 @@
                             </div>
                         </div>
                     </div>
-
                 {% endfor %}
                 <a class="card-novo-cartao" onclick="abrirAddCartao()">
                     <i class="bi bi-plus-circle"></i>
@@ -172,7 +171,7 @@
                         <p>Meus Pedidos</p>
                     </div>
                     <div class="item-menu-secundario">
-                        <a href=""><i class="bi bi-heart-fill menu-icon"></i></a>
+                        <a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i></a>
                         <p>Meus Favoritos</p>
                     </div>
                     <div class="item-menu-secundario">
