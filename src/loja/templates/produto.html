@@ -2,16 +2,16 @@
 {% load static %}
 {% load custom_filters %}
 
-{% block title %}Promoções{% endblock %}
+{% block title %}{{produto.Nome}}{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/promocoes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/produto.css' %}">
 {% endblock %}
 
 {% block sidebar %}
     <ul class="menu">
         <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
-        <li><a href="{% url 'promocoes' %}" class="active"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
         <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
         <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
         <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
@@ -22,7 +22,7 @@
 {% block content %}
     <main>
         <div class="container-cima">
-            <h3>Promoções</h3>
+            <h3>{{produto.Nome}}</h3>
             <section class="container-botoes-cima">
                 <div class="notificacao-container">
                     <a href="{% url 'notificacoes' %}">
@@ -42,36 +42,22 @@
                 {% endif %}
             </section>
         </div>
-        <section class="produtos">
-            {% for prod in produtos_promocoes %}
-                <a class="card-produto" href="{% url 'produto' prod.id %}">
-                    <div class="container-imgProduto">
-                        <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                    </div>
-                    <form action="{% url 'favorito' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="produto_id" value="{{ prod.id }}">
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        {% if prod.id in favoritos_cliente %}
-                            <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
-                        {% else %}
-                            <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                        {% endif %}
-                    </form>
-                    <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                        <div>
-                            <p class="preco-produto">{{prod.Preco}} R$</p>
-                            <div class="promocao">
-                                {{prod.Promocao}}% OFF
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="container-button-carrinho">
-                        <button class="button-add-carrinho">Adicionar ao carrinho</button>
-                    </div>
-                </a>
-            {% endfor %}
+        <section class="container-detalhes-produto">
+            <div class="container-imgDetalhesProduto">
+                <img src="/media/{{produto.Imagem}}" alt="Imagem do produto {{produto.Nome}}">
+            </div>
+            <div class="detalhes-produto">
+                <div class="descricao-produto">
+                    <h5>Informações do produto</h5>
+                    <p>{{produto.Descricao}}</p>
+                </div>
+                <div class="container-preco">
+                    <p>R${{produto.Preco}}</p>
+                    {% if produto.Promocao != 0 %}
+                        <div class="icon-raio"><i class="bi bi-lightning-charge-fill"></i></div>
+                    {% endif %}
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

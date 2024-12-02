@@ -16,12 +16,13 @@
     <div id="container-header-main"> 
         <header>  
             <nav class="navbar-menu">
-                <img src="{% static 'images/logo_preta.png' %}" alt="Logo PowerUp preta">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo_preta.png' %}" alt="Logo PowerUp preta">
+                </a>
                 {% block sidebar %}{% endblock %}
             </nav>
         </header>
         {% block content %}
-            
         {% endblock %}
     </div>
     <a class="ajuda" onclick="abrir()"><i class="bi bi-question-circle-fill menu-icon"></i>Ajuda</a>
