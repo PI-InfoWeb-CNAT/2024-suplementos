@@ -35,7 +35,7 @@ def carrinho_view(request):
     return render(request, 'carrinho.html', context)
 
 
-def adicionar_ao_carrinho(request):
+def adicionarcarrinho_view(request):
     if request.method == 'POST':
         produto_id = request.POST.get('produto_id') 
         produto = get_object_or_404(Produto, id=produto_id) 
