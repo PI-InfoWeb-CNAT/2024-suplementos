@@ -12,6 +12,7 @@ def notificacoes_nao_lidas(request):
     return {'notificacoes_nao_lidas': notificacoes_nao_lidas}
 
 def favoritos_cliente(request):
+    favoritos_cliente = []
     if request.user.is_authenticated:
         favoritos_cliente = Favorito.objects.filter(cliente=request.user.cliente).values_list('produto_id', flat=True)
 

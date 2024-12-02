@@ -33,7 +33,7 @@
                     {% endif %}
                 </div>
                 <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
-                <a class="ola-usuario" href="{% url 'perfil %'}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+                <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
         <section class="produtos">

@@ -27,6 +27,7 @@ def adicionar_cartao_view(request):
         numero = request.POST.get('numero')
         tipo = request.POST.get('tipo')
 
+        numero = ''.join(filter(str.isdigit, numero))
         cartoes_cliente = Cartao.objects.filter(cliente=user.cliente)
         cartao_existe = cartoes_cliente.filter(numero=numero).exists()
 
