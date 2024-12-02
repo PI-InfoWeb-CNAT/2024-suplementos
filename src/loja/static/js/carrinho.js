@@ -10,6 +10,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 alert('Produto adicionado ao carrinho!');
+                
             },
             error: function(xhr, errmsg, err) {
                 alert('Erro ao adicionar o produto ao carrinho.');

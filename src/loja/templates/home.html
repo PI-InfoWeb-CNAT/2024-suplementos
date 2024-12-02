@@ -11,11 +11,11 @@
 
 {% block sidebar %}
     <ul class="menu">
-        <li><a href="/" class="active"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="{% url 'home' %}" class="active"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
         <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
         <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
         <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
-        <li><a href="/meusfavoritos"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+        <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
         <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
     </ul> 
 {% endblock %}
@@ -44,7 +44,7 @@
                     <i class="bi bi-cart-fill icon-cima"></i>
                 </a>
                 {% if user.is_authenticated %}
-                    <a class="ola-usuario" href="/perfil">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+                    <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
                 {% else %}
                     <a><i class="bi bi-person-fill icon-cima"></i></a>
                     <button class="button-sign"><a href="{% url 'login' %}">Entrar</a></button>
@@ -81,7 +81,7 @@
             <section class="container-ofertas">
                 <div class="section-title">
                     <h3>Ofertas Especiais</h3>
-                    <a href="/promocoes">
+                    <a href="{% url 'promocoes' %}">
                         <p>Ver mais</p> 
                         <i class="bi bi-chevron-down"></i>
                     </a>
@@ -91,7 +91,16 @@
                         {% if prod.Promocao != 0 %}
                         <div class="card-produto">
                             <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                            <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                            <form action="{% url 'favorito' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                <input type="hidden" name="next" value="{{ request.path }}">
+                                {% if prod.id in favoritos_cliente %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                                {% else %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                                {% endif %}
+                            </form>
                             <div class="produto-info">
                                 <h5 class="titulo-produto">{{prod.Nome}}</h5>
                                 <div>
@@ -120,36 +129,38 @@
                 </div>
                 <div class="produtos">
                     {% for prod in produtos %}
-                        {% if prod.Promocao == 0 %}
                         <div class="card-produto">
                             <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                            <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                            <div class="produto-info">
-                                <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                                <p class="preco-produto">{{prod.Preco}} R$</p>
-                            </div>
-                            <div class="container-button-carrinho">
-                                <button class="button-add-carrinho">Adicionar ao carrinho</button>
-                            </div>
-                        </div>
-                        {% else %}
-                        <div class="card-produto">
-                            <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
-                            <button onclick="MudarCoracao(this)" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                            <div class="produto-info">
-                                <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                                <div>
+                            <form action="{% url 'favorito' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                <input type="hidden" name="next" value="{{ request.path }}">
+                                {% if prod.id in favoritos_cliente %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                                {% else %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% if prod.Promocao == 0 %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
                                     <p class="preco-produto">{{prod.Preco}} R$</p>
-                                    <div class="promocao">
-                                        {{prod.Promocao}}% OFF
-                                    </div> 
                                 </div>
-                            </div>
+                            {% else %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                    <div>
+                                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                                        <div class="promocao">
+                                            {{prod.Promocao}}% OFF
+                                        </div> 
+                                    </div>
+                                </div>
+                            {% endif %}
                             <div class="container-button-carrinho">
                                 <button class="button-add-carrinho">Adicionar ao carrinho</button>
                             </div>
                         </div>
-                        {% endif %}
                     {% endfor %}
                 </div>
             </section>

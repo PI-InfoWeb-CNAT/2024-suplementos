@@ -10,5 +10,5 @@ def promocoes_view(request):
             produtos_promocoes.append(prod)
 
 
-    context = {'produtos': produtos_promocoes}
+    context = {'produtos_promocoes': produtos_promocoes}
     return render(request, template_name='promocoes.html', context=context, status=200)

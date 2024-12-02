@@ -28,7 +28,6 @@ def login_view(request):
                     return redirect(_next)
                 else:
                     messages.success(request, 'Login realizado com sucesso!')
-                    return redirect("/")
             else:
                 messages.error(request, 'Email ou senha inválidos!')
         else:
