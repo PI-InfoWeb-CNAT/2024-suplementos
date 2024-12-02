@@ -14,6 +14,9 @@ def notificacoes_nao_lidas(request):
 def favoritos_cliente(request):
     favoritos_cliente = []
     if request.user.is_authenticated:
-        favoritos_cliente = Favorito.objects.filter(cliente=request.user.cliente).values_list('produto_id', flat=True)
+        try:
+            favoritos_cliente = Favorito.objects.filter(cliente=request.user.cliente).values_list('produto_id', flat=True)
+        except Cliente.DoesNotExist:
+            pass
 
     return {'favoritos_cliente': favoritos_cliente}
