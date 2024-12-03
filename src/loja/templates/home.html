@@ -40,7 +40,7 @@
                         <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
                     {% endif %}
                 </div>
-                <a href="{% url 'carrinho' %}">
+                <a href="#">
                     <i class="bi bi-cart-fill icon-cima"></i>
                 </a>
                 {% if user.is_authenticated %}
@@ -111,8 +111,9 @@
                                 </div>
                             </div>
                             <div class="container-button-carrinho">
-                                <button class="button-add-carrinho" data-produto-id="{{ produto.id }}">Adicionar ao Carrinho</button>
+                                <button class="button-add-carrinho" type="submit">Adicionar ao Carrinho</button>
                             </div>
+                            
                             
                         </div>
                         {% endif %}
@@ -189,34 +190,9 @@
     </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{% static 'js/carrinho.js' %}"></script>
 
-<!-- <script>
-$(document).ready(function() {
-    // Quando o botão 'Adicionar ao Carrinho' for clicado
-    $(".button-add-carrinho").click(function() {
-        // Obtém o ID do produto a partir do atributo 'data-produto-id'
-        var produtoId = $(this).data('produto-id');
-        
-        // Envia a requisição AJAX para adicionar o item ao carrinho
-        $.ajax({
-            url: "{% url 'carrinho' %}",  // URL da view do carrinho
-            method: "POST",
-            data: {
-                'produto_id': produtoId,
-                'csrfmiddlewaretoken': '{{ csrf_token }}',  // CSRF token para segurança
-            },
-            success: function(response) {
-                // Opcional: Atualizar UI ou alertar o usuário que o item foi adicionado
-                alert('Produto adicionado ao carrinho!');
-            },
-            error: function(xhr, errmsg, err) {
-                alert('Erro ao adicionar o produto ao carrinho.');
-            }
-        });
-    });
-});
-</script> -->
+<!-- <script src="{% static 'js/carrinho.js' %}"></script> -->
+
 
     
 {% endblock %}
