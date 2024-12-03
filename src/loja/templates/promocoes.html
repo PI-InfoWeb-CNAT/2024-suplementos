@@ -42,36 +42,147 @@
                 {% endif %}
             </section>
         </div>
+        <div class="container-filtro">
+            <h4>Ordenar por:</h4>
+            <div class="container">
+                <div class="hover-area" id="selecionarBtn">
+                    <p id="Selecione">Selecione </p>
+                    <img id="setinha" src="{% static 'images/setinha.png' %}">
+                </div>
+                <div class="checkbox-box" id="checkboxBox" style="display: none">
+                    <label for="option1" class="filtro">Ordem alfabética A-Z</label>
+                    <label for="option2" class="filtro">Ordem alfabética Z-A</label>
+                    <label for="option3" class="filtro">Menor preço</label>
+                    <label for="option4" class="filtro">Maior preço</label>
+                </div>
+            </div>
+        </div>
+        
+
         <section class="produtos">
             {% for prod in produtos_promocoes %}
-                <a class="card-produto" href="{% url 'produto' prod.id %}">
-                    <div class="container-imgProduto">
-                        <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+            <div class="card-produto">
+                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt=" Imagem do produto">
+                <form action="{% url 'favorito' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    {% if prod.id in favoritos_cliente %}
+                        <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                    {% else %}
+                        <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                    {% endif %}
+                </form>
+                <div class="produto-info">
+                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                    <div>
+                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                        <div class="promocao">
+                            {{prod.Promocao}}% OFF
+                        </div> 
                     </div>
-                    <form action="{% url 'favorito' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="produto_id" value="{{ prod.id }}">
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        {% if prod.id in favoritos_cliente %}
-                            <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
-                        {% else %}
-                            <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
-                        {% endif %}
-                    </form>
-                    <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                        <div>
-                            <p class="preco-produto">{{prod.Preco}} R$</p>
-                            <div class="promocao">
-                                {{prod.Promocao}}% OFF
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="container-button-carrinho">
-                        <button class="button-add-carrinho">Adicionar ao carrinho</button>
-                    </div>
-                </a>
+                </div>
+                <div class="container-button-carrinho">
+                    <button class="button-add-carrinho">Adicionar ao carrinho</button>
+                </div>
+            </div>
             {% endfor %}
         </section>
     </main>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const hoverArea = document.getElementById("selecionarBtn");
+            const checkboxBox = document.getElementById("checkboxBox");
+            const setinha = document.getElementById("setinha");
+            const selecioneText = document.getElementById("Selecione"); 
+        
+            
+            checkboxBox.style.display = "none";
+            function ajustarTamanhoDropdown() {
+                checkboxBox.style.width = `${hoverArea.offsetWidth}px`;
+            }
+            ajustarTamanhoDropdown();
+            window.addEventListener("resize", ajustarTamanhoDropdown);
+
+            document.addEventListener("click", (event) => {
+                const isClickInsideBox = checkboxBox.contains(event.target);
+                const isClickInsideButton = hoverArea.contains(event.target);
+
+                if (!isClickInsideBox && !isClickInsideButton) {
+                    checkboxBox.classList.remove("show");
+                    checkboxBox.style.display = "none";
+                    setinha.style.transform = "rotate(0deg)";
+                }
+            });
+
+
+            hoverArea.addEventListener("click", () => {
+            if (checkboxBox.style.display === "none" || checkboxBox.style.display === "") {
+                checkboxBox.style.display = "flex"; 
+                checkboxBox.classList.add('show'); 
+                setinha.style.transform = "rotate(180deg)";
+            } else {
+                checkboxBox.classList.remove('show'); 
+                checkboxBox.style.display = "none";
+                setinha.style.transform = "rotate(0deg)";
+                
+            }
+            });
+
+            
+            function ordenarProdutos(tipo, texto) {
+                const produtosContainer = document.querySelector('.produtos');
+                const produtos = Array.from(produtosContainer.children); 
+
+                produtos.sort((a, b) => {
+                    const nomeA = a.querySelector('.titulo-produto').textContent.trim();
+                    const nomeB = b.querySelector('.titulo-produto').textContent.trim();
+                    const precoA = parseFloat(a.querySelector('.preco-produto').textContent.replace('R$', '').trim());
+                    const precoB = parseFloat(b.querySelector('.preco-produto').textContent.replace('R$', '').trim());
+
+                    if (tipo === "A-Z") {
+                        return nomeA.localeCompare(nomeB); 
+                    } else if (tipo === "Z-A") {
+                        return nomeB.localeCompare(nomeA); 
+                    } else if (tipo === "menor-preco") {
+                        return precoA - precoB; 
+                    } else if (tipo === "maior-preco") {
+                        return precoB - precoA; 
+                    }
+                });
+
+                
+                selecioneText.textContent = texto;
+                ajustarTamanhoDropdown();
+
+
+                checkboxBox.style.display = "none";
+                setinha.style.transform = "rotate(0deg)";
+
+                produtosContainer.innerHTML = '';
+                produtos.forEach(produto => produtosContainer.appendChild(produto));
+            }
+
+            const filtros = document.querySelectorAll('.checkbox-box .filtro');
+
+            filtros.forEach(filtro => {
+                filtro.addEventListener('click', (event) => {
+                    const filtroTexto = event.target.textContent.trim();
+
+                    if (filtroTexto.includes("A-Z")) {
+                        ordenarProdutos("A-Z", "Ordem alfabética A-Z");
+                    } else if (filtroTexto.includes("Z-A")) {
+                        ordenarProdutos("Z-A", "Ordem alfabética Z-A");
+                    } else if (filtroTexto.includes("Menor preço")) {
+                        ordenarProdutos("menor-preco", "Menor preço");
+                    } else if (filtroTexto.includes("Maior preço")) {
+                        ordenarProdutos("maior-preco", "Maior preço");
+                    }
+                });
+            });
+        });
+
+                
+    </script>
 {% endblock %}
