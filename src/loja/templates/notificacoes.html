@@ -36,22 +36,24 @@
             </section>
         </div>
         <div class="container-flex">
-            <section class="container-notificacoes">
+            <section class="notificacoes-wrapper">
                 {% if notificacoes %}
                     <a href="{% url 'excluir-notificacoes' %}">Limpar notificações</a>
-                    {% for notificacao in notificacoes %}
-                        <div class="notificacao">
-                            {% if notificacao.categoria == 'mensagem_personalizada' %}
-                                <i class="bi bi-envelope-fill"></i>
-                            {% elif notificacao.categoria == 'status_pedido' %}
-                                <i class="bi bi-truck"></i>
-                            {% elif notificacao.categoria == 'status_devolucao' %}
-                                <i class="bi bi-arrow-repeat"></i>
-                            {% endif %}
-                            <p id="texto">{{ notificacao.texto }}</p>
-                            <p id="data">{{ notificacao.data_envio|date:"d/m/Y - H:i:s" }}</p>
-                        </div>
-                    {% endfor %}
+                    <div class="container-notificacoes">
+                        {% for notificacao in notificacoes %}
+                            <div class="notificacao">
+                                {% if notificacao.categoria == 'mensagem_personalizada' %}
+                                    <i class="bi bi-envelope-fill"></i>
+                                {% elif notificacao.categoria == 'status_pedido' %}
+                                    <i class="bi bi-truck"></i>
+                                {% elif notificacao.categoria == 'status_devolucao' %}
+                                    <i class="bi bi-arrow-repeat"></i>
+                                {% endif %}
+                                <p id="texto">{{ notificacao.texto }}</p>
+                                <p id="data">{{ notificacao.data_envio|date:"d/m/Y - H:i:s" }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% else %}
                         <p id="sem-notificacao">Sem notificações!</p>
                 {% endif %}

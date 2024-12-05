@@ -9,19 +9,27 @@ h4 {
     justify-content: space-between;
 }
 
+.notificacoes-wrapper {
+    position: relative;
+}
+
+.notificacoes-wrapper a {
+    position: absolute;
+    top: -8%;
+    right: 0;
+    color: var(--dark-grey);
+    font-weight: 500;
+}
+
 .container-notificacoes {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
-    position: relative;
-    & a {
-        position: absolute;
-        top: -10%;
-        right: 0;
-        color: var(--dark-grey);
-        font-weight: 500;
-    }
+    max-height: 45em;
+    overflow-y: auto;
+    padding-right: 1em;
 }
+
 
 .notificacao {
     background-color: var(--light-grey);
