@@ -45,12 +45,12 @@ def adicionar_cartao_view(request):
                         messages.error(request, 'Você já possui esse cartão.', extra_tags='novo-cartao')
                     else:
                         if tipo == 'debito':
-                            Cartao.objects.create(cliente=cliente, nome=nome, nometitular=nometitular, numero=numero, bandeira=bandeira, tipo='debito')
+                            Cartao.objects.create(cliente=cliente, nome=nome, nome_titular=nometitular, numero=numero, bandeira=bandeira, tipo='debito')
 
                             messages.success(request, 'Cartão adicionado com sucesso!', extra_tags='novo-cartao')
 
                         elif tipo == 'credito':
-                            Cartao.objects.create(cliente=cliente, nome=nome, nometitular=nometitular, numero=numero, bandeira=bandeira, tipo='credito')
+                            Cartao.objects.create(cliente=cliente, nome=nome, nome_titular=nometitular, numero=numero, bandeira=bandeira, tipo='credito')
 
                             messages.success(request, 'Cartão adicionado com sucesso!', extra_tags='novo-cartao')
 
@@ -74,11 +74,11 @@ def edit_cartao_view(request):
 
         cartao = Cartao.objects.get(id=cartao_id, cliente=request.user.cliente)
 
-        if cartao.nome == nome and cartao.nometitular == nometitular and cartao.tipo == tipo:
+        if cartao.nome == nome and cartao.nome_titular == nometitular and cartao.tipo == tipo:
             messages.error(request, 'Altere os dados para atualizar!', extra_tags='edit-cartao')
         else:
             cartao.nome = nome
-            cartao.nometitular = nometitular
+            cartao.nome_titular = nometitular
             cartao.tipo = tipo
 
             cartao.save()

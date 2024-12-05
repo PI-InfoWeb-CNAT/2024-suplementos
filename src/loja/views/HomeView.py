@@ -12,12 +12,12 @@ def home_view(request):
     descontos = []
 
     for prod in produtos:
-        if prod.Promocao != 0:
+        if prod.Porcentagem_desconto != 0:
             produtos_promocoes.append(prod)
-    produtos_promocoes = sorted(produtos_promocoes, key=lambda p: p.Promocao, reverse=True)
+    produtos_promocoes = sorted(produtos_promocoes, key=lambda p: p.Porcentagem_desconto, reverse=True)
 
     for promocao in produtos_promocoes:
-        descontos.append(promocao.Promocao)
+        descontos.append(promocao.Porcentagem_desconto)
 
     if produto is not None:
         produtos_pesquisa = produtos.filter(Nome__contains=produto)

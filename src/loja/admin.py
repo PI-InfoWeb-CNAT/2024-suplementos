@@ -6,7 +6,7 @@ class ClienteAdmin(admin.ModelAdmin):
     empty_value_display = 'Vazio'
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('Nome', 'Preco', 'Descricao', 'Dt_fabricacao', 'Dt_validade', 'Promocao')
+    list_display = ('Nome', 'Preco', 'Descricao', 'Porcentagem_desconto')
     empty_value_display = 'Vazio'
 
 class NotificacaoAdmin(admin.ModelAdmin):
@@ -19,7 +19,7 @@ class NotificacaoAdmin(admin.ModelAdmin):
         return super().get_readonly_fields(request, obj)
 
 class CartaoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'nometitular', 'bandeira', 'tipo')
+    list_display = ('nome', 'nome_titular', 'bandeira', 'tipo')
     empty_value_display = 'Vazio'
 
 admin.site.register(Cliente, ClienteAdmin)

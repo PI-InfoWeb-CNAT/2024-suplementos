@@ -6,7 +6,7 @@ def promocoes_view(request):
 
     produtos_promocoes = []
     for prod in produtos:
-        if prod.Promocao != 0:
+        if prod.Porcentagem_desconto != 0:
             produtos_promocoes.append(prod)
 
 

@@ -17,7 +17,7 @@
                         <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
                     {% endif %}
                 </form>
-                {% if prod.Promocao == 0 %}
+                {% if prod.Porcentagem_desconto == 0 %}
                     <div class="produto-info">
                         <h5 class="titulo-produto">{{prod.Nome}}</h5>
                         <p class="preco-produto">{{prod.Preco}} R$</p>
@@ -28,7 +28,7 @@
                         <div>
                             <p class="preco-produto">{{prod.Preco}} R$</p>
                             <div class="promocao">
-                                {{prod.Promocao}}% OFF
+                                {{prod.Porcentagem_desconto}}% OFF
                             </div> 
                         </div>
                     </div>

@@ -64,7 +64,7 @@
                         {% endif %}
                         <div class="cartao-dados">
                             <p>Nome do cartão: <span>{{cartao.nome}}</span></p>
-                            <p>Nome do titular: <span>{{cartao.nometitular}}</span></p>
+                            <p>Nome do titular: <span>{{cartao.nome_titular}}</span></p>
                             <p>Número: <span>{{cartao.numero|numero_cartao}}</span></p>
                             <div class="container-flex">
                                 <p>Bandeira: <span>{{cartao.bandeira}}</span></p>
@@ -96,7 +96,7 @@
                                                 {% csrf_token %}
                                                 <input type="hidden" name="cartao_id" value="{{ cartao.id }}">
                                                 <label for="nome-editcartao">Nome do cartão: <input type="text" name="nome" id="nome-editcartao"  value="{{cartao.nome}}"></label>
-                                                <label for="nometitular-editcartao">Nome do titular do cartão: <input type="text" name="nometitular" id="nometitular-editcartao"  value="{{cartao.nometitular}}"></label>
+                                                <label for="nometitular-editcartao">Nome do titular do cartão: <input type="text" name="nometitular" id="nometitular-editcartao"  value="{{cartao.nome_titular}}"></label>
                                                 <label for="tipo-editcartao"> Tipo do cartão:
                                                     <select name="tipo" id="tipo-editcartao">
                                                         {% if cartao.tipo == 'debito' %}
