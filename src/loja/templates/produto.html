@@ -57,6 +57,51 @@
                         <div class="icon-raio"><i class="bi bi-lightning-charge-fill"></i></div>
                     {% endif %}
                 </div>
+                <form action="">
+                    <label for="qtd_produto">Quantidade: <input type="number" name="qtd_produto" id="qtd_produto" placeholder="0"></label>
+                    <button type="submit">Adicionar ao carrinho</button>
+                </form>
+            </div>
+        </section>
+        <section class="produtos-relacionados">
+            <h3>Produtos relacionados</h3>
+            <div class="produtos">
+                {% for prod in produtos_relacionados %}
+                        <a class="card-produto" href="{% url 'produto' prod.id %}">
+                            <div class="container-imgProduto">
+                                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                            </div>
+                            <form action="{% url 'favorito' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                <input type="hidden" name="next" value="{{ request.path }}">
+                                {% if prod.id in favoritos_cliente %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                                {% else %}
+                                    <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% if prod.Promocao == 0 %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                    <p class="preco-produto">{{prod.Preco}} R$</p>
+                                </div>
+                            {% else %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                    <div>
+                                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                                        <div class="promocao">
+                                            {{prod.Promocao}}% OFF
+                                        </div> 
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="container-button-carrinho">
+                                <button class="button-add-carrinho">Adicionar ao carrinho</button>
+                            </div>
+                        </a>
+                    {% endfor %}
             </div>
         </section>
     </main>

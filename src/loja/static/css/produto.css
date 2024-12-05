@@ -21,6 +21,39 @@
     flex-direction: column;
     justify-content: center;
     gap: 1em;
+    & form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2em;
+        & label {
+            font-weight: 500;
+            font-size: 1.1em;
+            display: flex;
+            gap: .5em;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+            width: 8%;
+        }
+        & button {
+            width: 40%;
+            background-color: var(--dark-grey);
+            color: var(--light-green);
+            border: none;
+            border-radius: 5px;
+            padding: .5em .3em;
+            border: 1px solid transparent;
+            transition: .15s;
+        }
+        & button:hover {
+            transform: scale(1.02);
+            outline: none;
+        }
+    }
 }
 
 .descricao-produto {
@@ -48,5 +81,15 @@
     & i {
         color: var(--light-green);
         font-size: 1.5em;
+    }
+}
+
+.produtos-relacionados {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+    & h3 {
+        font-size: 1.7em;
     }
 }

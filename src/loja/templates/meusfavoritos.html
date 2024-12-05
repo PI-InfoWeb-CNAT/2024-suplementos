@@ -42,8 +42,10 @@
             {% else %}
                 {% for prod in produtos %}
                     {% if prod.id in favoritos_cliente %}
-                        <div class="card-produto">
-                            <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt=" Imagem do produto">
+                        <a class="card-produto" href="{% url 'produto' prod.id %}">
+                            <div class="container-imgProduto">
+                                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                            </div>
                             <form action="{% url 'favorito' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="produto_id" value="{{ prod.id }}">
@@ -62,7 +64,7 @@
                             <div class="container-button-carrinho">
                                 <button class="button-add-carrinho">Adicionar ao carrinho</button>
                             </div>
-                        </div>
+                        </a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
