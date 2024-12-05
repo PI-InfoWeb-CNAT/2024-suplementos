@@ -20,7 +20,7 @@ def cadastro_view(request):
             if senha == confirm_senha:
                 if User.objects.filter(email=email).exists():
                     messages.error(request, 'E-mail já cadastrado')
-                elif Cliente.objects.filter(CPF=cpf).exists():
+                elif Cliente.objects.filter(cpf=cpf).exists():
                     messages.error(request, 'CPF já cadastrado')
                 elif not cpf_validado:
                     messages.error(request, 'CPF inválido')
@@ -31,9 +31,9 @@ def cadastro_view(request):
                     user.save()
                     cliente = Cliente.objects.create(
                         user=user,
-                        Nome=nome,
-                        CPF=cpf,
-                        Telefone_celular=tel_celular,
+                        nome=nome,
+                        cpf=cpf,
+                        telefone_celular=tel_celular,
                     )
 
                     Notificacao.objects.create(

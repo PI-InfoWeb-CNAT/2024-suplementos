@@ -21,8 +21,8 @@ def perfil_view(request):
 
     for cliente in clientes:
         if cliente.user_id == user.id:
-            cpf = cliente.CPF
-            tel_celular = cliente.Telefone_celular
+            cpf = cliente.cpf
+            tel_celular = cliente.telefone_celular
             enderecos_cliente = todos_enderecos.filter(cliente_id=cliente.id)
 
     context = {
@@ -46,7 +46,7 @@ def edit_dados_view(request):
         cpf = request.POST.get('cpf')
         tel_celular = request.POST.get('tel_celular')
 
-        if user.username == nome and user.email == email and cliente.CPF == cpf and cliente.Telefone_celular == tel_celular:
+        if user.username == nome and user.email == email and cliente.cpf == cpf and cliente.telefone_celular == tel_celular:
             messages.error(request, 'Altere os dados para atualizar!', extra_tags='page-perfil')
         else:
             email_alterado = user.email != email
@@ -60,8 +60,9 @@ def edit_dados_view(request):
                     user.email = email
                 user.save()
 
-                cliente.CPF = cpf
-                cliente.Telefone_celular = tel_celular
+                cliente.nome = nome
+                cliente.cpf = cpf
+                cliente.telefone_celular = tel_celular
                 cliente.save()
 
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page-perfil')
