@@ -57,7 +57,7 @@
             {% endfor %}
         {% endif %}
         <div class="container-mid" id="containerMid">
-            <div id="carouselExampleIndicators" class="carousel slide">
+            <section id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="{% static 'images/imagem1_carrossel.png' %}" class="d-block w-100 imagens-carrosel" alt="...">
@@ -74,7 +74,36 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-            </div>
+            </section>
+            <section class="container-categorias">
+                <h3>Categorias</h3>
+                <div class="categorias">
+                    <a href="/">
+                        <div>
+                            <img src="{% static 'images/icon_acessorios.svg' %}" alt="Ícone de acessórios">
+                        </div>
+                        <h5>Acessórios</h5>
+                    </a>
+                    <a href="/">
+                        <div>
+                            <img src="{% static 'images/icon_alimentos.svg' %}" alt="Ícone de alimentos">
+                        </div>
+                        <h5>Alimentos</h5>
+                    </a>
+                    <a href="/">
+                        <div>
+                            <img src="{% static 'images/icon_roupas.svg' %}" alt="Ícone de roupas">
+                        </div>
+                        <h5>Roupas</h5>
+                    </a>
+                    <a href="/">
+                        <div>
+                            <img src="{% static 'images/icon_suplementos.svg' %}" alt="Ícone de suplementos">
+                        </div>
+                        <h5>Suplementos</h5>
+                    </a>
+                </div>
+            </section>
             <section class="container-ofertas">
                 <div class="section-title">
                     <h3>Ofertas Especiais</h3>

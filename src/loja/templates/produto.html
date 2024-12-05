@@ -64,9 +64,10 @@
             </div>
         </section>
         <section class="produtos-relacionados">
-            <h3>Produtos relacionados</h3>
-            <div class="produtos">
-                {% for prod in produtos_relacionados %}
+            {% if produtos_relacionados %}
+                <h3>Produtos relacionados</h3>
+                <div class="produtos">
+                    {% for prod in produtos_relacionados %}
                         <a class="card-produto" href="{% url 'produto' prod.id %}">
                             <div class="container-imgProduto">
                                 <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
@@ -102,7 +103,8 @@
                             </div>
                         </a>
                     {% endfor %}
-            </div>
+                </div>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

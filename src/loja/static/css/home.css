@@ -70,56 +70,41 @@
     border-radius: 50px;
 }
 
-.container-imagenslaterais {
-    display: flex; 
-    flex-direction: column;
-    gap: 2em;
-}
-
-.img-promocao {
-    background-image: linear-gradient(to top right, var(--dark-green) 20%, var(--dark-grey) 80%);
-    height: 60%;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    color: white;
-    padding: 3em;
-    & h4 {
-        font-weight: bold;
-    }
-    & p {
-        font-weight: bold;
-    }
-    & button {
-        background-color: var(--dark-grey);
-        color: white;
-        border: none;
-        outline: none;
-        width: 50%;
-        border-radius: 10px;
-        padding: 1em;
-        transition: .3s;
-    }
-    & button:hover {
-        transform: scale(1.05);
-        background-color: #353434;
-    }
-}
-
-.img-produto-cima{
-    display: flex;
-    justify-content: space-between;
-    & img {
-        width: 12em;
-    }
-}
-
 .container-mid {
     display: flex;
     flex-direction: column;
     gap: 8em;
+}
+
+.container-categorias {
+    & h3 {
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-bottom: 1em;
+    }
+}
+
+.categorias {
+    display: flex;
+    justify-content: space-between;
+    & a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        width: 20%;
+        padding: 2em 0;
+        & div {
+            background-color: var(--dark-grey);
+            padding: 1em;
+            /* clip-path: circle(40%); */
+            & img {
+                width: 30px;
+            }
+        }
+    }
 }
 
 .section-title {

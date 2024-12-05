@@ -7,4 +7,4 @@ class Cliente(models.Model):
     telefone_celular = models.CharField(null=False, max_length=11)
 
     def __str__(self):
-        return f'{self.Nome}'
+        return f'{self.nome}'
