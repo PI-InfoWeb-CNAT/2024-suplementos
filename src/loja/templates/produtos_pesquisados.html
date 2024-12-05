@@ -5,7 +5,7 @@
         {% for prod in produtos_pesquisa %}
             <a class="card-produto" href="{% url 'produto' prod.id %}">
                 <div class="container-imgProduto">
-                    <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                    <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
                 </div>
                 <form action="{% url 'favorito' %}" method="POST">
                     {% csrf_token %}
@@ -17,18 +17,18 @@
                         <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
                     {% endif %}
                 </form>
-                {% if prod.Porcentagem_desconto == 0 %}
+                {% if prod.porcentagem_desconto == 0 %}
                     <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                        <h5 class="titulo-produto">{{prod.nome}}</h5>
+                        <p class="preco-produto">{{prod.preco}} R$</p>
                     </div>
                 {% else %}
                     <div class="produto-info">
-                        <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                        <h5 class="titulo-produto">{{prod.nome}}</h5>
                         <div>
-                            <p class="preco-produto">{{prod.Preco}} R$</p>
+                            <p class="preco-produto">{{prod.preco}} R$</p>
                             <div class="promocao">
-                                {{prod.Porcentagem_desconto}}% OFF
+                                {{prod.porcentagem_desconto}}% OFF
                             </div> 
                         </div>
                     </div>

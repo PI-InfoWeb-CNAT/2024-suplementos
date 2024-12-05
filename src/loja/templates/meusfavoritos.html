@@ -44,7 +44,7 @@
                     {% if prod.id in favoritos_cliente %}
                         <a class="card-produto" href="{% url 'produto' prod.id %}">
                             <div class="container-imgProduto">
-                                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                                <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
                             </div>
                             <form action="{% url 'favorito' %}" method="POST">
                                 {% csrf_token %}
@@ -53,11 +53,11 @@
                                 <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
                             </form>
                             <div class="produto-info">
-                                <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                <h5 class="titulo-produto">{{prod.nome}}</h5>
                                 <div>
-                                    <p class="preco-produto">{{prod.Preco}} R$</p>
+                                    <p class="preco-produto">{{prod.preco}} R$</p>
                                     <div class="promocao">
-                                        {{prod.Porcentagem_desconto}}% OFF
+                                        {{prod.porcentagem_desconto}}% OFF
                                     </div> 
                                 </div>
                             </div>

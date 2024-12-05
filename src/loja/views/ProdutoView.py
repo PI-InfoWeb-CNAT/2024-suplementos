@@ -5,7 +5,7 @@ from loja.models import Produto
 
 def produto_view(request, id):
     produto = Produto.objects.get(id=id)
-    produtos_relacionados = Produto.objects.filter(Categoria=produto.Categoria).exclude(id=produto.id)
+    produtos_relacionados = Produto.objects.filter(categoria=produto.categoria).exclude(id=produto.id)
     produtos_relacionados = produtos_relacionados[:5]
 
     if not produto:

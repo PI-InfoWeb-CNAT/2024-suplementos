@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_filters %}
 
-{% block title %}{{produto.Nome}}{% endblock %}
+{% block title %}{{produto.nome}}{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/produto.css' %}">
@@ -22,7 +22,7 @@
 {% block content %}
     <main>
         <div class="container-cima">
-            <h3>{{produto.Nome}}</h3>
+            <h3>{{produto.nome}}</h3>
             <section class="container-botoes-cima">
                 <div class="notificacao-container">
                     <a href="{% url 'notificacoes' %}">
@@ -44,16 +44,16 @@
         </div>
         <section class="container-detalhes-produto">
             <div class="container-imgDetalhesProduto">
-                <img src="/media/{{produto.Imagem}}" alt="Imagem do produto {{produto.Nome}}">
+                <img src="/media/{{produto.imagem}}" alt="Imagem do produto {{produto.nome}}">
             </div>
             <div class="detalhes-produto">
                 <div class="descricao-produto">
                     <h5>Informações do produto</h5>
-                    <p>{{produto.Descricao}}</p>
+                    <p>{{produto.descricao}}</p>
                 </div>
                 <div class="container-preco">
-                    <p>R${{produto.Preco}}</p>
-                    {% if produto.Porcentagem_desconto != 0 %}
+                    <p>R${{produto.preco}}</p>
+                    {% if produto.porcentagem_desconto != 0 %}
                         <div class="icon-raio"><i class="bi bi-lightning-charge-fill"></i></div>
                     {% endif %}
                 </div>
@@ -69,7 +69,7 @@
                 {% for prod in produtos_relacionados %}
                         <a class="card-produto" href="{% url 'produto' prod.id %}">
                             <div class="container-imgProduto">
-                                <img class="imagem-produto" src="/media/{{prod.Imagem}}" alt="">
+                                <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
                             </div>
                             <form action="{% url 'favorito' %}" method="POST">
                                 {% csrf_token %}
@@ -81,18 +81,18 @@
                                     <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
                                 {% endif %}
                             </form>
-                            {% if prod.Porcentagem_desconto == 0 %}
+                            {% if prod.porcentagem_desconto == 0 %}
                                 <div class="produto-info">
-                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
-                                    <p class="preco-produto">{{prod.Preco}} R$</p>
+                                    <h5 class="titulo-produto">{{prod.nome}}</h5>
+                                    <p class="preco-produto">{{prod.preco}} R$</p>
                                 </div>
                             {% else %}
                                 <div class="produto-info">
-                                    <h5 class="titulo-produto">{{prod.Nome}}</h5>
+                                    <h5 class="titulo-produto">{{prod.nome}}</h5>
                                     <div>
-                                        <p class="preco-produto">{{prod.Preco}} R$</p>
+                                        <p class="preco-produto">{{prod.preco}} R$</p>
                                         <div class="promocao">
-                                            {{prod.Porcentagem_desconto}}% OFF
+                                            {{prod.porcentagem_desconto}}% OFF
                                         </div> 
                                     </div>
                                 </div>

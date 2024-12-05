@@ -6,7 +6,7 @@ class ClienteAdmin(admin.ModelAdmin):
     empty_value_display = 'Vazio'
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('Nome', 'Preco', 'Descricao', 'Porcentagem_desconto')
+    list_display = ('nome', 'preco', 'descricao', 'porcentagem_desconto')
     empty_value_display = 'Vazio'
 
 class NotificacaoAdmin(admin.ModelAdmin):
