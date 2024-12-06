@@ -9,3 +9,5 @@ from .Endereco import Endereco
 from .Notificacao import Notificacao
 from .Cartao import Cartao
 from .Favorito import Favorito
+from .Carrinho import Carrinho
+from .Carrinho import CarrinhoItem
