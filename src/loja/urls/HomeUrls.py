@@ -8,13 +8,15 @@ from loja.views.NotificacoesView import list_notificacoes_view, excluir_notifica
 from loja.views.FavoritoView import favorito_view
 from loja.views.MeusFavoritosView import meusfavoritos_view
 from loja.views.ProdutoView import produto_view
+from loja.views.CategoriaView import categoria_view
 
 urlpatterns = [
     path("", home_view, name='home'),
     path("promocoes/", promocoes_view, name='promocoes'),
     path("cadastro/", cadastro_view, name='cadastro'),
     path("login/", login_view, name='login'),
-    path("produto/<int:id>", produto_view, name='produto'),
+    path("produto/<int:id>/", produto_view, name='produto'),
+    path("categoria/<str:categoria>/", categoria_view, name='categoria'),
     path("favorito/", favorito_view, name='favorito'),
     path("meus-favoritos/", meusfavoritos_view, name='meus-favoritos'),
     path("notificacoes/", list_notificacoes_view, name='notificacoes'),
