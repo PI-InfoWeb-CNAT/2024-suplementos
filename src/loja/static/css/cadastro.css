@@ -9,7 +9,8 @@ body {
     position: relative;
     & img {
         width: 100%;
-        height: 100vh;
+        height: 100dvh;
+        object-fit: cover;
     }
     & a {
         position: absolute;
