@@ -157,9 +157,7 @@
                 <div class="produtos">
                     {% for prod in produtos %}
                         <a class="card-produto" href="{% url 'produto' prod.id %}">
-                            <div class="container-imgProduto">
-                                <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
-                            </div>
+                            <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
                             <form action="{% url 'favorito' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="produto_id" value="{{ prod.id }}">

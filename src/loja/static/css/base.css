@@ -374,18 +374,11 @@ footer {
     position: relative;
 }
 
-.container-imgProduto {
-    border-radius: 28px;
+.imagem-produto {
     background-color: #dcdcdc;
+    width: 220px;
+    border-radius: 28px;
     margin-bottom: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 221px;
-    height: 221px;
-    & img {
-        width: 100px;
-    }
 }
 
 .card-produto .produto-info {
