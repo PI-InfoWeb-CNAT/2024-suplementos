@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from loja.models import Produto
 
+@login_required
 def meusfavoritos_view(request):
     produtos = Produto.objects.all()
 
