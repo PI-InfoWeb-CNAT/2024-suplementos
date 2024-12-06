@@ -198,6 +198,4 @@ def excluir_conta_view(request):
         user.delete()
         logout(request)
         messages.success(request, 'Conta excluída com sucesso!')
-        return redirect(reverse('home'))
-    
-    
+        return redirect(reverse('home'))  

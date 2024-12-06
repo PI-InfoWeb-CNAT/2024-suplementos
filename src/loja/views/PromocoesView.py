@@ -9,6 +9,5 @@ def promocoes_view(request):
         if prod.porcentagem_desconto != 0:
             produtos_promocoes.append(prod)
 
-
     context = {'produtos_promocoes': produtos_promocoes}
     return render(request, template_name='promocoes.html', context=context, status=200)
