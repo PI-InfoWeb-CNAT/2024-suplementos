@@ -44,7 +44,19 @@
 /* BOOTSTRAP CARROSSEL */
 .carousel-item {
     width: 100%;
+    transition: transform 1s ease-in-out;
 }
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-inner {
+    transition: transform 1s ease-in-out; 
+}
+
 .carousel-indicators {
     position: absolute;
     bottom: -55px;
