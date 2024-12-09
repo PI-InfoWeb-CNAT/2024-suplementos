@@ -435,10 +435,10 @@ footer {
     display: flex;
     margin-top: 1em;
     padding: 0 1.5em;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
-.button-add-carrinho {
+.button-comprar {
     background-color: var(--dark-grey);
     color: var(--light-green);
     border: none;
@@ -446,10 +446,10 @@ footer {
     padding: .5em .3em;
     border: 1px solid transparent;
     transition: .15s;
-    width: 100%;
+    width: 80%;
 }
 
-.button-add-carrinho:hover {
+.button-comprar:hover {
     transform: scale(1.07);
     outline: none;
 }
