@@ -20,7 +20,7 @@ urlpatterns = [
     path("meus-favoritos/", meusfavoritos_view, name='meus-favoritos'),
     path("notificacoes/", list_notificacoes_view, name='notificacoes'),
     path("notificacoes/excluir", excluir_notificacoes_view, name='excluir-notificacoes'),
-    path("carrinho", list_carrinho_view, name='list_carrinho'),
+    path("carrinho/", list_carrinho_view, name='list_carrinho'),
     path('carrinho/remover/<int:item_id>/', remover_item_view, name='remover_carrinhoitem'),
     path("carrinho/<int:produto_id>", create_carrinhoitem_view, name='create_carrinhoitem'),
 ] 
