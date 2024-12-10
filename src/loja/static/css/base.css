@@ -433,9 +433,9 @@ footer {
 .container-button-carrinho {
     width: 100%;
     display: flex;
-    margin-top: 1em;
+    margin-top: 1.5em;
     padding: 0 1.5em;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .button-comprar {
