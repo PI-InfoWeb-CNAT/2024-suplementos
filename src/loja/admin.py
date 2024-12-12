@@ -22,8 +22,10 @@ class CartaoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'nome_titular', 'bandeira', 'tipo')
     empty_value_display = 'Vazio'
 
-admin.site.register(Cliente, ClienteAdmin)
-admin.site.register(Produto, ProdutoAdmin)
-admin.site.register(Endereco)
-admin.site.register(Notificacao, NotificacaoAdmin)
 admin.site.register(Cartao, CartaoAdmin)
+admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(Endereco)
+admin.site.register(Favorito)
+admin.site.register(Lote)
+admin.site.register(Notificacao, NotificacaoAdmin)
+admin.site.register(Produto, ProdutoAdmin)

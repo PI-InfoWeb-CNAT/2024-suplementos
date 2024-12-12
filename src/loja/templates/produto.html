@@ -59,6 +59,7 @@
                     <label for="qtd_produto">Quantidade: <input type="number" name="qtd_produto" id="qtd_produto" placeholder="0"></label>
                     <button type="submit">Adicionar ao carrinho</button>
                 </form>
+                {{produto.calcular_estoque}}
             </div>
         </section>
         <section class="produtos-relacionados">
@@ -97,7 +98,7 @@
                                 </div>
                             {% endif %}
                             <div class="container-button-carrinho">
-                                <button class="button-add-carrinho">Adicionar ao carrinho</button>
+                                <button class="button-comprar">Comprar</button>
                             </div>
                         </a>
                     {% endfor %}
