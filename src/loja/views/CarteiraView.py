@@ -14,7 +14,7 @@ def list_carteira_view(request):
 
     context = {'cartoes': cartoes_cliente}
 
-    return render(request, template_name='Perfil/carteira.html', context=context, status=200) 
+    return render(request, template_name='user/carteira.html', context=context, status=200) 
 
 @login_required
 def adicionar_cartao_view(request):

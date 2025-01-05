@@ -17,4 +17,4 @@ def produto_view(request, id):
         'produtos_relacionados': produtos_relacionados
     }
 
-    return render(request, template_name='produto.html', context=context, status=200)
+    return render(request, template_name='user/produto.html', context=context, status=200)

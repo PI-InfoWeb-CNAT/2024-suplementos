@@ -25,19 +25,31 @@ def perfil_view(request):
             tel_celular = cliente.telefone_celular
             enderecos_cliente = todos_enderecos.filter(cliente_id=cliente.id)
 
-    context = {
+    context_user = {
         'nome': nome,
         'email': email,
         'tel_celular': tel_celular,
         'cpf': cpf,
         'enderecos': enderecos_cliente
     }
-    return render(request, template_name='Perfil/perfil.html', context=context, status=200)
+
+    context_admin = {
+        'nome': nome,
+        'email': email,
+        'tel_celular': tel_celular,
+        'cpf': cpf,
+    }
+
+    if request.user.is_staff:
+        return render(request, template_name='admin/perfil.html', context=context_admin, status=200)
+    else:
+        return render(request, template_name='user/perfil.html', context=context_user, status=200)
 
 @login_required 
 def edit_dados_view(request):
     user = request.user
-    clientes = User.objects.all()
+    usuarios = User.objects.all()
+    clientes = Cliente.objects.all()
     cliente = Cliente.objects.get(user=user)
 
     if request.method == 'POST':
@@ -50,10 +62,13 @@ def edit_dados_view(request):
             messages.error(request, 'Altere os dados para atualizar!', extra_tags='page-perfil')
         else:
             email_alterado = user.email != email
-            email_existe = email_alterado and clientes.filter(email=email).exists()
+            email_existe = email_alterado and usuarios.filter(email=email).exists()
+            cpf_existe = clientes.filter(cpf=cpf).exists()
 
             if email_existe:
                 messages.error(request, 'Esse e-mail já existe.', extra_tags='page-perfil')
+            elif cpf_existe:
+                messages.error(request, 'Esse cpf já existe.', extra_tags='page-perfil')
             else:
                 user.username = nome
                 if email_alterado:

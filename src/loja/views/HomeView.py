@@ -29,7 +29,10 @@ def home_view(request):
     }
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        produtos_html = render_to_string('produtos_pesquisados.html',{'produtos_pesquisa': produtos_pesquisa}, request=request )
+        produtos_html = render_to_string('user/produtos_pesquisados.html',{'produtos_pesquisa': produtos_pesquisa}, request=request )
         return HttpResponse(produtos_html)
 
-    return render(request, template_name='home.html', context=context, status=200)
+    if request.user.is_staff:
+        return render(request, template_name='admin/home.html', status=200)
+    else:
+        return render(request, template_name='user/home.html', context=context, status=200)

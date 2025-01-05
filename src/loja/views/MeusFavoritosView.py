@@ -9,4 +9,4 @@ def meusfavoritos_view(request):
 
     context = {'produtos': produtos}
 
-    return render(request, template_name='meusfavoritos.html', context=context, status=200)
+    return render(request, template_name='user/meusfavoritos.html', context=context, status=200)

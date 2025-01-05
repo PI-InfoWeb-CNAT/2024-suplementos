@@ -33,4 +33,4 @@ def login_view(request):
         else:
             messages.error(request, 'Preencha todos os campos!')
 
-    return render(request, template_name='login.html', status=200) 
+    return render(request, template_name='user/login.html', status=200) 

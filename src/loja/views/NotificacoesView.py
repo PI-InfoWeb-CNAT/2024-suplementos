@@ -15,7 +15,7 @@ def list_notificacoes_view(request):
 
     context = {'notificacoes': notificacoes_cliente}
 
-    return render(request, template_name='notificacoes.html', context=context, status=200)
+    return render(request, template_name='user/notificacoes.html', context=context, status=200)
 
 @login_required
 def excluir_notificacoes_view(request):

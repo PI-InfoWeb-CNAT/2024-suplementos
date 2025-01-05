@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Meu Perfil{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="menu">
+        <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="#"><i class="bi bi-lightning-charge-fill menu-icon"></i>Produtos</a></li>
+        <li><a href="#"><i class="bi bi-basket3-fill menu-icon"></i>Lotes</a></li>
+        <li><a href="#"><i class="bi bi-trophy-fill menu-icon"></i>Notificações</a></li>
+        <li><a href="{% url 'perfil' %}" class="active"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+    </ul> 
+{% endblock %}
+
+{% block content %}
+    <main class="main-perfil">
+        <div class="container-cima">
+            <h3>Meus Dados</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-perfil' in message.tags %}
+                    <div class="message {{ message.tags }} message-dados">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="container-flex">
+            <section class="container-dados-usuario">
+                <h4>Dados Pessoais</h4>
+                <div class="container-flex dados">
+                    <form action="{% url 'edit-dados' %}" method="POST" class="form-editardados">
+                        {% csrf_token %}
+                        <label for="nome-dados">Nome: <input type="text" name="nome" id="nome-dados" value="{{nome}}"></label>
+                        <label for="email">E-mail: <input type="text" name="email" id="email" value="{{email}}"></label>
+                        <label for="cpf">CPF: <input type="text" name="cpf" id="cpf" value="{{cpf}}"></label>
+                        <label for="tel_celular">Telefone Celular: <input type="text" name="tel_celular" id="tel_celular" value="{{tel_celular}}"></label>
+                        <div class="container-buttons">
+                            <button type="submit">Atualizar</button>
+                            <button type="button" onclick="abrirRedefinirSenha()">Redefinir senha</button>
+                        </div>
+                    </form>
+                    <img src="{% static 'images/imagem-editar.svg' %}" alt="Vetor de editar" class="img-editar">
+                    <!-- POP UP -->
+                     <div class="redefinirsenha-popup popup">
+                        <div>
+                            <i class="bi bi-x" onclick="fecharRedefinirSenha()"></i>
+                            <div class="conteudo-popupRedefinirSenha">
+                                {% if messages %}
+                                    {% for message in messages %} 
+                                        {% if 'redefinir-senha' in message.tags %}
+                                            <div class="message {{ message.tags }} message-redefinirsenha">
+                                                <span>{{ message }}</span>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <h5>Redefinição da senha</h5>
+                                <form action="{% url 'redefinir-senha' %}" method="POST">
+                                    {% csrf_token %}
+                                    <label for="senhaAtual">Senha atual:* <input type="password" name="senhaAtual" id="senhaAtual" placeholder="Digite a senha atual"></label>
+                                    <label for="novaSenha">Nova senha:* <input type="password" name="novaSenha" id="novaSenha" placeholder="Digite a nova senha"></label>
+                                    <label for="confirmacao-novaSenha">Confirme a nova senha:* <input type="password" name="confirmacao-novaSenha" id="confirmacao-novaSenha" placeholder="Digite a nova senha novamente"></label>
+                                    <div class="container-buttons">
+                                        <button type="submit" class="button-submit">Redefinir</button>
+                                        <button type="button" onclick="fecharRedefinirSenha()" class="button-cancelar">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </section>
+        </div>
+        <section class="container-logout">
+            <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
+            <a onclick="abrirExcluir()"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
+            <div class="excluirconta-popup popup">
+                <div>
+                    <i class="bi bi-x" onclick="fecharExcluir()"></i>
+                    <div class="conteudo-popupExcluir">
+                        <p>Deseja realmente excluir a conta?</p>
+                        <p><b>Essa é uma ação permanente.</b></p>
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <div>
+                            <button onclick="fecharExcluir()" class="button-cancelar">Cancelar</button>
+                            <form action="{% url 'excluir-conta' %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="button-excluir">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const cepInput = document.getElementById('cep-novoendereco')
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const dadosMessage = document.querySelector('.message-dados')
+        const redefinirSenhaMessage = document.querySelector('.message-redefinirsenha')
+        const novoEnderecoMessage = document.querySelector('.message-novoendereco')
+        const editEnderecoMessage = document.querySelector('.message-editendereco')
+        const redefinirSenhaPopUp = document.querySelector('.redefinirsenha-popup')
+        const editEnderecoPopUp = document.querySelector('.editendereco-popup')
+        const AddEnderecoPopUp = document.querySelector('.novoendereco-popup')
+        const excluirPopUp = document.querySelector('.excluirconta-popup')
+
+        function preencher() {
+            cep = cepInput.value
+            
+            if (cep.length === 8) {
+                let url = 'https://viacep.com.br/ws/' + cep + '/json/';
+        
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById('rua-novoendereco').value = data.logradouro;
+                        document.getElementById('cidade-novoendereco').value = data.localidade;
+                        document.getElementById('estado-novoendereco').value = data.uf;
+                    } else {
+                        alert('CEP não encontrado!');
+                    }
+                })
+                .catch(error => {
+                    alert('Erro ao buscar o CEP. Verifique o CEP digitado ou tente novamente.');
+                    console.error(error);
+                });
+            } else {
+                alert('Por favor, insira um CEP válido com 8 dígitos e sem "-"');
+            }
+        }
+
+        function abrirRedefinirSenha() {
+            redefinirSenhaPopUp.style.visibility = 'visible'
+            redefinirSenhaPopUp.style.opacity = '1'
+        }
+
+        function fecharRedefinirSenha() {
+            redefinirSenhaPopUp.style.visibility = 'hidden'
+            redefinirSenhaPopUp.style.opacity = '0'
+        }
+
+        function abrirEditEndereco(id) {
+            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`editendereco-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharEditEndereco(id) {
+            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`editendereco-popup-${id}`).style.opacity = '0';
+        }
+
+        function abrirAddEndereco() {
+            AddEnderecoPopUp.style.visibility = 'visible'
+            AddEnderecoPopUp.style.opacity = '1'
+        }
+
+        function fecharAddEndereco() {
+            AddEnderecoPopUp.style.visibility = 'hidden'
+            AddEnderecoPopUp.style.opacity = '0'
+        }
+
+        function abrirExcluir() {
+            excluirPopUp.style.visibility = 'visible'
+            excluirPopUp.style.opacity = '1'
+        }
+
+        function fecharExcluir() {
+            excluirPopUp.style.visibility = 'hidden'
+            excluirPopUp.style.opacity = '0'
+        }
+
+        if (dadosMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        } else if (redefinirSenhaMessage) {
+            redefinirSenhaPopUp.style.visibility = 'visible'
+            redefinirSenhaPopUp.style.opacity = '1'
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        } else if (novoEnderecoMessage) {
+            AddEnderecoPopUp.style.visibility = 'visible'
+            AddEnderecoPopUp.style.opacity = '1'
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        } else if (editEnderecoMessage) {
+            editEnderecoPopUp.style.visibility = 'visible'
+            editEnderecoPopUp.style.opacity = '1'
+            setTimeout(function() {
+                window.location.href = "{% url 'perfil' %}"
+            }, 1000)
+        }
+    </script>
+{% endblock %}

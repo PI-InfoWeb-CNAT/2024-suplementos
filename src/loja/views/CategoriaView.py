@@ -13,4 +13,4 @@ def categoria_view(request, categoria):
         'produtos_categoria': produtos_categoria
     }
 
-    return render(request, template_name='categoria.html', context=context, status=200)
+    return render(request, template_name='user/categoria.html', context=context, status=200)

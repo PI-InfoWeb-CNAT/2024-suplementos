@@ -48,7 +48,7 @@ def cadastro_view(request):
         else:
             messages.error(request, 'Preencha todos os campos')
 
-    return render(request, template_name='cadastro.html', status=200)
+    return render(request, template_name='user/cadastro.html', status=200)
 
 def validar_cpf(cpf):
     if len(cpf) != 11 or cpf == cpf[0] * 11:
