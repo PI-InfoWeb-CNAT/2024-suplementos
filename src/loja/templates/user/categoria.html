@@ -4,10 +4,6 @@
 
 {% block title %}{{categoria}}{% endblock %}
 
-<!-- {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-{% endblock %} -->
-
 {% block sidebar %}
     <ul class="menu">
         <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
@@ -62,13 +58,16 @@
                         {% if prod.porcentagem_desconto == 0 %}
                             <div class="produto-info">
                                 <h5 class="titulo-produto">{{prod.nome}}</h5>
-                                <p class="preco-produto">{{prod.preco}} R$</p>
+                                <p class="precoCalculado-produto">{{prod.preco}} R$</p>
                             </div>
                         {% else %}
                             <div class="produto-info">
                                 <h5 class="titulo-produto">{{prod.nome}}</h5>
                                 <div>
-                                    <p class="preco-produto">{{prod.preco}} R$</p>
+                                    <div>
+                                        <p class="preco-produto">{{prod.preco}} R$</p>
+                                        <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                    </div>
                                     <div class="promocao">
                                         {{prod.porcentagem_desconto}}% OFF
                                     </div> 

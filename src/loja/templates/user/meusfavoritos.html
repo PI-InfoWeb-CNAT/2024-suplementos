@@ -70,15 +70,25 @@
                                 <input type="hidden" name="next" value="{{ request.path }}">
                                 <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
                             </form>
-                            <div class="produto-info">
-                                <h5 class="titulo-produto">{{prod.nome}}</h5>
-                                <div>
-                                    <p class="preco-produto">{{prod.preco}} R$</p>
-                                    <div class="promocao">
-                                        {{prod.porcentagem_desconto}}% OFF
-                                    </div> 
+                            {% if prod.porcentagem_desconto == 0 %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.nome}}</h5>
+                                    <p class="precoCalculado-produto">{{prod.preco}} R$</p>
                                 </div>
-                            </div>
+                            {% else %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{prod.nome}}</h5>
+                                    <div>
+                                        <div>
+                                            <p class="preco-produto">{{prod.preco}} R$</p>
+                                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                        </div>
+                                        <div class="promocao">
+                                            {{prod.porcentagem_desconto}}% OFF
+                                        </div> 
+                                    </div>
+                                </div>
+                            {% endif %}
                             <div class="container-button-carrinho">
                                 <button class="button-comprar">Comprar</button>
                             </div>

@@ -49,6 +49,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'loja.context_processors.notificacoes_nao_lidas',
                 'loja.context_processors.favoritos_cliente',
+                'loja.context_processors.verificar_admin',
             ],
         },
     },

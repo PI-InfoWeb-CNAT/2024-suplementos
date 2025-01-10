@@ -20,3 +20,11 @@ def favoritos_cliente(request):
             pass
 
     return {'favoritos_cliente': favoritos_cliente}
+
+def verificar_admin(request):
+    admin = False
+
+    if request.user.is_staff:
+        admin = True
+
+    return {'admin': admin}

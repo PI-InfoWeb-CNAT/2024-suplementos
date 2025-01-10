@@ -43,20 +43,33 @@
                 <img src="{% static 'images/logo_branca.png' %}" alt="Logo PowerUp branca">
             </div>
             <div class="container-menu-footer">
-                <ul class="menu-footer">
-                    <li><a href="{% url 'home' %}">Página Inicial</a></li>
-                    <li><a href="{% url 'promocoes' %}">Promoções</a></li>
-                    <li><a href="">Mais Vendidos</a></li>
-                    <li><a href="">Meus Pedidos</a></li>
-                    <li><a href="{% url 'meus-favoritos' %}">Meus Favoritos</a></li>
-                    <li><a href="{% url 'perfil' %}">Meu Perfil</a></li>
-                </ul>
+                {% if admin %}
+                    <ul class="menu-footer">
+                        <li><a href="{% url 'home' %}">Página Inicial</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="">Lotes</a></li>
+                        <li><a href="">Notificações</a></li>
+                        <li><a href="{% url 'perfil' %}">Meu Perfil</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="menu-footer">
+                        <li><a href="{% url 'home' %}">Página Inicial</a></li>
+                        <li><a href="{% url 'promocoes' %}">Promoções</a></li>
+                        <li><a href="">Mais Vendidos</a></li>
+                        <li><a href="">Meus Pedidos</a></li>
+                        <li><a href="{% url 'meus-favoritos' %}">Meus Favoritos</a></li>
+                        <li><a href="{% url 'perfil' %}">Meu Perfil</a></li>
+                    </ul>
+                {% endif %}
             </div>
             <div class="footer-redes">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><img src="{% static 'images/instagram-icon.svg' %}" alt="Ícone do instagram"></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
             </div>
+            {% if admin %}
+                
+            {% endif %}
         </div>
     </footer>
 

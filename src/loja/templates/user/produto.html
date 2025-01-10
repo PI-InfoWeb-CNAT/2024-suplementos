@@ -50,16 +50,16 @@
                     <p>{{produto.descricao}}</p>
                 </div>
                 <div class="container-preco">
-                    <p>R${{produto.preco}}</p>
+                    <p>R${{produto.preco_calculado}}</p>
                     {% if produto.porcentagem_desconto != 0 %}
                         <div class="icon-raio"><i class="bi bi-lightning-charge-fill"></i></div>
                     {% endif %}
                 </div>
+                <p class="estoque">Estoque disponível: <span>{{produto.calcular_estoque}}</span></p>
                 <form action="">
                     <label for="qtd_produto">Quantidade: <input type="number" name="qtd_produto" id="qtd_produto" placeholder="0"></label>
                     <button type="submit">Adicionar ao carrinho</button>
                 </form>
-                {{produto.calcular_estoque}}
             </div>
         </section>
         <section class="produtos-relacionados">
@@ -84,13 +84,16 @@
                             {% if prod.porcentagem_desconto == 0 %}
                                 <div class="produto-info">
                                     <h5 class="titulo-produto">{{prod.nome}}</h5>
-                                    <p class="preco-produto">{{prod.preco}} R$</p>
+                                    <p class="precoCalculado-produto">{{prod.preco}} R$</p>
                                 </div>
                             {% else %}
                                 <div class="produto-info">
                                     <h5 class="titulo-produto">{{prod.nome}}</h5>
                                     <div>
-                                        <p class="preco-produto">{{prod.preco}} R$</p>
+                                        <div>
+                                            <p class="preco-produto">{{prod.preco}} R$</p>
+                                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                        </div>
                                         <div class="promocao">
                                             {{prod.porcentagem_desconto}}% OFF
                                         </div> 

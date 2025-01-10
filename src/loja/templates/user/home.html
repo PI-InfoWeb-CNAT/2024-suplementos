@@ -134,7 +134,10 @@
                             <div class="produto-info">
                                 <h5 class="titulo-produto">{{prod.nome}}</h5>
                                 <div>
-                                    <p class="preco-produto">{{prod.preco}} R$</p>
+                                    <div>
+                                        <p class="preco-produto">{{prod.preco}} R$</p>
+                                        <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                    </div>
                                     <div class="promocao">
                                         {{prod.porcentagem_desconto}}% OFF
                                     </div> 
@@ -173,13 +176,16 @@
                             {% if prod.porcentagem_desconto == 0 %}
                                 <div class="produto-info">
                                     <h5 class="titulo-produto">{{prod.nome}}</h5>
-                                    <p class="preco-produto">{{prod.preco}} R$</p>
+                                    <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
                                 </div>
                             {% else %}
                                 <div class="produto-info">
                                     <h5 class="titulo-produto">{{prod.nome}}</h5>
                                     <div>
-                                        <p class="preco-produto">{{prod.preco}} R$</p>
+                                        <div>
+                                            <p class="preco-produto">{{prod.preco}} R$</p>
+                                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                        </div>
                                         <div class="promocao">
                                             {{prod.porcentagem_desconto}}% OFF
                                         </div> 

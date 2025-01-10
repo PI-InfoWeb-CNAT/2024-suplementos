@@ -82,6 +82,12 @@ main {
             padding-left: .7em;
             font-weight: 500;
             transition: .3s;
+            & svg {
+                width: 1.05em;
+                height: 2em;
+                margin-right: .75em;
+                margin-left: .1em;
+            }
         }
         & a:hover {
             text-decoration: none;
@@ -428,6 +434,14 @@ footer {
 }
 
 .preco-produto {
+    color: black;
+    text-decoration: line-through;
+    text-decoration-color: #646464;
+    text-decoration-thickness: 1px;
+    font-size: .85em;
+}
+
+.precoCalculado-produto {
     color: black;
     font-weight: bold;
     font-size: 1.2em;

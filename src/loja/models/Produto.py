@@ -17,6 +17,12 @@ class Produto(models.Model):
 
     def calcular_estoque(self):
         return sum(lote.quantidade for lote in self.lote_set.all())
+    
+    def preco_calculado(self):
+        if self.porcentagem_desconto == 0:
+            return self.preco
+        else:
+            return f'{self.preco * (1 - (self.porcentagem_desconto / 100)):.2f}'.replace('.', ',')
 
     def __str__(self):
         return f'{self.nome}'
