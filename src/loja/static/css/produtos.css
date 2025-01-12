@@ -1,0 +1,45 @@
+.container-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-addProduto {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-grey);
+    color: var(--light-green);
+    border: none;
+    border-radius: 40px;
+    text-align: center;
+    padding: .3em .9em;
+    font-size: 1.15em;
+    & i {
+        font-size: 1.4em;
+        margin-left: .3em;
+    }
+}
+
+.container-buttons {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+    padding: 0 1.5em;
+}
+
+.button-submit {
+    background-color: var(--dark-grey);
+    color: var(--light-green);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.button-excluir {
+    border: none;
+    border-radius: 5px;
+    padding: .3em .9em;
+    background-color: #ff360a;
+    color: white;
+}

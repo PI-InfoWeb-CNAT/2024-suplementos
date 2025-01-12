@@ -87,6 +87,7 @@ main {
                 height: 2em;
                 margin-right: .75em;
                 margin-left: .1em;
+                transition: fill .3s;
             }
         }
         & a:hover {
@@ -94,6 +95,15 @@ main {
             color: var(--dark-green);
         }
     }
+}
+
+.menu svg path {
+    fill: var(--dark-grey); 
+    transition: fill 0.3s; 
+}
+
+.menu li a:hover svg path {
+    fill: var(--dark-green); 
 }
 
 .menu-icon {
@@ -104,6 +114,10 @@ main {
 .menu .active {
     color: var(--dark-green) !important;
     border-left: 2px solid var(--dark-green);
+}
+
+.menu .active svg path {
+    fill: var(--dark-green); 
 }
 
 .container-menu-secundario {

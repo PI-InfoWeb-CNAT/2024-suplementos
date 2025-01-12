@@ -336,6 +336,14 @@ h4 {
     padding: .3em .9em;
 }
 
+.button-excluir {
+    border: none;
+    border-radius: 5px;
+    padding: .3em .9em;
+    background-color: #ff360a;
+    color: white;
+}
+
 .container-logout {
     display: flex;
     flex-direction: column;
@@ -381,11 +389,4 @@ h4 {
 .conteudo-popupExcluir .button-cancelar {
     background-color: var(--dark-grey);
     color: var(--light-green);
-}
-.button-excluir {
-    border: none;
-    border-radius: 5px;
-    padding: .3em .9em;
-    background-color: #ff360a;
-    color: white;
 }

@@ -18,3 +18,10 @@ def produto_view(request, id):
     }
 
     return render(request, template_name='user/produto.html', context=context, status=200)
+
+def produtosAdmin_view(request):
+    produtos = Produto.objects.all()
+
+    context = {'produtos': produtos}
+
+    return render(request, template_name='admin/produtos.html', context=context, status=200)
