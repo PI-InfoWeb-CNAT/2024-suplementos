@@ -35,6 +35,15 @@
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-produtos' in message.tags %}
+                    <div class="message {{ message.tags }} message-page">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         <div class="container-row">
             <div class="container-filtro">
                 <h4>Ordenar por:</h4>
@@ -81,15 +90,82 @@
                         </div>
                     {% endif %}
                     <div class="container-buttons">
-                        <button type="button" class="button-submit">Editar</button>
-                        <form action="" method="POST">
+                        <button type="button" class="button-submit" onclick="abrirEditProduto('{{ prod.id }}')">Editar</button>
+                        <form action="{% url 'excluir-produto' %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="produto_id" value="{{ prod.id }}">
                             <button type="submit" class="button-excluir">Excluir</button>
                         </form>
+                        <!-- POP UP -->
+                        <div id="editproduto-popup-{{prod.id}}" class="editproduto-popup popup">
+                            <div>
+                                <i class="bi bi-x" onclick="fecharEditProduto('{{ prod.id }}')"></i>
+                                <div class="conteudo-popupEditProduto">
+                                    {% if messages %}
+                                        {% for message in messages %} 
+                                            {% if 'editar-produto' in message.tags %}
+                                                <div class="message {{ message.tags }} message-editarproduto">
+                                                    <span>{{ message }}</span>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    <h5>Edição do produto <span>{{prod.nome}}</span></h5>
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                        <label for="nome-editproduto">Nome: <input type="text" name="nome" id="nome-editproduto"  value="{{prod.nome}}" placeholder="Digite o nome do produto"></label>
+                                        <label for="descricao-editproduto">Descrição: <textarea name="descricao" id="descricao-editproduto" placeholder="Digite a descrição do produto">{{prod.descricao}}</textarea></label>
+                                        <div class="container-flex">
+                                            <label for="preco-editproduto">Preço: <input type="text" name="preco" id="preco-editproduto" value="{{prod.preco}}" placeholder="Digite o preço"></label>
+                                            <label for="desconto-editproduto">Desconto (%): <input type="number" name="desconto" id="desconto-editproduto" value="{{prod.porcentagem_desconto}}" placeholder="Digite o desconto"></label>
+                                        </div>
+                                        <label for="tipo-editcartao"> Categoria:
+                                            <select name="categoria" id="categoria-editproduto">
+                                                {% for categoria, label in categorias %}
+                                                    <option value="{{ categoria }}" {% if prod.categoria == categoria %}selected{% endif %}>
+                                                        {{ label }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </label>
+                                        <div class="container-buttons">
+                                            <button type="submit" class="button-submit">Atualizar</button>
+                                            <button type="button" onclick="fecharEditProduto('{{ prod.id }}')" class="button-cancelar">Cancelar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </section>
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const pageMessage = document.querySelector('.message-page')
+        const editProdutoPopUp = document.querySelector('.editproduto-popup')
+
+        function abrirEditProduto(id) {
+            document.getElementById(`editproduto-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`editproduto-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharEditProduto(id) {
+            document.getElementById(`editproduto-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`editproduto-popup-${id}`).style.opacity = '0';
+        }
+
+        if (pageMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'produtos' %}"
+            }, 1000)
+        }
+
+    </script>
 {% endblock %}

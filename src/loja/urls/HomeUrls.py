@@ -7,7 +7,7 @@ from loja.views.LoginView import login_view
 from loja.views.NotificacoesView import list_notificacoes_view, excluir_notificacoes_view
 from loja.views.FavoritoView import favorito_view
 from loja.views.MeusFavoritosView import meusfavoritos_view
-from loja.views.ProdutoView import produto_view, produtosAdmin_view
+from loja.views.ProdutoView import produto_view, produtosAdmin_view, excluir_produto_view
 from loja.views.CategoriaView import categoria_view
 
 urlpatterns = [
@@ -25,4 +25,5 @@ urlpatterns = [
 
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),
+    path("produtos/excluir", excluir_produto_view, name='excluir-produto'),
 ] 

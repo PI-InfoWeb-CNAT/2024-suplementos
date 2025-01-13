@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib import messages
+
 from django.http import HttpResponseNotFound
 
 from loja.models import Produto
@@ -11,7 +14,6 @@ def produto_view(request, id):
     if not produto:
         return HttpResponseNotFound('Produto não encontrado.')
     
-    
     context = {
         'produto': produto,
         'produtos_relacionados': produtos_relacionados
@@ -22,6 +24,26 @@ def produto_view(request, id):
 def produtosAdmin_view(request):
     produtos = Produto.objects.all()
 
-    context = {'produtos': produtos}
+    categorias = [
+        ('acessorios', 'Acessórios'),
+        ('alimentos', 'Alimentos'),
+        ('roupas', 'Roupas'),
+        ('suplementos', 'Suplementos'),
+    ]
+
+    context = {
+        'produtos': produtos,
+        'categorias': categorias
+    }
 
     return render(request, template_name='admin/produtos.html', context=context, status=200)
+
+def excluir_produto_view(request):
+    if request.method == 'POST':
+        produto_id = request.POST.get('produto_id')
+
+        produto = Produto.objects.get(id=produto_id)
+        produto.delete()
+        messages.success(request, 'Produto excluído com sucesso!', extra_tags='page-produtos')
+
+    return redirect(reverse('produtos'))
