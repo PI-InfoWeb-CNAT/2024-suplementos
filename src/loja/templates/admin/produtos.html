@@ -74,6 +74,7 @@
                         <div class="produto-info">
                             <h5 class="titulo-produto">{{prod.nome}}</h5>
                             <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                            <p>Estoque disponível: <span>{{prod.calcular_estoque}}</span></p>
                         </div>
                     {% else %}
                         <div class="produto-info">
@@ -87,6 +88,7 @@
                                     {{prod.porcentagem_desconto}}% OFF
                                 </div> 
                             </div>
+                            <p>Estoque disponível: <span>{{prod.calcular_estoque}}</span></p>
                         </div>
                     {% endif %}
                     <div class="container-buttons">
