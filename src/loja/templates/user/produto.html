@@ -56,7 +56,8 @@
                     {% endif %}
                 </div>
                 <p class="estoque">Estoque disponível: <span>{{produto.calcular_estoque}}</span></p>
-                <form action="">
+                <form action="{% url 'adicionar-ao-carrinho' produto.id %}" method="POST">
+                    {% csrf_token %}
                     <label for="qtd_produto">Quantidade: <input type="number" name="qtd_produto" id="qtd_produto" placeholder="0"></label>
                     <button type="submit">Adicionar ao carrinho</button>
                 </form>

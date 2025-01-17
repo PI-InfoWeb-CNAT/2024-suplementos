@@ -10,3 +10,4 @@ from .Notificacao import Notificacao
 from .Cartao import Cartao
 from .Favorito import Favorito
 from .Lote import Lote
+from .Carrinho import Carrinho

@@ -9,6 +9,7 @@ from loja.views.FavoritoView import favorito_view
 from loja.views.MeusFavoritosView import meusfavoritos_view
 from loja.views.ProdutoView import produto_view, produtosAdmin_view, excluir_produto_view
 from loja.views.CategoriaView import categoria_view
+from loja.views.CarrinhoView import adicionar_ao_carrinho
 
 urlpatterns = [
     # USER
@@ -22,6 +23,7 @@ urlpatterns = [
     path("meus-favoritos/", meusfavoritos_view, name='meus-favoritos'),
     path("notificacoes/", list_notificacoes_view, name='notificacoes'),
     path("notificacoes/excluir", excluir_notificacoes_view, name='excluir-notificacoes'),
+    path("carrinho/<int:idProduto>", adicionar_ao_carrinho, name='adicionar-ao-carrinho'),
 
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),
