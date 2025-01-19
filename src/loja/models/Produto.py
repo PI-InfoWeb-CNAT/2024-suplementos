@@ -1,5 +1,6 @@
 from loja.models import *
 from loja.validators import *
+from decimal import Decimal
 
 class Produto(models.Model):
     CATEGORIAS = [
@@ -22,7 +23,7 @@ class Produto(models.Model):
         if self.porcentagem_desconto == 0:
             return self.preco
         else:
-            return f'{self.preco * (1 - (self.porcentagem_desconto / 100)):.2f}'.replace('.', ',')
+            return Decimal(self.preco * (1 - (self.porcentagem_desconto / 100)))
 
     def __str__(self):
         return f'{self.nome}'

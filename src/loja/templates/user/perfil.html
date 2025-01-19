@@ -32,7 +32,14 @@
                         <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
                     {% endif %}
                 </div>
-                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>

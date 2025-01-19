@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 
@@ -7,7 +7,7 @@ from django.http import HttpResponseNotFound
 from loja.models import Produto
 
 def produto_view(request, id):
-    produto = Produto.objects.get(id=id)
+    produto = get_object_or_404(Produto, id=id)
     produtos_relacionados = Produto.objects.filter(categoria=produto.categoria).exclude(id=produto.id)
     produtos_relacionados = produtos_relacionados[:5]
 

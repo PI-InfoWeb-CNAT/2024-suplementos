@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Meu Carrinho{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/carrinho.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="menu">
+        <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+        <li><a href="/meuspedidos"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+        <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+        <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+    </ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Meu Carrinho</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
+                {% if user.is_authenticated %}
+                    <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+                {% else %}
+                    <a><i class="bi bi-person-fill icon-cima"></i></a>
+                    <button class="button-sign"><a href="{% url 'login' %}">Entrar</a></button>
+                    <button class="button-sign"><a href="{% url 'cadastro' %}">Cadastrar</a></button>
+                {% endif %}
+            </section>
+        </div>
+        <div>
+            {% if carrinho_itens %}
+                <div style="display: flex; justify-content: space-between;">
+                    <section class="itens">
+                        {% for item in carrinho_itens %}
+                            <div class="container-item">
+                                <a href="{% url 'remover-item' item.id %}"><i class="bi bi-x"></i></a>
+                                <img src="{{item.imagem}}" alt="Imagem do item do carrinho">
+                                <div class="container-item-info">
+                                    <div class="nome-porcentagem">
+                                        <h3>{{item.produto.nome}}</h3>
+                                        {% if item.produto.porcentagem_desconto > 0 %}
+                                            <div>
+                                                {{item.produto.porcentagem_desconto}}% OFF
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="preco-info">
+                                        <p>Preço: <span>{{item.produto.preco_calculado|floatformat:2}}</span></p>
+                                        <p>Quantidade: <span>{{item.quantidade}}</span></p>
+                                        <p id="subtotal">Subtotal: <span>{{item.total}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </section>
+                    <section class="container-total">
+                        <div class="total-info">
+                            <div>
+                                <p>Total:</p>
+                                <span>{{total}} R$</span>
+                            </div>
+                            <button>Finalizar pedido</button>
+                            <hr>
+                        </div>
+                        <img src="{% static 'images/imagem-carrinho.png' %}" alt="">
+                    </section>
+                </div>
+            {% else %}
+                <p id="carrinho-vazio">O seu carrinho está vazio!</p>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

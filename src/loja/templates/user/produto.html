@@ -32,7 +32,14 @@
                         <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
                     {% endif %}
                 </div>
-                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
                 {% if user.is_authenticated %}
                     <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
                 {% else %}
@@ -42,6 +49,15 @@
                 {% endif %}
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-produto' in message.tags %}
+                    <div class="message {{ message.tags }} message-produto">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         <section class="container-detalhes-produto">
             <img src="/media/{{produto.imagem}}" alt="Imagem do produto {{produto.nome}}">
             <div class="detalhes-produto">
@@ -50,7 +66,7 @@
                     <p>{{produto.descricao}}</p>
                 </div>
                 <div class="container-preco">
-                    <p>R${{produto.preco_calculado}}</p>
+                    <p>R${{produto.preco_calculado|floatformat:2}}</p>
                     {% if produto.porcentagem_desconto != 0 %}
                         <div class="icon-raio"><i class="bi bi-lightning-charge-fill"></i></div>
                     {% endif %}
@@ -93,7 +109,7 @@
                                     <div>
                                         <div>
                                             <p class="preco-produto">{{prod.preco}} R$</p>
-                                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                            <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                                         </div>
                                         <div class="promocao">
                                             {{prod.porcentagem_desconto}}% OFF
@@ -110,4 +126,25 @@
             {% endif %}
         </section>
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const produtoMessage = document.querySelector('.message-produto')
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const produtoId = "{{ produto.id }}"
+
+        if (produtoMessage) {
+            if (successMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'carrinho' %}"
+                }, 1000)
+            } else if (errorMessage) {
+                setTimeout(function() {
+                    window.location.href = "/produto/" + produtoId + "/"
+                }, 1500)
+            }
+        }
+    </script>
 {% endblock %}

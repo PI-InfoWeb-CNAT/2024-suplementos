@@ -197,11 +197,11 @@ main {
     font-size: 1.2em;
 }
 
-.notificacao-container {
+.notificacao-container, .carrinho-container {
     position: relative;
 }
 
-.notificacoes-nao-lidas {
+.notificacoes-nao-lidas, .itens-carrinho {
     position: absolute;
     top: -25px;
     right: -3px;

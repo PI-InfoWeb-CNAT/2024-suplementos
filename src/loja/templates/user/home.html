@@ -39,7 +39,14 @@
                         <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
                     {% endif %}
                 </div>
-                <a href="/carrinho"><i class="bi bi-cart-fill icon-cima"></i></a>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
                 {% if user.is_authenticated %}
                     <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
                 {% else %}
@@ -136,7 +143,7 @@
                                 <div>
                                     <div>
                                         <p class="preco-produto">{{prod.preco}} R$</p>
-                                        <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                        <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                                     </div>
                                     <div class="promocao">
                                         {{prod.porcentagem_desconto}}% OFF
@@ -176,7 +183,7 @@
                             {% if prod.porcentagem_desconto == 0 %}
                                 <div class="produto-info">
                                     <h5 class="titulo-produto">{{prod.nome}}</h5>
-                                    <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                    <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                                 </div>
                             {% else %}
                                 <div class="produto-info">
@@ -184,7 +191,7 @@
                                     <div>
                                         <div>
                                             <p class="preco-produto">{{prod.preco}} R$</p>
-                                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                            <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                                         </div>
                                         <div class="promocao">
                                             {{prod.porcentagem_desconto}}% OFF

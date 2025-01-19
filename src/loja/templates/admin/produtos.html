@@ -73,7 +73,7 @@
                     {% if prod.porcentagem_desconto == 0 %}
                         <div class="produto-info">
                             <h5 class="titulo-produto">{{prod.nome}}</h5>
-                            <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                            <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                             <p>Estoque disponível: <span>{{prod.calcular_estoque}}</span></p>
                         </div>
                     {% else %}
@@ -82,7 +82,7 @@
                             <div>
                                 <div>
                                     <p class="preco-produto">{{prod.preco}} R$</p>
-                                    <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                    <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                                 </div>
                                 <div class="promocao">
                                     {{prod.porcentagem_desconto}}% OFF

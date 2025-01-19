@@ -28,7 +28,7 @@
                         <div>
                             <div>
                                 <p class="preco-produto">{{prod.preco}} R$</p>
-                                <p class="precoCalculado-produto">{{prod.preco_calculado}} R$</p>
+                                <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
                             </div>
                             <div class="promocao">
                                 {{prod.porcentagem_desconto}}% OFF
