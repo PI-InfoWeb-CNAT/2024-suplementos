@@ -24,13 +24,13 @@ def login_view(request):
                 auth_login(request, user)
                 _next = request.GET.get('next')
                 if _next is not None:
-                    messages.success(request, 'Login realizado com sucesso!')
+                    messages.success(request, 'Login realizado com sucesso!', extra_tags='page-login')
                     return redirect(_next)
                 else:
-                    messages.success(request, 'Login realizado com sucesso!')
+                    messages.success(request, 'Login realizado com sucesso!', extra_tags='page-login')
             else:
-                messages.error(request, 'Email ou senha inválidos!')
+                messages.error(request, 'Email ou senha inválidos!', extra_tags='page-login')
         else:
-            messages.error(request, 'Preencha todos os campos!')
+            messages.error(request, 'Preencha todos os campos!', extra_tags='page-login')
 
     return render(request, template_name='user/login.html', status=200) 

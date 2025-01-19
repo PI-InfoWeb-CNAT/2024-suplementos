@@ -16,9 +16,11 @@
         <h4>Entrar</h4>
         {% if messages %}
             {% for message in messages %} 
-                <div class="message {{ message.tags }}">
-                    <span>{{ message }}</span>
-                </div>
+                {% if 'page-login' in message.tags %}
+                    <div class="message {{ message.tags }}">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
         <h2>BEM VINDO DE VOLTA!</h2>
@@ -82,7 +84,6 @@
     </section>
 
     <script>
-
         const successMessage = document.querySelector('.success');
         const errorMessage = document.querySelector('.error');
         const RedefinirSenha = document.querySelector('.redefinir-senha-popup');

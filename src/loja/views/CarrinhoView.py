@@ -65,12 +65,15 @@ def adicionar_ao_carrinho(request, idProduto):
     return render(request, 'user/produto.html', {'produto': produto}, status=200)
 
 def excluir_carrinhos_expirados():
-    limite = datetime.now() - timedelta(days=1)
-    Carrinho.objects.filter(user__isnull=True, criado_em__lt=limite).delete()
+    hoje = datetime.today().date()
+
+    Carrinho.objects.filter(user__isnull=True).exclude(criado_em__date=hoje).delete()
+
 
 def listar_carrinho_view(request):
     carrinho_itens = [] 
 
+    total = 0
     carrinho = None
 
     if request.user.is_authenticated:
@@ -82,10 +85,11 @@ def listar_carrinho_view(request):
 
     if carrinho:
         carrinho_itens = CarrinhoItem.objects.filter(carrinho=carrinho)
+        total = carrinho.total
 
     context = {
         'carrinho_itens': carrinho_itens,
-        'total': carrinho.total
+        'total': total
     }
 
     return render(request, 'user/carrinho.html', context=context, status=200)

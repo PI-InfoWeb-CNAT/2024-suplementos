@@ -1,4 +1,5 @@
-from loja.models import *
+from django.db import models
+from django.contrib.auth.models import User
 
 class Cliente(models.Model):
     PERFIL = [
@@ -13,22 +14,7 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f'{self.nome}'
-    
-    @receiver(post_save, sender=User)
-    def create_user_usuario(sender, instance, created, **kwargs):
-        try:
-            if created:
-                Cliente.objects.create(user=instance)
-        except:
-            pass
-    
-    @receiver(post_save, sender=User)
-    def save_user_usuario(sender, instance, **kwargs):
-        try:
-            instance.usuario.save()
-        except:
-            pass
 
     def delete(self, *args, **kwargs):
-        self.user.delete()  
-        super().delete(*args, **kwargs)  
+        self.user.delete()
+        super().delete(*args, **kwargs)
