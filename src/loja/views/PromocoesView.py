@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from loja.models import Produto
 
 def promocoes_view(request):

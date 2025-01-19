@@ -11,3 +11,5 @@ from .Cartao import Cartao
 from .Favorito import Favorito
 from .Lote import Lote
 from .Carrinho import Carrinho
+from .Carrinho import CarrinhoItem
+from .Pedido import Pedido

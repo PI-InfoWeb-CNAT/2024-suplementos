@@ -2,9 +2,9 @@ from datetime import datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.db import transaction
 
-from loja.models import Produto, Carrinho
-from loja.models.Carrinho import CarrinhoItem
+from loja.models import Produto, Carrinho, CarrinhoItem
 
 def adicionar_ao_carrinho(request, idProduto):
     produto = get_object_or_404(Produto, id=idProduto)
@@ -35,7 +35,7 @@ def adicionar_ao_carrinho(request, idProduto):
             request.session.create()
         session_key = request.session.session_key
 
-        carrinho = Carrinho.objects.filter(session_key=session_key).first()
+        carrinho = Carrinho.objects.filter(session_key=session_key, user__isnull=True).first()
 
         if not carrinho or carrinho.criado_em.date() != hoje:
             carrinho = Carrinho.objects.create(session_key=session_key)
@@ -107,3 +107,27 @@ def remover_item_view(request, idItem):
             item.delete()
 
     return redirect(reverse('carrinho'))
+
+@transaction.atomic
+def migrar_carrinho_para_usuario(user, session_key):
+    carrinho_anonimo = Carrinho.objects.filter(session_key=session_key, user__isnull=True).first()
+    print(session_key)
+    print(carrinho_anonimo)
+    if not carrinho_anonimo:
+        return
+
+    carrinho_usuario, criado = Carrinho.objects.get_or_create(user=user)
+
+    for item in carrinho_anonimo.itens.all():
+        item_existente = CarrinhoItem.objects.filter(
+            carrinho=carrinho_usuario, produto=item.produto
+        ).first()
+
+        if item_existente:
+            item_existente.quantidade += item.quantidade
+            item_existente.save()
+        else:
+            item.carrinho = carrinho_usuario
+            item.save()
+
+    carrinho_anonimo.delete()

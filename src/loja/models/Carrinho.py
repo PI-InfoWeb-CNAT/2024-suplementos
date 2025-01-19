@@ -1,5 +1,4 @@
 from loja.models import *
-from datetime import date
 
 class Carrinho(models.Model):
     session_key = models.CharField(max_length=40, null=True, blank=True)

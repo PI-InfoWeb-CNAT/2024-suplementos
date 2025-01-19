@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
-from .models.Carrinho import CarrinhoItem
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'telefone_celular')
@@ -31,6 +30,10 @@ class CarrinhoItemAdmin(admin.ModelAdmin):
     list_display = ('produto', 'quantidade', 'carrinho', 'preco', 'imagem')
     empty_value_display = 'Vazio'
 
+class PedidoAdmin(admin.ModelAdmin):
+    list_display = ('user', 'dt_hora', 'total')
+    empty_value_display = 'Vazio'
+
 admin.site.register(Cartao, CartaoAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Endereco)
@@ -40,3 +43,4 @@ admin.site.register(Notificacao, NotificacaoAdmin)
 admin.site.register(Produto, ProdutoAdmin)
 admin.site.register(Carrinho, CarrinhoAdmin)
 admin.site.register(CarrinhoItem, CarrinhoItemAdmin)
+admin.site.register(Pedido, PedidoAdmin)

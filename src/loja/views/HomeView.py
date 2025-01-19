@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+
 from loja.models import Produto
 
 def home_view(request):

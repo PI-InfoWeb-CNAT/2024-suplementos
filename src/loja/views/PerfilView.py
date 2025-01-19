@@ -4,6 +4,7 @@ from django.contrib.auth import logout, update_session_auth_hash
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+
 from loja.models import Cliente, Endereco
 
 @login_required
