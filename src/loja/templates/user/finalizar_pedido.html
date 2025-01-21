@@ -43,6 +43,89 @@
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
+        <form action="">
+            <div>
+                <section class="container-endereco-cartao">
+                    <div class="container-endereco endereco-cartao">
+                        <h4>Endereço</h4>
+                        {% if enderecos %}
+                            <select name="endereco" required>
+                                <option value="" disabled selected>Selecione um endereço</option>
+                                {% for endereco in enderecos %}
+                                    <option value="{{ endereco.id }}">
+                                        {{ endereco.nome }} - {{ endereco.rua }}, {{ endereco.numero }} - {{ endereco.cidade }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <div>
+                                <p>Você não possui nenhum endereço registrado.</p>
+                                <a href="{% url 'perfil' %}">Adicionar endereço</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="container-cartao endereco-cartao">
+                        <h4>Cartão</h4>
+                        {% if cartoes %}
+                            <select name="cartao" required>
+                                <option value="" disabled selected>Selecione um cartão</option>
+                                {% for cartao in cartoes %}
+                                    <option value="{{ endereco.id }}">
+                                        {{ cartao.nome }} - {{ cartao.nome_titular }} - {{ cartao.tipo|first_name }} - {{ cartao.numero|numero_cartao }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <div>
+                                <p>Você não possui nenhum cartão registrado.</p>
+                                <a href="{% url 'minha-carteira' %}">Adicionar cartão</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </section>
+                <section class="container-produtos">
+                    <h4>Produtos</h4>
+                    <div class="produtos">
+                        {% for produto in produtos %}
+                            <div class="container-produto">
+                                <img src="{{produto.imagem}}" alt="Imagem do produto do carrinho">
+                                <div class="container-produto-info">
+                                    <div class="nome-porcentagem">
+                                        <h5>{{produto.produto.nome}}</h5>
+                                        {% if produto.produto.porcentagem_desconto > 0 %}
+                                            <div>
+                                                {{produto.produto.porcentagem_desconto}}% OFF
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="preco-info">
+                                        <p>Preço: <span>{{produto.produto.preco_calculado|floatformat:2}}</span></p>
+                                        <p>Quantidade: <span>{{produto.quantidade}}</span></p>
+                                        <p id="subtotal">Subtotal: <span>{{produto.total}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            <div style="width: 1px; height: 100%; background-color: rgb(189, 189, 189); border-radius: 20px;"></div>
+            <section class="container-total">
+                <div class="total-info">
+                    <div>
+                        <p>Sub-total:</p>
+                        <span>{{total}} R$ 00,00</span>
+                    </div>
+                    <div>
+                        <p>Frete:</p>
+                        <span>{{total}} R$ 0000,00</span>
+                    </div>
+                    <a href="{% url 'finalizar-pedido' %}">Confirmar compra</a>
+                    <hr>
+                </div>
+                <img src="{% static 'images/imagem-compra.png' %}" alt="">
+            </section>
+        </form>
     </main>
 
 {% endblock %}

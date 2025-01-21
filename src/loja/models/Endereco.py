@@ -1,7 +1,7 @@
 from loja.models import *
 
 class Endereco(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, related_name='enderecos', on_delete=models.CASCADE)
     nome = models.CharField(null=False, max_length=100)
     estado = models.CharField(null=False, max_length=100)
     cidade = models.CharField(null=False, max_length=100)

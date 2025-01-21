@@ -15,6 +15,7 @@ h4 {
     max-height: 55em;
     display: flex;
     padding-right: 1em;
+    padding-bottom: 1em;
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 3em;
@@ -90,6 +91,9 @@ h4 {
             border-radius: 6px;
             padding-left: .3em;
             outline: none;
+            & option {
+                max-width: 100px;
+            }
         }
     }
 }

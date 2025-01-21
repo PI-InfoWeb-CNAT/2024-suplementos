@@ -6,7 +6,7 @@ class Cartao(models.Model):
         ('credito', 'Crédito'),
     ]
 
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
+    cliente = models.ForeignKey(Cliente, null=True, related_name='cartoes', on_delete=models.CASCADE, blank=True)
     nome = models.CharField(null=False, max_length=100)
     nome_titular = models.CharField(null=False, max_length=100)
     numero = models.CharField(null=False, max_length=100)
