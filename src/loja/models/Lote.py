@@ -2,7 +2,7 @@ from loja.models import *
 from loja.validators import *
 
 class Lote(models.Model):
-    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produto, related_name='lotes', on_delete=models.CASCADE)
     quantidade = models.IntegerField(null=False, validators=[numero_positivo])
     data_validade = models.DateField(null=False, validators=[data_futura])
 
@@ -18,4 +18,4 @@ class Lote(models.Model):
         produto.save()
 
     def __str__(self):
-        return f'{self.produto} - {self.data_validade}'
+        return f'{self.produto} - {self.data_validade} - {self.quantidade}'

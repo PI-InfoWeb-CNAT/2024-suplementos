@@ -17,7 +17,7 @@ class Produto(models.Model):
     categoria = models.CharField(max_length=50, choices=CATEGORIAS, default='suplementos')
 
     def calcular_estoque(self):
-        return sum(lote.quantidade for lote in self.lote_set.all())
+        return sum(lote.quantidade for lote in self.lotes.all())
     
     def preco_calculado(self):
         if self.porcentagem_desconto == 0:

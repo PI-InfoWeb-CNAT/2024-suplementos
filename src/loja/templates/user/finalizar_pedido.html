@@ -43,7 +43,17 @@
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
-        <form action="">
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-pedido' in message.tags %}
+                    <div class="message {{ message.tags }}">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'finalizar-pedido' %}" method="POST">
+            {% csrf_token %}
             <div>
                 <section class="container-endereco-cartao">
                     <div class="container-endereco endereco-cartao">
@@ -70,7 +80,7 @@
                             <select name="cartao" required>
                                 <option value="" disabled selected>Selecione um cartão</option>
                                 {% for cartao in cartoes %}
-                                    <option value="{{ endereco.id }}">
+                                    <option value="{{ cartao.id }}">
                                         {{ cartao.nome }} - {{ cartao.nome_titular }} - {{ cartao.tipo|first_name }} - {{ cartao.numero|numero_cartao }}
                                     </option>
                                 {% endfor %}
@@ -113,19 +123,34 @@
             <section class="container-total">
                 <div class="total-info">
                     <div>
-                        <p>Sub-total:</p>
-                        <span>{{total}} R$ 00,00</span>
+                        <p>Total:</p>
+                        <span>R$ {{total}}</span>
                     </div>
-                    <div>
-                        <p>Frete:</p>
-                        <span>{{total}} R$ 0000,00</span>
-                    </div>
-                    <a href="{% url 'finalizar-pedido' %}">Confirmar compra</a>
+                    <button type="submit">Confirmar compra</button>
                     <hr>
                 </div>
                 <img src="{% static 'images/imagem-compra.png' %}" alt="">
             </section>
         </form>
     </main>
+{% endblock %}
 
+{% block script %}
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const pedidoMessage = document.querySelector('.page-pedido')
+
+        if (pedidoMessage) {
+            if (successMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'home' %}"
+                }, 1000)
+            } else if (errorMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'finalizar-pedido' %}"
+                }, 2000)
+            }
+        }
+    </script>
 {% endblock %}

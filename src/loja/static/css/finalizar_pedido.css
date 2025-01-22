@@ -1,6 +1,6 @@
 form {
     display: flex;
-    gap: 2em;
+    gap: 4em;
     & > div {
         display: flex;
         flex-direction: column;
@@ -143,7 +143,7 @@ form {
 }
 
 .container-total {
-    width: 600px;
+    width: 450px;
     height: 600px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
     border-radius: 20px;
@@ -159,17 +159,17 @@ form {
 .total-info {
     display: flex;
     flex-direction: column;
-    gap: 1em;
     & div {
         display: flex;
         justify-content: space-between;
         gap: 10em;
+        margin-bottom: 1em;
         & p, span {
             font-size: 1.3em;
             font-weight: 600;
         }
     }
-    & a {
+    & button {
         display: block;
         width: 100%;
         margin-top: 2em !important;
