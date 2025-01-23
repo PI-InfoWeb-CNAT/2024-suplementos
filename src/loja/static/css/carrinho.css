@@ -92,7 +92,7 @@
 }
 
 .total-info {
-    & div {
+    & div { 
         display: flex;
         gap: 13em;
         & p, span {
@@ -117,8 +117,4 @@
 hr {
     width: 100%;
     color: black;
-}
-
-#carrinho-vazio {
-    font-size: 1.5em;
 }

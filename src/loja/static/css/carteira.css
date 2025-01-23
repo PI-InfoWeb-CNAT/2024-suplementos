@@ -179,32 +179,6 @@ h4 {
     margin-top: 2em;
 }
 
-.button-submit {
-    background-color: var(--dark-grey);
-    color: var(--light-green);
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    padding: .3em .9em;
-}
-
-.button-cancelar {
-    background-color: transparent;
-    color: black;
-    border: 2px solid var(--dark-green);
-    border-radius: 5px;
-    text-align: center;
-    padding: .3em .9em;
-}
-
-.button-excluir {
-    border: none;
-    border-radius: 5px;
-    padding: .3em .9em;
-    background-color: #ff360a;
-    color: white;
-}
-
 .message-novocartao {
     width: 90%;
 }

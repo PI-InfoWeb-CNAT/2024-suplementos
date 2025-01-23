@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Meus Pedidos{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/meuspedidos.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+<ul class="menu">
+    <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+    <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+    <li><a href="/maisvendidos"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+    <li><a href="{% url 'meus-pedidos' %}" class="active"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+    <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+    <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+</ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Meus Pedidos</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
+                <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            {% if pedidos %}
+                <section class="pedidos">
+                    {% for pedido_detalhe in pedidos %}
+                        <div class="container-pedido">
+                            <img src="{{ pedido_detalhe.imagem }}" alt="Imagem do produto mais pedido">
+                            <div class="pedido-info">
+                                <div>
+                                    <p id="data">{{ pedido_detalhe.pedido.dt_hora|date:"d M, Y" }}</p>
+                                    <h3>Pedido #{{ pedido_detalhe.pedido.id }}</h3>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: .7em;">
+                                    <p style="font-size: 1.1em; font-weight: bold;">Status: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.get_status_display }}</span></p>
+                                    <p style="font-size: 1.1em; font-weight: bold;">Endereço: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.endereco.nome }}</span></p>
+                                    <p style="font-size: 1.1em; font-weight: bold;">Cartão: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.cartao.nome }}</span></p>
+                                    <p style="font-size: 1.3em; font-weight: bold; margin-top: .3em;">Total: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.total }}</span></p>
+                                </div>
+                            </div>
+                            <div class="container-buttons">
+                                <button class="button-submit">Detalhes do pedido</button>
+                                <button class="button-excluir">Cancelar pedido</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+                <section class="container-menu-secundario">
+                    <h4 style="font-size: 1.4em; font-weight: 600; margin-bottom: 1em;">Mais Opções</h4>
+                    <div class="menu-secundario">
+                        <div class="item-menu-secundario">
+                            <a href="{% url 'perfil' %}"><i class="bi bi-person-fill"></i></a>
+                            <p>Meu Perfil</p>
+                        </div>
+                        <div class="item-menu-secundario">
+                            <a href="{% url 'meus-pedidos' %}" class="active"><i class="bi bi-basket3-fill"></i></a>
+                            <p>Meus Pedidos</p>
+                        </div>
+                        <div class="item-menu-secundario">
+                            <a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i></a>
+                            <p>Meus Favoritos</p>
+                        </div>
+                        <div class="item-menu-secundario">
+                            <a href="{% url 'minha-carteira' %}"><i class="bi bi-wallet2"></i></a>
+                            <p>Minha Carteira</p>
+                        </div>
+                        <div class="item-menu-secundario">
+                            <a href="{% url 'notificacoes' %}"><i class="bi bi-bell-fill"></i></a>
+                            <p>Notificações</p>
+                        </div>
+                        <div class="item-menu-secundario">
+                            <a href=""><i class="bi bi-bag-check-fill"></i></a>
+                            <p>Comprar novamente</p>
+                        </div>
+                    </div>
+                </section>
+            {% else %}
+                <p style="font-size: 1.5em;">Você não possui nenhum pedido!</p>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
