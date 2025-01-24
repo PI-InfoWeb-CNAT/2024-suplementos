@@ -16,7 +16,7 @@ class Pedido(models.Model):
     dt_hora = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user} - {self.dt_hora}'
+        return f'{self.user} - {self.total} - {self.dt_hora}'
     
 class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, related_name='itens', on_delete=models.CASCADE)

@@ -11,7 +11,7 @@ from loja.views.ProdutoView import produto_view, produtosAdmin_view, excluir_pro
 from loja.views.CategoriaView import categoria_view
 from loja.views.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view, remover_item_view
 from loja.views.PedidoView import finalizar_pedido_view
-from loja.views.MeusPedidosView import meuspedidos_view
+from loja.views.MeusPedidosView import meuspedidos_view, cancelar_pedido_view
 
 urlpatterns = [
     # USER
@@ -30,6 +30,7 @@ urlpatterns = [
     path("carrinho/remover-item/<int:idItem>", remover_item_view, name='remover-item'),
     path("finalizar-pedido/", finalizar_pedido_view, name='finalizar-pedido'),
     path("meus-pedidos/", meuspedidos_view, name='meus-pedidos'),
+    path("meus-pedidos/cancelar-pedido", cancelar_pedido_view, name='cancelar-pedido'),
 
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),

@@ -43,6 +43,15 @@
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-meuspedidos' in message.tags %}
+                    <div class="message {{ message.tags }}">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         <div style="display: flex; justify-content: space-between;">
             {% if pedidos %}
                 <section class="pedidos">
@@ -63,7 +72,28 @@
                             </div>
                             <div class="container-buttons">
                                 <button class="button-submit">Detalhes do pedido</button>
-                                <button class="button-excluir">Cancelar pedido</button>
+                                {% if pedido_detalhe.pedido.status == '1' %}
+                                    <button class="button-excluir" onclick="abrirCancelarPedido('{{ pedido_detalhe.pedido.id }}')">Cancelar pedido</button>
+                                {% endif %}
+                                <!-- POP UP -->
+                                <div id="cancelarpedido-popup-{{pedido_detalhe.pedido.id}}" class="cancelarpedido-popup popup">
+                                    <div>
+                                        <i class="bi bi-x" onclick="fecharCancelarPedido('{{ pedido_detalhe.pedido.id }}')"></i>
+                                        <div class="conteudo-popupCancelarPedido">
+                                            <p>Deseja realmente cancelar o pedido #{{ pedido_detalhe.pedido.id }}?</p>
+                                            <p><b>Essa é uma ação permanente.</b></p>
+                                            <i class="bi bi-exclamation-triangle-fill"></i>
+                                            <div>
+                                                <button type="button" onclick="fecharCancelarPedido('{{ pedido_detalhe.pedido.id }}')" class="button-cancelar">Voltar</button>
+                                                <form action="{% url 'cancelar-pedido' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pedido_id" value="{{ pedido_detalhe.pedido.id }}">
+                                                    <button type="submit" class="button-excluir">Cancelar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -102,4 +132,28 @@
             {% endif %}
         </div>
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const cancelarPedidoPopUp = document.querySelector('.cancelarpedido-popup')
+        const pageMessage = document.querySelector('.page-meuspedidos')
+
+        function abrirCancelarPedido(id) {
+            document.getElementById(`cancelarpedido-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`cancelarpedido-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharCancelarPedido(id) {
+            document.getElementById(`cancelarpedido-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`cancelarpedido-popup-${id}`).style.opacity = '0';
+        }
+
+        if (pageMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'meus-pedidos' %}"
+            }, 1000)
+        }
+
+    </script>
 {% endblock %}
