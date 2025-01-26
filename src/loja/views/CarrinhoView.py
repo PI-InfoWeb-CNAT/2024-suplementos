@@ -60,15 +60,20 @@ def adicionar_ao_carrinho(request, idProduto):
     carrinho_item.save()
     messages.success(request, 'Produto adicionado com sucesso', extra_tags='page-produto')
 
-    excluir_carrinhos_expirados()
+    excluir_carrinhos_expirados(request)
 
     return render(request, 'user/produto.html', {'produto': produto}, status=200)
 
-def excluir_carrinhos_expirados():
+def excluir_carrinhos_expirados(request):
     hoje = datetime.today().date()
+    session_key = request.session.session_key
 
-    Carrinho.objects.filter(user__isnull=True).exclude(criado_em__date=hoje).delete()
-
+    carrinho = Carrinho.objects.filter(session_key=session_key).first()
+    
+    if not carrinho:
+        Carrinho.objects.filter(user__isnull=True).exclude(criado_em__date=hoje).delete()
+    else:
+        Carrinho.objects.filter(user__isnull=True).exclude(session_key=session_key).exclude(criado_em__date=hoje).delete()
 
 def listar_carrinho_view(request):
     carrinho_itens = [] 

@@ -25,5 +25,9 @@ class PedidoItem(models.Model):
     preco = models.DecimalField(max_digits=8, decimal_places=2)
     imagem = models.CharField(max_length=255, blank=True, null=True)
 
+    @property
+    def total(self):
+        return self.quantidade * self.preco
+
     def __str__(self):
         return f'{self.produto} - {self.quantidade}'

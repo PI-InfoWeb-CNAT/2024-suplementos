@@ -71,11 +71,46 @@
                                 </div>
                             </div>
                             <div class="container-buttons">
-                                <button class="button-submit">Detalhes do pedido</button>
+                                <button class="button-submit" onclick="abrirDetalhesPedido('{{ pedido_detalhe.pedido.id }}')">Detalhes do pedido</button>
                                 {% if pedido_detalhe.pedido.status == '1' %}
                                     <button class="button-excluir" onclick="abrirCancelarPedido('{{ pedido_detalhe.pedido.id }}')">Cancelar pedido</button>
                                 {% endif %}
-                                <!-- POP UP -->
+                                {% if pedido_detalhe.pedido.status == '3' %}
+                                    <button class="button-submit">Confirmar recebimento</button>
+                                {% endif %}
+                                <!-- POP UP DETALHES DO PEDIDO-->
+                                <div id="detalhespedido-popup-{{pedido_detalhe.pedido.id}}" class="detalhespedido-popup popup">
+                                    <div>
+                                        <i class="bi bi-x" onclick="fecharDetalhesPedido('{{ pedido_detalhe.pedido.id }}')"></i>
+                                        <div class="conteudo-popupDetalhesPedido">
+                                            <h5>Detalhes do pedido #{{ pedido_detalhe.pedido.id }}</h5>
+                                            <div class="pedido-itens">
+                                                {% for item in pedido_detalhe.pedido.itens.all %}
+                                                    <div class="container-item">
+                                                        <img src="{{ item.imagem }}" alt="Imagem do item do pedido">
+                                                        <div class="container-item-info">
+                                                            <div class="nome-porcentagem">
+                                                                <h3>{{item.produto.nome}}</h3>
+                                                            </div>
+                                                            <div class="preco-info">
+                                                                <p>Preço: <span>{{item.produto.preco_calculado|floatformat:2}}</span></p>
+                                                                <p>Quantidade: <span>{{item.quantidade}}</span></p>
+                                                                <p id="subtotal">Subtotal: <span>{{item.total}}</span></p>
+                                                            </div>
+                                                        </div>
+                                                        {% if pedido_detalhe.pedido.status == '4' %}
+                                                            <div class="container-buttons">
+                                                                <button class="button-submit">Avaliar Produto</button>
+                                                                <button class="button-submit">Devolver Produto</button>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- POP UP CANCELAR PEDIDO-->
                                 <div id="cancelarpedido-popup-{{pedido_detalhe.pedido.id}}" class="cancelarpedido-popup popup">
                                     <div>
                                         <i class="bi bi-x" onclick="fecharCancelarPedido('{{ pedido_detalhe.pedido.id }}')"></i>
@@ -137,6 +172,7 @@
 {% block script %}
     <script>
         const cancelarPedidoPopUp = document.querySelector('.cancelarpedido-popup')
+        const detalhesPedidoPopUp = document.querySelector('.detalhespedido-popup')
         const pageMessage = document.querySelector('.page-meuspedidos')
 
         function abrirCancelarPedido(id) {
@@ -147,6 +183,16 @@
         function fecharCancelarPedido(id) {
             document.getElementById(`cancelarpedido-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`cancelarpedido-popup-${id}`).style.opacity = '0';
+        }
+
+        function abrirDetalhesPedido(id) {
+            document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharDetalhesPedido(id) {
+            document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '0';
         }
 
         if (pageMessage) {

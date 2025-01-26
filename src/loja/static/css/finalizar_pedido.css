@@ -93,10 +93,13 @@ form {
     }
 }
 
-.produtos {
+.produtos-finalizarpedido {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: .3em 1em .3em .3em;
     max-height: 32em;
     overflow-y: auto;
-    padding: .3em 0 .3em .3em;
 }
 
 .container-produto-info {
@@ -118,7 +121,7 @@ form {
     align-items: center;
     gap: 1em;
     & h5 {
-        font-size: 1.5em;
+        font-size: 1.55em;
         max-width: 350px;
         margin-bottom: 0;
     }
