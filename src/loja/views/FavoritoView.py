@@ -19,7 +19,6 @@ def favorito_view(request):
             Favorito.objects.create(cliente=cliente, produto=produto)
         else:
             favorito_cliente.delete()
+        return redirect(reverse('meus-favoritos'))
         
-        return redirect(next_url)
-        
-    return redirect(reverse('home'))
+    return redirect(reverse('meus-favoritos'))
