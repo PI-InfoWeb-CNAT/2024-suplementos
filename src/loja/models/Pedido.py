@@ -9,8 +9,8 @@ class Pedido(models.Model):
     ]
 
     user = models.ForeignKey(User, null=True, related_name='pedidos', on_delete=models.CASCADE)
-    endereco = models.ForeignKey(Endereco, null=True, related_name='pedidos', on_delete=models.SET_NULL)
-    cartao = models.ForeignKey(Cartao, null=True, related_name='pedidos', on_delete=models.SET_NULL)
+    endereco = models.ForeignKey(Endereco, null=True, blank=True, related_name='pedidos', on_delete=models.SET_NULL)
+    cartao = models.ForeignKey(Cartao, null=True, blank=True, related_name='pedidos', on_delete=models.SET_NULL)
     total = models.DecimalField(max_digits=8, decimal_places=2)
     status = models.CharField(max_length=50, choices=STATUS)
     dt_hora = models.DateTimeField(auto_now_add=True)

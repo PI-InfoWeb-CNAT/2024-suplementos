@@ -10,7 +10,6 @@ def favorito_view(request):
 
     if request.method == 'POST':
         produto_id = request.POST.get('produto_id')
-        next_url = request.POST.get('next')
         
         produto = Produto.objects.get(id=produto_id)
         favorito_cliente = Favorito.objects.filter(cliente=request.user.cliente, produto=produto_id)

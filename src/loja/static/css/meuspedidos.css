@@ -44,11 +44,6 @@
     padding-bottom: 1em;
 }
 
-#detalhespedido-popup-1 {
-    visibility: visible;
-    opacity: 1;
-}
-
 .detalhespedido-popup > div {
     width: 55em;
     height: 40em;
@@ -63,6 +58,46 @@
         font-size: 1.5em;
         margin-bottom: 1em;
     }
+}
+
+.avaliarproduto-popup > div {
+    width: 30em;
+    min-height: 18em;
+    padding: 2em 2em;
+}
+
+.conteudo-popupAvaliarProduto {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
+        & label {
+            font-weight: bolder;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
+.container-buttons-flex {
+    display: flex;
+    gap: 1em;
+
 }
 
 .pedido-itens {
@@ -105,6 +140,7 @@
     flex-direction: column;
     gap: .7em;
     padding: 1em 0;
+    width: 295px;
     & p {
         font-weight: bold;
         font-size: 1.1em;

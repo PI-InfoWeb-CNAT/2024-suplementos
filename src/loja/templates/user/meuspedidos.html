@@ -114,8 +114,36 @@
                                                         </div>
                                                         {% if pedido_detalhe.pedido.status == '4' %}
                                                             <div class="container-buttons">
-                                                                <button class="button-submit">Avaliar Produto</button>
+                                                                <button class="button-submit" onclick="abrirAvaliarProduto('{{ item.produto.id }}')">Avaliar Produto</button>
                                                                 <button class="button-submit">Devolver Produto</button>
+                                                                <!-- POP UP AVALIAR PRODUTO -->
+                                                                 <div id="avaliarproduto-popup-{{item.produto.id}}" class="avaliarproduto-popup popup">
+                                                                    <div>
+                                                                        <i class="bi bi-x" onclick="fecharAvaliarProduto('{{ item.produto.id }}')"></i>
+                                                                        <div class="conteudo-popupAvaliarProduto">
+                                                                            <h5>Avaliação do produto <span>{{ item.produto.nome }}</span></h5>
+                                                                            <form action="{% url 'avaliar-produto' %}" method="POST">
+                                                                                {% csrf_token %}
+                                                                                <div>
+                                                                                    <input type="hidden" name="produto_id" value="{{ item.produto.id }}">
+                                                                                    <label for="nota">Nota: </label> 
+                                                                                    <select name="nota" required>
+                                                                                        <option value="" disabled selected>Selecione uma nota</option>
+                                                                                        <option value="1">1</option>
+                                                                                        <option value="2">2</option>
+                                                                                        <option value="3">3</option>
+                                                                                        <option value="4">4</option>
+                                                                                        <option value="5">5</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="container-buttons-flex">
+                                                                                    <button type="submit" class="button-submit">Avaliar</button>
+                                                                                    <button type="button" class="button-cancelar">Cancelar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                 </div>
                                                             </div>
                                                         {% endif %}
                                                     </div>
@@ -187,6 +215,7 @@
     <script>
         const cancelarPedidoPopUp = document.querySelector('.cancelarpedido-popup')
         const detalhesPedidoPopUp = document.querySelector('.detalhespedido-popup')
+        const avaliarProdutoPopUp = document.querySelector('.avaliarproduto-popup')
         const pageMessage = document.querySelector('.page-meuspedidos')
 
         function abrirCancelarPedido(id) {
@@ -209,11 +238,27 @@
             document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '0';
         }
 
+        function abrirAvaliarProduto(id) {
+            document.getElementById(`avaliarproduto-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`avaliarproduto-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharAvaliarProduto(id) {
+            document.getElementById(`avaliarproduto-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`avaliarproduto-popup-${id}`).style.opacity = '0';
+        }
+
         if (pageMessage) {
             setTimeout(function() {
                 window.location.href = "{% url 'meus-pedidos' %}"
             }, 1000)
         }
+
+        // if (avaliarProdutoMessage) {
+        //     setTimeout(function() {
+        //         window.location.href = "{% url 'meus-pedidos' %}"
+        //     }, 1000)
+        // }
 
     </script>
 {% endblock %}
