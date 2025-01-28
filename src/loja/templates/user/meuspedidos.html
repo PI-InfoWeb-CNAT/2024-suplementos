@@ -65,8 +65,22 @@
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: .7em;">
                                     <p style="font-size: 1.1em; font-weight: bold;">Status: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.get_status_display }}</span></p>
-                                    <p style="font-size: 1.1em; font-weight: bold;">Endereço: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.endereco.nome }}</span></p>
-                                    <p style="font-size: 1.1em; font-weight: bold;">Cartão: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.cartao.nome }}</span></p>
+                                    <p style="font-size: 1.1em; font-weight: bold;">
+                                        Endereço: 
+                                        {% if pedido_detalhe.pedido.endereco %}
+                                            <span style="font-weight: 500;">{{ pedido_detalhe.pedido.endereco.nome }}</span>
+                                        {% else %}
+                                            <span style="font-weight: 500;">Vazio</span>
+                                        {% endif %}
+                                    </p>
+                                    <p style="font-size: 1.1em; font-weight: bold;">
+                                        Cartão: 
+                                        {% if pedido_detalhe.pedido.cartao %}
+                                            <span style="font-weight: 500;">{{ pedido_detalhe.pedido.cartao.nome }}</span>
+                                        {% else %}
+                                            <span style="font-weight: 500;">Vazio</span>
+                                        {% endif %}
+                                    </p>
                                     <p style="font-size: 1.3em; font-weight: bold; margin-top: .3em;">Total: <span style="font-weight: 500;">{{ pedido_detalhe.pedido.total }}</span></p>
                                 </div>
                             </div>

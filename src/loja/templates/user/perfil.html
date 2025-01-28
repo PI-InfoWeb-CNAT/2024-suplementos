@@ -285,28 +285,26 @@
 
         function preencher() {
             cep = cepInput.value
+            cep = cep.split('').filter(char => !isNaN(char) && char !== ' ').join('')
             
-            if (cep.length === 8) {
-                let url = 'https://viacep.com.br/ws/' + cep + '/json/';
+            
+            let url = 'https://viacep.com.br/ws/' + cep + '/json/';
         
-                fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.erro) {
-                        document.getElementById('rua-novoendereco').value = data.logradouro;
-                        document.getElementById('cidade-novoendereco').value = data.localidade;
-                        document.getElementById('estado-novoendereco').value = data.uf;
-                    } else {
-                        alert('CEP não encontrado!');
-                    }
-                })
-                .catch(error => {
-                    alert('Erro ao buscar o CEP. Verifique o CEP digitado ou tente novamente.');
-                    console.error(error);
-                });
-            } else {
-                alert('Por favor, insira um CEP válido com 8 dígitos e sem "-"');
-            }
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.erro) {
+                    document.getElementById('rua-novoendereco').value = data.logradouro;
+                    document.getElementById('cidade-novoendereco').value = data.localidade;
+                    document.getElementById('estado-novoendereco').value = data.uf;
+                } else {
+                    alert('CEP não encontrado!');
+                }
+            })
+            .catch(error => {
+                alert('Erro ao buscar o CEP. Verifique o CEP digitado ou tente novamente.');
+                console.error(error);
+            });
         }
 
         function abrirRedefinirSenha() {
