@@ -115,7 +115,7 @@
                                                         {% if pedido_detalhe.pedido.status == '4' %}
                                                             <div class="container-buttons">
                                                                 <button class="button-submit" onclick="abrirAvaliarProduto('{{ item.produto.id }}')">Avaliar Produto</button>
-                                                                <button class="button-submit">Devolver Produto</button>
+                                                                <button class="button-submit" onclick="abrirDevolverProduto('{{ item.produto.id }}')">Devolver Produto</button>
                                                                 <!-- POP UP AVALIAR PRODUTO -->
                                                                  <div id="avaliarproduto-popup-{{item.produto.id}}" class="avaliarproduto-popup popup">
                                                                     <div>
@@ -138,7 +138,31 @@
                                                                                 </div>
                                                                                 <div class="container-buttons-flex">
                                                                                     <button type="submit" class="button-submit">Avaliar</button>
-                                                                                    <button type="button" class="button-cancelar">Cancelar</button>
+                                                                                    <button type="button" class="button-cancelar" onclick="fecharAvaliarProduto('{{ item.produto.id }}')">Cancelar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                 </div>
+                                                                <!-- POP UP DEVOLVER PRODUTO -->
+                                                                 <div id="devolverproduto-popup-{{item.produto.id}}" class="devolverproduto-popup popup">
+                                                                    <div>
+                                                                        <i class="bi bi-x" onclick="fecharDevolverProduto('{{ item.produto.id }}')"></i>
+                                                                        <div class="conteudo-popupDevolverProduto">
+                                                                            <h5>Devolução do produto <span>{{ item.produto.nome }}</span></h5>
+                                                                            <form action="">
+                                                                                <input type="hidden" name="produto_id" value="{{ item.produto.id }}">
+                                                                                <div class="div-label">
+                                                                                    <label for="motivo">Motivo da devolução:</label>
+                                                                                    <textarea name="motivo" id="motivo" placeholder="Digite o motivo da devolução do produto"></textarea>
+                                                                                </div>
+                                                                                <div class="div-label">
+                                                                                    <label for="foto_video">Insira uma foto ou um vídeo provando o defeito do produto:</label>
+                                                                                    <input type="file" name="foto_video" id="foto_video">
+                                                                                </div>
+                                                                                <div class="container-buttons-flex" style="margin-top: 1em;">
+                                                                                    <button type="submit" class="button-submit">Enviar</button>
+                                                                                    <button type="button" class="button-cancelar" onclick="fecharDevolverProduto('{{ item.produto.id }}')">Cancelar</button>
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -216,6 +240,7 @@
         const cancelarPedidoPopUp = document.querySelector('.cancelarpedido-popup')
         const detalhesPedidoPopUp = document.querySelector('.detalhespedido-popup')
         const avaliarProdutoPopUp = document.querySelector('.avaliarproduto-popup')
+        const devolverProdutoPopUp = document.querySelector('.devolverproduto-popup')
         const pageMessage = document.querySelector('.page-meuspedidos')
 
         function abrirCancelarPedido(id) {
@@ -248,17 +273,21 @@
             document.getElementById(`avaliarproduto-popup-${id}`).style.opacity = '0';
         }
 
+        function abrirDevolverProduto(id) {
+            document.getElementById(`devolverproduto-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`devolverproduto-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharDevolverProduto(id) {
+            document.getElementById(`devolverproduto-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`devolverproduto-popup-${id}`).style.opacity = '0';
+        }
+
         if (pageMessage) {
             setTimeout(function() {
                 window.location.href = "{% url 'meus-pedidos' %}"
             }, 1000)
         }
-
-        // if (avaliarProdutoMessage) {
-        //     setTimeout(function() {
-        //         window.location.href = "{% url 'meus-pedidos' %}"
-        //     }, 1000)
-        // }
 
     </script>
 {% endblock %}
