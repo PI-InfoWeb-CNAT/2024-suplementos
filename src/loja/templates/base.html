@@ -55,7 +55,7 @@
                     <ul class="menu-footer">
                         <li><a href="{% url 'home' %}">Página Inicial</a></li>
                         <li><a href="{% url 'promocoes' %}">Promoções</a></li>
-                        <li><a href="">Mais Vendidos</a></li>
+                        <li><a href="{% url 'mais-vendidos' %}">Mais Vendidos</a></li>
                         <li><a href="{% url 'meus-pedidos' %}">Meus Pedidos</a></li>
                         <li><a href="{% url 'meus-favoritos' %}">Meus Favoritos</a></li>
                         <li><a href="{% url 'perfil' %}">Meu Perfil</a></li>
@@ -67,9 +67,6 @@
                 <a href="#"><img src="{% static 'images/instagram-icon.svg' %}" alt="Ícone do instagram"></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
             </div>
-            {% if admin %}
-                
-            {% endif %}
         </div>
     </footer>
 

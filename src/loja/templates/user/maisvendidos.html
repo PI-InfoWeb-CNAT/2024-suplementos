@@ -2,17 +2,17 @@
 {% load static %}
 {% load custom_filters %}
 
-{% block title %}Promoções{% endblock %}
+{% block title %}Mais Vendidos{% endblock %}
 
-{% block styles %}
+<!-- {% block styles %}
     <link rel="stylesheet" href="{% static 'css/promocoes.css' %}">
-{% endblock %}
+{% endblock %} -->
 
 {% block sidebar %}
     <ul class="menu">
         <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
-        <li><a href="{% url 'promocoes' %}" class="active"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
-        <li><a href="{% url 'mais-vendidos' %}"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="{% url 'mais-vendidos' %}" class="active"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
         <li><a href="{% url 'meus-pedidos' %}"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
         <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
         <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
@@ -22,7 +22,7 @@
 {% block content %}
     <main>
         <div class="container-cima">
-            <h3>Promoções</h3>
+            <h3>Mais Vendidos</h3>
             <section class="container-botoes-cima">
                 <div class="notificacao-container">
                     <a href="{% url 'notificacoes' %}">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <section class="produtos">
+        <!-- <section class="produtos">
             {% for prod in produtos_promocoes %}
                 <a class="card-produto" href="{% url 'produto' prod.id %}">
                     <div class="container-imgProduto">
@@ -99,6 +99,6 @@
                     </div>
                 </a>
             {% endfor %}
-        </section>
+        </section> -->
     </main>
 {% endblock %}

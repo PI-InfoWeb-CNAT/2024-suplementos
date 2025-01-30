@@ -13,6 +13,7 @@ from loja.views.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view,
 from loja.views.PedidoView import finalizar_pedido_view
 from loja.views.MeusPedidosView import meuspedidos_view, cancelar_pedido_view
 from loja.views.AvaliarProdutoView import avaliar_produto_view
+from loja.views.MaisVendidosView import maisvendidos_view
 
 urlpatterns = [
     # USER
@@ -33,6 +34,7 @@ urlpatterns = [
     path("meus-pedidos/", meuspedidos_view, name='meus-pedidos'),
     path("meus-pedidos/cancelar-pedido", cancelar_pedido_view, name='cancelar-pedido'),
     path("meus-pedidos/avaliar-produto", avaliar_produto_view, name='avaliar-produto'),
+    path("mais-vendidos", maisvendidos_view, name='mais-vendidos'),
 
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),
