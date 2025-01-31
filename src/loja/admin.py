@@ -42,6 +42,10 @@ class AvaliacaoProdutoAdmin(admin.ModelAdmin):
     list_display = ('cliente', 'produto', 'nota')
     empty_value_display = 'Vazio'
 
+class DevolucaoProdutoAdmin(admin.ModelAdmin):
+    list_display = ('produto', 'status', 'motivo', 'data_devolucao')
+    empty_value_display = 'Vazio'
+
 
 admin.site.register(Cartao, CartaoAdmin)
 admin.site.register(Cliente, ClienteAdmin)
@@ -55,3 +59,4 @@ admin.site.register(CarrinhoItem, CarrinhoItemAdmin)
 admin.site.register(Pedido, PedidoAdmin)
 admin.site.register(PedidoItem, PedidoItemAdmin)
 admin.site.register(AvaliacaoProduto, AvaliacaoProdutoAdmin)
+admin.site.register(DevolucaoProduto, DevolucaoProdutoAdmin)

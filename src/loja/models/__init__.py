@@ -15,3 +15,4 @@ from .Carrinho import CarrinhoItem
 from .Pedido import Pedido
 from .Pedido import PedidoItem
 from .AvaliacaoProduto import AvaliacaoProduto
+from .DevolucaoProduto import DevolucaoProduto

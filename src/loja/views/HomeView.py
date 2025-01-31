@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -22,10 +23,12 @@ def home_view(request):
 
     if produto is not None:
         produtos_pesquisa = produtos.filter(nome__contains=produto)
+    
+    produtos_mais_vendidos = Produto.objects.annotate(total_vendas=Sum('pedidos__quantidade')).order_by('-total_vendas')[:5]
 
     context = {
         'produtos_pesquisa': produtos_pesquisa,
-        'produtos': produtos,
+        'produtos_mais_vendidos': produtos_mais_vendidos,
         'produtos_promocoes': produtos_promocoes,
     }
 

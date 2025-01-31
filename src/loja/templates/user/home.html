@@ -161,13 +161,13 @@
             <section class="container-maisvendidos">
                 <div class="section-title">
                     <h3>Mais Vendidos</h3>
-                    <a href="/maisvendidos">
+                    <a href="{% url 'mais-vendidos' %}">
                         <p>Ver mais</p> 
                         <i class="bi bi-chevron-down"></i>
                     </a>
                 </div>
                 <div class="produtos">
-                    {% for prod in produtos %}
+                    {% for prod in produtos_mais_vendidos %}
                         <a class="card-produto" href="{% url 'produto' prod.id %}">
                             <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
                             <form action="{% url 'favorito' %}" method="POST">

@@ -150,7 +150,8 @@
                                                                         <i class="bi bi-x" onclick="fecharDevolverProduto('{{ item.produto.id }}')"></i>
                                                                         <div class="conteudo-popupDevolverProduto">
                                                                             <h5>Devolução do produto <span>{{ item.produto.nome }}</span></h5>
-                                                                            <form action="">
+                                                                            <form action="{% url 'devolver-produto' %}" method="POST">
+                                                                                {% csrf_token %}
                                                                                 <input type="hidden" name="produto_id" value="{{ item.produto.id }}">
                                                                                 <div class="div-label">
                                                                                     <label for="motivo">Motivo da devolução:</label>
