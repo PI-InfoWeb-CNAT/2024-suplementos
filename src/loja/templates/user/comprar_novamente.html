@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Comprar Novamente{% endblock %}
+
+{% block sidebar %}
+    <ul class="menu">
+        <li><a href="{% url 'home' %}"><i class="bi bi-house-door-fill menu-icon"></i>Página Inicial</a></li>
+        <li><a href="{% url 'promocoes' %}"><i class="bi bi-lightning-charge-fill menu-icon"></i>Promoções</a></li>
+        <li><a href="{% url 'mais-vendidos' %}"><i class="bi bi-trophy-fill menu-icon"></i>Mais Vendidos</a></li>
+        <li><a href="{% url 'meus-pedidos' %}"><i class="bi bi-basket3-fill menu-icon"></i>Meus Pedidos</a></li>
+        <li><a href="{% url 'meus-favoritos' %}"><i class="bi bi-heart-fill menu-icon"></i>Meus Favoritos</a></li>
+        <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
+    </ul> 
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-cima">
+            <h3>Comprar Novamente</h3>
+            <section class="container-botoes-cima">
+                <div class="notificacao-container">
+                    <a href="{% url 'notificacoes' %}">
+                        <i class="bi bi-bell-fill icon-cima"></i>
+                    </a>
+                    {% if notificacoes_nao_lidas > 0 %}
+                        <span class="notificacoes-nao-lidas">{{ notificacoes_nao_lidas }}</span>
+                    {% endif %}
+                </div>
+                <div class="carrinho-container">
+                    <a href="{% url 'carrinho' %}">
+                        <i class="bi bi-cart-fill icon-cima"></i>
+                    </a>
+                    {% if itens_carrinho > 0 %}
+                        <span class="itens-carrinho">{{ itens_carrinho }}</span>
+                    {% endif %}
+                </div>
+                <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
+            </section>
+        </div>
+        {% if produtos_comprados %}
+            <div class="container-filtro">
+                <h4>Ordenar por:</h4>
+                <div class="container">
+                    <div class="hover-area" id="selecionarBtn">
+                        <p id="Selecione">Selecione </p>
+                        <img id="setinha" src="{% static 'images/setinha.png' %}">
+                    </div>
+                    <div class="checkbox-box" id="checkboxBox" style="display: none">
+                        <label for="option1" class="filtro">Ordem alfabética A-Z</label>
+                        <label for="option2" class="filtro">Ordem alfabética Z-A</label>
+                        <label for="option3" class="filtro">Menor preço</label>
+                        <label for="option4" class="filtro">Maior preço</label>
+                        <label for="option5" class="filtro">Menor promoção</label>
+                        <label for="option6" class="filtro">Maior promoção</label>
+                    </div>
+                </div>
+            </div>
+            <section class="produtos">
+                {% for prod in produtos_comprados %}
+                    <a class="card-produto" href="{% url 'produto' prod.id %}">
+                        <div class="container-imgProduto">
+                            <img class="imagem-produto" src="/media/{{prod.imagem}}" alt="">
+                        </div>
+                        <form action="{% url 'favorito' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            {% if prod.id in favoritos_cliente %}
+                                <button type="submit" class="button-favoritar"><i class="bi bi-heart-fill"></i></button>
+                            {% else %}
+                                <button type="submit" class="button-favoritar"><i class="bi bi-heart"></i></button>
+                            {% endif %}
+                        </form>
+                        {% if prod.porcentagem_desconto == 0 %}
+                            <div class="produto-info">
+                                <h5 class="titulo-produto">{{prod.nome}}</h5>
+                                <p class="precoCalculado-produto">{{prod.preco}} R$</p>
+                            </div>
+                        {% else %}
+                            <div class="produto-info">
+                                <h5 class="titulo-produto">{{prod.nome}}</h5>
+                                <div>
+                                    <div>
+                                        <p class="preco-produto">{{prod.preco}} R$</p>
+                                        <p class="precoCalculado-produto">{{prod.preco_calculado|floatformat:2}} R$</p>
+                                    </div>
+                                    <div class="promocao">
+                                        {{prod.porcentagem_desconto}}% OFF
+                                    </div> 
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="container-button-carrinho">
+                            <button class="button-comprar">Comprar</button>
+                        </div>
+                    </a>
+                {% endfor %}
+            </section>
+        {% else %}
+            <p style="font-size: 1.5em;">Você não realizou nenhuma compra!</p>
+        {% endif %}
+    </main>
+{% endblock %}
