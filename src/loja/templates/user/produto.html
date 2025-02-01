@@ -79,6 +79,39 @@
                 </form>
             </div>
         </section>
+        <section class="avaliacao">
+            <h3>Avaliação do Produto</h3>
+            <div>
+                <div class="avaliacao-media">
+                    <p><span>{{ media_avaliacoes }}</span>/5</p>
+                </div>
+                <div class="notas">
+                    <p>{{ total_avaliacoes }} avaliações</p>
+                    <div>
+                        <div>
+                            <p>{{ nota_5 }}</p>
+                            <img id="estrelas-5" src="{% static 'images/5_estrelas.png' %}" alt="5 estrelas">
+                        </div>
+                        <div>
+                            <p>{{ nota_4 }}</p>
+                            <img id="estrelas-4" src="{% static 'images/4_estrelas.png' %}" alt="4 estrelas">
+                        </div>
+                        <div>
+                            <p>{{ nota_3 }}</p>
+                            <img id="estrelas-3" src="{% static 'images/3_estrelas.png' %}" alt="3 estrelas">
+                        </div>
+                        <div>
+                            <p>{{ nota_2 }}</p>
+                            <img id="estrelas-2" src="{% static 'images/2_estrelas.png' %}" alt="2 estrelas">
+                        </div>
+                        <div>
+                            <p>{{ nota_1 }}</p>
+                            <img id="estrelas-1" src="{% static 'images/1_estrela.png' %}" alt="1 estrela">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="produtos-relacionados">
             {% if produtos_relacionados %}
                 <h3>Produtos relacionados</h3>
