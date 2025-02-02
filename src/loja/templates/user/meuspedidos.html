@@ -90,13 +90,13 @@
                                     <button class="button-excluir" onclick="abrirCancelarPedido('{{ pedido_detalhe.pedido.id }}')">Cancelar pedido</button>
                                 {% endif %}
                                 {% if pedido_detalhe.pedido.status == '3' %}
-                                    <button class="button-submit">Confirmar recebimento</button>
+                                    <button class="button-submit" onclick="abrirConfirmarRecebimento('{{ pedido_detalhe.pedido.id }}')">Confirmar recebimento</button>
                                 {% endif %}
                                 <!-- POP UP DETALHES DO PEDIDO-->
                                 <div id="detalhespedido-popup-{{pedido_detalhe.pedido.id}}" class="detalhespedido-popup popup">
                                     <div>
                                         <i class="bi bi-x" onclick="fecharDetalhesPedido('{{ pedido_detalhe.pedido.id }}')"></i>
-                                        <div class="conteudo-popupDetalhesPedido">
+                                        <div class="conteudo-popupDetalhesPedido conteudo-popup">
                                             <h5>Detalhes do pedido #{{ pedido_detalhe.pedido.id }}</h5>
                                             <div class="pedido-itens">
                                                 {% for item in pedido_detalhe.pedido.itens.all %}
@@ -120,7 +120,7 @@
                                                                  <div id="avaliarproduto-popup-{{item.produto.id}}" class="avaliarproduto-popup popup">
                                                                     <div>
                                                                         <i class="bi bi-x" onclick="fecharAvaliarProduto('{{ item.produto.id }}')"></i>
-                                                                        <div class="conteudo-popupAvaliarProduto">
+                                                                        <div class="conteudo-popupAvaliarProduto conteudo-popup">
                                                                             <h5>Avaliação do produto <span>{{ item.produto.nome }}</span></h5>
                                                                             <form action="{% url 'avaliar-produto' %}" method="POST">
                                                                                 {% csrf_token %}
@@ -148,7 +148,7 @@
                                                                  <div id="devolverproduto-popup-{{item.produto.id}}" class="devolverproduto-popup popup">
                                                                     <div>
                                                                         <i class="bi bi-x" onclick="fecharDevolverProduto('{{ item.produto.id }}')"></i>
-                                                                        <div class="conteudo-popupDevolverProduto">
+                                                                        <div class="conteudo-popupDevolverProduto conteudo-popup">
                                                                             <h5>Devolução do produto <span>{{ item.produto.nome }}</span></h5>
                                                                             <form action="{% url 'devolver-produto' %}" method="POST">
                                                                                 {% csrf_token %}
@@ -177,11 +177,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- POP UP CANCELAR PEDIDO-->
+                                <!-- POP UP CANCELAR PEDIDO -->
                                 <div id="cancelarpedido-popup-{{pedido_detalhe.pedido.id}}" class="cancelarpedido-popup popup">
                                     <div>
                                         <i class="bi bi-x" onclick="fecharCancelarPedido('{{ pedido_detalhe.pedido.id }}')"></i>
-                                        <div class="conteudo-popupCancelarPedido">
+                                        <div class="conteudo-popupCancelarPedido conteudo-popup">
                                             <p>Deseja realmente cancelar o pedido #{{ pedido_detalhe.pedido.id }}?</p>
                                             <p><b>Essa é uma ação permanente.</b></p>
                                             <i class="bi bi-exclamation-triangle-fill"></i>
@@ -192,6 +192,24 @@
                                                     <input type="hidden" name="pedido_id" value="{{ pedido_detalhe.pedido.id }}">
                                                     <button type="submit" class="button-excluir">Cancelar</button>
                                                 </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- POP UP CONFIRMAR RECEBIMENTO -->
+                                <div id="confirmarrecebimento-popup-{{pedido_detalhe.pedido.id}}" class="confirmarrecebimento-popup popup">
+                                    <div>
+                                        <i class="bi bi-x" onclick="fecharConfirmarRecebimento('{{ pedido_detalhe.pedido.id }}')"></i>
+                                        <div class="conteudo-popupConfirmarRecebimento conteudo-popup">
+                                            <p>Deseja realmente confirmar o recebimento do pedido #{{ pedido_detalhe.pedido.id }}?</p>
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <div>
+                                                <form action="{% url 'confirmar-recebimento' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pedido_id" value="{{ pedido_detalhe.pedido.id }}">
+                                                    <button type="submit" class="button-submit">Confirmar</button>
+                                                </form>
+                                                <button type="button" onclick="fecharConfirmarRecebimento('{{ pedido_detalhe.pedido.id }}')" class="button-cancelar">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -240,6 +258,7 @@
     <script>
         const cancelarPedidoPopUp = document.querySelector('.cancelarpedido-popup')
         const detalhesPedidoPopUp = document.querySelector('.detalhespedido-popup')
+        const confirmarRecebimentoPopUp = document.querySelector('.confirmarrecebimento-popup')
         const avaliarProdutoPopUp = document.querySelector('.avaliarproduto-popup')
         const devolverProdutoPopUp = document.querySelector('.devolverproduto-popup')
         const pageMessage = document.querySelector('.page-meuspedidos')
@@ -248,7 +267,6 @@
             document.getElementById(`cancelarpedido-popup-${id}`).style.visibility = 'visible';
             document.getElementById(`cancelarpedido-popup-${id}`).style.opacity = '1';
         }
-
         function fecharCancelarPedido(id) {
             document.getElementById(`cancelarpedido-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`cancelarpedido-popup-${id}`).style.opacity = '0';
@@ -258,17 +276,24 @@
             document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'visible';
             document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '1';
         }
-
         function fecharDetalhesPedido(id) {
             document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '0';
+        }
+
+        function abrirConfirmarRecebimento(id) {
+            document.getElementById(`confirmarrecebimento-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`confirmarrecebimento-popup-${id}`).style.opacity = '1';
+        }
+        function fecharConfirmarRecebimento(id) {
+            document.getElementById(`confirmarrecebimento-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`confirmarrecebimento-popup-${id}`).style.opacity = '0';
         }
 
         function abrirAvaliarProduto(id) {
             document.getElementById(`avaliarproduto-popup-${id}`).style.visibility = 'visible';
             document.getElementById(`avaliarproduto-popup-${id}`).style.opacity = '1';
         }
-
         function fecharAvaliarProduto(id) {
             document.getElementById(`avaliarproduto-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`avaliarproduto-popup-${id}`).style.opacity = '0';
@@ -278,7 +303,6 @@
             document.getElementById(`devolverproduto-popup-${id}`).style.visibility = 'visible';
             document.getElementById(`devolverproduto-popup-${id}`).style.opacity = '1';
         }
-
         function fecharDevolverProduto(id) {
             document.getElementById(`devolverproduto-popup-${id}`).style.visibility = 'hidden';
             document.getElementById(`devolverproduto-popup-${id}`).style.opacity = '0';

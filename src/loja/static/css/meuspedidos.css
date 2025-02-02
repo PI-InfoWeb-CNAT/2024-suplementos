@@ -50,13 +50,16 @@
     padding: 2em 3em;
 }
 
-.conteudo-popupDetalhesPedido {
+.conteudo-popup {
     display: flex;
     flex-direction: column;
     & h5 {
         font-weight: 600;
         font-size: 1.5em;
         margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
     }
 }
 
@@ -67,17 +70,7 @@
 }
 
 .conteudo-popupAvaliarProduto {
-    display: flex;
-    flex-direction: column;
     gap: 2em;
-    & h5 {
-        font-weight: 600;
-        font-size: 1.5em;
-        margin-bottom: 1em;
-        & span {
-            font-weight: bolder;
-        }
-    }
     & form {
         display: flex;
         flex-direction: column;
@@ -101,17 +94,7 @@
 }
 
 .conteudo-popupDevolverProduto {
-    display: flex;
-    flex-direction: column;
     gap: 2em;
-    & h5 {
-        font-weight: 600;
-        font-size: 1.5em;
-        margin-bottom: 1em;
-        & span {
-            font-weight: bolder;
-        }
-    }
     & form {
         display: flex;
         flex-direction: column;
@@ -220,18 +203,16 @@
     font-size: 1.3em;
 }
 
-.conteudo-popupCancelarPedido {
-    display: flex;
-    flex-direction: column;
+.conteudo-popupCancelarPedido, .conteudo-popupConfirmarRecebimento {
     justify-content: center;
     align-items: center;
     & p {
         width: 80%;
         font-weight: 600;
-        font-size: 1.2em;
+        font-size: 1.4em;
         text-align: center;
     }
-    & .bi-exclamation-triangle-fill {
+    & .bi-exclamation-triangle-fill, .bi-check-circle-fill {
         font-size: 3em;
         margin: .2em 0 .5em 0;
     }

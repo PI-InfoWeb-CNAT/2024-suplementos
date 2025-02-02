@@ -33,3 +33,15 @@ def cancelar_pedido_view(request):
         messages.success(request, 'Pedido cancelado com sucesso!', extra_tags='page-meuspedidos')
 
     return redirect(reverse('meus-pedidos'))
+
+@login_required
+def confirmar_recebimento_view(request):
+    if request.method == 'POST':
+        pedido_id = request.POST.get('pedido_id')
+        pedido = Pedido.objects.get(id=pedido_id)
+
+        pedido.status = '4'
+        pedido.save()
+        messages.success(request, 'Recebimento do pedido confirmado com sucesso!', extra_tags='page-meuspedidos')
+
+    return redirect(reverse('meus-pedidos'))
