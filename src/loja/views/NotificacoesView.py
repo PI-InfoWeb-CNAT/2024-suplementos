@@ -10,7 +10,7 @@ def list_notificacoes_view(request):
     notificacoes_cliente = ''
     for cliente in clientes:
         if cliente.user_id == request.user.id:
-            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id)
+            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id).order_by('-data_envio')
             notificacoes_cliente.update(lida=True)
 
     context = {'notificacoes': notificacoes_cliente}
