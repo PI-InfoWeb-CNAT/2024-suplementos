@@ -64,7 +64,8 @@ def edit_dados_view(request):
         else:
             email_alterado = user.email != email
             email_existe = email_alterado and usuarios.filter(email=email).exists()
-            cpf_existe = clientes.filter(cpf=cpf).exists()
+            cpf_alterado = cliente.cpf != cpf
+            cpf_existe = cpf_alterado and clientes.filter(cpf=cpf).exists()
 
             if email_existe:
                 messages.error(request, 'Esse e-mail já existe.', extra_tags='page-perfil')
