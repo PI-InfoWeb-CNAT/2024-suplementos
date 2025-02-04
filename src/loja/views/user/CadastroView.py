@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import IntegrityError
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from loja.models import Cliente, Notificacao
-from django.contrib.auth.models import User
+from loja.utils import validar_cpf
 
 def cadastro_view(request):
     if request.method == 'POST':
@@ -54,20 +55,3 @@ def cadastro_view(request):
             messages.error(request, 'Preencha todos os campos', extra_tags='page-cadastro')
 
     return render(request, template_name='user/cadastro.html', status=200)
-
-def validar_cpf(cpf):
-    if len(cpf) != 11 or cpf == cpf[0] * 11:
-        return False
-    
-    def calcular_digito(cpf, fator):
-        soma = sum(int(cpf[i]) * (fator - i) for i in range(len(cpf)))
-        resto = soma % 11
-        return 0 if resto < 2 else 11 - resto
-    
-    primeiro_digito = calcular_digito(cpf[:9], 10)
-    segundo_digito = calcular_digito(cpf[:9] + str(primeiro_digito), 11)
-
-    if cpf[-2:] == f'{primeiro_digito}{segundo_digito}':
-        return True
-    else:
-        return False
