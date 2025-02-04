@@ -11,9 +11,6 @@ from loja.views.ProdutoView import produto_view, produtosAdmin_view, excluir_pro
 from loja.views.CategoriaView import categoria_view
 from loja.views.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view, remover_item_view
 from loja.views.PedidoView import finalizar_pedido_view
-from loja.views.MeusPedidosView import meuspedidos_view, cancelar_pedido_view, confirmar_recebimento_view
-from loja.views.AvaliarProdutoView import avaliar_produto_view
-from loja.views.DevolverProdutoView import devolver_produto_view
 from loja.views.MaisVendidosView import maisvendidos_view
 from loja.views.ComprarNovamenteView import comprar_novamente_view
 
@@ -33,11 +30,6 @@ urlpatterns = [
     path("carrinho/<int:idProduto>", adicionar_ao_carrinho, name='adicionar-ao-carrinho'),
     path("carrinho/remover-item/<int:idItem>", remover_item_view, name='remover-item'),
     path("finalizar-pedido/", finalizar_pedido_view, name='finalizar-pedido'),
-    path("meus-pedidos/", meuspedidos_view, name='meus-pedidos'),
-    path("meus-pedidos/cancelar-pedido", cancelar_pedido_view, name='cancelar-pedido'),
-    path("meus-pedidos/avaliar-produto", avaliar_produto_view, name='avaliar-produto'),
-    path("meus-pedidos/devolver-produto", devolver_produto_view, name='devolver-produto'),
-    path("meus-pedidos/confirmar-recebimento", confirmar_recebimento_view, name='confirmar-recebimento'),
     path("mais-vendidos", maisvendidos_view, name='mais-vendidos'),
     path("comprar-novamente", comprar_novamente_view, name='comprar-novamente'),
 
