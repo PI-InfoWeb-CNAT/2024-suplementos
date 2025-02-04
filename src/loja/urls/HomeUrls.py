@@ -1,18 +1,20 @@
 from django.urls import path
 
 from loja.views.HomeView import home_view
-from loja.views.PromocoesView import promocoes_view
-from loja.views.CadastroView import cadastro_view
-from loja.views.LoginView import login_view
-from loja.views.NotificacoesView import list_notificacoes_view, excluir_notificacoes_view
-from loja.views.FavoritoView import favorito_view
-from loja.views.MeusFavoritosView import meusfavoritos_view
-from loja.views.ProdutoView import produto_view, produtosAdmin_view, excluir_produto_view
-from loja.views.CategoriaView import categoria_view
-from loja.views.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view, remover_item_view
-from loja.views.PedidoView import finalizar_pedido_view
-from loja.views.MaisVendidosView import maisvendidos_view
-from loja.views.ComprarNovamenteView import comprar_novamente_view
+from loja.views.user.PromocoesView import promocoes_view
+from loja.views.user.CadastroView import cadastro_view
+from loja.views.user.LoginView import login_view
+from loja.views.user.NotificacoesView import list_notificacoes_view, excluir_notificacoes_view
+from loja.views.user.FavoritoView import favorito_view
+from loja.views.user.MeusFavoritosView import meusfavoritos_view
+from loja.views.user.ProdutoView import produto_view
+from loja.views.user.CategoriaView import categoria_view
+from loja.views.user.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view, remover_item_view
+from loja.views.user.PedidoView import finalizar_pedido_view
+from loja.views.user.MaisVendidosView import maisvendidos_view
+from loja.views.user.ComprarNovamenteView import comprar_novamente_view
+
+from loja.views.admin.ProdutosView import produtosAdmin_view, excluir_produto_view
 
 urlpatterns = [
     # USER
