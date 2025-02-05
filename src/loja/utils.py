@@ -1,5 +1,4 @@
 from django.utils import timezone
-from datetime import timedelta
 
 from loja.models import Lote
 
@@ -19,7 +18,6 @@ def validar_cpf(cpf):
         return True
     else:
         return False
-    
 
 def aplicar_promocao_auto():
     lotes = Lote.objects.all()
@@ -42,3 +40,4 @@ def aplicar_promocao_auto():
         if produto.porcentagem_desconto != desconto:
             produto.porcentagem_desconto = desconto
             produto.save()
+        

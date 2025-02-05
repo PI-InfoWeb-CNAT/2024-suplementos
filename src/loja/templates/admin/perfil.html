@@ -21,7 +21,8 @@
             Produtos
         </a>
     </li>
-    <li><a href="#"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
+    <li><a href="{% url 'lotes' %}"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
+    <li><a href="#"><i class="bi bi-basket3-fill menu-icon"></i>Pedidos</a></li>
     <li><a href="#"><i class="bi bi-bell-fill menu-icon"></i>Notificações</a></li>
     <li><a href="{% url 'perfil' %}" class="active"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
 </ul>  
@@ -103,6 +104,7 @@
         <section class="container-logout">
             <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i>Sair</a>
             <a onclick="abrirExcluir()"><i class="bi bi-trash3-fill"></i>Excluir Conta</a>
+            <!-- POP UP EXCLUIR CONTA -->
             <div class="excluirconta-popup popup">
                 <div>
                     <i class="bi bi-x" onclick="fecharExcluir()"></i>
@@ -126,43 +128,12 @@
 
 {% block script %}
     <script>
-        const cepInput = document.getElementById('cep-novoendereco')
         const successMessage = document.querySelector('.success')
         const errorMessage = document.querySelector('.error')
         const dadosMessage = document.querySelector('.message-dados')
         const redefinirSenhaMessage = document.querySelector('.message-redefinirsenha')
-        const novoEnderecoMessage = document.querySelector('.message-novoendereco')
-        const editEnderecoMessage = document.querySelector('.message-editendereco')
         const redefinirSenhaPopUp = document.querySelector('.redefinirsenha-popup')
-        const editEnderecoPopUp = document.querySelector('.editendereco-popup')
-        const AddEnderecoPopUp = document.querySelector('.novoendereco-popup')
         const excluirPopUp = document.querySelector('.excluirconta-popup')
-
-        function preencher() {
-            cep = cepInput.value
-            
-            if (cep.length === 8) {
-                let url = 'https://viacep.com.br/ws/' + cep + '/json/';
-        
-                fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.erro) {
-                        document.getElementById('rua-novoendereco').value = data.logradouro;
-                        document.getElementById('cidade-novoendereco').value = data.localidade;
-                        document.getElementById('estado-novoendereco').value = data.uf;
-                    } else {
-                        alert('CEP não encontrado!');
-                    }
-                })
-                .catch(error => {
-                    alert('Erro ao buscar o CEP. Verifique o CEP digitado ou tente novamente.');
-                    console.error(error);
-                });
-            } else {
-                alert('Por favor, insira um CEP válido com 8 dígitos e sem "-"');
-            }
-        }
 
         function abrirRedefinirSenha() {
             redefinirSenhaPopUp.style.visibility = 'visible'
@@ -172,26 +143,6 @@
         function fecharRedefinirSenha() {
             redefinirSenhaPopUp.style.visibility = 'hidden'
             redefinirSenhaPopUp.style.opacity = '0'
-        }
-
-        function abrirEditEndereco(id) {
-            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'visible';
-            document.getElementById(`editendereco-popup-${id}`).style.opacity = '1';
-        }
-
-        function fecharEditEndereco(id) {
-            document.getElementById(`editendereco-popup-${id}`).style.visibility = 'hidden';
-            document.getElementById(`editendereco-popup-${id}`).style.opacity = '0';
-        }
-
-        function abrirAddEndereco() {
-            AddEnderecoPopUp.style.visibility = 'visible'
-            AddEnderecoPopUp.style.opacity = '1'
-        }
-
-        function fecharAddEndereco() {
-            AddEnderecoPopUp.style.visibility = 'hidden'
-            AddEnderecoPopUp.style.opacity = '0'
         }
 
         function abrirExcluir() {
@@ -211,18 +162,6 @@
         } else if (redefinirSenhaMessage) {
             redefinirSenhaPopUp.style.visibility = 'visible'
             redefinirSenhaPopUp.style.opacity = '1'
-            setTimeout(function() {
-                window.location.href = "{% url 'perfil' %}"
-            }, 1000)
-        } else if (novoEnderecoMessage) {
-            AddEnderecoPopUp.style.visibility = 'visible'
-            AddEnderecoPopUp.style.opacity = '1'
-            setTimeout(function() {
-                window.location.href = "{% url 'perfil' %}"
-            }, 1000)
-        } else if (editEnderecoMessage) {
-            editEnderecoPopUp.style.visibility = 'visible'
-            editEnderecoPopUp.style.opacity = '1'
             setTimeout(function() {
                 window.location.href = "{% url 'perfil' %}"
             }, 1000)

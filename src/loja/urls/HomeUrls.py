@@ -15,6 +15,7 @@ from loja.views.user.MaisVendidosView import maisvendidos_view
 from loja.views.user.ComprarNovamenteView import comprar_novamente_view
 
 from loja.views.admin.ProdutosView import produtosAdmin_view, excluir_produto_view
+from loja.views.admin.LoteView import lote_view, edit_lote_view, excluir_lote_view
 
 urlpatterns = [
     # USER
@@ -38,4 +39,7 @@ urlpatterns = [
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),
     path("produtos/excluir", excluir_produto_view, name='excluir-produto'),
+    path("lotes", lote_view, name='lotes'),
+    path("lotes/editar", edit_lote_view, name='edit-lote'),
+    path("lotes/excluir", excluir_lote_view, name='excluir-lote'),
 ] 

@@ -352,11 +352,6 @@ h4 {
     &  div{
         display: flex;
         gap: 3.5em;
-        & button {
-            border: none;
-            border-radius: 5px;
-            padding: .3em .9em;
-        }
     }
 }
 

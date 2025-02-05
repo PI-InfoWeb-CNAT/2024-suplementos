@@ -21,7 +21,7 @@
                 Produtos
             </a>
         </li>
-        <li><a href="#"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
+        <li><a href="{% url 'lotes' %}"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
         <li><a href="#"><i class="bi bi-basket3-fill menu-icon"></i>Pedidos</a></li>
         <li><a href="#"><i class="bi bi-bell-fill menu-icon"></i>Notificações</a></li>
         <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
@@ -36,5 +36,232 @@
                 <a class="ola-usuario" href="{% url 'perfil' %}">Olá, <span>{{ user.username|first_name }}</span><i class="bi bi-chevron-down"></i></a>
             </section>
         </div>
+        {% if messages %}
+            {% for message in messages %} 
+                {% if 'page-lotes' in message.tags %}
+                    <div class="message {{ message.tags }} message-page">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if lotes_vencidos or lotes_proximos_validade %}
+            {% if lotes_vencidos %}
+                <section class="container-lotes-vencidos">
+                    <h4>Lotes Vencidos</h4>
+                    {% for lote in lotes_vencidos %}
+                        <div class="card-produto">
+                            <div class="container-imgProduto">
+                                <img class="imagem-produto" src="/media/{{lote.produto.imagem}}" alt="">
+                            </div>
+                            {% if lote.produto.porcentagem_desconto == 0 %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{lote.produto.nome}}</h5>
+                                    <p class="precoCalculado-produto">{{lote.produto.preco_calculado|floatformat:2}} R$</p>
+                                    <p>Estoque disponível: <span>{{lote.produto.calcular_estoque}}</span></p>
+                                </div>
+                            {% else %}
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{lote.produto.nome}}</h5>
+                                    <div>
+                                        <div>
+                                            <p class="preco-produto">{{lote.produto.preco}} R$</p>
+                                            <p class="precoCalculado-produto">{{lote.produto.preco_calculado|floatformat:2}} R$</p>
+                                        </div>
+                                        <div class="promocao">
+                                            {{lote.produto.porcentagem_desconto}}% OFF
+                                        </div> 
+                                    </div>
+                                    <p>Estoque disponível: <span>{{lote.produto.calcular_estoque}}</span></p>
+                                </div>
+                            {% endif %}
+                            <div class="container-buttons">
+                                <button type="button" class="button-submit" onclick="abrirEditProduto('{{ lote.produto.id }}')">Editar</button>
+                                <form action="{% url 'excluir-produto' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="produto_id" value="{{ lote.produto.id }}">
+                                    <button type="submit" class="button-excluir">Excluir</button>
+                                </form>
+                                <!-- POP UP -->
+                                <div id="editproduto-popup-{{lote.produto.id}}" class="editproduto-popup popup">
+                                    <div>
+                                        <i class="bi bi-x" onclick="fecharEditProduto('{{ lote.produto.id }}')"></i>
+                                        <div class="conteudo-popupEditProduto">
+                                            {% if messages %}
+                                                {% for message in messages %} 
+                                                    {% if 'editar-produto' in message.tags %}
+                                                        <div class="message {{ message.tags }} message-editarproduto">
+                                                            <span>{{ message }}</span>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                            <h5>Edição do produto <span>{{lote.produto.nome}}</span></h5>
+                                            <form action="" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="produto_id" value="{{ lote.produto.id }}">
+                                                <label for="nome-editproduto">Nome: <input type="text" name="nome" id="nome-editproduto"  value="{{lote.produto.nome}}" placeholder="Digite o nome do produto"></label>
+                                                <label for="descricao-editproduto">Descrição: <textarea name="descricao" id="descricao-editproduto" placeholder="Digite a descrição do produto">{{lote.produto.descricao}}</textarea></label>
+                                                <div class="container-flex">
+                                                    <label for="preco-editproduto">Preço: <input type="text" name="preco" id="preco-editproduto" value="{{lote.produto.preco}}" placeholder="Digite o preço"></label>
+                                                    <label for="desconto-editproduto">Desconto (%): <input type="number" name="desconto" id="desconto-editproduto" value="{{lote.produto.porcentagem_desconto}}" placeholder="Digite o desconto"></label>
+                                                </div>
+                                                <label for="tipo-editcartao"> Categoria:
+                                                    <select name="categoria" id="categoria-editproduto">
+                                                        {% for categoria, label in categorias %}
+                                                            <option value="{{ categoria }}" {% if lote.produto.categoria == categoria %}selected{% endif %}>
+                                                                {{ label }}
+                                                            </option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </label>
+                                                <div class="container-buttons">
+                                                    <button type="submit" class="button-submit">Atualizar</button>
+                                                    <button type="button" onclick="fecharEditProduto('{{ lote.produto.id }}')" class="button-cancelar">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+            {% elif lotes_proximos_validade %}
+                <section class="container-lotes-proximos-validade">
+                    <h4>Lotes com vencimento nos próximos 30 dias</h4>
+                    <div class="produtos">
+                        {% for lote in lotes_proximos_validade %}
+                            <div class="card-produto container-lote-vencimento">
+                                <div class="container-imgProduto">
+                                    <img class="imagem-produto" src="/media/{{lote.produto.imagem}}" alt="">
+                                </div>
+                                <div class="produto-info">
+                                    <h5 class="titulo-produto">{{lote.produto.nome}}</h5>
+                                    <div style="display: flex; flex-direction: column; align-items: start;">
+                                        {% if lote.dias_para_vencer == 1 %}
+                                        <p>Falta <span style="color: red;">1</span> dia para o lote vencer</p>
+                                        {% else %}
+                                        <p>Faltam <span style="color: red;">{{ lote.dias_para_vencer }}</span> dias para o lote vencer</p>
+                                        {% endif %}
+                                        <p>Promoção automática aplicada: <span>{{ lote.produto.porcentagem_desconto }}%</span></p>
+                                        <p>Quantidade: <span>{{ lote.quantidade }}</span></p>
+                                    </div>
+                                </div>
+                                <div class="container-buttons">
+                                    <button type="button" class="button-submit" onclick="abrirEditLote('{{ lote.id }}')">Editar</button>
+                                    <button type="button" class="button-excluir" onclick="abrirExcluirLote('{{ lote.id }}')">Excluir</button>
+                                    <!-- POP UP EDITAR LOTE -->
+                                    <div id="editlote-popup-{{lote.id}}" class="editlote-popup popup">
+                                        <div>
+                                            <i class="bi bi-x" onclick="fecharEditLote('{{ lote.id }}')"></i>
+                                            <div class="conteudo-popupEditLote">
+                                                {% if messages %}
+                                                    {% for message in messages %} 
+                                                        {% if 'editar-lote' in message.tags %}
+                                                            <div class="message {{ message.tags }} message-editarlote">
+                                                                <span>{{ message }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <h5>Edição do lote <span>{{lote.produto.nome}} - {{ lote.data_validade|date:"d/m/Y" }}</span></h5>
+                                                <form action="{% url 'edit-lote' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="lote_id" value="{{ lote.id }}">
+                                                    <label for="produto-editlote">Produto:
+                                                        <select name="produto_id" id="produto-editlote">
+                                                            {% for produto in produtos %}
+                                                                <option value="{{ produto.id }}" {% if produto.id == lote.produto.id %}selected{% endif %}>
+                                                                    {{ produto.nome }}
+                                                                </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </label>
+                                                    <label for="qtd-editlote">Quantidade: <input type="number" name="qtd" id="qtd-editlote"  value="{{lote.quantidade}}" placeholder="0"></label>
+                                                    <label for="data-editlote">Data de validade: <input type="date" name="data" id="data-editlote"  value="{{lote.data_validade|date:'Y-m-d'}}"></label>
+                                                    <div class="container-buttons" style="padding: 0;">
+                                                        <button type="submit" class="button-submit">Atualizar</button>
+                                                        <button type="button" onclick="fecharEditLote('{{ lote.id }}')" class="button-cancelar">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- POP UP EXCLUIR LOTE -->
+                                    <div id="excluirlote-popup-{{lote.id}}" class="excluirlote-popup popup">
+                                        <div>
+                                            <i class="bi bi-x" onclick="fecharExcluirLote('{{ lote.id }}')"></i>
+                                            <div class="conteudo-popupExcluir">
+                                                <p>Deseja realmente excluir esse lote?</p>
+                                                <p><b>Essa é uma ação permanente.</b></p>
+                                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                                <div>
+                                                    <button onclick="fecharExcluirLote('{{ lote.id }}')" class="button-cancelar">Cancelar</button>
+                                                    <form action="{% url 'excluir-lote' %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="lote_id" value="{{ lote.id }}">
+                                                        <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+        {% endif %}
     </main>
+
+    <script>
+        const successMessage = document.querySelector('.success')
+        const errorMessage = document.querySelector('.error')
+        const pageMessage = document.querySelector('.page-lotes')
+        const editLoteMessage = document.querySelector('.editar-lote')
+        const editLotePopUp = document.querySelector('.editlote-popup')
+        const excluirLotePopUp = document.querySelector('.excluirlote-popup')
+
+        function abrirEditLote(id) {
+            document.getElementById(`editlote-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`editlote-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharEditLote(id) {
+            document.getElementById(`editlote-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`editlote-popup-${id}`).style.opacity = '0';
+        }
+
+        function abrirExcluirLote(id) {
+            document.getElementById(`excluirlote-popup-${id}`).style.visibility = 'visible';
+            document.getElementById(`excluirlote-popup-${id}`).style.opacity = '1';
+        }
+
+        function fecharExcluirLote(id) {
+            document.getElementById(`excluirlote-popup-${id}`).style.visibility = 'hidden';
+            document.getElementById(`excluirlote-popup-${id}`).style.opacity = '0';
+        }
+
+        if (pageMessage) {
+            setTimeout(function() {
+                window.location.href = "{% url 'home' %}"
+            }, 1000)
+        }
+
+        if (editLoteMessage) {
+            editLotePopUp.style.visibility = 'visible'
+            editLotePopUp.style.opacity = '1'
+            if (successMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'home' %}"
+                }, 1000)
+            } else if (errorMessage) {
+                setTimeout(function() {
+                    window.location.href = "{% url 'home' %}"
+                }, 2000)
+            }
+        }
+    </script>
 {% endblock %}

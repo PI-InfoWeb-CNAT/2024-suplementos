@@ -1,3 +1,4 @@
+/* HOME USER */
 .form-pesquisa {
     width: 51.5em;
 }
@@ -165,5 +166,95 @@
     }
     & a:hover {
         text-decoration: none;
+    }
+}
+
+/* HOME ADMIN */
+h4 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.container-buttons {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+    padding: 0 1.5em;
+}
+
+.container-lote-vencimento {
+    width: 220px;
+}
+
+.container-lote-vencimento .produto-info div p{
+    font-size: 1em;
+    font-weight: 500;
+    border-bottom: 1px solid #b8b8b8;
+    width: 100%;
+    & span {
+        font-weight: bolder;
+    }
+}
+
+.editlote-popup > div {
+    width: 35em;
+    height: 25em;
+    padding: 0 3em;
+}
+
+.conteudo-popupEditLote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        & label {
+            font-weight: bold;
+        }
+        & input {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+        & select {
+            border: 2px solid var(--dark-green);
+            border-radius: 6px;
+            padding-left: .3em;
+            outline: none;
+        }
+    }
+}
+
+.conteudo-popupExcluir {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & p {
+        width: 80%;
+        font-weight: 600;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    & .bi-exclamation-triangle-fill {
+        font-size: 3em;
+        margin: .2em 0 .5em 0;
+    }
+    &  div{
+        display: flex;
+        gap: 3.5em;
     }
 }
