@@ -39,6 +39,7 @@
     flex-direction: column;
     gap: .7em;
     padding: 1em 0;
+    width: 370px;
     & p {
         font-weight: bold;
         font-size: 1.1em;
@@ -50,8 +51,10 @@
 
 .nome-porcentagem {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1em;
+    row-gap: .5em;
+    column-gap: 1em;
     & h3 {
         font-size: 1.55em;
         max-width: 350px;

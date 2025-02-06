@@ -36,13 +36,13 @@
     padding: 0 1.5em;
 }
 
-.editlote-popup > div {
+.editlote-popup > div, .addlote-popup > div {
     width: 35em;
     height: 25em;
     padding: 0 3em;
 }
 
-.conteudo-popupEditLote {
+.conteudo-popupEditLote, .conteudo-popupAddLote {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -27,3 +27,15 @@ document.getElementById('formPesquisa').addEventListener('submit', function(even
         return false
     }
 })
+
+const successMessage = document.querySelector('.success')
+const errorMessage = document.querySelector('.error')
+if (successMessage) {
+    setTimeout(function() {
+        window.location.href = homeUrl
+    }, 2000)
+} else if (errorMessage) {
+    setTimeout(function() {
+        window.location.href = homeUrl
+    }, 2000)
+} 

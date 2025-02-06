@@ -63,7 +63,42 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="button-addLote">Adicionar lote <i class="bi bi-plus"></i></button>
+            <button type="button" class="button-addLote" onclick="abrirAddLote()">Adicionar lote <i class="bi bi-plus"></i></button>
+            <!-- POP UP ADICIONAR LOTE -->
+            <div id="addlote-popup-{{lote.id}}" class="addlote-popup popup">
+                <div>
+                    <i class="bi bi-x" onclick="fecharAddLote()"></i>
+                    <div class="conteudo-popupAddLote">
+                        {% if messages %}
+                            {% for message in messages %} 
+                                {% if 'criar-lote' in message.tags %}
+                                    <div class="message {{ message.tags }}">
+                                        <span>{{ message }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <h5>Adicione novo lote</span></h5>
+                        <form action="{% url 'criar-lote' %}" method="POST">
+                            {% csrf_token %}
+                            <label for="produto-Addlote">Produto:
+                                <select name="produto_id" id="produto-Addlote">
+                                    <option value="" disabled selected>Selecione o produto</option>
+                                    {% for produto in produtos %}
+                                        <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            <label for="qtd-addlote">Quantidade: <input type="number" name="qtd" id="qtd-addlote" placeholder="0"></label>
+                            <label for="data-addlote">Data de validade: <input type="date" name="data" id="data-addlote"></label>
+                            <div class="container-buttons" style="padding: 0;">
+                                <button type="submit" class="button-submit">Adicionar</button>
+                                <button type="button" onclick="fecharAddLote()" class="button-cancelar">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <section class="produtos">
             {% for lote in lotes %}
@@ -146,52 +181,7 @@
 
 {% block script %}
     <script>
-        const successMessage = document.querySelector('.success')
-        const errorMessage = document.querySelector('.error')
-        const pageMessage = document.querySelector('.page-lotes')
-        const editLoteMessage = document.querySelector('.editar-lote')
-        const editLotePopUp = document.querySelector('.editlote-popup')
-        const excluirLotePopUp = document.querySelector('.excluirlote-popup')
-
-        function abrirEditLote(id) {
-            document.getElementById(`editlote-popup-${id}`).style.visibility = 'visible';
-            document.getElementById(`editlote-popup-${id}`).style.opacity = '1';
-        }
-
-        function fecharEditLote(id) {
-            document.getElementById(`editlote-popup-${id}`).style.visibility = 'hidden';
-            document.getElementById(`editlote-popup-${id}`).style.opacity = '0';
-        }
-
-        function abrirExcluirLote(id) {
-            document.getElementById(`excluirlote-popup-${id}`).style.visibility = 'visible';
-            document.getElementById(`excluirlote-popup-${id}`).style.opacity = '1';
-        }
-
-        function fecharExcluirLote(id) {
-            document.getElementById(`excluirlote-popup-${id}`).style.visibility = 'hidden';
-            document.getElementById(`excluirlote-popup-${id}`).style.opacity = '0';
-        }
-
-        if (pageMessage) {
-            setTimeout(function() {
-                window.location.href = "{% url 'lotes' %}"
-            }, 1000)
-        }
-
-        if (editLoteMessage) {
-            editLotePopUp.style.visibility = 'visible'
-            editLotePopUp.style.opacity = '1'
-            if (successMessage) {
-                setTimeout(function() {
-                    window.location.href = "{% url 'lotes' %}"
-                }, 1000)
-            } else if (errorMessage) {
-                setTimeout(function() {
-                    window.location.href = "{% url 'lotes' %}"
-                }, 2000)
-            }
-        }
-
+        const lotesUrl = "{% url 'lotes' %}"
     </script>
+    <script src="{% static 'js/admin/lotes.js' %}"></script>
 {% endblock %}

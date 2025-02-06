@@ -42,6 +42,8 @@ def home_view(request):
     lotes_proximos_validade = Lote.objects.filter(data_validade__gte=timezone.now(), data_validade__lte=data_limite).order_by('data_validade')
     lotes_vencidos = Lote.objects.filter(data_validade__lt=timezone.now().date())
 
+    for lote in lotes_vencidos:
+        lote.dias_vencidos = (timezone.now().date() - lote.data_validade).days
     for lote in lotes_proximos_validade:
         lote.dias_para_vencer = (lote.data_validade - timezone.now().date()).days
 

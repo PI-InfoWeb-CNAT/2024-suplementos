@@ -137,20 +137,8 @@
 
 {% block script %}
     <script>
-        const successMessage = document.querySelector('.success')
-        const errorMessage = document.querySelector('.error')
-        const pedidoMessage = document.querySelector('.page-pedido')
-
-        if (pedidoMessage) {
-            if (successMessage) {
-                setTimeout(function() {
-                    window.location.href = "{% url 'meus-pedidos' %}"
-                }, 1000)
-            } else if (errorMessage) {
-                setTimeout(function() {
-                    window.location.href = "{% url 'finalizar-pedido' %}"
-                }, 2000)
-            }
-        }
+        const meusPedidosUrl = "{% url 'meus-pedidos' %}"
+        const finalizarPedidoUrl = "{% url 'finalizar-pedido' %}"
     </script>
+    <script src="{% static 'js/user/finalizar_pedido.js' %}"></script>
 {% endblock %}

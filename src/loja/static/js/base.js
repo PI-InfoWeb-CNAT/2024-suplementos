@@ -9,8 +9,8 @@ function fechar() {
     ajudaPopUp.style.visibility = 'hidden'
     ajudaPopUp.style.opacity = '0'
 }
-// FILTRO
 
+// FILTRO
 document.addEventListener("DOMContentLoaded", () => {
     const hoverArea = document.getElementById("selecionarBtn");
     const checkboxBox = document.getElementById("checkboxBox");

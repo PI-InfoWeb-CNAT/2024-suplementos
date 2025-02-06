@@ -218,18 +218,8 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'js/home.js' %}"></script>
     <script>
-        const successMessage = document.querySelector('.success')
-        const errorMessage = document.querySelector('.error')
-        if (successMessage) {
-            setTimeout(function() {
-                window.location.href = "{% url 'home' %}"
-            }, 2000)
-        } else if (errorMessage) {
-            setTimeout(function() {
-                window.location.href = "{% url 'home' %}"
-            }, 2000)
-        } 
+        const homeUrl = "{% url 'home' %}"
     </script>
+    <script src="{% static 'js/user/home.js' %}"></script>
 {% endblock %}
