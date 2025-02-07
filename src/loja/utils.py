@@ -1,6 +1,6 @@
 from django.utils import timezone
 
-from loja.models import Lote
+from loja.models import Lote, Produto
 
 def validar_cpf(cpf):
     if len(cpf) != 11 or cpf == cpf[0] * 11:
@@ -20,10 +20,16 @@ def validar_cpf(cpf):
         return False
 
 def aplicar_promocao_auto():
-    lotes = Lote.objects.all()
+    produtos = Produto.objects.all()  
 
-    for lote in lotes:
-        dias_para_validade = (lote.data_validade - timezone.now().date()).days
+    for produto in produtos:
+        lotes = Lote.objects.filter(produto=produto)  
+        if not lotes.exists():
+            continue  
+
+        lote_mais_proximo = min(lotes, key=lambda lote: lote.data_validade)
+
+        dias_para_validade = (lote_mais_proximo.data_validade - timezone.now().date()).days
 
         if dias_para_validade < 0:  
             desconto = 90  
@@ -36,8 +42,6 @@ def aplicar_promocao_auto():
         else:
             desconto = 0  
 
-        produto = lote.produto
         if produto.porcentagem_desconto != desconto:
             produto.porcentagem_desconto = desconto
             produto.save()
-        
