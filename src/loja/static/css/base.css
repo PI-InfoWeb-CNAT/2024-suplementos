@@ -34,7 +34,7 @@ main {
     width: 1319px;
     display: flex;
     flex-direction: column;
-    row-gap: 3.9em;
+    row-gap: 3.5em;
 }
 #container-header-main {
     display: flex;

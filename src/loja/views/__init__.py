@@ -14,7 +14,7 @@ from .user.MaisVendidosView import *
 from .user.MeusFavoritosView import *
 from .user.MeusPedidosView import *
 from .user.NotificacoesView import *
-from .user.PedidoView import *
+from .user.FinalizarPedidoView import *
 from .user.PerfilView import *
 from .user.ProdutoView import *
 from .admin.ProdutosView import *

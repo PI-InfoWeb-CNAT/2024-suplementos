@@ -5,7 +5,7 @@ from django.utils import timezone
 
 from loja.models import Lote, Produto
 
-def lote_view(request):
+def list_lotes_view(request):
     lotes = Lote.objects.all().order_by('-id')
     produtos = Produto.objects.all()
 

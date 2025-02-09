@@ -1,0 +1,104 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid var(--light-grey);
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--dark-grey);
+    color: white;
+    font-weight: bold;
+}
+
+th:nth-child(1), td:nth-child(1) { width: 5%; } 
+th:nth-child(2), td:nth-child(2) { width: 25%; } 
+th:nth-child(3), td:nth-child(3) { width: 15%; } 
+th:nth-child(4), td:nth-child(4) { width: 20%; } 
+th:nth-child(5), td:nth-child(5) { width: 20%; }
+
+td {
+    color: var(--dark-grey);
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.btn-ver {
+    color: white;
+    background-color: blue;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
+.editpedido-popup > div {
+    width: 25em;
+    height: 20em;
+    padding: 0 3em;
+}
+
+.conteudo-popupEditPedido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+}
+
+.conteudo-popupEditLote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+    & h5 {
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 1em;
+        & span {
+            font-weight: bolder;
+        }
+    }
+}
+
+
+.conteudo-popupExcluir {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & p {
+        width: 80%;
+        font-weight: 600;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    & .bi-exclamation-triangle-fill {
+        font-size: 3em;
+        margin: .2em 0 .5em 0;
+    }
+    &  div{
+        display: flex;
+        gap: 2em;
+    }
+}

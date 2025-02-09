@@ -22,7 +22,7 @@
             </a>
         </li>
         <li><a href="{% url 'lotes' %}"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
-        <li><a href="#"><i class="bi bi-basket3-fill menu-icon"></i>Pedidos</a></li>
+        <li><a href="{% url 'pedidos' %}"><i class="bi bi-basket3-fill menu-icon"></i>Pedidos</a></li>
         <li><a href="#"><i class="bi bi-bell-fill menu-icon"></i>Notificações</a></li>
         <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
     </ul> 
@@ -123,8 +123,8 @@
                                             <label for="preco-editproduto">Preço: <input type="text" name="preco" id="preco-editproduto" value="{{prod.preco}}" placeholder="Digite o preço"></label>
                                             <label for="desconto-editproduto">Desconto (%): <input type="number" name="desconto" id="desconto-editproduto" value="{{prod.porcentagem_desconto}}" placeholder="Digite o desconto"></label>
                                         </div>
-                                        <label for="tipo-editcartao"> Categoria:
-                                            <select name="categoria" id="categoria-editproduto">
+                                        <label for="categoria-editproduto"> Categoria:
+                                            <select name="categoria-editproduto" id="categoria-editproduto">
                                                 {% for categoria, label in categorias %}
                                                     <option value="{{ categoria }}" {% if prod.categoria == categoria %}selected{% endif %}>
                                                         {{ label }}

@@ -10,12 +10,13 @@ from loja.views.user.MeusFavoritosView import meusfavoritos_view
 from loja.views.user.ProdutoView import produto_view
 from loja.views.user.CategoriaView import categoria_view
 from loja.views.user.CarrinhoView import adicionar_ao_carrinho, listar_carrinho_view, remover_item_view
-from loja.views.user.PedidoView import finalizar_pedido_view
+from loja.views.user.FinalizarPedidoView import finalizar_pedido_view
 from loja.views.user.MaisVendidosView import maisvendidos_view
 from loja.views.user.ComprarNovamenteView import comprar_novamente_view
 
 from loja.views.admin.ProdutosView import produtosAdmin_view, excluir_produto_view
-from loja.views.admin.LoteView import lote_view, criar_lote_view, edit_lote_view, excluir_lote_view
+from loja.views.admin.LoteView import list_lotes_view, criar_lote_view, edit_lote_view, excluir_lote_view
+from loja.views.admin.PedidoView import list_pedidos_view, edit_pedido_view, excluir_pedido_view
 
 urlpatterns = [
     # USER
@@ -39,8 +40,11 @@ urlpatterns = [
     # ADMIN
     path("produtos/", produtosAdmin_view, name='produtos'),
     path("produtos/excluir", excluir_produto_view, name='excluir-produto'),
-    path("lotes", lote_view, name='lotes'),
+    path("lotes", list_lotes_view, name='lotes'),
     path("lotes/criar", criar_lote_view, name='criar-lote'),
     path("lotes/editar", edit_lote_view, name='edit-lote'),
     path("lotes/excluir", excluir_lote_view, name='excluir-lote'),
+    path("pedidos", list_pedidos_view, name='pedidos'),
+    path("pedidos/editar", edit_pedido_view, name='edit-pedido'),
+    path("pedidos/excluir", excluir_pedido_view, name='excluir-pedido'),
 ] 

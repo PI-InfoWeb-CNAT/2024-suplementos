@@ -94,6 +94,6 @@
     }
     &  div{
         display: flex;
-        gap: 3.5em;
+        gap: 2em;
     }
 }
