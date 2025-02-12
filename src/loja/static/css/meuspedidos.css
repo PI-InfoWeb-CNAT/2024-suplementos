@@ -1,3 +1,18 @@
+.pedidos::-webkit-scrollbar {
+    width: 12px; 
+}
+.pedidos::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.pedidos::-webkit-scrollbar-thumb {
+    background-color: #0f7200; 
+    border-radius: 10px;
+}
+.pedidos::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-grey);
+}
+
 .pedidos {
     display: flex;
     flex-direction: column;

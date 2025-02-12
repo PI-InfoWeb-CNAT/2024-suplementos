@@ -1,3 +1,18 @@
+.container-cartoes::-webkit-scrollbar {
+    width: 12px; 
+}
+.container-cartoes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.container-cartoes::-webkit-scrollbar-thumb {
+    background-color: #0f7200; 
+    border-radius: 10px;
+}
+.container-cartoes::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-grey);
+}
+
 h4 {
     font-size: 1.4em;
     font-weight: 600;
@@ -101,7 +116,7 @@ h4 {
 .card-novo-cartao {
     color: var(--dark-grey);
     width: 19em;
-    height: 17em;
+    height: 21em;
     display: flex;
     flex-direction: column;
     justify-content: center;

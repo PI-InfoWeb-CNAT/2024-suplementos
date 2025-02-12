@@ -1,3 +1,18 @@
+.produtos-finalizarpedido::-webkit-scrollbar {
+    width: 12px; 
+}
+.produtos-finalizarpedido::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.produtos-finalizarpedido::-webkit-scrollbar-thumb {
+    background-color: #0f7200; 
+    border-radius: 10px;
+}
+.produtos-finalizarpedido::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-grey);
+}
+
 form {
     display: flex;
     gap: 4em;
