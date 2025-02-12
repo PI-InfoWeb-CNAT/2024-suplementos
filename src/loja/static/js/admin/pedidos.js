@@ -4,6 +4,16 @@ const pageMessage = document.querySelector('.page-pedidos')
 const editPedidoMessage = document.querySelector('.editar-pedido')
 const editPedidoPopUp = document.querySelector('.editpedido-popup')
 
+function abrirDetalhesPedido(id) {
+    document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'visible';
+    document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '1';
+}
+
+function fecharDetalhesPedido(id) {
+    document.getElementById(`detalhespedido-popup-${id}`).style.visibility = 'hidden';
+    document.getElementById(`detalhespedido-popup-${id}`).style.opacity = '0';
+}
+
 function abrirEditPedido(id) {
     document.getElementById(`editpedido-popup-${id}`).style.visibility = 'visible';
     document.getElementById(`editpedido-popup-${id}`).style.opacity = '1';

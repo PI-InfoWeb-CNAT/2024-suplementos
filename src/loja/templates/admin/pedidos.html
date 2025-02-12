@@ -66,10 +66,54 @@
                             <td>{{ pedido.get_status_display }}</td>
                             <td>{{ pedido.dt_hora|date:"d/m/Y H:i" }}</td>
                             <td class="acoes">
-                                <button type="button" class="btn-ver">Ver</button>
+                                <button type="button" class="btn-ver" onclick="abrirDetalhesPedido('{{ pedido.id }}')">Detalhes</button>
                                 <button type="button" class="button-submit" onclick="abrirEditPedido('{{ pedido.id }}')">Editar</button>
                                 <button type="button" class="button-excluir" onclick="abrirExcluirPedido('{{ pedido.id }}')">Excluir</button>
                             </td>
+                            <!-- POP UP DETALHES PEDIDO -->
+                            <div id="detalhespedido-popup-{{pedido.id}}" class="detalhespedido-popup popup">
+                                <div>
+                                    <i class="bi bi-x" onclick="fecharDetalhesPedido('{{ pedido.id }}')"></i>
+                                    <div class="conteudo-popupDetalhesPedido">
+                                        <h5>Detalhes do pedido #{{ pedido.id }}</h5>
+                                        <div>
+                                            <div style="display: flex; flex-direction: column; gap: 1.5em;">
+                                                {% if pedido.endereco %}
+                                                    <p>Endereço: <span>{{ pedido.endereco }}</span></p>
+                                                {% else %}
+                                                    <p>Endereço: <span>Vazio</span></p>
+                                                {% endif %}
+    
+                                                {% if pedido.cartao %}
+                                                    <p>Cartão: <span>{{ pedido.cartao }}</span></p>
+                                                {% else %}
+                                                    <p>Cartão: <span>Vazio</span></p>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                <h6>Produtos</h6>
+                                                <div class="pedido-itens">
+                                                    {% for item in pedido.itens.all %}
+                                                        <div class="container-item">
+                                                            <img src="{{ item.imagem }}" alt="Imagem do item do pedido">
+                                                            <div class="container-item-info">
+                                                                <div class="nome-porcentagem">
+                                                                    <h3>{{item.produto.nome}}</h3>
+                                                                </div>
+                                                                <div class="preco-info">
+                                                                    <p>Preço: <span>{{item.preco|floatformat:2}}</span></p>
+                                                                    <p>Quantidade: <span>{{item.quantidade}}</span></p>
+                                                                    <p id="subtotal">Subtotal: <span>{{item.total}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- POP UP EDITAR PEDIDO -->
                             <div id="editpedido-popup-{{pedido.id}}" class="editpedido-popup popup">
                                 <div>
