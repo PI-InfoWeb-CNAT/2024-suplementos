@@ -63,7 +63,57 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="button-addProduto">Adicionar produto <i class="bi bi-plus"></i></button>
+            <button type="button" class="button-addProduto" onclick="abrirAddProduto()">Adicionar produto <i class="bi bi-plus"></i></button>
+            <!-- POP UP ADICIONAR PRODUTO -->
+            <div class="addproduto-popup popup">
+                <div>
+                    <i class="bi bi-x" onclick="fecharAddProduto()"></i>
+                    <div class="conteudo-popupAddProduto">
+                        {% if messages %}
+                            {% for message in messages %} 
+                                {% if 'criar-produto' in message.tags %}
+                                    <div class="message {{ message.tags }}" style="width: 90%;">
+                                        <span>{{ message }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <h5>Adicione novo produto</span></h5>
+                        <form action="{% url 'criar-produto' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label for="nome-addproduto">Nome: 
+                                <input type="text" name="nome" id="nome-addproduto" placeholder="Digite o nome do produto">
+                            </label>
+                            <label for="descricao-addproduto">Descrição: 
+                                <textarea name="descricao" id="descricao-addproduto" placeholder="Digite a descrição do produto"></textarea>
+                            </label>
+                            <div class="container-flex">
+                                <label for="preco-addproduto">Preço: 
+                                    <input type="text" name="preco" id="preco-addproduto" placeholder="Digite o preço">
+                                </label>
+                                <label for="desconto-addproduto">Desconto (%): 
+                                    <input type="number" name="desconto" id="desconto-addproduto" placeholder="Digite o desconto">
+                                </label>
+                            </div>
+                            <label for="categoria-addproduto"> Categoria:
+                                <select name="categoria" id="categoria-addproduto">
+                                    <option value="" disabled selected>Selecione a categoria</option>
+                                    {% for categoria, label in categorias %}
+                                        <option value="{{ categoria }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            <label for="imagem-addproduto">Imagem do Produto:
+                                <input type="file" name="imagem" id="imagem-addproduto" accept="image/*">
+                            </label>
+                            <div class="container-buttons">
+                                <button type="submit" class="button-submit">Adicionar</button>
+                                <button type="button" onclick="fecharAddProduto()" class="button-cancelar">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <section class="produtos">
             {% for prod in produtos %}
@@ -94,12 +144,8 @@
                     {% endif %}
                     <div class="container-buttons">
                         <button type="button" class="button-submit" onclick="abrirEditProduto('{{ prod.id }}')">Editar</button>
-                        <form action="{% url 'excluir-produto' %}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="produto_id" value="{{ prod.id }}">
-                            <button type="submit" class="button-excluir">Excluir</button>
-                        </form>
-                        <!-- POP UP -->
+                        <button type="button" class="button-excluir" onclick="abrirExcluirProduto('{{ prod.id }}')">Excluir</button>
+                        <!-- POP UP EDITAR PRODUTO -->
                         <div id="editproduto-popup-{{prod.id}}" class="editproduto-popup popup">
                             <div>
                                 <i class="bi bi-x" onclick="fecharEditProduto('{{ prod.id }}')"></i>
@@ -107,24 +153,32 @@
                                     {% if messages %}
                                         {% for message in messages %} 
                                             {% if 'editar-produto' in message.tags %}
-                                                <div class="message {{ message.tags }} message-editarproduto">
+                                                <div class="message {{ message.tags }}" style="width: 90%;">
                                                     <span>{{ message }}</span>
                                                 </div>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
                                     <h5>Edição do produto <span>{{prod.nome}}</span></h5>
-                                    <form action="" method="POST">
+                                    <form action="{% url 'edit-produto' %}" method="POST" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <input type="hidden" name="produto_id" value="{{ prod.id }}">
-                                        <label for="nome-editproduto">Nome: <input type="text" name="nome" id="nome-editproduto"  value="{{prod.nome}}" placeholder="Digite o nome do produto"></label>
-                                        <label for="descricao-editproduto">Descrição: <textarea name="descricao" id="descricao-editproduto" placeholder="Digite a descrição do produto">{{prod.descricao}}</textarea></label>
+                                        <label for="nome-editproduto">Nome: 
+                                            <input type="text" name="nome" id="nome-editproduto"  value="{{prod.nome}}" placeholder="Digite o nome do produto">
+                                        </label>
+                                        <label for="descricao-editproduto">Descrição: 
+                                            <textarea name="descricao" id="descricao-editproduto" placeholder="Digite a descrição do produto">{{prod.descricao}}</textarea>
+                                        </label>
                                         <div class="container-flex">
-                                            <label for="preco-editproduto">Preço: <input type="text" name="preco" id="preco-editproduto" value="{{prod.preco}}" placeholder="Digite o preço"></label>
-                                            <label for="desconto-editproduto">Desconto (%): <input type="number" name="desconto" id="desconto-editproduto" value="{{prod.porcentagem_desconto}}" placeholder="Digite o desconto"></label>
+                                            <label for="preco-editproduto">Preço: 
+                                                <input type="text" name="preco" id="preco-editproduto" value="{{prod.preco}}" placeholder="Digite o preço">
+                                            </label>
+                                            <label for="desconto-editproduto">Desconto (%): 
+                                                <input type="number" name="desconto" id="desconto-editproduto" value="{{prod.porcentagem_desconto}}" placeholder="Digite o desconto">
+                                            </label>
                                         </div>
                                         <label for="categoria-editproduto"> Categoria:
-                                            <select name="categoria-editproduto" id="categoria-editproduto">
+                                            <select name="categoria" id="categoria-editproduto">
                                                 {% for categoria, label in categorias %}
                                                     <option value="{{ categoria }}" {% if prod.categoria == categoria %}selected{% endif %}>
                                                         {{ label }}
@@ -132,11 +186,33 @@
                                                 {% endfor %}
                                             </select>
                                         </label>
+                                        <label for="imagem-editproduto">Imagem do Produto:
+                                            <input type="file" name="imagem" id="imagem-editproduto" value="{{ prod.imagem }}" accept="image/*">
+                                        </label>
                                         <div class="container-buttons">
                                             <button type="submit" class="button-submit">Atualizar</button>
                                             <button type="button" onclick="fecharEditProduto('{{ prod.id }}')" class="button-cancelar">Cancelar</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- POP UP EXCLUIR PRODUTO -->
+                        <div id="excluirproduto-popup-{{prod.id}}" class="excluirproduto-popup popup">
+                            <div>
+                                <i class="bi bi-x" onclick="fecharExcluirProduto('{{ prod.id }}')"></i>
+                                <div class="conteudo-popupExcluir">
+                                    <p>Deseja realmente excluir o produto <span style="font-weight: bolder;">{{ prod.nome }}</span>?</p>
+                                    <p><b>Essa é uma ação permanente.</b></p>
+                                    <i class="bi bi-exclamation-triangle-fill"></i>
+                                    <div>
+                                        <button onclick="fecharExcluirProduto('{{ prod.id }}')" class="button-cancelar">Cancelar</button>
+                                        <form action="{% url 'excluir-produto' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="produto_id" value="{{ prod.id }}">
+                                            <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
