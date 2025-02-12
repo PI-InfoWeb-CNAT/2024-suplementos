@@ -25,15 +25,16 @@ def aplicar_promocao_auto():
     for produto in produtos:
         lotes = Lote.objects.filter(produto=produto)  
         if not lotes.exists():
+            if produto.porcentagem_desconto != 0:
+                produto.porcentagem_desconto = 0
+                produto.save()
             continue  
 
         lote_mais_proximo = min(lotes, key=lambda lote: lote.data_validade)
 
         dias_para_validade = (lote_mais_proximo.data_validade - timezone.now().date()).days
 
-        if dias_para_validade < 0:  
-            desconto = 90  
-        elif 0 <= dias_para_validade <= 10: 
+        if 0 <= dias_para_validade <= 10: 
             desconto = 70 
         elif 11 <= dias_para_validade <= 20: 
             desconto = 50
