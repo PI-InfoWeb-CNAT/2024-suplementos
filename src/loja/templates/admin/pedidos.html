@@ -23,7 +23,7 @@
         </li>
         <li><a href="{% url 'lotes' %}"><i class="bi bi-box-seam-fill menu-icon"></i>Lotes</a></li>
         <li><a href="{% url 'pedidos' %}" class="active"><i class="bi bi-basket3-fill menu-icon"></i>Pedidos</a></li>
-        <li><a href="#"><i class="bi bi-bell-fill menu-icon"></i>Notificações</a></li>
+        <li><a href="{% url 'notificacoes-admin' %}"><i class="bi bi-bell-fill menu-icon"></i>Notificações</a></li>
         <li><a href="{% url 'perfil' %}"><i class="bi bi-person-fill menu-icon"></i>Meu Perfil</a></li>
     </ul> 
 {% endblock %}
@@ -70,105 +70,105 @@
                                 <button type="button" class="button-submit" onclick="abrirEditPedido('{{ pedido.id }}')">Editar</button>
                                 <button type="button" class="button-excluir" onclick="abrirExcluirPedido('{{ pedido.id }}')">Excluir</button>
                             </td>
-                            <!-- POP UP DETALHES PEDIDO -->
-                            <div id="detalhespedido-popup-{{pedido.id}}" class="detalhespedido-popup popup">
-                                <div>
-                                    <i class="bi bi-x" onclick="fecharDetalhesPedido('{{ pedido.id }}')"></i>
-                                    <div class="conteudo-popupDetalhesPedido">
-                                        <h5>Detalhes do pedido #{{ pedido.id }}</h5>
+                        </tr>
+                        <!-- POP UP DETALHES PEDIDO -->
+                        <div id="detalhespedido-popup-{{pedido.id}}" class="detalhespedido-popup popup">
+                            <div>
+                                <i class="bi bi-x" onclick="fecharDetalhesPedido('{{ pedido.id }}')"></i>
+                                <div class="conteudo-popupDetalhesPedido">
+                                    <h5>Detalhes do pedido #{{ pedido.id }}</h5>
+                                    <div>
+                                        <div style="display: flex; flex-direction: column; gap: 1.5em;">
+                                            {% if pedido.endereco %}
+                                                <p>Endereço: <span>{{ pedido.endereco }}</span></p>
+                                            {% else %}
+                                                <p>Endereço: <span>Vazio</span></p>
+                                            {% endif %}
+
+                                            {% if pedido.cartao %}
+                                                <p>Cartão: <span>{{ pedido.cartao }}</span></p>
+                                            {% else %}
+                                                <p>Cartão: <span>Vazio</span></p>
+                                            {% endif %}
+                                        </div>
                                         <div>
-                                            <div style="display: flex; flex-direction: column; gap: 1.5em;">
-                                                {% if pedido.endereco %}
-                                                    <p>Endereço: <span>{{ pedido.endereco }}</span></p>
-                                                {% else %}
-                                                    <p>Endereço: <span>Vazio</span></p>
-                                                {% endif %}
-    
-                                                {% if pedido.cartao %}
-                                                    <p>Cartão: <span>{{ pedido.cartao }}</span></p>
-                                                {% else %}
-                                                    <p>Cartão: <span>Vazio</span></p>
-                                                {% endif %}
-                                            </div>
-                                            <div>
-                                                <h6>Produtos</h6>
-                                                <div class="pedido-itens">
-                                                    {% for item in pedido.itens.all %}
-                                                        <div class="container-item">
-                                                            <img src="{{ item.imagem }}" alt="Imagem do item do pedido">
-                                                            <div class="container-item-info">
-                                                                <div class="nome-porcentagem">
-                                                                    <h3>{{item.produto.nome}}</h3>
-                                                                </div>
-                                                                <div class="preco-info">
-                                                                    <p>Preço: <span>{{item.preco|floatformat:2}}</span></p>
-                                                                    <p>Quantidade: <span>{{item.quantidade}}</span></p>
-                                                                    <p id="subtotal">Subtotal: <span>{{item.total}}</span></p>
-                                                                </div>
+                                            <h6>Produtos</h6>
+                                            <div class="pedido-itens">
+                                                {% for item in pedido.itens.all %}
+                                                    <div class="container-item">
+                                                        <img src="{{ item.imagem }}" alt="Imagem do item do pedido">
+                                                        <div class="container-item-info">
+                                                            <div class="nome-porcentagem">
+                                                                <h3>{{item.produto.nome}}</h3>
+                                                            </div>
+                                                            <div class="preco-info">
+                                                                <p>Preço: <span>{{item.preco|floatformat:2}}</span></p>
+                                                                <p>Quantidade: <span>{{item.quantidade}}</span></p>
+                                                                <p id="subtotal">Subtotal: <span>{{item.total}}</span></p>
                                                             </div>
                                                         </div>
-                                                    {% endfor %}
-                                                </div>
+                                                    </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- POP UP EDITAR PEDIDO -->
-                            <div id="editpedido-popup-{{pedido.id}}" class="editpedido-popup popup">
-                                <div>
-                                    <i class="bi bi-x" onclick="fecharEditPedido('{{ pedido.id }}')"></i>
-                                    <div class="conteudo-popupEditPedido">
-                                        {% if messages %}
-                                            {% for message in messages %} 
-                                                {% if 'editar-pedido' in message.tags %}
-                                                    <div class="message {{ message.tags }}">
-                                                        <span>{{ message }}</span>
-                                                    </div>
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                        <h5>Edição do pedido <span>#{{ pedido.id }}</span></h5>
-                                        <form action="{% url 'edit-pedido' %}" method="POST">
+                        </div>
+                        <!-- POP UP EDITAR PEDIDO -->
+                        <div id="editpedido-popup-{{pedido.id}}" class="editpedido-popup popup">
+                            <div>
+                                <i class="bi bi-x" onclick="fecharEditPedido('{{ pedido.id }}')"></i>
+                                <div class="conteudo-popupEditPedido">
+                                    {% if messages %}
+                                        {% for message in messages %} 
+                                            {% if 'editar-pedido' in message.tags %}
+                                                <div class="message {{ message.tags }}">
+                                                    <span>{{ message }}</span>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    <h5>Edição do pedido <span>#{{ pedido.id }}</span></h5>
+                                    <form action="{% url 'edit-pedido' %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
+                                        <label for="status" style="font-weight: bold;"> Status:
+                                            <select name="status" id="status" style="border: 2px solid var(--dark-green); border-radius: 6px; padding-left: .3em; outline: none;">
+                                                {% for status, label in todos_status %}
+                                                    <option value="{{ status }}" {% if pedido.status == status %}selected{% endif %}>
+                                                        {{ label }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </label>
+                                        <div class="container-buttons" style="display: flex; gap: 3em; margin-top: 1em; padding: 0;">
+                                            <button type="submit" class="button-submit">Atualizar</button>
+                                            <button type="button" onclick="fecharEditPedido('{{ pedido.id }}')" class="button-cancelar">Cancelar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- POP UP EXCLUIR PEDIDO -->
+                        <div id="excluirpedido-popup-{{pedido.id}}" class="excluirpedido-popup popup">
+                            <div>
+                                <i class="bi bi-x" onclick="fecharExcluirPedido('{{ pedido.id }}')"></i>
+                                <div class="conteudo-popupExcluir">
+                                    <p>Deseja realmente excluir o pedido #{{ pedido.id }}?</p>
+                                    <p><b>Essa é uma ação permanente.</b></p>
+                                    <i class="bi bi-exclamation-triangle-fill"></i>
+                                    <div>
+                                        <button onclick="fecharExcluirPedido('{{ pedido.id }}')" class="button-cancelar">Cancelar</button>
+                                        <form action="{% url 'excluir-pedido' %}" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
-                                            <label for="status" style="font-weight: bold;"> Status:
-                                                <select name="status" id="status" style="border: 2px solid var(--dark-green); border-radius: 6px; padding-left: .3em; outline: none;">
-                                                    {% for status, label in todos_status %}
-                                                        <option value="{{ status }}" {% if pedido.status == status %}selected{% endif %}>
-                                                            {{ label }}
-                                                        </option>
-                                                    {% endfor %}
-                                                </select>
-                                            </label>
-                                            <div class="container-buttons" style="display: flex; gap: 3em; margin-top: 1em; padding: 0;">
-                                                <button type="submit" class="button-submit">Atualizar</button>
-                                                <button type="button" onclick="fecharEditPedido('{{ pedido.id }}')" class="button-cancelar">Cancelar</button>
-                                            </div>
+                                            <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <!-- POP UP EXCLUIR PEDIDO -->
-                            <div id="excluirpedido-popup-{{pedido.id}}" class="excluirpedido-popup popup">
-                                <div>
-                                    <i class="bi bi-x" onclick="fecharExcluirPedido('{{ pedido.id }}')"></i>
-                                    <div class="conteudo-popupExcluir">
-                                        <p>Deseja realmente excluir o pedido #{{ pedido.id }}?</p>
-                                        <p><b>Essa é uma ação permanente.</b></p>
-                                        <i class="bi bi-exclamation-triangle-fill"></i>
-                                        <div>
-                                            <button onclick="fecharExcluirPedido('{{ pedido.id }}')" class="button-cancelar">Cancelar</button>
-                                            <form action="{% url 'excluir-pedido' %}" method="POST">
-                                                {% csrf_token %}
-                                                <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
-                                                <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tr>
+                        </div>
                     {% endfor %}
                 </tbody>
             </table>

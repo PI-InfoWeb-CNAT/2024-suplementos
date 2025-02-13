@@ -8,7 +8,7 @@ class Notificacao(models.Model):
         ('mensagem_personalizada', 'Mensagem Personalizada'),
     ]
 
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
+    cliente = models.ForeignKey(Cliente, related_name='notificacoes', on_delete=models.CASCADE, null=True, blank=True)
     categoria = models.CharField(max_length=50, choices=CATEGORIAS)
     titulo = models.CharField(null=False, max_length=100)
     texto = models.TextField(null=False)
