@@ -63,7 +63,59 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="button-addNotificacao">Adicionar notificação <i class="bi bi-plus"></i></button>
+            <button type="button" class="button-addNotificacao" onclick="abrirAddNotificacao()">Adicionar notificação <i class="bi bi-plus"></i></button>
+            <!-- POP UP ADICIONAR NOTIFICAÇÃO -->
+            <div class="addnotificacao-popup popup">
+                <div>
+                    <i class="bi bi-x" onclick="fecharAddNotificacao()"></i>
+                    <div class="conteudo-popupAddNotificacao">
+                        {% if messages %}
+                            {% for message in messages %} 
+                                {% if 'criar-notificacao' in message.tags %}
+                                    <div class="message {{ message.tags }}" style="width: 90%;">
+                                        <span>{{ message }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <h5>Adicione nova notificação</h5>
+                        <form action="{% url 'criar-notificacao' %}" method="POST">
+                            {% csrf_token %}
+                            <label for="cliente-editnotificacao" style="font-weight: bold; width: 100%;"> Cliente:
+                                <select name="cliente_id" id="cliente-Addlote">
+                                    <option value="" disabled selected>Selecione o cliente</option>
+                                    {% for cliente in clientes %}
+                                        <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            <label for="categoria-addnotificacao"> Categoria: *
+                                <select name="categoria" id="categoria-addnotificacao">
+                                    <option value="" disabled selected>Selecione a categoria</option>
+                                    {% for categoria, label in categorias %}
+                                        <option value="{{ categoria }}">
+                                            {{ label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            <label for="titulo-addnotificacao">Título: *
+                                <input name="titulo" id="titulo-addnotificacao" placeholder="Digite o título da notificação">
+                            </label>
+                            <label for="texto-addnotificacao">Texto: *
+                                <textarea name="texto" id="texto-addnotificacao" placeholder="Digite o texto da notificação"></textarea>
+                            </label>
+                            <label for="enviar_todos">Enviar para todos: 
+                                <input type="checkbox" name="enviar_todos" id="enviar_todos">
+                            </label>
+                            <div class="container-buttons" style="display: flex; gap: 3em; margin-top: 1em; padding: 0;">
+                                <button type="submit" class="button-submit">Adicionar</button>
+                                <button type="button" onclick="fecharAddNotificacao()" class="button-cancelar">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <section class="tabela-notificacoes">
             <table>
@@ -111,7 +163,7 @@
                                         {% csrf_token %}
                                         <input type="hidden" name="notificacao_id" value="{{ notificacao.id }}">
                                         <label for="cliente-editnotificacao" style="font-weight: bold; width: 100%;"> Cliente:
-                                            <select name="cliente" id="cliente-editnotificacao">
+                                            <select name="cliente_id" id="cliente-editnotificacao">
                                                 {% for cliente in clientes %}
                                                     <option value="{{ cliente.id }}"  style="width: 100%;" {% if notificacao.cliente.id == cliente.id %}selected{% endif %}>
                                                         {{ cliente.nome }}

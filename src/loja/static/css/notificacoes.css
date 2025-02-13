@@ -141,13 +141,19 @@ td {
     gap: 1em;
 }
 
+.addnotificacao-popup > div {
+    width: 40em;
+    height: 40em;
+    padding: 0 3em;
+}
+
 .editnotificacao-popup > div {
     width: 40em;
     height: 35em;
     padding: 0 3em;
 }
 
-.conteudo-popupEditNotificacao {
+.conteudo-popupEditNotificacao, .conteudo-popupAddNotificacao {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,10 +186,42 @@ td {
         overflow-y: auto; 
         word-wrap: break-word; 
     }
+    & select {
+        border: 2px solid var(--dark-green);
+        border-radius: 6px;
+        padding-left: .2em;
+        outline: none;
+    }
+    & .container-buttons {
+        padding: 0;
+        width: 100%;
+        align-items: left;
+    }
+}
+
+.conteudo-popupAddNotificacao form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+    & select[name='cliente_id'] {
+        width: 52%;
+    }
+    & label[for='enviar_todos'] {
+        display: flex;
+        align-items: center;
+        gap: .8em;
+        & input {
+            transform: scale(1.2);
+        }
+    }
+}
+
+.conteudo-popupEditNotificacao 
     & label[for='cliente-editnotificacao'] {
         width: 100%;
     }
-    & select[name='cliente'] {
+    & select[name='cliente_id'] {
         width: 50%;
     }
     & label[for='titulo-editnotificacao'] {
@@ -200,18 +238,6 @@ td {
     }
     & select[name="categoria"] {
         width: 46%;
-    }
-    & select {
-        border: 2px solid var(--dark-green);
-        border-radius: 6px;
-        padding-left: .2em;
-        outline: none;
-    }
-    & .container-buttons {
-        padding: 0;
-        width: 100%;
-        align-items: left;
-    }
 }
 
 

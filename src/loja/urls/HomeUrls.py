@@ -17,7 +17,7 @@ from loja.views.user.ComprarNovamenteView import comprar_novamente_view
 from loja.views.admin.ProdutosView import produtos_view, criar_produto_view, edit_produto_view, excluir_produto_view
 from loja.views.admin.LoteView import list_lotes_view, criar_lote_view, edit_lote_view, excluir_lote_view
 from loja.views.admin.PedidoView import list_pedidos_view, edit_pedido_view, excluir_pedido_view
-from loja.views.admin.NotificacoesView import list_notificacoesAdmin_view, edit_notificacao_view, excluir_notificacao_view
+from loja.views.admin.NotificacoesView import list_notificacoesAdmin_view, criar_notificacao_view, edit_notificacao_view, excluir_notificacao_view
 
 urlpatterns = [
     # USER
@@ -52,6 +52,7 @@ urlpatterns = [
     path("pedidos/excluir", excluir_pedido_view, name='excluir-pedido'),
     path("pedidos/excluir", excluir_pedido_view, name='excluir-pedido'),
     path("notificacoes-admin", list_notificacoesAdmin_view, name='notificacoes-admin'),
+    path("notificacoes-admin/criar", criar_notificacao_view, name='criar-notificacao'),
     path("notificacoes-admin/editar", edit_notificacao_view, name='edit-notificacao'),
     path("notificacoes-admin/excluir", excluir_notificacao_view, name='excluir-notificacao'),
 ] 
