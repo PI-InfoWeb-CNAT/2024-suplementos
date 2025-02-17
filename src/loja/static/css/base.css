@@ -85,7 +85,7 @@ main {
             transition: .3s;
             & svg {
                 width: 1.05em;
-                height: 2em;
+                height: 1.9em;
                 margin-right: .75em;
                 margin-left: .1em;
                 transition: fill .3s;

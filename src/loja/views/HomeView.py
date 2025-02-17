@@ -54,7 +54,7 @@ def home_view(request):
     }
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        produtos_html = render_to_string('user/produtos_pesquisados.html',{'produtos_pesquisa': produtos_pesquisa}, request=request )
+        produtos_html = render_to_string('user/produtos_pesquisados.html',{'produtos_pesquisa': produtos_pesquisa}, request=request)
         return HttpResponse(produtos_html)
 
     if request.user.is_staff:
