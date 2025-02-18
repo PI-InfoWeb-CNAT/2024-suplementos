@@ -76,24 +76,3 @@
         }
     }
 }
-
-.conteudo-popupExcluir {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    & p {
-        width: 80%;
-        font-weight: 600;
-        font-size: 1.2em;
-        text-align: center;
-    }
-    & .bi-exclamation-triangle-fill {
-        font-size: 3em;
-        margin: .2em 0 .5em 0;
-    }
-    &  div{
-        display: flex;
-        gap: 2em;
-    }
-}

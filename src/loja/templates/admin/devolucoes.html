@@ -85,11 +85,84 @@
                                 <td>{{ devolucao.get_status_display }}</td>
                                 <td>{{ devolucao.data_devolucao|date:"d/m/Y H:i" }}</td>
                                 <td class="acoes">
-                                    <button type="button" class="button-ver">Detalhes</button>
-                                    <button type="button" class="button-submit" style="margin: 0 .5em;">Editar</button>
-                                    <button type="button" class="button-excluir">Excluir</button>
+                                    <button type="button" class="button-ver" onclick="abrirDetalhesDevolucao('{{ devolucao.id }}')">Detalhes</button>
+                                    <button type="button" class="button-submit" style="margin: 0 .5em;" onclick="abrirEditDevolucao('{{ devolucao.id }}')">Editar</button>
+                                    <button type="button" class="button-excluir" onclick="abrirExcluirDevolucao('{{ devolucao.id }}')">Excluir</button>
                                 </td>
                             </tr>
+                            <!-- POP UP DETALHES DEVOLUCAO -->
+                            <div id="detalhesdevolucao-popup-{{devolucao.id}}" class="detalhesdevolucao-popup popup">
+                                <div>
+                                    <i class="bi bi-x" onclick="fecharDetalhesDevolucao('{{ devolucao.id }}')"></i>
+                                    <div class="conteudo-popupDetalhesDevolucao">
+                                        <h5>Detalhes da devolução #{{ devolucao.id }}</h5>
+                                        <div>
+                                            <p><b>Foto/vídeo enviado pelo cliente:</b></p>
+                                            {% if devolucao.foto_video %}
+                                                <figure>
+                                                    <img src="{{ devolucao.foto_video.url }}" alt="Arquivo enviado">
+                                                </figure>
+                                            {% else %}
+                                                <p>Nenhum arquivo foi enviado nessa solicitação.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- POP UP EDITAR DEVOLUCAO -->
+                            <div id="editdevolucao-popup-{{devolucao.id}}" class="editdevolucao-popup popup">
+                                <div>
+                                    <i class="bi bi-x" onclick="fecharEditDevolucao('{{ devolucao.id }}')"></i>
+                                    <div class="conteudo-popupEditDevolucao">
+                                        {% if messages %}
+                                            {% for message in messages %} 
+                                                {% if 'editar-devolucao' in message.tags %}
+                                                    <div class="message {{ message.tags }}">
+                                                        <span>{{ message }}</span>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <h5>Edição da devolução <span>#{{ devolucao.id }}</span></h5>
+                                        <form action="{% url 'edit-devolucao' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="devolucao_id" value="{{ devolucao.id }}">
+                                            <label for="status" style="font-weight: bold;"> Status:
+                                                <select name="status" id="status" style="border: 2px solid var(--dark-green); border-radius: 6px; padding-left: .3em; outline: none;">
+                                                    {% for status, label in todos_status %}
+                                                        <option value="{{ status }}" {% if devolucao.status == status %}selected{% endif %}>
+                                                            {{ label }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </label>
+                                            <div class="container-buttons" style="display: flex; gap: 3em; margin-top: 1em; padding: 0;">
+                                                <button type="submit" class="button-submit">Atualizar</button>
+                                                <button type="button" onclick="fecharEditPedido('{{ pedido.id }}')" class="button-cancelar">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- POP UP EXCLUIR DEVOLUCAO -->
+                            <div id="excluirdevolucao-popup-{{devolucao.id}}" class="excluirdevolucao-popup popup">
+                                <div>
+                                    <i class="bi bi-x" onclick="fecharExcluirDevolucao('{{ devolucao.id }}')"></i>
+                                    <div class="conteudo-popupExcluir">
+                                        <p>Deseja realmente excluir essa devolução?</p>
+                                        <p><b>Essa é uma ação permanente.</b></p>
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                        <div>
+                                            <button onclick="fecharExcluirDevolucao('{{ devolucao.id }}')" class="button-cancelar">Cancelar</button>
+                                            <form action="{% url 'excluir-devolucao' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="devolucao_id" value="{{ devolucao.id }}">
+                                                <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -98,4 +171,11 @@
             <p style="font-size: 1.5em;">Nenhuma solicitação de devolução!</p>
         {% endif %}
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const devolucoesUrl = "{% url 'devolucoes' %}"
+    </script>
+    <script src="{% static 'js/admin/devolucoes.js' %}"></script>
 {% endblock %}

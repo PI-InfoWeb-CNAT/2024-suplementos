@@ -106,7 +106,8 @@
 
 .devolverproduto-popup > div {
     width: 30em;
-    height: 33em;
+    min-height: 33em;
+    height: auto;
     padding: 2em 3em;
 }
 

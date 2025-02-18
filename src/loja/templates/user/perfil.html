@@ -259,7 +259,7 @@
                             <button onclick="fecharExcluir()" class="button-cancelar">Cancelar</button>
                             <form action="{% url 'excluir-conta' %}" method="POST">
                                 {% csrf_token %}
-                                <button type="submit" class="button-excluir">Excluir</button>
+                                <button type="submit" class="button-excluir" style="border: 1px solid transparent;">Excluir</button>
                             </form>
                         </div>
                     </div>
