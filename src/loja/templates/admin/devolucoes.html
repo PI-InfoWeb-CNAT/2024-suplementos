@@ -5,7 +5,7 @@
 {% block title %}Devoluções - Admin{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/pedidos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/devolucoes.css' %}">
 {% endblock %}
 
 {% block sidebar %}
@@ -85,8 +85,8 @@
                                 <td>{{ devolucao.get_status_display }}</td>
                                 <td>{{ devolucao.data_devolucao|date:"d/m/Y H:i" }}</td>
                                 <td class="acoes">
-                                    <button type="button" class="btn-ver">Detalhes</button>
-                                    <button type="button" class="button-submit">Editar</button>
+                                    <button type="button" class="button-ver">Detalhes</button>
+                                    <button type="button" class="button-submit" style="margin: 0 .5em;">Editar</button>
                                     <button type="button" class="button-excluir">Excluir</button>
                                 </td>
                             </tr>

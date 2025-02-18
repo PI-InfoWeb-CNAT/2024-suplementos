@@ -67,7 +67,7 @@
                             <td>{{ pedido.get_status_display }}</td>
                             <td>{{ pedido.dt_hora|date:"d/m/Y H:i" }}</td>
                             <td class="acoes">
-                                <button type="button" class="btn-ver" onclick="abrirDetalhesPedido('{{ pedido.id }}')">Detalhes</button>
+                                <button type="button" class="button-ver" onclick="abrirDetalhesPedido('{{ pedido.id }}')">Detalhes</button>
                                 <button type="button" class="button-submit" onclick="abrirEditPedido('{{ pedido.id }}')">Editar</button>
                                 <button type="button" class="button-excluir" onclick="abrirExcluirPedido('{{ pedido.id }}')">Excluir</button>
                             </td>

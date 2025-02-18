@@ -513,6 +513,15 @@ footer {
     color: white;
 }
 
+.button-ver {
+    color: white;
+    background-color: blue;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    padding: .3em .9em;
+}
+
 .message {
     border-radius: 6px;
     padding: 1em;

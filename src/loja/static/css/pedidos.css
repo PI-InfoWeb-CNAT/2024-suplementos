@@ -52,15 +52,6 @@ td {
     gap: 1em;
 }
 
-.btn-ver {
-    color: white;
-    background-color: blue;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    text-align: center;
-    padding: .3em .9em;
-}
-
 .detalhespedido-popup > div {
     width: 55em;
     min-height: 35em;
