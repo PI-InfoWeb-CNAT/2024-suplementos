@@ -4,13 +4,9 @@ from loja.models import Cliente, Notificacao
 
 @login_required
 def list_notificacoes_view(request):
-    clientes = Cliente.objects.all()
+    cliente = Cliente.objects.get(id=request.user.id)
 
-    notificacoes_cliente = ''
-    for cliente in clientes:
-        if cliente.user_id == request.user.id:
-            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id).order_by('-data_envio')
-            notificacoes_cliente.update(lida=True)
+    notificacoes_cliente = Notificacao.objects.filter(cliente=cliente)
 
     context = {'notificacoes': notificacoes_cliente}
 
@@ -18,12 +14,9 @@ def list_notificacoes_view(request):
 
 @login_required
 def excluir_notificacoes_view(request):
-    clientes = Cliente.objects.all()
+    cliente = Cliente.objects.get(id=request.user.id)
 
-    notificacoes_cliente = ''
-    for cliente in clientes:
-        if cliente.user_id == request.user.id:
-            notificacoes_cliente = Notificacao.objects.filter(cliente_id=cliente.id)
+    notificacoes_cliente = Notificacao.objects.filter(cliente=cliente)
             
     notificacoes_cliente.delete()
 
