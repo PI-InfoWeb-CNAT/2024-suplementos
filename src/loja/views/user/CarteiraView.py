@@ -1,6 +1,5 @@
 import requests
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -62,7 +61,7 @@ def adicionar_cartao_view(request):
         else:
             messages.error(request, 'Preencha os campos obrigatórios. (*)', extra_tags='novo-cartao')
 
-    return redirect(reverse('minha-carteira')) 
+    return redirect('minha-carteira')
 
 @login_required
 def edit_cartao_view(request):
@@ -84,7 +83,7 @@ def edit_cartao_view(request):
             cartao.save()
             messages.success(request, 'Dados atualizados com sucesso!', extra_tags='edit-cartao')
 
-    return redirect(reverse('minha-carteira'))
+    return redirect('minha-carteira')
 
 @login_required
 def excluir_cartao_view(request):
@@ -96,4 +95,4 @@ def excluir_cartao_view(request):
         cartao.delete()
         messages.success(request, 'Cartão excluído com sucesso!', extra_tags='page-carteira')
 
-    return redirect(reverse('minha-carteira'))
+    return redirect('minha-carteira')

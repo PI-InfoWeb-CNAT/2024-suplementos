@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -32,7 +31,7 @@ def cancelar_pedido_view(request):
         pedido.delete()
         messages.success(request, 'Pedido cancelado com sucesso!', extra_tags='page-meuspedidos')
 
-    return redirect(reverse('meus-pedidos'))
+    return redirect('meus-pedidos')
 
 @login_required
 def confirmar_recebimento_view(request):
@@ -44,4 +43,4 @@ def confirmar_recebimento_view(request):
         pedido.save()
         messages.success(request, 'Recebimento do pedido confirmado com sucesso!', extra_tags='page-meuspedidos')
 
-    return redirect(reverse('meus-pedidos'))
+    return redirect('meus-pedidos')

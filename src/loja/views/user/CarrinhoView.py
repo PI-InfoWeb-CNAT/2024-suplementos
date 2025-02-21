@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.contrib import messages
 from django.db import transaction
 
@@ -111,7 +110,7 @@ def remover_item_view(request, idItem):
         if carrinho_id == item.carrinho.id:
             item.delete()
 
-    return redirect(reverse('carrinho'))
+    return redirect('carrinho')
 
 @transaction.atomic
 def migrar_carrinho_para_usuario(user, session_key):

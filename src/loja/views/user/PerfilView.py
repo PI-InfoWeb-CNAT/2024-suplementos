@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout, update_session_auth_hash
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -84,7 +83,7 @@ def edit_dados_view(request):
 
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='page-perfil')
 
-    return redirect(reverse('perfil'))
+    return redirect('perfil')
 
 @login_required
 def redefinir_senha_view(request):
@@ -116,12 +115,12 @@ def redefinir_senha_view(request):
         else:
             messages.error(request, 'Preencha todos os campos', extra_tags='redefinir-senha')
 
-    return redirect(reverse('perfil'))
+    return redirect('perfil')
     
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect(reverse('home'))
+    return redirect('home')
 
 @login_required
 def excluir_conta_view(request):
@@ -131,4 +130,4 @@ def excluir_conta_view(request):
         user.delete()
         logout(request)
         messages.success(request, 'Conta excluída com sucesso!')
-        return redirect(reverse('home'))  
+        return redirect('home')

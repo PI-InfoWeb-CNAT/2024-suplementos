@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from loja.models import Cliente, Notificacao
 
@@ -28,4 +27,4 @@ def excluir_notificacoes_view(request):
             
     notificacoes_cliente.delete()
 
-    return redirect(reverse('notificacoes'))
+    return redirect('notificacoes')
