@@ -46,7 +46,6 @@ def cadastro_view(request):
                             texto=f'Olá, {nome}! Seja bem-vindo ao nosso time!'
                         )
                         messages.success(request, 'Cadastro realizado com sucesso', extra_tags='page-cadastro')
-                        # return redirect(reverse('login'))
                     except IntegrityError:
                         messages.error(request, 'Erro ao criar o cadastro. Tente novamente.', extra_tags='page-cadastro')
             else:

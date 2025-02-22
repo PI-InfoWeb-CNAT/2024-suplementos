@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.urls import reverse
 
 from loja.models import Cliente, Endereco
 
@@ -30,15 +29,14 @@ def adicionar_endereco_view(request):
                 Endereco.objects.create(cliente=cliente, nome=nome, cep=cep, estado=estado, cidade=cidade, rua=rua, numero=numero, complemento=complemento, telefone=telefone)
 
                 messages.success(request, 'Endereço adicionado com sucesso!', extra_tags='novo-endereco')
-                return redirect(reverse('perfil'))
+                return redirect('perfil')
             else:
                 messages.error(request, 'Você já tem um endereço com esses dados!', extra_tags='novo-endereco')
-                return redirect(reverse('perfil'))
-            
+                return redirect('perfil')
         else:
             messages.error(request, 'Preencha os campos obrigatórios. (*)', extra_tags='novo-endereco')
     
-    return redirect(reverse('perfil'))
+    return redirect('perfil')
 
 @login_required
 def edit_endereco_view(request):
@@ -77,7 +75,7 @@ def edit_endereco_view(request):
                 endereco.save()
 
                 messages.success(request, 'Dados atualizados com sucesso!', extra_tags='edit-endereco')
-    return redirect(reverse('perfil'))
+    return redirect('perfil')
 
 @login_required
 def excluir_endereco_view(request):
@@ -87,4 +85,4 @@ def excluir_endereco_view(request):
         endereco = Endereco.objects.get(id=endereco_id, cliente=request.user.cliente)
         endereco.delete()
         messages.success(request, 'Endereço excluído com sucesso!', extra_tags='page-perfil')
-    return redirect(reverse('perfil'))
+    return redirect('perfil')

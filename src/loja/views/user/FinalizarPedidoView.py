@@ -39,7 +39,6 @@ def finalizar_pedido_view(request):
                     for lote in lotes_ordenados:
                         if item.quantidade <= 0:
                             break
-
                         if item.quantidade >= lote.quantidade:
                             item.quantidade -= lote.quantidade
                             lote.delete() 
@@ -57,7 +56,6 @@ def finalizar_pedido_view(request):
                 texto=f'O seu pedido de código {pedido.id} foi realizado com sucesso! Agradecemos pela confiança!'
             )
             messages.success(request, f'Pedido realizado com sucesso!', extra_tags='page-pedido')
-
 
     context = {
         'enderecos': enderecos,

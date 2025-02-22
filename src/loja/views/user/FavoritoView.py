@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 from loja.models import Favorito, Cliente, Produto
@@ -18,6 +17,6 @@ def favorito_view(request):
             Favorito.objects.create(cliente=cliente, produto=produto)
         else:
             favorito_cliente.delete()
-        return redirect(reverse('meus-favoritos'))
+        return redirect('meus-favoritos')
         
-    return redirect(reverse('meus-favoritos'))
+    return redirect('meus-favoritos')

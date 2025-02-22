@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib import messages
 
 from loja.models import Cliente, Produto, DevolucaoProduto, Notificacao
