@@ -106,7 +106,6 @@ def remover_item_view(request, idItem):
             item.delete()
     else:
         carrinho_id = request.session.get('carrinho_id')
-        print(carrinho_id, item.carrinho.id)
         if carrinho_id == item.carrinho.id:
             item.delete()
 
@@ -115,12 +114,10 @@ def remover_item_view(request, idItem):
 @transaction.atomic
 def migrar_carrinho_para_usuario(user, session_key):
     carrinho_anonimo = Carrinho.objects.filter(session_key=session_key, user__isnull=True).first()
-    print(session_key)
-    print(carrinho_anonimo)
     if not carrinho_anonimo:
         return
 
-    carrinho_usuario, criado = Carrinho.objects.get_or_create(user=user)
+    carrinho_usuario = Carrinho.objects.get_or_create(user=user)
 
     for item in carrinho_anonimo.itens.all():
         item_existente = CarrinhoItem.objects.filter(

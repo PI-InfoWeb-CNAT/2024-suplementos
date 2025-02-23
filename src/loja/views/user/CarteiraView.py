@@ -89,7 +89,6 @@ def edit_cartao_view(request):
 def excluir_cartao_view(request):
     if request.method == 'POST':
         cartao_id = request.POST.get('cartao_id')
-        print(cartao_id)
 
         cartao = Cartao.objects.get(id=cartao_id, cliente=request.user.cliente)
         cartao.delete()
