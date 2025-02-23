@@ -7,9 +7,7 @@ from loja.models import Cartao, Cliente
 
 @login_required
 def list_carteira_view(request):
-    user = request.user
-
-    cartoes_cliente = Cartao.objects.filter(cliente=user.cliente)
+    cartoes_cliente = Cartao.objects.filter(cliente=request.user.cliente)
 
     context = {'cartoes': cartoes_cliente}
 
