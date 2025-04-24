@@ -1,4 +1,4 @@
-# Projeto Integrador InfoWeb - IFRN
+# Projeto de Desenvolvimento de Sistemas - IFRN
 
 ## PowerUp - 1.0
 Projeto de e-commerce de suplementos de academia que faz parte do projeto integrador do 3º ano de infoweb da turma de 2024 do IFRN-Campus Natal Central.
