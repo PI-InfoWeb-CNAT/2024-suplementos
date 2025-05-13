@@ -6,6 +6,7 @@
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
 | 03/03/2024 | **1.00** | Versão Inicial  | David Paiva, Diego Luiz, Lucas Brito e Pedro Edi |
+| 13/05/2025 | **2.00** | Versão Refinada  | David Paiva, Diego Luiz, Lucas Brito, Maria Vitória, Pedro Edi e Vinícius Barbosa |
 
 ## 1. Objetivo do Projeto 
 Este projeto tem objetivo de desenvolver um site que implemente as funcionalidades de uma loja de suplementos on-line.
@@ -34,9 +35,8 @@ O usuário irá acessar o site utilizando um computador ou celular, em qualquer 
 
 Não será necessário que o site interaja com nenhum outro aplicativo para funcionar. O ideal seria o usuário utilizar o site sem movimentação, pra que a qualidade do sinal não oscile. Porém, se o usuário estiver em movimento, será possível ele acessar o sistema com Wi-Fi se disponível, ou com um padrão de rede celular, como 4G.
 
-
 ## 5. Principais necessidades dos usuários
-Considerando o ponto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de que, com o site, consegue alcançar mais pessoas e, consequentemente, faturar mais. O site terá uma parte "promoções" destinada a esse controle de validade, para que esse problema seja solucionado.
+Considerando o ponto de vista do lojista, administrador do site, sua principal necessidade é controlar a validade do estoque de sua loja. Portanto, tem a necessidade de um site para a realização desse controle, além de que, com o site, consegue alcançar mais pessoas e, consequentemente, faturar mais. O site terá uma parte "promoções" destinada a esse controle de validade, para que esse problema seja solucionado. Além disso, para o administrador conseguir gerenciar os lotes e produtos, haverá uma área acessível somente para o administrador, para que ele consiga gerenciar produtos, lotes, notificações, clientes, e, dessa forma, conseguir ter total controle do site e do estoque dos seus produtos.
 
 Considerando o pronto de vista do cliente, ele deseja ter acesso a um site com interface amigável que permita obter informações sobre os produtos comercializados e, caso identifique que estes atendam às suas necessidades, ele possa montar sua relação de compra confirmando a aquisição. Após essa etapa ele desejará visualizar o processo de entrega dos produtos adquiridos. O site irá entregar isso com um design simples, efetivo e responsivo, para atender às necessidades dos clientes.
 
