@@ -6,9 +6,7 @@ from loja.models import Cliente, Endereco
 
 @login_required
 def adicionar_endereco_view(request):
-    user = request.user
-
-    cliente = Cliente.objects.get(user=user)
+    cliente = Cliente.objects.get(user=request.user)
 
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -20,7 +18,7 @@ def adicionar_endereco_view(request):
         complemento = request.POST.get('complemento')
         telefone = request.POST.get('telefone')
 
-        enderecos_cliente = Endereco.objects.filter(cliente=user.cliente)
+        enderecos_cliente = Endereco.objects.filter(cliente=request.user.cliente)
 
         endereco_existe = enderecos_cliente.filter(rua=rua, numero=numero).exists()
 

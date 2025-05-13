@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_filters %}
 
-{% block title %}Meu Perfil{% endblock %}
+{% block title %}Meus Favoritos{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
@@ -53,12 +53,12 @@
                         <img id="setinha" src="{% static 'images/setinha.png' %}">
                     </div>
                     <div class="checkbox-box" id="checkboxBox" style="display: none">
-                        <label for="option1" class="filtro">Ordem alfabética A-Z</label>
-                        <label for="option2" class="filtro">Ordem alfabética Z-A</label>
-                        <label for="option3" class="filtro">Menor preço</label>
-                        <label for="option4" class="filtro">Maior preço</label>
-                        <label for="option5" class="filtro">Menor promoção</label>
-                        <label for="option6" class="filtro">Maior promoção</label>
+                        <div class="filtro">Ordem alfabética A-Z</div>
+                        <div class="filtro">Ordem alfabética Z-A</div>
+                        <div class="filtro">Menor preço</div>
+                        <div class="filtro">Maior preço</div>
+                        <div class="filtro">Menor promoção</div>
+                        <div class="filtro">Maior promoção</div>
                     </div>
                 </div>
             </div>
@@ -107,3 +107,7 @@
     </main>
 
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/filtro.js' %}"></script>
+{% endblock %}  

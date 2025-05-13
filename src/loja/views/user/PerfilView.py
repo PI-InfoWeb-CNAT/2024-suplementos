@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from loja.models import Cliente, Endereco
+from loja.utils import validar_cpf
 
 @login_required
 def perfil_view(request):
@@ -70,6 +71,8 @@ def edit_dados_view(request):
                 messages.error(request, 'Esse e-mail já existe.', extra_tags='page-perfil')
             elif cpf_existe:
                 messages.error(request, 'Esse cpf já existe.', extra_tags='page-perfil')
+            elif not validar_cpf(cpf):
+                messages.error(request, 'CPF inválido.', extra_tags='page-perfil')
             else:
                 user.username = nome
                 if email_alterado:

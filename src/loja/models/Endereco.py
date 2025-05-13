@@ -9,7 +9,7 @@ class Endereco(models.Model):
     numero = models.CharField(null=False, max_length=10)
     complemento = models.CharField(null=True, max_length=200)
     telefone = models.CharField(null=True, max_length=20)
-    cep = models.CharField(null=False, max_length=8)
+    cep = models.CharField(null=False, max_length=10)
 
     def __str__(self):
         return f'{self.rua}, {self.numero} - {self.cidade}/{self.estado}'

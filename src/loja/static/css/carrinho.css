@@ -23,7 +23,7 @@
 }
 
 .container-item {
-    min-width: 700px;
+    min-width: 750px;
     display: flex;
     gap: 2em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
@@ -33,6 +33,7 @@
     & img {
         border-radius: 20px;
         width: 230px;
+        aspect-ratio: 1/1;
     }
     & a {
         position: absolute;
@@ -54,7 +55,7 @@
     flex-direction: column;
     gap: .7em;
     padding: 1em 0;
-    width: 370px;
+    width: 60%;
     & p {
         font-weight: bold;
         font-size: 1.1em;
@@ -72,7 +73,6 @@
     column-gap: 1em;
     & h3 {
         font-size: 1.55em;
-        max-width: 350px;
         margin-bottom: 0;
     }
     & div {

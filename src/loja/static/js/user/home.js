@@ -5,6 +5,7 @@ document.getElementById('formPesquisa').addEventListener('submit', function(even
 
     if (inputPesquisa.trim() !== '') {
         document.getElementById('containerMid').style.display = 'none'
+        document.getElementById('loading').style.display = 'flex';
 
         history.pushState(null, '', `?produto=${inputPesquisa}`)
         
@@ -23,6 +24,9 @@ document.getElementById('formPesquisa').addEventListener('submit', function(even
         .catch(error => {
             console.error('Erro na pesquisa:', error)
         })
+        .finally(() => {
+            document.getElementById('loading').style.display = 'none';
+        });
 
         return false
     }

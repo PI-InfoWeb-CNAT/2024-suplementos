@@ -27,7 +27,7 @@ def home_view(request):
         descontos.append(promocao.porcentagem_desconto)
 
     if produto is not None:
-        produtos_pesquisa = produtos.filter(nome__contains=produto)
+        produtos_pesquisa = produtos.filter(nome__icontains=produto)
     
     produtos_mais_vendidos = Produto.objects.annotate(total_vendas=Sum('pedidos__quantidade')).order_by('-total_vendas')[:5]
 

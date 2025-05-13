@@ -7,7 +7,7 @@ from loja.models import Cartao, Cliente
 
 @login_required
 def list_carteira_view(request):
-    cliente = Cliente.objects.get(id=request.user.id)
+    cliente = Cliente.objects.get(user=request.user)
 
     cartoes_cliente = Cartao.objects.filter(cliente=cliente)
 
@@ -17,8 +17,7 @@ def list_carteira_view(request):
 
 @login_required
 def adicionar_cartao_view(request):
-    user = request.user
-    cliente = Cliente.objects.get(user=user)
+    cliente = Cliente.objects.get(user=request.user)
 
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -27,7 +26,7 @@ def adicionar_cartao_view(request):
         tipo = request.POST.get('tipo')
 
         numero = ''.join(filter(str.isdigit, numero))
-        cartoes_cliente = Cartao.objects.filter(cliente=user.cliente)
+        cartoes_cliente = Cartao.objects.filter(cliente=request.user.cliente)
         cartao_existe = cartoes_cliente.filter(numero=numero).exists()
 
         if nome and nometitular and numero and tipo:

@@ -133,11 +133,12 @@ form {
 
 .nome-porcentagem {
     display: flex;
+    flex-wrap: wrap;
+    row-gap: .5em;
+    column-gap: 1em;
     align-items: center;
-    gap: 1em;
     & h5 {
         font-size: 1.55em;
-        max-width: 350px;
         margin-bottom: 0;
     }
     & div {

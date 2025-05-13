@@ -4,8 +4,7 @@ from django.contrib import messages
 from loja.models import Cliente, Produto, DevolucaoProduto, Notificacao
 
 def devolver_produto_view(request):
-    user = request.user
-    cliente = Cliente.objects.get(user=user)
+    cliente = Cliente.objects.get(user=request.user)
 
     if request.method == 'POST':
         produto_id = request.POST.get('produto_id')

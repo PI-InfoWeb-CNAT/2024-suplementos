@@ -51,8 +51,8 @@ def edit_lote_view(request):
             data_validade_formatada = timezone.datetime.strptime(data_validade, "%Y-%m-%d").date()
             if int(quantidade) <= 0:
                 messages.error(request, 'A quantidade deve ser maior que 0!', extra_tags='editar-lote')
-            # elif data_validade_formatada < timezone.now().date():
-            #     messages.error(request, 'A data de validade deve ser maior ou igual a hoje!', extra_tags='editar-lote')
+            elif data_validade_formatada < timezone.now().date():
+                messages.error(request, 'A data de validade deve ser maior ou igual a hoje!', extra_tags='editar-lote')
             else:
                 lote.produto_id = produto_id
                 lote.quantidade = quantidade
