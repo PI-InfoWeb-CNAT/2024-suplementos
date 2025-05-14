@@ -69,14 +69,15 @@ O sistema deve ter métodos de validação e verificações de erros. Além diss
 | F13	| Avaliar o Produto	| Os clientes podem avaliar os produtos adquiridos atribuindo uma nota.
 | F14	| Devolver o produto	| Permite que o cliente solicite a devolução do produto, causada por erro no envio ou algo semelhante. 
 | F15 | Gerenciar método de pagamento | Permite que o cliente adicione, edite ou exclua um cartão para usar como método de pagamento.
-| F16 | Gerenciar produtos | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) os produtos do site.
-| F17 | Gerenciar lotes | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) os lotes do site.
-| F18 | Gerenciar notificações | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) as notificações do site.
-| F19 | Gerenciar pedidos | O administrador deve poder visualizar, editar e excluir os pedidos do site.
-| F20 | Gerenciar devoluções | O administrador deve poder visualizar, editar e excluir as devoluções do site.
-| F21 | Visualizar lotes vencidos | O administrador deve poder visualizar os lotes vencidos, para que ele dê baixa no sistema e atualize a sua loja física.
-| F22 | Visualizar lotes perto de vencer | O administrador deve poder visualizar os lotes com data de vencimento próxima, para que ele tenha noção disso e fique alertado.
-| F22 | Promoção automática | O sistema deve, a partir de uma lógica de programação, automaticamente colocar em promoção os produtos cujo lote está próximo de vencer. A taxa de promoção deve ser discutida entre cliente e desenvolvedor.
+| F16 | Gerenciar pedidos | O administrador deve poder visualizar e excluir os clientes do site.
+| F17 | Gerenciar produtos | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) os produtos do site.
+| F18 | Gerenciar lotes | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) os lotes do site.
+| F19 | Gerenciar notificações | O administrador deve poder gerenciar (criar, editar, atualizar e excluir) as notificações do site.
+| F20 | Gerenciar pedidos | O administrador deve poder visualizar, editar e excluir os pedidos do site.
+| F21 | Gerenciar devoluções | O administrador deve poder visualizar, editar e excluir as devoluções do site.
+| F22 | Visualizar lotes vencidos | O administrador deve poder visualizar os lotes vencidos, para que ele dê baixa no sistema e atualize a sua loja física.
+| F23 | Visualizar lotes perto de vencer | O administrador deve poder visualizar os lotes com data de vencimento próxima, para que ele tenha noção disso e fique alertado.
+| F24 | Promoção automática | O sistema deve, a partir de uma lógica de programação, automaticamente colocar em promoção os produtos cujo lote está próximo de vencer. A taxa de promoção deve ser discutida entre cliente e desenvolvedor.
 
 ## 9.	Requisitos não-funcionais
 | Código | Nome | Descrição | Categoria | Classificação |
