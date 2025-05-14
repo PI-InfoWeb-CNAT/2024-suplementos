@@ -5,49 +5,61 @@
 ### Histórico da Revisão
 |  Data  | Versão | Descrição | Autor |
 |:-------|:-------|:----------|:------|
-| 30/04/2024 | **1.00** | Adicionar seção de resumo e atores | Pedro Edi |
-| 13/11/2024 | **2.00** | Finalização do detalhamento | David Paiva |
+| 14/05/2025 | **1.00** | Detalhamento completo | Lucas Brito |
 
 
 ### 1. Resumo 
-Detalha o processo de como manter uma conta (CRUD).
+Como um usuário identificado desejo gerenciar a minha conta.
+
 ### 2. Atores
-- Moderador/Administrador 
+- Cliente
+- Moderador/Administrador
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
--  Estar logado como Moderador ou Administrador.
 -  Ter uma conta previamente registrada no sistema.
+-  Estar logado como administrador ou cliente.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Exibir, atualizar, criar ou excluir informações de contas dos usuários.
+-  O usuário deve conseguir gerenciar (visualizar, atualizar e excluir) a sua conta.
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
-#### 5.1. Fluxo Principal
-##### dentro do sistema
+#### 5.1. Fluxo Principal 
+##### visualização da conta
 
-|  Moderador  | Sistema |
+|  Ator  | Sistema |
 |:-------|:------- |
-| 1. Acessa a seção de gerenciamento de contas no painel de administração. | --- |
-| --- | 2. Sistema exibe a lista de contas existentes. |
-| 3.  Seleciona uma conta para exibir ou editar informações. | --- |
-| --- | 4. Exibe os detalhes da conta selecionada para visualização/edição. |
-| 5.  Faz modificações ou opta por excluir/criar uma conta nova. |
-| --- | 6. Salva as modificações ou cria/exclui a conta no banco de dados. |
-| --- | 6. Usuário Continua Navegando. |
+| 1. Clica no botão "Meu Perfil" | --- |
+| --- | 2. Redireciona para a página e exibe os dados do cliente |
+| 3. Visualiza os seus dados | --- |
+| 4. Navega pelo site | --- |
 
+#### 5.2. Fluxo alternativo
+##### edição dos dados da conta
 
+|  Ator  | Sistema |
+|:-------|:------- |
+| 1. Clica no botão "Meu Perfil" | --- |
+| --- | 2. Redireciona para a página e exibe os dados do cliente |
+| 3. Visualiza os seus dados | --- |
+| 4. Altera algum(ns) campo(s) e aperta no botão "Atualizar" | --- |
+| --- | 5. Recarrega a página, agora com os dados atualizados |
+| 6. Navega pelo site | --- |
+
+#### 5.3. Fluxo alternativo
+##### exclusão da conta
+
+|  Ator  | Sistema |
+|:-------|:------- |
+| 1. Clica no botão "Meu Perfil" | --- |
+| 2. Clica no botão "Excluir Conta" | --- |
+| --- | 3. Exibe um modal alertando que a exclusão é permanente |
+| 4. Aperta o botão de "Excluir" novamente e confirma a exclusão | --- |
+| --- | 7. Redireciona o usuário, agora anônimo, para a página principal |
+| 8. Navega pelo site | --- |
 
 ### 6. Dicionário de dados
-Nome | Nome completo do usuário	| String (1-100 caracteres)
-Email	| Email para contato e login | String (formato válido)
-Status da Conta	| Estado da conta (Ativo/Inativo)	| Boolean
-Tipo de Conta	| Tipo de permissão (Admin/Usuário)	| String
 
 ### 7. Protótipos de UI
-![image](https://github.com/user-attachments/assets/1a2c607e-3e12-4d96-a300-e2b65e644a53)

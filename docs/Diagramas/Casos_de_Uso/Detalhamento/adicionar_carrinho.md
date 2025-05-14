@@ -18,7 +18,7 @@ Detalha o processo de como adicionar um produto ao carrinho para a efetuação d
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- Estar logado, produto registrado.
+- Existir algum produto registrado.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
