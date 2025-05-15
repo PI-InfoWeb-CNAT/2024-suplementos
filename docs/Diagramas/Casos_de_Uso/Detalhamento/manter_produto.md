@@ -10,7 +10,8 @@
 
 
 ### 1. Resumo 
-Detalha o processo de como manter um produto (CRUD).
+Como administrador do site, desejo gerenciar os produtos do site.
+
 ### 2. Atores
 - Moderador/administrador
 
@@ -22,7 +23,6 @@ Detalha o processo de como manter um produto (CRUD).
 - **Data de validade**: Data futura, no formato YYYY-MM-DD.
 - **Imagem válida**: A imagem do produto deve estar no formato correto (JPG, PNG,JPEG). O sistema deve verificar se a imagem é válida antes do upload para o servidor.
 - **Produto Válido para Operações de Atualização ou Exclusão**:Para editar ou excluir um produto, o sistema deve verificar que o ID do produto existe no banco de dados e que não está associado a pedidos pendentes (em caso de exclusão).
-
 
 ### 4.Pós-condições
 - **Criação de Produto**:Um novo produto é adicionado ao banco de dados, com todas as informações necessárias (nome, preço, estoque, etc.).

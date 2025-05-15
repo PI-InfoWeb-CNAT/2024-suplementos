@@ -22,7 +22,7 @@ São pré-condições para iniciar este caso de uso:
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Exibe produto no carrinho.
+-  Exiba o produto no carrinho.
 
 ### 5. Fluxos de evento
 
@@ -31,24 +31,24 @@ Após a execução deste casos de uso, espera que o sistema:
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema verifica a disponibilidade do produto.|
-| --- | 5. Sistema adiciona produto no carrinho do usuário |
-| --- | 6. Sistema informa mensagem de que o produto foi adicionado |
-| 6. Usuário Continua Navegando | --- |
+| 1. Clica no anúncio do produto | --- |
+| --- | 2. Redireciona usuário para página do produto clicado |
+| 3.  Clica no botão para adicionar produto no carrinho | --- |
+| --- | 4.Verifica a disponibilidade do produto |
+| --- | 5. Adiciona produto no carrinho do usuário |
+| --- | 6. Informa mensagem de que o produto foi adicionado |
+| --- | 7. Redireciona para a página do Carrinho |
+| 8. Continua navegando | --- |
 
 #### 5.2. Fluxo alternativo
 ##### Produto Indisponível
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema verifica a disponibilidade do produto. |
-| --- | 3. Sistema informa ao usuário que o produto está indisponível. | --- |
-| 4. Usuário Continua Navegando | --- |
-
+| 1. Clica no botão de adicionar produto no carrinho | --- |
+| --- | 2. Verifica a disponibilidade do produto. |
+| --- | 3. Informa ao usuário que o produto está indisponível. | --- |
+| 4. Continua navegando | --- |
 
 ### 6. Dicionário de dados
 

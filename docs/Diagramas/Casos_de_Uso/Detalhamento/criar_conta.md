@@ -17,38 +17,37 @@ Como usuário não identificado, desejo ter a opção de criar uma conta.
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Possuir um email existente para criação da conta
+- 	Possuir um email existente para criação da conta.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Permitir navegação e usar os serviços de compra do site
+-  Cadastre a conta criada pelo usuário no banco de dados.
 
 ### 5. Fluxos de evento
 
 #### 5.1. Fluxo Principal
-##### dentro da página de login
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica botão "criar conta" | --- |
-| --- | 2. Sistema redireciona usuário para página criar conta |
-| 3.  Usuário informa os dados e cria uma senha | --- |
-| --- | 4. Sistema salva a conta no banco de dados |
-| --- | 5. Sistema redireciona para página de login novamente |
-| 6. Usuário loga na conta criada | --- |
-| 7. Usuário navega pelo site | --- |
+| 1. Clica no botão "Cadastrar" | --- |
+| --- | 2. Redireciona usuário para página de cadastro |
+| 3.  Informa os dados e cria uma senha | --- |
+| --- | 4. Salva a conta no banco de dados |
+| --- | 5. Redireciona para página de login |
+| 6. Loga na conta criada | --- |
+| 7. Navega pelo site | --- |
 
 #### 5.2. Fluxo alternativo
-##### fora da página de login
+##### erros nos dados informados
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Clica no botão "Criar Conta" e é redirecionado para a página de cadastro. | --- |
+| 1. Clica no botão "Cadastrar" e é redirecionado para a página de cadastro. | --- |
 | 2. Preenche o formulário com dados e clica em "Criar Conta".
 | --- | 3. Se o email já estiver em uso ou for inválido, o sistema exibe uma mensagem de erro informando o conflito. |
-| --- | 3.1 Se a senha for fraca (menos de 8 caracteres ou sem complexidade), exibe uma mensagem de erro recomendando uma senha mais forte. |
+| --- | 3.1 Se a senha for fraca (menos de 8 caracteres), exibe uma mensagem de erro recomendando uma senha mais forte. |
 | 4. Corrige o(s) erro(s) e tenta novamente enviar o formulário. | --- |
-| --- | 5  sistema salva a conta e redireciona para a página de login.
+| --- | 5  Sistema salva a conta e redireciona para a página de login.
 
 
 ### 6. Dicionário de dados

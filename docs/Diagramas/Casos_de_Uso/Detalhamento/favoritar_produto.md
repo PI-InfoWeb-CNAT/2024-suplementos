@@ -9,55 +9,34 @@
 
 
 ### 1. Resumo 
-Permite que os usuários salvem produtos de interesse para futuras compras.
+Como usuário identificado, desejo favoritar os produtos que eu desejar.
 
 ## 2. Atores
 - Cliente
-- Sistema
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- Estar logado, produto a ser favoritado estar cadastrado.
+- 	O usuário deve possuir conta no site.
+-   O usuário deve estar logado no site.
+-   O produto a ser favoritado deve estar registrado no sistema.
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
 -  O produto é adicionado à lista de favoritos do cliente. 
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
 ##### Favoritar Produto
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3. Usuário clica no botão "Favoritar". | --- |
-| --- | 4. Sistema adiciona o produto à lista de favoritos do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi favoritado |
-| 6. Usuário Continua Navegando | --- |
-
-#### 5.2. Fluxo alternativo
-##### Remover Produto da Lista de Favoritos
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. Usuário acessa a página de "Favoritos" | --- |
-| --- |	2. Sistema exibe a lista de produtos favoritos do usuário |
-| 3. Usuário clica no botão "Remover" ao lado do produto desejado|
-| 4. Sistema remove o produto da lista de favoritos e exibe mensagem de que o produto foi removido| --- |
-| 5. Usuário Continua Navegando | --- |
-
+| 1. Clica no ícone de coração vazio, no lado superior direito do anúncio do produto | --- |
+| --- | 2. Preenche o coração, sinalizando que o produto foi favoritado |
+| --- | 3. Redireciona para a página de "Meus Favoritos" e exibe a lista, agora com o produto favoritado |
+| 4. Visualiza a página "Meus Favoritos" | --- |
+| 5. Continua navegando | --- |
 
 ### 6. Dicionário de dados
-![image](https://github.com/user-attachments/assets/7c6b6cef-7d1b-4761-b932-3ddf51ac7cf5)
-
 
 ### 7. Protótipos de UI
-![image](https://github.com/user-attachments/assets/86a8f093-b452-4dba-b9b5-9179bdbaa4ab)
-![Captura de tela 2024-10-21 113851](https://github.com/user-attachments/assets/98ab60d3-e3a3-46c7-8f7d-53117121ef82)
-
-

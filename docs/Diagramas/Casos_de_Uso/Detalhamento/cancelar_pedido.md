@@ -9,18 +9,21 @@
 
 
 ### 1. Resumo 
-Como usuário identificado, desejo ter a opção de cancelar o pedido e, após isso, ser reembolsado.
+Como usuário identificado, desejo ter a opção de cancelar o pedido.
 
 ### 2. Atores
 - Cliente
 
 ### 3. Pré-condições
 São pré-condições para iniciar este caso de uso:
-- 	Estar logado, Produto ter sido comprado.
+- 	O usuário deve possuir conta no site.
+-   O usuário deve estar logado no site.
+-   O usuário deve ter realizado um pedido.
+-   O status do pedido estar em "Processando".
 
 ### 4.Pós-condições
 Após a execução deste casos de uso, espera que o sistema:
--  Receber reembolso.
+-  Cancele o pedido que o usuário cancelar.
 
 ### 5. Fluxos de evento
 
@@ -29,37 +32,12 @@ Após a execução deste casos de uso, espera que o sistema:
 
 |  Ator  | Sistema |
 |:-------|:------- |
-| 1. Usuário clica no anúncio do produto | --- |
-| --- | 2. Sistema redireciona usuário para página do Produto clicado |
-| 3.  Usuário clica no botão para adicionar produto no carrinho | --- |
-| --- | 4. Sistema adiciona produto no carrinho do usuário |
-| --- | 5. Sistema informa mensagem de que o produto foi adicionado |
-| 6. Usuário Continua Navegando | --- |
-
-#### 5.2. Fluxo alternativo
-##### fora da página de produto
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão de adicionar produto no carrinho | --- |
-| --- | 2. Sistema adicionar/remove produto no carrinho do usuário |
-| --- | 3. Sistema informa mensagem de que o produto foi adicionado/removido |
-| 4. Usuário Continua Navegando | --- |
-
-#### 5.3. Fluxo alternativo
-##### página do carrinho
-
-|  Ator  | Sistema |
-|:-------|:------- |
-| 1. usuário clica no botão para lista de carrinhos | --- |
-| --- | 2. Sistema redireciona usuário para página do carrinho |
-| 3. usuário clica no botão do carrinho do produto | --- |
-| --- | 2. Sistema remove produto do carrinho |
-| --- | 2. Sistema informa remoção da lista do carrinho |
-| 4. Usuário Continua Navegando | --- |
+| 1. Clica em "Meus Pedidos" | --- |
+| 2. Escolhe um pedido e clica em "Cancelar pedido" | --- |
+| --- | 3. Exibe um modal alertando que o cancelamento é permanente |
+| --- | 4. Exibe mensagem de sucesso e recarrega a página, agora sem o pedido cancelado |
+| 5. Continua navegando | --- |
 
 ### 6. Dicionário de dados
 
 ### 7. Protótipos de UI
-
-

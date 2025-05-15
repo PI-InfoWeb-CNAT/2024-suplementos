@@ -9,7 +9,7 @@
 
 
 ### 1. Resumo 
-Como um usuário, identificado ou não, desejo listar e filtrar produtos.
+Como um usuário, identificado ou não, desejo visualizar os produtos em promoção do site.
 
 ### 2. Atores
 - Moderador/Administrador
@@ -52,6 +52,3 @@ funcionem corretamente.
 ### 6. Dicionário de dados
 
 ### 7. Protótipos de UI
-![image](https://github.com/user-attachments/assets/27263ca3-128d-4249-8475-519525a24e2b)
-
-

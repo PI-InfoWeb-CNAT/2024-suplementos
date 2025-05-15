@@ -11,7 +11,7 @@
 
 
 ### 1. Resumo 
-Detalha o processo de como finalizar a compra dos itens do carrinho.
+Como usuário identificado, desejo finzalizar o meu pedido com os itens atualmente no carrinho.
 
 ### 2. Atores
 - Cliente
@@ -27,9 +27,6 @@ Detalha o processo de como finalizar a compra dos itens do carrinho.
 - **Disponibilidade para Acompanhamento**:O usuário pode acessar sua conta para visualizar o histórico de pedidos e o status do pedido atual.
 
 ### 5. Fluxos de evento
-- No fluxo principal, definir o passo a passo de como vai ocorrer o caso de uso da forma padrão.
-- No fluxo alternativo, definir o passo a passo de como vai ocorrer o caso de uso em uma forma alternativa. Opcional.
-- Exemplo abaixo de um caso de uso "Adicionar ao carrinho".
 
 #### 5.1. Fluxo Principal
 ##### dentro da página de produto
@@ -87,9 +84,6 @@ Detalha o processo de como finalizar a compra dos itens do carrinho.
 | --- | 5. O sistema exibe uma mensagem de erro |
 | 6. O usuário pode tentar um método de pagamento diferente ou corrigir as informações inseridas | --- |
 | 7. Usuário Continua Navegando | --- |
-
-
-
 
 ### 6. Dicionário de dados
 
