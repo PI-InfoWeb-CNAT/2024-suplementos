@@ -1,7 +1,7 @@
 # Projeto de Desenvolvimento de Sistemas para Internet - IFRN
 
 ## PowerUp - 2.0
-Projeto de e-commerce de suplementos de academia que faz parte do projeto da disciplina de Projeto de Desenvolvimento de Sistemas para Internet do 4º ano de infoweb da turma de 2025 do IFRN-Campus Natal Central.
+Projeto de e-commerce de suplementos de academia que, inicialmente, fez parte da disciplina do Projeto Integrador do 3º ano e atualmente faz parte do projeto da disciplina de Projeto de Desenvolvimento de Sistemas para Internet do 4º ano de infoweb da turma de 2025 do IFRN-Campus Natal Central.
 
 Atualmente o projeto começou uma implementação como modelo de projeto Microsoft Visual Studio, que está em desenvolvimento.
 
