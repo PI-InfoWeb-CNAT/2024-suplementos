@@ -1,9 +1,11 @@
-# Projeto de Desenvolvimento de Sistemas para Internet - IFRN
+# Projeto de E-commerce de Suplementos - IFRN
+
+## PowerUp - 1.0
+A primeira versão desse projeto foi concluída e fez parte da disciplina do Projeto Integrador, do 3º ano de InfoWeb. Nessa versão, foram utilizadas as tecnologias HTML, CSS, JavaScript, Python e Django para a implementação do site. Para acessar o código, basta ir na release com tag 1.0.
 
 ## PowerUp - 2.0
-Projeto de e-commerce de suplementos de academia que, inicialmente, fez parte da disciplina do Projeto Integrador do 3º ano e atualmente faz parte do projeto da disciplina de Projeto de Desenvolvimento de Sistemas para Internet do 4º ano de infoweb da turma de 2025 do IFRN-Campus Natal Central.
+A segunda versão desse projeto está em andamento e faz parte da disciplina de Projeto de Desenvolvimento de Sistemas para Internet, do 4º ano de InfoWeb. Nessa versão, as tecnologias utilizadas serão React + NextJS para o front-end, e NestJS para o back-end. O código está disponível na release atual, com tag 2.0.
 
-Atualmente o projeto começou uma implementação como modelo de projeto Microsoft Visual Studio, que está em desenvolvimento.
 
 ## Artefatos do Projeto
 
