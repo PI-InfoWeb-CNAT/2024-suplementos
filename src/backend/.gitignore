@@ -1,0 +1,26 @@
+# Ambiente virtual Python
+venv/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Arquivos SQLite (banco local)
+*.sqlite3
+
+# Arquivos de configuração de ambiente
+.env
+
+# Cache do mypy e pytest
+.mypy_cache/
+.pytest_cache/
+
+# Logs
+*.log
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.tmp
