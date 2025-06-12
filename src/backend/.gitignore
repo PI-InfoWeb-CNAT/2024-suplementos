@@ -5,8 +5,13 @@ venv/
 __pycache__/
 *.py[cod]
 
-# Arquivos SQLite (banco local)
-*.sqlite3
+# Arquivo principal do banco SQLite
+db.sqlite3
+db.sqlite
+
+# Arquivos temporários do SQLite
+*.sqlite3-shm
+*.sqlite3-wal
 
 # Arquivos de configuração de ambiente
 .env
