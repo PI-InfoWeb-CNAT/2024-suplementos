@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout/Layout";
 import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 
 const baiJamjuree = Bai_Jamjuree({
-  variable: "--font-bai-jamjuree",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({ children }:
         <link rel="icon" href="/favicons/favicon-light.ico" media="(prefers-color-scheme: dark)"/>
         <link rel="icon" href="/favicons/favicon-dark.ico" media="(prefers-color-scheme: light)"/>
       </head>
-      <body className={`${baiJamjuree.variable} antialiased`}>
+      <body className={`${baiJamjuree.className} antialiased`}>
         <Layout>
           {children}
         </Layout>

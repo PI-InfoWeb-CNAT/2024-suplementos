@@ -3,19 +3,15 @@
 import Link from 'next/link';
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
-import logo from '../../public/Logo-preta-longa.webp';
+
+import { NavLinkProps } from '@/types/index';
+import logo from '../../../public/Logo-preta-longa.webp';
 
 import { IoHomeSharp } from "react-icons/io5";
 import { BsFillLightningChargeFill, BsBasket3Fill } from "react-icons/bs";
 import { FaTrophy } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { BiSolidUser } from "react-icons/bi";
-
-interface NavLinkProps {
-  href: string;
-  icon: React.ReactNode;
-  name: string;
-}
 
 const NavLink = ({href, icon, name}: NavLinkProps) => {
     const pathname = usePathname()
@@ -24,7 +20,7 @@ const NavLink = ({href, icon, name}: NavLinkProps) => {
     return (
         <li>
             <Link href={href} 
-            className={`flex items-center gap-3 text-xl pl-3
+            className={`flex items-center gap-3 text-lg font-semibold pl-3
             ${isActive ? 'text-dark-green border-l-2 border-dark-green transition-border-fast' : 'text-dark-grey hover:text-dark-green transition-color-slow'}`}
             >
                 {icon}
