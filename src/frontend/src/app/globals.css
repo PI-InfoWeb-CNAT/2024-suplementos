@@ -6,10 +6,10 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-light-green: #20E500;
+  --color-dark-green: #1bc800; 
+  --color-light-grey: #e9e9e9; 
+  --color-dark-grey: #404040;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +20,17 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+}
+
+.transition-color-slow {
+  transition-property: color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+.transition-border-fast {
+  transition-property: border-left;
+  transition-duration: 10ms;
+  transition-timing-function: ease;
 }

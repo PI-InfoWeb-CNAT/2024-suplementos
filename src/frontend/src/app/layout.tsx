@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Layout from "@/components/Layout";
 import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 
@@ -30,7 +31,9 @@ export default function RootLayout({ children }:
         <link rel="icon" href="/favicons/favicon-dark.ico" media="(prefers-color-scheme: light)"/>
       </head>
       <body className={`${baiJamjuree.variable} antialiased`}>
-        {children}
+        <Layout>
+          {children}
+        </Layout>
       </body>
     </html>
   );
