@@ -11,3 +11,8 @@ export const pageList: Record<string, string> = {
     '/promocoes': 'Promoções',
     '/perfil': 'Meu Perfil',
 }
+
+export interface MenuContextType {
+  menuOpen: boolean
+  setMenuOpen: (open: boolean) => void
+}

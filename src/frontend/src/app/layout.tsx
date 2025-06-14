@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Layout from "@/components/layout/Layout";
 import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
+
+import Layout from "@/components/layout/Layout";
+import { MenuProvider } from "@/context/MenuContext";
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ["latin"],
@@ -31,9 +33,11 @@ export default function RootLayout({ children }:
         <link rel="icon" href="/favicons/favicon-dark.ico" media="(prefers-color-scheme: light)"/>
       </head>
       <body className={`${baiJamjuree.className} antialiased`}>
-        <Layout>
-          {children}
-        </Layout>
+        <MenuProvider>
+          <Layout>
+            {children}
+          </Layout>
+        </MenuProvider>
       </body>
     </html>
   );

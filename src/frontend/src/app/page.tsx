@@ -24,28 +24,28 @@ export default function Home() {
               <img
                 src="/carrossel/imagem1_carrossel.webp"
                 alt="Imagem 1"
-                className="w-full object-cover rounded-[30px]"
+                className="w-full object-cover nt-sm:rounded-[30px] rounded-[15px]"
               />
             </CarouselItem>
             <CarouselItem>
               <img
                 src="/carrossel/imagem2_carrossel.webp"
                 alt="Imagem 2"
-                className="w-full object-cover rounded-[30px]"
+                className="w-full object-cover nt-sm:rounded-[30px] rounded-[15px]"
               />
             </CarouselItem>
             <CarouselItem>
               <img
                 src="/carrossel/imagem3_carrossel.webp"
                 alt="Imagem 3"
-                className="w-full object-cover rounded-[30px]"
+                className="w-full object-cover nt-sm:rounded-[30px] rounded-[15px]"
               />
             </CarouselItem>
             <CarouselItem>
               <img
                 src="/carrossel/imagem4_carrossel.webp"
                 alt="Imagem 4"
-                className="w-full object-cover rounded-[30px]"
+                className="w-full object-cover nt-sm:rounded-[30px] rounded-[15px]"
               />
             </CarouselItem>
           </CarouselContent>
