@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Sidebar />
             <div className="flex-1 flex flex-col">
                 <Topbar page={pageName} />
-                <main className="p-6 flex-1">
+                <main className="mt-15 flex-1">
                     {children}
                 </main>
             </div>
