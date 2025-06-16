@@ -68,10 +68,10 @@ function Carousel({ children }: CarouselProps) {
               <button
                 key={index}
                 onClick={() => scrollTo(index)}
-                className={`transition-all rounded-full nt-sm:h-5 h-4 ${
+                className={`transition-all rounded-full nt-sm:h-5 mb-lg:h-4 h-3 ${
                   isActive
-                    ? "nt-sm:w-12 w-8 bg-dark-green"
-                    : "nt-sm:w-5  w-4 bg-[#6C6A6A] hover:bg-dark-grey cursor-pointer"
+                    ? "nt-sm:w-12 mb-lg:w-8 w-5 bg-dark-green"
+                    : "nt-sm:w-5  mb-lg:w-4 w-3 bg-[#6C6A6A] hover:bg-dark-grey cursor-pointer"
                 }`}
               />
             )
