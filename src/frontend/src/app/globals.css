@@ -42,3 +42,6 @@
   transition-duration: 10ms;
   transition-timing-function: ease;
 }
+.h2 {
+  @apply text-4xl font-bold;
+}

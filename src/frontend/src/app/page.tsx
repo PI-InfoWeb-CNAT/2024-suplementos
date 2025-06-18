@@ -1,7 +1,24 @@
-'use client';
+import { Metadata } from "next";
 
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaBottleWater, FaShirt } from "react-icons/fa6";
+import { BsFillLightningChargeFill } from "react-icons/bs";
+import { GiKnifeFork } from "react-icons/gi";
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { CategoryProps } from "@/types/index";
+
+export const metadata: Metadata = {
+  title: "PowerUP - Página Principal", 
+};
+
+const Category = ({icon, name, isEven}: CategoryProps) => {
+  return (
+    <div className={`flex items-center gap-2 text-white ${isEven ? 'bg-dark-grey' : 'bg-dark-green'} p-4 rounded-lg`}>
+      {icon}
+      {name}
+    </div>
+  )
+}
 
 export default function Home() {
   return (
@@ -16,7 +33,7 @@ export default function Home() {
           </div>
         </form>
       </section>
-      <section>
+      <section className="slides">
         <Carousel>
           <CarouselContent>
             <CarouselItem>
@@ -49,6 +66,15 @@ export default function Home() {
             </CarouselItem>
           </CarouselContent>
         </Carousel>
+      </section>
+      <section className="flex flex-col gap-2">
+        <h2 className="h2">Categorias</h2>
+        <div className="flex justify-between items-center">
+          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
+          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
+          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
+          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
+        </div>
       </section>
     </main>
   );
