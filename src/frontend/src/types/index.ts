@@ -1,5 +1,9 @@
 export const pageList: Record<string, string> = {
     '/promocoes': 'Promoções',
+    '/categorias/acessorios': 'Acessórios',
+    '/categorias/alimentos': 'Alimentos',
+    '/categorias/roupas': 'Roupas',
+    '/categorias/suplementos': 'Suplementos',
     '/perfil': 'Meu Perfil',
 }
 

@@ -9,7 +9,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { CategoryProps } from "@/types/index";
 
 export const metadata: Metadata = {
-  title: "PowerUP - Página Principal", 
+  title: "PowerUP - Página Inicial", 
 };
 
 const Category = ({href, icon, name, isEven}: CategoryProps) => {
