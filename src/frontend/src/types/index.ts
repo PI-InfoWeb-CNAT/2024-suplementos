@@ -12,9 +12,7 @@ export interface NavLinkProps extends IconProps {
     name: string;
 }
 
-export interface CategoryProps {
-    icon: React.ReactNode;
-    name: string;
+export interface CategoryProps extends NavLinkProps {
     isEven: boolean;
 }
 

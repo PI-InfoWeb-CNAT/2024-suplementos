@@ -12,7 +12,7 @@ const Topbar = ({page}: {page: string}) => {
 
     return (
         <div className="flex items-center justify-between">
-            <h1 className="hidden nt-sm:block text-4xl font-bold">{page}</h1> 
+            <h1 className="hidden nt-sm:block h1 font-bold">{page}</h1> 
             <button className='nt-sm:hidden' onClick={() => setMenuOpen(true)}>
                 <Icon icon={<IoMenu className='text-[18px] tb:text-[22px]' />} href="/" />
             </button>

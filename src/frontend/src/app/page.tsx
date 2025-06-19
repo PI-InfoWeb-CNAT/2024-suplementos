@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 
 import { FaMagnifyingGlass, FaBottleWater, FaShirt } from "react-icons/fa6";
 import { BsFillLightningChargeFill } from "react-icons/bs";
@@ -11,12 +12,12 @@ export const metadata: Metadata = {
   title: "PowerUP - Página Principal", 
 };
 
-const Category = ({icon, name, isEven}: CategoryProps) => {
+const Category = ({href, icon, name, isEven}: CategoryProps) => {
   return (
-    <div className={`flex items-center gap-2 text-white ${isEven ? 'bg-dark-grey' : 'bg-dark-green'} p-4 rounded-lg`}>
+    <Link href={`/categorias/${href}`} className={`flex justify-center items-center gap-5 w-full menu:w-[45%] nt-lg:w-[48%] dt:w-1/5 h-15 menu:h-20 text-base tb:text-xl text-white p-4 rounded-lg shadow-[0_0_10px_0_rgba(0,0,0,0.6)] ${isEven ? 'bg-dark-grey' : 'bg-dark-green'}`}>
       {icon}
       {name}
-    </div>
+    </Link>
   )
 }
 
@@ -67,13 +68,13 @@ export default function Home() {
           </CarouselContent>
         </Carousel>
       </section>
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-5">
         <h2 className="h2">Categorias</h2>
-        <div className="flex justify-between items-center">
-          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
-          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
-          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
-          <Category icon={<FaBottleWater className="text-light-green text-2xl" />} name="Acessórios" isEven={true} />
+        <div className="flex justify-between items-center flex-wrap gap-y-5">
+          <Category href="acessorios" icon={<FaBottleWater className="text-light-green text-3xl tb:text-4xl" />} name="Acessórios" isEven={true} />
+          <Category href="alimentos" icon={<GiKnifeFork className="text-black text-3xl tb:text-4xl" />} name="Alimentos" isEven={false} />
+          <Category href="roupas" icon={<FaShirt className="text-light-green text-3xl tb:text-4xl" />} name="Roupas" isEven={true} />
+          <Category href="suplementos" icon={<BsFillLightningChargeFill className="text-black text-3xl tb:text-4xl" />} name="Suplementos" isEven={false} />
         </div>
       </section>
     </main>

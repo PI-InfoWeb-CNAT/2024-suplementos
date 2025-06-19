@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-light-green: #20E500;
   --color-dark-green: #1bc800; 
@@ -18,13 +13,6 @@
   --breakpoint-menu: 426px;
   --breakpoint-mb-lg: 425px;
   --breakpoint-mb: 375px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 * {
@@ -42,6 +30,21 @@
   transition-duration: 10ms;
   transition-timing-function: ease;
 }
-.h2 {
-  @apply text-4xl font-bold;
+
+@layer components {
+  .h1 {
+    @apply text-3xl font-bold;
+  
+    @media (min-width: theme('breakpoint-md')) {
+      @apply text-[32px];
+    }
+  }
+  .h2 {
+    @apply text-2xl font-bold;
+  
+    @media (min-width: theme('breakpoint-md')) {
+      @apply text-[28px];
+    }
+  }
+
 }
