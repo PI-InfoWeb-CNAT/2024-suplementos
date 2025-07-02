@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { IoHomeSharp } from "react-icons/io5";
@@ -20,21 +19,6 @@ import { useMenu } from '@/context/MenuContext'
 const NavLink = ({href, icon, name}: NavLinkProps) => {
     const pathname = usePathname()
     const isActive = pathname === href
-
-    const [isMobile, setIsMobile] = useState(false)
-
-    useEffect(() => {
-        const checkIsMobile = () => {
-            if (window.innerWidth < 768) {
-                setIsMobile(true)
-            }
-        }
-
-        checkIsMobile()
-
-        window.addEventListener('resize', checkIsMobile)
-        return () => window.removeEventListener('resize', checkIsMobile)
-    }, [])
 
     return (
         <li>
@@ -74,7 +58,6 @@ const Sidebar = () => {
                             <NavLink href="/cadastro" icon={<IoMdPersonAdd className='mb-lg:text-[24px] text-[20px]' />} name="Cadastrar" />
                         </ul>
                     </nav>
-                    
                 </aside>
             )}
 
