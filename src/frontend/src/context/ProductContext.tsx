@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import axios from 'axios';
+import api from '@/services/api';
 import { Produto, ProdutosContextType } from '../types/products';
 
 const ProdutosContext = createContext<ProdutosContextType | undefined>(undefined);
@@ -11,7 +11,7 @@ export function ProdutosProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/produtos/')
+    api.get('/produtos')
       .then(response => {
         setProdutos(response.data);
         setLoading(false);
