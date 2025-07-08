@@ -8,6 +8,7 @@ import { BsFillLightningChargeFill } from "react-icons/bs";
 import { GiKnifeFork } from "react-icons/gi";
 
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import ProductCard from "@/components/ProductCard";
 import { CategoryProps } from "@/types/index";
 
 const Category = ({href, icon, name, isEven}: CategoryProps) => {
@@ -79,7 +80,11 @@ export default function HomeClient() {
             </section>
             <section>
                 <h2 className="h2">Ofertas Especiais</h2>
-                
+                <div className="productsContainer">
+                    {produtos.map(produto => (
+                        <ProductCard key={produto.id} product={produto} />
+                    ))}
+                </div>
             </section>
         </main>
     );

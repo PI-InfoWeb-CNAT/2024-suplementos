@@ -2,12 +2,12 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import api from '@/services/api';
-import { Produto, ProdutosContextType } from '../types/products';
+import { ProductProps, ProductContextType } from '../types/products';
 
-const ProdutosContext = createContext<ProdutosContextType | undefined>(undefined);
+const ProdutosContext = createContext<ProductContextType | undefined>(undefined);
 
 export function ProdutosProvider({ children }: { children: ReactNode }) {
-  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [produtos, setProdutos] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

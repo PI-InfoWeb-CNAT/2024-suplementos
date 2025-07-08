@@ -1,4 +1,4 @@
-export interface Produto {
+export interface ProductProps {
   id: number;
   nome: string;
   preco: number;
@@ -6,9 +6,10 @@ export interface Produto {
   imagem: string; 
   porcentagem_desconto: number;
   categoria: string;
+  preco_calculado: number; 
 }
 
-export interface ProdutosContextType {
-  produtos: Produto[];
+export interface ProductContextType {
+  produtos: ProductProps[];
   loading: boolean;
 }
