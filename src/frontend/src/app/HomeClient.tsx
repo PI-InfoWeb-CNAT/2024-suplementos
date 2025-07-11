@@ -6,6 +6,7 @@ import { useProdutos } from '@/context/ProductContext';
 import { FaMagnifyingGlass, FaBottleWater, FaShirt } from "react-icons/fa6";
 import { BsFillLightningChargeFill } from "react-icons/bs";
 import { GiKnifeFork } from "react-icons/gi";
+import { FaChevronDown } from "react-icons/fa";
 
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import ProductCard from "@/components/ProductCard";
@@ -13,7 +14,7 @@ import { CategoryProps } from "@/types/index";
 
 const Category = ({href, icon, name, isEven}: CategoryProps) => {
   return (
-    <Link href={`/categorias/${href}`} className={`group flex justify-center items-center gap-5 w-full menu:w-[45%] nt-lg:w-[48%] dt:w-1/5 h-15 menu:h-20 text-base tb:text-xl text-white p-4 rounded-lg shadow-[0_0_10px_0_rgba(0,0,0,0.6)] transition-all duration-300 ${isEven ? 'bg-dark-grey hover:bg-dark-green' : 'bg-dark-green hover:bg-dark-grey'}`}>
+    <Link href={`/categorias/${href}`} className={`group flex justify-center items-center gap-5 w-full menu:w-[45%] nt-lg:w-[48%] dt:w-1/5 h-15 menu:h-20 text-base md:text-xl text-white p-4 rounded-lg shadow-[0_0_10px_0_rgba(0,0,0,0.6)] transition-all duration-300 ${isEven ? 'bg-dark-grey hover:bg-dark-green' : 'bg-dark-green hover:bg-dark-grey'}`}>
         {icon}
         {name}
     </Link>
@@ -69,23 +70,45 @@ export default function HomeClient() {
                     </CarouselContent>
                 </Carousel>
             </section>
-            <section className="flex flex-col gap-5">
-                <h2 className="h2">Categorias</h2>
-                <div className="flex justify-between items-center flex-wrap gap-y-5">
-                    <Category href="acessorios" icon={<FaBottleWater className="text-light-green text-3xl tb:text-4xl group-hover:text-black" />} name="Acessórios" isEven={true} />
-                    <Category href="alimentos" icon={<GiKnifeFork className="text-black text-3xl tb:text-4xl group-hover:text-light-green" />} name="Alimentos" isEven={false} />
-                    <Category href="roupas" icon={<FaShirt className="text-light-green text-3xl tb:text-4xl group-hover:text-black" />} name="Roupas" isEven={true} />
-                    <Category href="suplementos" icon={<BsFillLightningChargeFill className="text-black text-3xl tb:text-4xl group-hover:text-light-green" />} name="Suplementos" isEven={false} />
-                </div>
-            </section>
-            <section>
-                <h2 className="h2">Ofertas Especiais</h2>
-                <div className="productsContainer">
-                    {produtos.map(produto => (
-                        <ProductCard key={produto.id} product={produto} />
-                    ))}
-                </div>
-            </section>
+            <div className="space-y-20">
+                <section className="space-y-8">
+                    <h2 className="h2">Categorias</h2>
+                    <div className="flex justify-between items-center flex-wrap gap-y-5">
+                        <Category href="acessorios" icon={<FaBottleWater className="text-light-green text-3xl md:text-4xl group-hover:text-black" />} name="Acessórios" isEven={true} />
+                        <Category href="alimentos" icon={<GiKnifeFork className="text-black text-3xl md:text-4xl group-hover:text-light-green" />} name="Alimentos" isEven={false} />
+                        <Category href="roupas" icon={<FaShirt className="text-light-green text-3xl md:text-4xl group-hover:text-black" />} name="Roupas" isEven={true} />
+                        <Category href="suplementos" icon={<BsFillLightningChargeFill className="text-black text-3xl md:text-4xl group-hover:text-light-green" />} name="Suplementos" isEven={false} />
+                    </div>
+                </section>
+                <section className="space-y-8">
+                    <div className="flex justify-between items-center">
+                        <h2 className="h2">Ofertas Especiais</h2>
+                        <a href="/promocoes" className="group flex items-center gap-2">
+                            <p className="font-bold tb:text-lg">Ver mais</p>
+                            <FaChevronDown className="text-dark-green text-lg mb-lg:text-xl rotate-180-smooth" />
+                        </a>
+                    </div>
+                    <div className="productsContainer">
+                        {produtos.map(produto => (
+                            <ProductCard key={produto.id} product={produto} />
+                        ))}
+                    </div>
+                </section>
+                <section className="space-y-8">
+                    <div className="flex justify-between items-center">
+                        <h2 className="h2">Mais Vendidos</h2>
+                        <a href="/promocoes" className="group flex items-center gap-2">
+                            <p className="font-bold tb:text-lg">Ver mais</p>
+                            <FaChevronDown className="text-dark-green text-lg mb-lg:text-xl rotate-180-smooth" />
+                        </a>
+                    </div>
+                    <div className="productsContainer">
+                        {produtos.map(produto => (
+                            <ProductCard key={produto.id} product={produto} />
+                        ))}
+                    </div>
+                </section>
+            </div>
         </main>
     );
 }
